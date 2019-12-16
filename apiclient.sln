@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiclient", "apiclient\apiclient.csproj", "{275510A4-0CE9-4641-B7A3-E87BBF9FCB99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiclient.samples", "apiclient.samples\apiclient.samples.csproj", "{170C5493-1984-4E37-BCFC-4A5D43AD898D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CEEF21FB-F2D4-4173-8CD0-A8FDD173E8F9}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{275510A4-0CE9-4641-B7A3-E87BBF9FCB99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275510A4-0CE9-4641-B7A3-E87BBF9FCB99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275510A4-0CE9-4641-B7A3-E87BBF9FCB99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275510A4-0CE9-4641-B7A3-E87BBF9FCB99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{170C5493-1984-4E37-BCFC-4A5D43AD898D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170C5493-1984-4E37-BCFC-4A5D43AD898D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170C5493-1984-4E37-BCFC-4A5D43AD898D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170C5493-1984-4E37-BCFC-4A5D43AD898D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
