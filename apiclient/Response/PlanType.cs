@@ -16,7 +16,7 @@ namespace Voximplant.API.Response {
         public long? PlanSubscriptionTemplateId { get; private set; }
 
         /// <summary>
-        /// The plan type. Available values: IM, MAU.
+        /// The plan type. The possible values are: IM, MAU.
         /// </summary>
         [JsonProperty("plan_type")]
     

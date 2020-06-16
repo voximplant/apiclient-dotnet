@@ -33,7 +33,7 @@ namespace apiclient.samples
                     CountryCode = "DE",
                     PhoneCategoryName = "GEOGRAPHIC",
                     CityName = "AACHEN",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

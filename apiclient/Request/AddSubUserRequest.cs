@@ -8,9 +8,9 @@ namespace Voximplant.API.Request {
     {
         /// <summary>
         /// Login of a new subuser for <a
-        /// href="#how-auth-works">authentication</a>, should be unique within
-        /// the Voximplant account. The login specified is always converted to
-        /// lowercase.
+        /// href='/docs/howtos/integration/httpapi/auth'>authentication</a>,
+        /// should be unique within the Voximplant account. The login specified
+        /// is always converted to lowercase.
         /// </summary>
         [JsonProperty("new_subuser_name")]
         public string NewSubuserName { get; set; }

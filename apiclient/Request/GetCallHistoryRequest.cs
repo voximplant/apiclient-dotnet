@@ -52,9 +52,8 @@ namespace Voximplant.API.Request {
         public string ApplicationName { get; set; }
 
         /// <summary>
-        /// The user ID list separated by the ';' symbol. If it's specified the
-        /// output will contain only calls from/to any VoxImplant SDK related to
-        /// the specified user.
+        /// The user ID list separated by the ';' symbol. If it's specified, the
+        /// output will contain the calls from the listed users only.
         /// </summary>
         [JsonProperty("user_id")]
         public Argument<long> UserId { get; set; }
@@ -152,11 +151,8 @@ namespace Voximplant.API.Request {
 
         /// <summary>
         /// Set true to get records in the asynchronous mode (for csv output
-        /// only). If it's true, the request could be available via <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_history#gethistoryreports'>GetHistoryReports</a>
-        /// and <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_history#downloadhistoryreport'>DownloadHistoryReport</a>
-        /// methods.
+        /// only). If it's true, the request could be available via
+        /// [GetHistoryReports] and [DownloadHistoryReport] methods.
         /// </summary>
         [JsonProperty("is_async")]
         public bool? IsAsync { get; set; }

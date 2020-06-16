@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     SkillId = 1,
                     NewSkillName = "Support",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

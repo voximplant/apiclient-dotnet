@@ -30,7 +30,7 @@ namespace apiclient.samples
                             
                 var result = voximplant.GetAuthorizedAccountIPs(new GetAuthorizedAccountIPsRequest 
                 {
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

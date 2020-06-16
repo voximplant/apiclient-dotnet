@@ -36,7 +36,7 @@ namespace apiclient.samples
                 {
                     DestinationNumber = "12345678222",
                     FromDate = fromDate,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

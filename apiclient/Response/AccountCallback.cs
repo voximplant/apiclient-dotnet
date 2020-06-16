@@ -244,6 +244,12 @@ namespace Voximplant.API.Response {
         /// <summary>
         /// The specific account callback details.
         /// </summary>
+        [JsonProperty("expired_callerid")]
+        public ExpiredCallerIDCallback ExpiredCallerid { get; private set; }
+
+        /// <summary>
+        /// The specific account callback details.
+        /// </summary>
         [JsonProperty("transcription_complete")]
         public TranscriptionCompleteCallback TranscriptionComplete { get; private set; }
 
@@ -258,6 +264,30 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("new_invoice")]
         public NewInvoiceCallback NewInvoice { get; private set; }
+
+        /// <summary>
+        /// The specific account callback details.
+        /// </summary>
+        [JsonProperty("expiring_agreement")]
+        public ExpiringAgreementCallback ExpiringAgreement { get; private set; }
+
+        /// <summary>
+        /// The specific account callback details.
+        /// </summary>
+        [JsonProperty("expired_agreement")]
+        public ExpiredAgreementCallback ExpiredAgreement { get; private set; }
+
+        /// <summary>
+        /// The specific account callback details.
+        /// </summary>
+        [JsonProperty("restored_agreement_status")]
+        public RestoredAgreementStatusCallback RestoredAgreementStatus { get; private set; }
+
+        /// <summary>
+        /// The specific account callback details.
+        /// </summary>
+        [JsonProperty("balance_is_changed")]
+        public BalanceIsChanged BalanceIsChanged { get; private set; }
 
     }
 }

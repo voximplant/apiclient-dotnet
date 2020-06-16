@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelSkill(new DelSkillRequest 
                 {
                     SkillId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

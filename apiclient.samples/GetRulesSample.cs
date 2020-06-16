@@ -34,7 +34,7 @@ namespace apiclient.samples
                     Template = "74951234567",
                     WithScenarios = true,
                     Count = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

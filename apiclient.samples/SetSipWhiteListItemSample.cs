@@ -30,7 +30,7 @@ namespace apiclient.samples
                 {
                     SipWhitelistId = 1,
                     SipWhitelistNetwork = "192.168.1.5/16",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

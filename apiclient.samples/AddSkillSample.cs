@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.AddSkill(new AddSkillRequest 
                 {
                     SkillName = "English",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

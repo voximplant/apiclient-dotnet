@@ -26,9 +26,7 @@ namespace Voximplant.API.Request {
         public string CountryState { get; set; }
 
         /// <summary>
-        /// The phone region ID. See the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_phone_numbers#getphonenumberregions'>GetPhoneNumberRegions</a>
-        /// method.
+        /// The phone region ID. See the [GetPhoneNumberRegions] method.
         /// </summary>
         [JsonProperty("phone_region_id")]
         public long? PhoneRegionId { get; set; }

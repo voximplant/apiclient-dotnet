@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetSubscriptionPrice(new GetSubscriptionPriceRequest 
                 {
                     SubscriptionTemplateType = "SIP_REGISTRATION",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -7,16 +7,17 @@ namespace Voximplant.API.Request {
     public class DeactivatePhoneNumberRequest : BaseRequest
     {
         /// <summary>
-        /// The phone ID.
+        /// The phone ID list separated by the ';' symbol or the 'all' value.
         /// </summary>
         [JsonProperty("phone_id")]
-        public long? PhoneId { get; set; }
+        public Argument<long> PhoneId { get; set; }
 
         /// <summary>
-        /// The phone number that can be used instead of <b>phone_id</b>.
+        /// The phone number list separated by the ';' symbol that can be used
+        /// instead of <b>phone_id</b>.
         /// </summary>
         [JsonProperty("phone_number")]
-        public string PhoneNumber { get; set; }
+        public Argument<string> PhoneNumber { get; set; }
 
     }
 }

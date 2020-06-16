@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelAuthorizedAccountIP(new DelAuthorizedAccountIPRequest 
                 {
                     AuthorizedIp = "92.255.220.0/24",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

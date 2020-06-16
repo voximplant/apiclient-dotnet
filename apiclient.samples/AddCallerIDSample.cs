@@ -29,7 +29,7 @@ namespace apiclient.samples
                 var result = voximplant.AddCallerID(new AddCallerIDRequest 
                 {
                     CalleridNumber = "74953331122",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

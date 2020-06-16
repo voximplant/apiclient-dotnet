@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The
-    /// [Dialogflow](https://voximplant.com/docs/references/httpapi/managing_dialogflow_credentials)
+    /// The [Dialogflow](/docs/references/httpapi/dialogflowcredentials)
     /// key's content
     /// </summary>
     public class DialogflowKey

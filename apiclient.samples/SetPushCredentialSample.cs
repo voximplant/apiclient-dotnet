@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     PushCredentialId = 1,
                     CertPassword = "1234567",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

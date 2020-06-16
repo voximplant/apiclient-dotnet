@@ -23,7 +23,7 @@ namespace Voximplant.API.Response {
         public DateTime? NextCharge { get; private set; }
 
         /// <summary>
-        /// The plan type. Available values: IM, MAU.
+        /// The plan type. The possible values are: IM, MAU.
         /// </summary>
         [JsonProperty("plan_type")]
         public string PlanType { get; private set; }
@@ -33,12 +33,6 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("plan_name")]
         public string PlanName { get; private set; }
-
-        /// <summary>
-        /// Is overrun enabled?
-        /// </summary>
-        [JsonProperty("may_overrun")]
-        public bool? MayOverrun { get; private set; }
 
         /// <summary>
         /// The plan monthly charge.

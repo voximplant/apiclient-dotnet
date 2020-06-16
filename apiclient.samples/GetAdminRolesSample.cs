@@ -34,7 +34,7 @@ namespace apiclient.samples
                     ShowingAdminUserId = 11,
                     IncludedAdminUserId = new Argument<long>(22L),
                     Count = 2,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

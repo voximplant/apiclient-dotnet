@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelCallerID(new DelCallerIDRequest 
                 {
                     CalleridId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

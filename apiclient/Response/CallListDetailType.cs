@@ -28,8 +28,7 @@ namespace Voximplant.API.Response {
         public string StartExecutionTime { get; private set; }
 
         /// <summary>
-        /// Time after which the task can not be performed in 24-h format:
-        /// HH:mm:ss
+        /// Time after which the task cannot be performed in 24-h format: HH:mm:ss
         /// </summary>
         [JsonProperty("finish_execution_time")]
         public string FinishExecutionTime { get; private set; }
@@ -54,17 +53,17 @@ namespace Voximplant.API.Response {
         public long? AttemptsLeft { get; private set; }
 
         /// <summary>
-        /// The status ID. Available values: __0__ (status = New), __1__ (status
-        /// = In progress), __2__ (status = Processed), __3__ (status = Error),
-        /// __4__ (status = Cancelled).
+        /// The status ID. The possible values are: __0__ (status = New), __1__
+        /// (status = In progress), __2__ (status = Processed), __3__ (status =
+        /// Error), __4__ (status = Cancelled).
         /// </summary>
         [JsonProperty("status_id")]
         public long? StatusId { get; private set; }
 
         /// <summary>
-        /// The status name. Available values: __New__ (status_id = 0), __In
-        /// progress__ (status_id = 1), __Processed__ (status_id = 2), __Error__
-        /// (status_id = 3), __Cancelled__ (status_id = 4).
+        /// The status name. The possible values are: __New__ (status_id = 0),
+        /// __In progress__ (status_id = 1), __Processed__ (status_id = 2),
+        /// __Error__ (status_id = 3), __Cancelled__ (status_id = 4).
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

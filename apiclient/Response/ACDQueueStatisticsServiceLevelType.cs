@@ -6,7 +6,7 @@ namespace Voximplant.API.Response {
 
     /// <summary>
     /// Individual service level description used in the
-    /// [ACDQueueStatisticsType]
+    /// [ACDQueueStatisticsType].
     /// </summary>
     public class ACDQueueStatisticsServiceLevelType
     {

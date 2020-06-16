@@ -30,7 +30,7 @@ namespace apiclient.samples
                             
                 var result = voximplant.GetChildAccountSubscriptionTemplates(new GetChildAccountSubscriptionTemplatesRequest 
                 {
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

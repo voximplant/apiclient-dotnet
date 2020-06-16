@@ -42,7 +42,7 @@ namespace apiclient.samples
                     ToDate = toDate,
                     Count = 3,
                     TransactionType = new Argument<string>(new[] {"gift", "money_distribution"}),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

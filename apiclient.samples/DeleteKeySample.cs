@@ -29,7 +29,7 @@ namespace apiclient.samples
                 var result = voximplant.DeleteKey(new DeleteKeyRequest 
                 {
                     KeyId = "ab81c66e-570e-4446-9af9-105269dfafca",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetMoneyAmountToCharge(new GetMoneyAmountToChargeRequest 
                 {
                     Currency = "USD",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

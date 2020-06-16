@@ -6,7 +6,7 @@ namespace Voximplant.API.Response {
 
     /// <summary>
     /// The [HistoryReportType] calculated_data object if the
-    /// [HistoryReportType] history_type parameter is set to 'transactions'
+    /// [HistoryReportType] history_type parameter is set to 'transactions'.
     /// </summary>
     public class CalculatedTransactionHistoryDataType
     {

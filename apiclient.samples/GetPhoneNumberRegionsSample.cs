@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     CountryCode = "RU",
                     PhoneCategoryName = "GEOGRAPHIC",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

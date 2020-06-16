@@ -41,7 +41,7 @@ namespace apiclient.samples
                     ToDate = toDate,
                     WithEvents = true,
                     Count = 2,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -35,7 +35,7 @@ namespace apiclient.samples
                     MinBalanceToNotify = 1.50m,
                     TariffChangingNotifications = true,
                     NewsNotifications = true,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

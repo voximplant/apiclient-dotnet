@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     Offset = 1,
                     Count = 2,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

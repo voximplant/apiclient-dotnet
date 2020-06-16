@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The [GetSmsHistory] function result
+    /// The [GetSmsHistory] function result.
     /// </summary>
     public class SmsHistoryType
     {

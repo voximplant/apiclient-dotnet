@@ -42,7 +42,7 @@ namespace apiclient.samples
                     FilteredCmd = new Argument<string>(new[] {"BindSkill", "AddSkill", "DelSkill"}),
                     AdvancedFilters = "152",
                     Count = 3,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

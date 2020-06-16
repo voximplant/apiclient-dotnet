@@ -34,7 +34,7 @@ namespace apiclient.samples
                     RuleId = 1,
                     ScriptCustomData = "mystr",
                     UserId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -33,7 +33,7 @@ namespace apiclient.samples
                 {
                     AdminRoleName = "read_only",
                     AllowedEntries = new Argument<string>(new[] {"GetAccountInfo", "GetCallHistory"}),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

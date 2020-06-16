@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     UserId = 1,
                     UserPassword = "7654321",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

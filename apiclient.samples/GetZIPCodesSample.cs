@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     CountryCode = "DE",
                     Count = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

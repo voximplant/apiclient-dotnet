@@ -34,7 +34,7 @@ namespace apiclient.samples
                     UserId = new Argument<long>(new[] {12L, 987L, 456L}),
                     AcdQueueName = new Argument<string>("myqueue"),
                     Bind = true,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

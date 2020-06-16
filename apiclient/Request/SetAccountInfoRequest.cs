@@ -85,19 +85,19 @@ namespace Voximplant.API.Request {
         public decimal? MinBalanceToNotify { get; set; }
 
         /// <summary>
-        /// Are the VoxImplant notifications required?
+        /// Are the Voximplant notifications required?
         /// </summary>
         [JsonProperty("account_notifications")]
         public bool? AccountNotifications { get; set; }
 
         /// <summary>
-        /// Set to true to receive the emails about the VoxImplant plan changing.
+        /// Set to true to receive the emails about the Voximplant plan changing.
         /// </summary>
         [JsonProperty("tariff_changing_notifications")]
         public bool? TariffChangingNotifications { get; set; }
 
         /// <summary>
-        /// Set to true to receive the emails about the VoxImplant news.
+        /// Set to true to receive the emails about the Voximplant news.
         /// </summary>
         [JsonProperty("news_notifications")]
         public bool? NewsNotifications { get; set; }

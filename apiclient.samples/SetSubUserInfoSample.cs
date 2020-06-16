@@ -35,7 +35,7 @@ namespace apiclient.samples
                     OldSubuserPassword = "old_test_password",
                     NewSubuserPassword = "test_pass",
                     Description = "test_desc",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

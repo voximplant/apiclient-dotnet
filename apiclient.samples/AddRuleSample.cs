@@ -33,7 +33,7 @@ namespace apiclient.samples
                     ApplicationId = 1,
                     RuleName = "allowall",
                     RulePattern = ".*",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

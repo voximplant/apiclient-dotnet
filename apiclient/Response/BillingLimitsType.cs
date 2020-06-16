@@ -20,7 +20,7 @@ namespace Voximplant.API.Response {
         /// The bank card limits.
         /// </summary>
         [JsonProperty("bank_card")]
-        public BillingLimitInfoType BankCard { get; private set; }
+        public BankCardBillingLimitInfoType BankCard { get; private set; }
 
         /// <summary>
         /// The invoice limits.

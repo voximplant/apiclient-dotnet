@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetACDState(new GetACDStateRequest 
                 {
                     AcdQueueId = new Argument<long>(1L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

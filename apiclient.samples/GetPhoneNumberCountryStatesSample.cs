@@ -33,7 +33,7 @@ namespace apiclient.samples
                     CountryCode = "US",
                     PhoneCategoryName = "GEOGRAPHIC",
                     CountryState = "AL",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

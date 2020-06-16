@@ -29,7 +29,7 @@ namespace apiclient.samples
                 var result = voximplant.CheckAuthorizedAccountIP(new CheckAuthorizedAccountIPRequest 
                 {
                     AuthorizedIp = "92.255.220.0/24",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

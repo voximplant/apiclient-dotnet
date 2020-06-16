@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     KeyId = "ab81c76e-573e-4046-9af9-105269dfafca",
                     RoleId = new Argument<long>(1L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

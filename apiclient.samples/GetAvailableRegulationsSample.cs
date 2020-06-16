@@ -33,7 +33,7 @@ namespace apiclient.samples
                     CountryCode = "DE",
                     PhoneCategoryName = "GEOGRAPHIC",
                     PhoneRegionCode = "643",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

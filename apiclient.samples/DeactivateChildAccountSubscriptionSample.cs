@@ -37,7 +37,7 @@ namespace apiclient.samples
                     SubscriptionId = 20,
                     ChildAccountId = 10,
                     SubscriptionFinishDate = subscriptionFinishDate,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

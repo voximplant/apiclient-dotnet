@@ -33,7 +33,7 @@ namespace apiclient.samples
                     RuleId = 1,
                     RuleName = "denyall",
                     RulePatternExclude = ".*",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     ChildAccountId = new Argument<long>(1321L),
                     Active = false,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

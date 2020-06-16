@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// Individual record in the [ACDOperatorAggregationGroupType] group
+    /// Individual record in the [ACDOperatorAggregationGroupType] group.
     /// </summary>
     public class ACDQueueStatisticsType
     {

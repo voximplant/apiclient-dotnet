@@ -22,7 +22,8 @@ namespace Voximplant.API.Response {
         public long? PushProviderId { get; private set; }
 
         /// <summary>
-        /// The push provider name. Available values: APPLE, APPLE_VOIP, GOOGLE
+        /// The push provider name. The possible values are: APPLE, APPLE_VOIP,
+        /// GOOGLE
         /// </summary>
         [JsonProperty("push_provider_name")]
         public string PushProviderName { get; private set; }

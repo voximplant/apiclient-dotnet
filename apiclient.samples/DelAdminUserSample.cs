@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelAdminUser(new DelAdminUserRequest 
                 {
                     RequiredAdminUserId = new Argument<long>(1L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

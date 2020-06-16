@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     ChildAccountId = 10,
                     SubscriptionId = 20,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

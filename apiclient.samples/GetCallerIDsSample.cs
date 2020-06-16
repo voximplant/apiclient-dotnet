@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetCallerIDs(new GetCallerIDsRequest 
                 {
                     CalleridNumber = "79997770044",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

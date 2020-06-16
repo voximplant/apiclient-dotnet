@@ -26,27 +26,20 @@ namespace Voximplant.API.Request {
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// The phone category name. See the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_phone_numbers#getphonenumbercategories'>GetPhoneNumberCategories</a>
-        /// method.
+        /// The phone category name. See the [GetPhoneNumberCategories] method.
         /// </summary>
         [JsonProperty("phone_category_name")]
         public string PhoneCategoryName { get; set; }
 
         /// <summary>
-        /// The country state. See the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_phone_numbers#getphonenumbercategories'>GetPhoneNumberCategories</a>
-        /// and <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_phone_numbers#getphonenumbercountrystates'>GetPhoneNumberCountryStates</a>
-        /// methods.
+        /// The country state. See the [GetPhoneNumberCategories] and
+        /// [GetPhoneNumberCountryStates] methods.
         /// </summary>
         [JsonProperty("country_state")]
         public string CountryState { get; set; }
 
         /// <summary>
-        /// The phone region ID. See the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_phone_numbers#getphonenumberregionsb'>GetPhoneNumberRegions</a>
-        /// method.
+        /// The phone region ID. See the [GetPhoneNumberRegions] method.
         /// </summary>
         [JsonProperty("phone_region_id")]
         public long? PhoneRegionId { get; set; }

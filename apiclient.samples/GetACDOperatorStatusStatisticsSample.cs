@@ -43,7 +43,7 @@ namespace apiclient.samples
                     UserId = new Argument<string>(),
                     Aggregation = "hour",
                     Group = "user",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

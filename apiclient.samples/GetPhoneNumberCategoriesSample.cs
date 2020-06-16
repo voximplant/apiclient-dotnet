@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetPhoneNumberCategories(new GetPhoneNumberCategoriesRequest 
                 {
                     CountryCode = "RU",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

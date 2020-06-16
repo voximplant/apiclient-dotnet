@@ -30,7 +30,7 @@ namespace apiclient.samples
                             
                 var result = voximplant.GetKeys(new GetKeysRequest 
                 {
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

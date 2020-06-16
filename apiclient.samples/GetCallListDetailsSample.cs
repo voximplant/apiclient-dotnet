@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     ListId = 1,
                     Output = "json",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

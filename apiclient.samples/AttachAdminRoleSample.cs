@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     RequiredAdminUserId = new Argument<long>(),
                     AdminRoleId = new Argument<long>(new[] {1L, 2L, 3L}),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -34,7 +34,7 @@ namespace apiclient.samples
                     Source = "447443332211",
                     Destination = "447443332212",
                     SmsBody = "Test message",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

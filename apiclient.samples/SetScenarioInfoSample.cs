@@ -31,9 +31,9 @@ namespace apiclient.samples
                 var result = voximplant.SetScenarioInfo(new SetScenarioInfoRequest 
                 {
                     ScenarioId = 1,
-                    ScenarioName = "scen11",
+                    ScenarioName = "call_scenario",
                     ScenarioScript = "var s=\"hello world\";",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

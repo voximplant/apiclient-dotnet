@@ -30,7 +30,7 @@ namespace apiclient.samples
                             
                 var result = voximplant.GetAvailableAdminRoleEntries(new GetAvailableAdminRoleEntriesRequest 
                 {
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

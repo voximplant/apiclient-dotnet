@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetCountries(new GetCountriesRequest 
                 {
                     CountryCode = "DE",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

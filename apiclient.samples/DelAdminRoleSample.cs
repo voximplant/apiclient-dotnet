@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelAdminRole(new DelAdminRoleRequest 
                 {
                     AdminRoleId = new Argument<long>(10L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

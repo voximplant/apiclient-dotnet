@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     SipRegistrationId = 1,
                     ApplicationId = 123,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

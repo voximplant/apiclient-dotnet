@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DeleteRecord(new DeleteRecordRequest 
                 {
                     RecordId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -34,7 +34,7 @@ namespace apiclient.samples
                     EntryModificationMode = "set",
                     AllowedEntries = new Argument<string>(),
                     DeniedEntries = new Argument<string>(new[] {"DelUser", "DelApplication"}),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

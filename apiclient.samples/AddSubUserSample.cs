@@ -30,9 +30,9 @@ namespace apiclient.samples
                             
                 var result = voximplant.AddSubUser(new AddSubUserRequest 
                 {
-                    NewSubuserName = "test_login",
-                    NewSubuserPassword = "test_pass",
-                });
+                    NewSubuserName = "John_McClane",
+                    NewSubuserPassword = "pssw0rd",
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     RequiredAdminUserId = 1,
                     NewAdminUserPassword = "7654321",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

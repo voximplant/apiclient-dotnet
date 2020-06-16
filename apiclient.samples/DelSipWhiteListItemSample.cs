@@ -29,7 +29,7 @@ namespace apiclient.samples
                 var result = voximplant.DelSipWhiteListItem(new DelSipWhiteListItemRequest 
                 {
                     SipWhitelistId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

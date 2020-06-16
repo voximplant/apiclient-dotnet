@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.ChargeAccount(new ChargeAccountRequest 
                 {
                     PhoneNumber = new Argument<string>(),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

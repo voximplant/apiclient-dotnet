@@ -30,11 +30,11 @@ namespace apiclient.samples
                             
                 var result = voximplant.AddUser(new AddUserRequest 
                 {
-                    UserName = "iden1",
-                    UserDisplayName = "iden1",
+                    UserName = "GordonFreeman",
+                    UserDisplayName = "GordonFreeman",
                     UserPassword = "1234567",
                     ApplicationId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

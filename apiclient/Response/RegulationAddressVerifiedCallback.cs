@@ -18,7 +18,8 @@ namespace Voximplant.API.Response {
 
         /// <summary>
         /// The document verification status. The following values are possible:
-        /// ACCEPTED, REJECTED
+        /// WAITING_CONFIRMATION_DOCS, VERIFIED, REJECTED,
+        /// WAITING_PERIOD_EXPIRED.
         /// </summary>
         [JsonProperty("regulation_address_status")]
         public string RegulationAddressStatus { get; private set; }

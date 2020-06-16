@@ -34,7 +34,7 @@ namespace apiclient.samples
                     ChildAccountId = 10,
                     SubscriptionTemplateId = 184,
                     SubscriptionName = "Meaningful subscription name",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

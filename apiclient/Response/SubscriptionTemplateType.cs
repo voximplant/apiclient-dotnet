@@ -22,6 +22,12 @@ namespace Voximplant.API.Response {
         public decimal? InstallationPrice { get; private set; }
 
         /// <summary>
+        /// The subscription monthly fee, including taxes and discounts.
+        /// </summary>
+        [JsonProperty("price")]
+        public string Price { get; private set; }
+
+        /// <summary>
         /// The charge period in 24-h format: Y-M-D H:m:s. Example: 0-1-0 0:0:0
         /// is 1 month.
         /// </summary>
@@ -42,6 +48,19 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("subscription_template_name")]
         public string SubscriptionTemplateName { get; private set; }
+
+        /// <summary>
+        /// The name of the required verification.
+        /// </summary>
+        [JsonProperty("required_verification")]
+        public string RequiredVerification { get; private set; }
+
+        /// <summary>
+        /// The verification status. Possible values are: REQUIRED, IN_PROGRESS,
+        /// VERIFIED, NOT_REQUIRED.
+        /// </summary>
+        [JsonProperty("verification_status")]
+        public string VerificationStatus { get; private set; }
 
     }
 }

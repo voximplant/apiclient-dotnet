@@ -30,7 +30,7 @@ namespace apiclient.samples
                 {
                     PstnBlacklistPhone = "123456789",
                     PstnBlacklistId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

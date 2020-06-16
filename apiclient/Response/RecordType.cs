@@ -66,8 +66,8 @@ namespace Voximplant.API.Response {
         public string TranscriptionUrl { get; private set; }
 
         /// <summary>
-        /// The status of transcription. Available values: Not required, In
-        /// progress, Complete
+        /// The status of transcription. The possible values are: Not required,
+        /// In progress, Complete
         /// </summary>
         [JsonProperty("transcription_status")]
         public string TranscriptionStatus { get; private set; }

@@ -29,7 +29,7 @@ namespace apiclient.samples
                 var result = voximplant.GetAccountDocuments(new GetAccountDocumentsRequest 
                 {
                     WithDetails = true,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

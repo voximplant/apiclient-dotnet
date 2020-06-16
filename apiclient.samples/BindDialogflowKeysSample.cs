@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     DialogflowKeyId = 1,
                     ApplicationId = new Argument<long>(1L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

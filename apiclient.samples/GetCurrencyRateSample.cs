@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetCurrencyRate(new GetCurrencyRateRequest 
                 {
                     Currency = new Argument<string>(new[] {"RUR", "EUR"}),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

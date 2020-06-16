@@ -16,7 +16,7 @@ namespace Voximplant.API.Response {
         public long? AccountId { get; private set; }
 
         /// <summary>
-        /// Is account blocked by VoxImplant admins or not.
+        /// Is account blocked by Voximplant admins or not.
         /// </summary>
         [JsonProperty("frozen")]
         public bool? Frozen { get; private set; }

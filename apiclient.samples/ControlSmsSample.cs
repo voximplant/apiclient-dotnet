@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     PhoneNumber = "447443332211",
                     Command = "disable",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

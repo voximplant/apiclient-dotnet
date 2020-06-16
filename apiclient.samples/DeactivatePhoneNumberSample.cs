@@ -30,8 +30,8 @@ namespace apiclient.samples
                             
                 var result = voximplant.DeactivatePhoneNumber(new DeactivatePhoneNumberRequest 
                 {
-                    PhoneId = 1,
-                });
+                    PhoneId = new Argument<long>(1L),
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

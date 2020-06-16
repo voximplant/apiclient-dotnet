@@ -34,7 +34,7 @@ namespace apiclient.samples
                 var result = voximplant.GetACDQueueStatistics(new GetACDQueueStatisticsRequest 
                 {
                     FromDate = fromDate,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

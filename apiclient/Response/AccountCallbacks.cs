@@ -6,8 +6,8 @@ namespace Voximplant.API.Response {
 
     /// <summary>
     /// The HTTP account callbacks body. See <a
-    /// href='//voximplant.com/blog/http-api-callbacks'>this article</a> for
-    /// details.
+    /// href='/docs/howtos/integration/httpapi/callbacks'>this article</a>
+    /// for details.
     /// </summary>
     public class AccountCallbacks
     {

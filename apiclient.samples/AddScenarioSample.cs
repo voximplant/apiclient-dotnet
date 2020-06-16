@@ -30,9 +30,9 @@ namespace apiclient.samples
                             
                 var result = voximplant.AddScenario(new AddScenarioRequest 
                 {
-                    ScenarioName = "scen1",
+                    ScenarioName = "call_scenario",
                     ScenarioScript = "var s=\"hello\";",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -28,7 +28,7 @@ namespace apiclient.samples
                             
                 var result = voximplant.GetPstnBlackList(new GetPstnBlackListRequest 
                 {
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

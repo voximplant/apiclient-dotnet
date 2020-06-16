@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     UserId = 123,
                     Bind = false,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

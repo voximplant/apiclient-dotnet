@@ -32,7 +32,7 @@ namespace Voximplant.API.Request {
 
         /// <summary>
         /// The role(s) ID created via <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_admin_roles'>Managing
+        /// href='//voximplant.com/docs/references/httpapi/adminroles'>Managing
         /// Admin Roles</a> methods. The attaching admin role ID list separated
         /// by the ';' symbol or the 'all' value.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Voximplant.API.Request {
 
         /// <summary>
         /// The role(s) name(s) created via <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_admin_roles'>Managing
+        /// href='//voximplant.com/docs/references/httpapi/adminroles'>Managing
         /// Admin Roles</a> methods. The attaching admin role name that can be
         /// used instead of <b>admin_role_id</b>.
         /// </summary>

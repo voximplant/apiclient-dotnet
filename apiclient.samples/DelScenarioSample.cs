@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelScenario(new DelScenarioRequest 
                 {
                     ScenarioId = new Argument<long>(),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

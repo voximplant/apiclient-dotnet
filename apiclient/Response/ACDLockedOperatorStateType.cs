@@ -51,7 +51,7 @@ namespace Voximplant.API.Response {
         /// The operator <a
         /// href='//voximplant.com/docs/references/websdk/voximplant/operatoracdstatuses'>status
         /// string</a>. 'BANNED' string indicates temporarily <a
-        /// href='//voximplant.com/blog/step-by-step-call-center-tutorial-part-7'>banned
+        /// href='/docs/tutorials/step-by-step-call-center-tutorial'>banned
         /// operators</a>. The following values are possible: READY, BANNED.
         /// </summary>
         [JsonProperty("status")]

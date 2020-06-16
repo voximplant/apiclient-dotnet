@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     SubuserId = 12,
                     RoleId = new Argument<long>(1L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

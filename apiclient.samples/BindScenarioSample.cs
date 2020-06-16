@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     ScenarioId = new Argument<long>(new[] {1L, 2L, 3L}),
                     RuleId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

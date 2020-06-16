@@ -35,7 +35,7 @@ namespace apiclient.samples
                     PhoneCategoryName = "GEOGRAPHIC",
                     PhoneRegionId = 4,
                     PhoneNumber = new Argument<string>("74953332211"),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

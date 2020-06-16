@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelQueue(new DelQueueRequest 
                 {
                     AcdQueueId = new Argument<long>(1L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

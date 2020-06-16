@@ -33,7 +33,7 @@ namespace apiclient.samples
                     UserId = new Argument<long>(1L),
                     Amount = -10000000m,
                     StrictMode = false,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

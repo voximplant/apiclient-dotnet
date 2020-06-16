@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     ApplicationId = 1,
                     ApplicationName = "myapp11",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

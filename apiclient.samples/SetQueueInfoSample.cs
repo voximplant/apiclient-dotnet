@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     AcdQueueId = 1,
                     NewAcdQueueName = "support",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

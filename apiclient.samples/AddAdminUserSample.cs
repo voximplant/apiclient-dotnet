@@ -30,11 +30,11 @@ namespace apiclient.samples
                             
                 var result = voximplant.AddAdminUser(new AddAdminUserRequest 
                 {
-                    NewAdminUserName = "adm1",
-                    AdminUserDisplayName = "adm1",
+                    NewAdminUserName = "Overseer_Campbell",
+                    AdminUserDisplayName = "Overseer_Campbell",
                     NewAdminUserPassword = "1234567",
                     AdminRoleId = "1",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

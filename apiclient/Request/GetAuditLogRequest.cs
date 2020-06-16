@@ -96,11 +96,8 @@ namespace Voximplant.API.Request {
 
         /// <summary>
         /// Set true to get records in the asynchronous mode (for csv output
-        /// only). If it's true, the request could be available via <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_history#gethistoryreports'>GetHistoryReports</a>
-        /// and <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_history#downloadhistoryreport'>DownloadHistoryReport</a>
-        /// methods.
+        /// only). If it's true, the request could be available via
+        /// [GetHistoryReports] and [DownloadHistoryReport] methods.
         /// </summary>
         [JsonProperty("is_async")]
         public bool? IsAsync { get; set; }

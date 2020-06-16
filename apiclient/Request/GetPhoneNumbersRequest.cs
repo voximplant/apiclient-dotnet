@@ -44,9 +44,7 @@ namespace Voximplant.API.Request {
         public Argument<string> CountryCode { get; set; }
 
         /// <summary>
-        /// The phone category name. See the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_phone_numbers#getphonenumbercategories'>GetPhoneNumberCategories</a>
-        /// method.
+        /// The phone category name. See the [GetPhoneNumberCategories] method.
         /// </summary>
         [JsonProperty("phone_category_name")]
         public string PhoneCategoryName { get; set; }

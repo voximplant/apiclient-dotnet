@@ -16,7 +16,7 @@ namespace Voximplant.API.Request {
 
         /// <summary>
         /// Date and time of statistics interval begin. Time zone is UTC, format
-        /// is 24-h 'YYYY-MM-DD HH:mm:ss'
+        /// is 24-h 'YYYY-MM-DD HH:mm:ss'.
         /// </summary>
         [DateTimeFormat("yyyy-MM-dd HH:mm:ss")]
         [JsonProperty("to_date")]
@@ -33,7 +33,7 @@ namespace Voximplant.API.Request {
         /// 'ServiceLevel', 'TWT' is for 'TotalWaitingTime', 'TST' is for
         /// 'TotalSubmissionTime', 'TAT' is for 'TotalAbandonmentTime', 'THT' is
         /// for 'TotalHandlingTime', 'TTT' is for 'TotalTalkTime', 'TACW' is for
-        /// 'TotalAfterCallWork'
+        /// 'TotalAfterCallWork'.
         /// </summary>
         [JsonProperty("abbreviation")]
         public bool? Abbreviation { get; set; }
@@ -49,7 +49,7 @@ namespace Voximplant.API.Request {
         /// Returned JSON will include keys only for the selected items. Special
         /// 'all' value defines all possible items, see [ACDQueueStatisticsType]
         /// for a complete list. See 'abbreviation' description for complete
-        /// abbreviation list
+        /// abbreviation list.
         /// </summary>
         [JsonProperty("report")]
         public Argument<string> Report { get; set; }
@@ -59,7 +59,7 @@ namespace Voximplant.API.Request {
         /// the criteria is a day number. If set to 'hour_of_day', the criteria
         /// is a 60-minute interval within a day. If set to 'hour', the criteria
         /// is both day number and 60-minute interval within that day. If set to
-        /// 'none', records are not grouped by date and time
+        /// 'none', records are not grouped by date and time.
         /// </summary>
         [JsonProperty("aggregation")]
         public string Aggregation { get; set; }

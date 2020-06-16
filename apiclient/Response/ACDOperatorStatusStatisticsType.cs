@@ -6,7 +6,7 @@ namespace Voximplant.API.Response {
 
     /// <summary>
     /// Individual record in the  [ACDOperatorStatusAggregationGroupType]
-    /// group
+    /// group.
     /// </summary>
     public class ACDOperatorStatusStatisticsType
     {

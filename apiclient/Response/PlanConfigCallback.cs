@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
     public class PlanConfigCallback
     {
         /// <summary>
-        /// The plan type. Available values: IM, MAU.
+        /// The plan type. The possible values are: IM, MAU.
         /// </summary>
         [JsonProperty("plan_type")]
         public string PlanType { get; private set; }

@@ -30,9 +30,9 @@ namespace apiclient.samples
                             
                 var result = voximplant.CreateSipRegistration(new CreateSipRegistrationRequest 
                 {
-                    SipUsername = "test",
+                    SipUsername = "JohnGalt",
                     Proxy = "localhost",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -40,7 +40,7 @@ namespace Voximplant.API.Request {
         public DateTime? ToDate { get; set; }
 
         /// <summary>
-        /// The type of call list. Available values: AUTOMATIC and MANUAL
+        /// The type of call list. The possible values are: AUTOMATIC and MANUAL
         /// </summary>
         [JsonProperty("type_list")]
         public string TypeList { get; set; }

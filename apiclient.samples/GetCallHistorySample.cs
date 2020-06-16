@@ -18,8 +18,8 @@ namespace apiclient.samples
         }
         
         /**
-        * Get the first call session history record from the 2012-01-01
-        * 00:00:00 UTC to the 2014-01-01 00:00:00 UTC
+        * Get the first call session history record with calls and record URLs
+        * from the 2020-02-25 00:00:00 UTC to the 2020-02-26 00:00:00 UTC
         */
         [Fact]
         public void GetCallHistory()
@@ -29,10 +29,10 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
             
                 
-                var fromDate = new DateTime(2012, 1, 1, 0, 0, 0)
+                var fromDate = new DateTime(2020, 2, 25, 0, 0, 0)
                     .ToUniversalTime();
 
-                var toDate = new DateTime(2014, 1, 1, 0, 0, 0)
+                var toDate = new DateTime(2020, 2, 26, 0, 0, 0)
                     .ToUniversalTime();
             
                 var result = voximplant.GetCallHistory(new GetCallHistoryRequest 
@@ -40,7 +40,9 @@ namespace apiclient.samples
                     FromDate = fromDate,
                     ToDate = toDate,
                     Count = 1,
-                });
+                    WithCalls = true,
+                    WithRecords = true,
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

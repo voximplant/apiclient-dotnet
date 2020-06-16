@@ -66,8 +66,8 @@ namespace Voximplant.API.Response {
         public long? IntervalSeconds { get; private set; }
 
         /// <summary>
-        /// The status name. Available values: __In progress__, __Completed__,
-        /// __Canceled__.
+        /// The status name. The possible values are: __In progress__,
+        /// __Completed__, __Canceled__.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

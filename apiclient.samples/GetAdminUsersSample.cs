@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     WithAccessEntries = true,
                     Count = 2,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

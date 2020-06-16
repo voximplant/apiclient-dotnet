@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.DelApplication(new DelApplicationRequest 
                 {
                     ApplicationId = new Argument<long>(),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

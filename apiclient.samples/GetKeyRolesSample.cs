@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetKeyRoles(new GetKeyRolesRequest 
                 {
                     KeyId = "ab81c50e-573e-4446-9af9-105269dfafca",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetChildrenAccounts(new GetChildrenAccountsRequest 
                 {
                     ChildAccountEmail = "mychild@gmail.com",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

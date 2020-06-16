@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.ReorderRules(new ReorderRulesRequest 
                 {
                     RuleId = new Argument<long>(new[] {1L, 7L, 3L}),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

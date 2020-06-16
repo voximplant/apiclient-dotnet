@@ -73,19 +73,19 @@ namespace Voximplant.API.Response {
         public decimal? MinBalanceToNotify { get; private set; }
 
         /// <summary>
-        /// Are the VoxImplant notifications required?
+        /// Are the Voximplant notifications required?
         /// </summary>
         [JsonProperty("account_notifications")]
         public bool? AccountNotifications { get; private set; }
 
         /// <summary>
-        /// Are the VoxImplant plan changing notifications required?
+        /// Are the Voximplant plan changing notifications required?
         /// </summary>
         [JsonProperty("tariff_changing_notifications")]
         public bool? TariffChangingNotifications { get; private set; }
 
         /// <summary>
-        /// Are the VoxImplant news notifications required?
+        /// Are the Voximplant news notifications required?
         /// </summary>
         [JsonProperty("news_notifications")]
         public bool? NewsNotifications { get; private set; }
@@ -135,7 +135,7 @@ namespace Voximplant.API.Response {
         public bool? Active { get; private set; }
 
         /// <summary>
-        /// Is account blocked by VoxImplant admins or not.
+        /// Is account blocked by Voximplant admins or not.
         /// </summary>
         [JsonProperty("frozen")]
         public bool? Frozen { get; private set; }
@@ -169,6 +169,12 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("support_bank_card")]
         public bool? SupportBankCard { get; private set; }
+
+        /// <summary>
+        /// The possible values are: BRAINTREE, ALFABANK.
+        /// </summary>
+        [JsonProperty("bank_card_provider")]
+        public string BankCardProvider { get; private set; }
 
         /// <summary>
         /// Is the bank invoice allowed?

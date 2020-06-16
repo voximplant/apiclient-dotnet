@@ -30,7 +30,7 @@ namespace apiclient.samples
                             
                 var result = voximplant.GetSubUsers(new GetSubUsersRequest 
                 {
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

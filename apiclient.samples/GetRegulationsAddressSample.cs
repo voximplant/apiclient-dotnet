@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetRegulationsAddress(new GetRegulationsAddressRequest 
                 {
                     RegulationAddressId = 1,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

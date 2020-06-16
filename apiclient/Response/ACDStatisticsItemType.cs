@@ -7,7 +7,7 @@ namespace Voximplant.API.Response {
     /// <summary>
     /// Individual statistics item in the [ACDOperatorStatisticsType],
     /// [ACDQueueStatisticsType], and [ACDOperatorStatusStatisticsDetail]
-    /// records
+    /// records.
     /// </summary>
     public class ACDStatisticsItemType
     {

@@ -33,7 +33,7 @@ namespace apiclient.samples
                     SkillId = new Argument<long>(new[] {1L, 6L}),
                     AcdQueueId = new Argument<long>(new[] {11L, 12L}),
                     UserId = new Argument<long>(),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

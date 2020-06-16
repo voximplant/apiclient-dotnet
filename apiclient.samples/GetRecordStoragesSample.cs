@@ -31,7 +31,7 @@ namespace apiclient.samples
                 var result = voximplant.GetRecordStorages(new GetRecordStoragesRequest 
                 {
                     RecordStorageName = new Argument<string>("ru1"),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

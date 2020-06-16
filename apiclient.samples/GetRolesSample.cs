@@ -30,7 +30,7 @@ namespace apiclient.samples
                             
                 var result = voximplant.GetRoles(new GetRolesRequest 
                 {
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

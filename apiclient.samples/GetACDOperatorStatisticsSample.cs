@@ -36,7 +36,7 @@ namespace apiclient.samples
                 {
                     FromDate = fromDate,
                     UserId = new Argument<long>(),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

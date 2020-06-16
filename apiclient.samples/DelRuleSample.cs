@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     RuleId = new Argument<long>(),
                     ApplicationId = new Argument<long>(),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

@@ -125,24 +125,19 @@ namespace Voximplant.API.Response {
 
         /// <summary>
         /// If <b>true</b>, SMS is supported for this phone number. SMS needs to
-        /// be explicitly enabled via the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_sms#controlsms'>/ControlSms</a>
-        /// HTTP API before sending or receiving SMS. If SMS is supported and
-        /// enabled, SMS can be sent from this phone number using the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_sms#sendsmsmessage'>/SendSmsMessage</a>
-        /// HTTP API and received using the [InboundSmsCallback] property of the
-        /// HTTP callback. See <a
-        /// href='//voximplant.com/blog/http-api-callbacks'>this article</a> for
-        /// HTTP callback details.
+        /// be explicitly enabled via the [ControlSms] HTTP API before sending or
+        /// receiving SMS. If SMS is supported and enabled, SMS can be sent from
+        /// this phone number using the [SendSmsMessage] HTTP API and received
+        /// using the [InboundSmsCallback] property of the HTTP callback. See <a
+        /// href='/docs/howtos/integration/httpapi/callbacks'>this article</a>
+        /// for HTTP callback details.
         /// </summary>
         [JsonProperty("is_sms_supported")]
         public bool? IsSmsSupported { get; private set; }
 
         /// <summary>
         /// If <b>true</b>, SMS sending and receiving is enabled for this phone
-        /// number via the <a
-        /// href='//voximplant.com/docs/references/httpapi/managing_sms#controlsms'>/ControlSms</a>
-        /// HTTP API.
+        /// number via the [ControlSms] HTTP API.
         /// </summary>
         [JsonProperty("is_sms_enabled")]
         public bool? IsSmsEnabled { get; private set; }

@@ -29,7 +29,7 @@ namespace apiclient.samples
                 var result = voximplant.AddPstnBlackListItem(new AddPstnBlackListItemRequest 
                 {
                     PstnBlacklistPhone = "123456789",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

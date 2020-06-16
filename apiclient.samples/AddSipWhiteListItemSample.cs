@@ -29,7 +29,7 @@ namespace apiclient.samples
                 var result = voximplant.AddSipWhiteListItem(new AddSipWhiteListItemRequest 
                 {
                     SipWhitelistNetwork = "192.168.1.5/16",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

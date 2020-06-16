@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     CalleridId = 1,
                     VerificationCode = "12345",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

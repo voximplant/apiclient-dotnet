@@ -34,7 +34,7 @@ namespace apiclient.samples
                     Amount = -10000000m,
                     StrictMode = false,
                     Currency = "USD",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

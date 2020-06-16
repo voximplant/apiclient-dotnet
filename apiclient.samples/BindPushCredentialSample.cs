@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     PushCredentialId = new Argument<long>(1L),
                     ApplicationId = new Argument<long>(1L),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

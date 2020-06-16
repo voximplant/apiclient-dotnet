@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     ResourceType = new Argument<string>("PSTNOUT"),
                     ResourceParam = new Argument<string>("79263332211"),
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

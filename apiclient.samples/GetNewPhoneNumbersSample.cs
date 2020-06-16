@@ -34,7 +34,7 @@ namespace apiclient.samples
                     PhoneCategoryName = "GEOGRAPHIC",
                     PhoneRegionId = 1,
                     Count = 2,
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {

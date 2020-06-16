@@ -32,7 +32,7 @@ namespace apiclient.samples
                 {
                     KeyId = "ab98c70e-573e-4446-9af9-105269dfafca",
                     Description = "test_desc",
-                });
+                }).Result;
 
                 _outputHelper.WriteLine("OK");
             } catch (Exception e) {
