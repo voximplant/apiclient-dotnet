@@ -56,7 +56,7 @@ namespace example
                 var result = voximplant.GetSubscriptionPrice(new GetSubscriptionPriceRequest
                 {
                     SubscriptionTemplateType = "SIP_REGISTRATION",
-                });
+                }).Result;
 
                 Console.WriteLine("OK");
             }

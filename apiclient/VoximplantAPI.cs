@@ -35,10 +35,10 @@ namespace Voximplant.API
         }
 
         /// <summary>
-        /// 
+        /// Register ILogger with specific LogSeverity
         /// </summary>
-        /// <param name="severity"></param>
-        /// <param name="logger"></param>
+        /// <param name="severity">Severity of events, that will be passed to ILogger instance</param>
+        /// <param name="logger">Instance of ILogger</param>
         public void AddLogger(LogSeverity severity, ILogger logger)
         {
             if (_loggers.ContainsKey(logger))
@@ -52,9 +52,9 @@ namespace Voximplant.API
         }
 
         /// <summary>
-        /// 
+        /// Removes logger
         /// </summary>
-        /// <param name="logger"></param>
+        /// <param name="logger">Instance of ILogger</param>
         public void RemoveLogger(ILogger logger)
         {
             if (_loggers.ContainsKey(logger))
@@ -125,13 +125,10 @@ namespace Voximplant.API
                     throw new APIException("Empty response", 500);
                 }
 
-                if (result.HasError())
-                {
-                    Log(LogSeverity.Error, result.GetError().Msg);
-                    throw new APIException(result.GetError().Msg, result.GetError().Code);
-                }
-
-                return result;
+                if (!result.HasError()) return result;
+                
+                Log(LogSeverity.Error, result.GetError().Msg);
+                throw new APIException(result.GetError().Msg, result.GetError().Code);
             }
         }
     }
