@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The admin role ID.
         /// </summary>
         [JsonProperty("admin_role_id")]
-        public long? AdminRoleId { get; private set; }
+        public long AdminRoleId { get; private set; }
 
         /// <summary>
         /// The admin role name.
@@ -25,20 +25,20 @@ namespace Voximplant.API.Response {
         /// If false the allowed and denied entries have no affect.
         /// </summary>
         [JsonProperty("admin_role_active")]
-        public bool? AdminRoleActive { get; private set; }
+        public bool AdminRoleActive { get; private set; }
 
         /// <summary>
-        /// Is a system role?
+        /// It's a system role.
         /// </summary>
         [JsonProperty("system_role")]
-        public bool? SystemRole { get; private set; }
+        public bool SystemRole { get; private set; }
 
         /// <summary>
         /// The admin role editing UTC date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("modified")]
-        public DateTime? Modified { get; private set; }
+        public DateTime Modified { get; private set; }
 
         /// <summary>
         /// The allowed access entries (the API function names).

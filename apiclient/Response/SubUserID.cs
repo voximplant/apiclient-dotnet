@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The subuser ID.
         /// </summary>
         [JsonProperty("subuser_id")]
-        public long? SubuserId { get; private set; }
+        public long SubuserId { get; private set; }
 
     }
 }

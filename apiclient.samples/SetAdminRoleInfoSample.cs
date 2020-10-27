@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,35 +9,31 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetAdminRoleInfoSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetAdminRoleInfoSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Allow the all permissions except the DelUser and DelApplication.
-        */
         [Fact]
         public void SetAdminRoleInfo()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetAdminRoleInfo(new SetAdminRoleInfoRequest 
-                {
-                    AdminRoleId = 1,
-                    EntryModificationMode = "set",
-                    AllowedEntries = new Argument<string>(),
-                    DeniedEntries = new Argument<string>(new[] {"DelUser", "DelApplication"}),
-                }).Result;
+            // Allow the all permissions except the DelUser and DelApplication.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetAdminRoleInfo(
+                    adminRoleId: 1L,
+                    entryModificationMode: "set",
+                    allowedEntries: "all",
+                    deniedEntries: "DelUser;DelApplication"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

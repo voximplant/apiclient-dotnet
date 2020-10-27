@@ -8,13 +8,13 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<TransactionInfoType> Result { get; private set; }
+        public TransactionInfoType[] Result { get; private set; }
 
         /// <summary>
         /// The total found transaction count.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
         /// <summary>
         /// The used timezone. 'Etc/GMT' for example.
@@ -26,13 +26,13 @@ namespace Voximplant.API.Response {
         /// The returned transaction count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
         /// <summary>
         /// The history report ID (async mode).
         /// </summary>
         [JsonProperty("history_report_id")]
-        public long? HistoryReportId { get; private set; }
+        public long HistoryReportId { get; private set; }
 
     }
 }

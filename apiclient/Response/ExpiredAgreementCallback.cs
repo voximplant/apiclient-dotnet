@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the
-    /// [AccountCallback] structure.
+    /// The specific account callback details. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class ExpiredAgreementCallback
     {
@@ -14,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The list of the expired agreements IDs.
         /// </summary>
         [JsonProperty("document_ids")]
-        public long?[] DocumentIds { get; private set; }
+        public long[] DocumentIds { get; private set; }
 
     }
 }

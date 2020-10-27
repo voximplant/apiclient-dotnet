@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,34 +9,30 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class AddRuleSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public AddRuleSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Add a new rule.
-        */
         [Fact]
         public void AddRule()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.AddRule(new AddRuleRequest 
-                {
-                    ApplicationId = 1,
-                    RuleName = "allowall",
-                    RulePattern = ".*",
-                }).Result;
+            // Add a new rule.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.AddRule(
+                    "allowall",
+                    ".*",
+                    applicationId: 1L
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The user ID of the operator.
         /// </summary>
         [JsonProperty("user_id")]
-        public long? UserId { get; private set; }
+        public long UserId { get; private set; }
 
         /// <summary>
         /// The user name of the operator.
@@ -31,7 +31,7 @@ namespace Voximplant.API.Response {
         /// The request priority.
         /// </summary>
         [JsonProperty("priority")]
-        public long? Priority { get; private set; }
+        public long Priority { get; private set; }
 
         /// <summary>
         /// The client callerid.
@@ -44,19 +44,19 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("begin_time")]
-        public DateTime? BeginTime { get; private set; }
+        public DateTime BeginTime { get; private set; }
 
         /// <summary>
         /// The waiting time before servicing in seconds.
         /// </summary>
         [JsonProperty("waiting_time")]
-        public long? WaitingTime { get; private set; }
+        public long WaitingTime { get; private set; }
 
         /// <summary>
         /// The ACD session history ID of the request.
         /// </summary>
         [JsonProperty("acd_session_history_id")]
-        public long? AcdSessionHistoryId { get; private set; }
+        public long AcdSessionHistoryId { get; private set; }
 
     }
 }

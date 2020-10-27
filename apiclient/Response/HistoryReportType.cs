@@ -13,22 +13,20 @@ namespace Voximplant.API.Response {
         /// The call history report ID.
         /// </summary>
         [JsonProperty("history_report_id")]
-        public long? HistoryReportId { get; private set; }
+        public long HistoryReportId { get; private set; }
 
         /// <summary>
-        /// The history report type. The following values are possible: calls,
-        /// transactions, audit, call_list.
+        /// The history report type. The following values are possible: calls, transactions, audit, call_list.
         /// </summary>
         [JsonProperty("history_type")]
         public string HistoryType { get; private set; }
 
         /// <summary>
-        /// The creation time in the UTC timezone in 24-h format: YYYY-MM-DD
-        /// HH:mm:ss
+        /// The creation time in the UTC timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("created")]
-        public DateTime? Created { get; private set; }
+        public DateTime Created { get; private set; }
 
         /// <summary>
         /// The report format type. The following values are possible: csv
@@ -37,8 +35,7 @@ namespace Voximplant.API.Response {
         public string Format { get; private set; }
 
         /// <summary>
-        /// The UTC completion time in 24-h format: YYYY-MM-DD HH:mm:ss. The
-        /// report is completed if the field exists.
+        /// The UTC completion time in 24-h format: YYYY-MM-DD HH:mm:ss. The report is completed if the field exists.
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("completed")]
@@ -69,16 +66,14 @@ namespace Voximplant.API.Response {
         public long? DownloadCount { get; private set; }
 
         /// <summary>
-        /// The last download UTC time in 24-h format: YYYY-MM-DD HH:mm:ss. The
-        /// report is completed if the field exists.
+        /// The last download UTC time in 24-h format: YYYY-MM-DD HH:mm:ss. The report is completed if the field exists.
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("last_downloaded")]
         public DateTime? LastDownloaded { get; private set; }
 
         /// <summary>
-        /// Store the report until the UTC time in 24-h format: YYYY-MM-DD
-        /// HH:mm:ss. The report is completed if the field exists.
+        /// Store the report until the UTC time in 24-h format: YYYY-MM-DD HH:mm:ss. The report is completed if the field exists.
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("store_until")]
@@ -91,19 +86,16 @@ namespace Voximplant.API.Response {
         public API_Error Error { get; private set; }
 
         /// <summary>
-        /// The report order filters (the saved [GetCallHistory],
-        /// [GetTransactionHistory] parameters).
+        /// The report order filters (the saved [GetCallHistory], [GetTransactionHistory] parameters).
         /// </summary>
         [JsonProperty("filters")]
-        public object Filters { get; private set; }
+        public Object Filters { get; private set; }
 
         /// <summary>
-        /// The calculated report data (the specific report data, see
-        /// [CalculatedCallHistoryDataType],
-        /// [CalculatedTransactionHistoryDataType]).
+        /// The calculated report data (the specific report data, see [CalculatedCallHistoryDataType], [CalculatedTransactionHistoryDataType]).
         /// </summary>
         [JsonProperty("calculated_data")]
-        public object CalculatedData { get; private set; }
+        public Object CalculatedData { get; private set; }
 
     }
 }

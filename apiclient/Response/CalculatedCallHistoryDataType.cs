@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The [HistoryReportType] calculated_data object if the
-    /// [HistoryReportType] history_type parameter is set to 'calls'.
+    /// The [HistoryReportType] calculated_data object if the [HistoryReportType] history_type parameter is set to 'calls'.
     /// </summary>
     public class CalculatedCallHistoryDataType
     {
@@ -14,13 +13,13 @@ namespace Voximplant.API.Response {
         /// The session count in the report.
         /// </summary>
         [JsonProperty("session_count")]
-        public long? SessionCount { get; private set; }
+        public long SessionCount { get; private set; }
 
         /// <summary>
         /// The total found filtered session count.
         /// </summary>
         [JsonProperty("total_session_count")]
-        public long? TotalSessionCount { get; private set; }
+        public long TotalSessionCount { get; private set; }
 
         /// <summary>
         /// The selected timezone.

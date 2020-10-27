@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The [AddChildAccountSubscription] and [GetChildAccountSubscriptions]
-    /// function result.
+    /// The [AddChildAccountSubscription] and [GetChildAccountSubscriptions] function result.
     /// </summary>
     public class ChildAccountSubscriptionType
     {
@@ -14,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The subscription ID.
         /// </summary>
         [JsonProperty("subscription_id")]
-        public long? SubscriptionId { get; private set; }
+        public long SubscriptionId { get; private set; }
 
         /// <summary>
         /// The subscription name.
@@ -26,10 +25,10 @@ namespace Voximplant.API.Response {
         /// The subscription template ID.
         /// </summary>
         [JsonProperty("subscription_template_id")]
-        public long? SubscriptionTemplateId { get; private set; }
+        public long SubscriptionTemplateId { get; private set; }
 
         /// <summary>
-        /// Is the subscription prolonged automatically?
+        /// The subscription is prolonged automatically.
         /// </summary>
         [JsonProperty("auto_charge")]
         public bool? AutoCharge { get; private set; }
@@ -48,7 +47,7 @@ namespace Voximplant.API.Response {
         public decimal? PeriodicPrice { get; private set; }
 
         /// <summary>
-        /// Is the subscription active?
+        /// The subscription is active.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; private set; }

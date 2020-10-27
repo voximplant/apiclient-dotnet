@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,33 +9,29 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetKeyRolesSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetKeyRolesSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Set roles 1, 2, 3 for the key.
-        */
         [Fact]
         public void SetKeyRoles()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetKeyRoles(new SetKeyRolesRequest 
-                {
-                    KeyId = "ab81c76e-573e-4046-9af9-105269dfafca",
-                    RoleId = new Argument<long>(1L),
-                }).Result;
+            // Set roles 1, 2, 3 for the key.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetKeyRoles(
+                    "ab81c76e-573e-4046-9af9-105269dfafca",
+                    roleId: "1"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

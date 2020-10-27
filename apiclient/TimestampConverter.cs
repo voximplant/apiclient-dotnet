@@ -1,3 +1,4 @@
+using System.Globalization;
 using Newtonsoft.Json.Converters;
 
 namespace Voximplant.API
@@ -7,6 +8,7 @@ namespace Voximplant.API
         public TimestampConverter()
         {
             base.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+            base.DateTimeStyles = DateTimeStyles.AssumeUniversal;
         }
     }
 }

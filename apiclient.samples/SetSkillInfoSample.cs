@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,33 +9,29 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetSkillInfoSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetSkillInfoSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Change the skill name.
-        */
         [Fact]
         public void SetSkillInfo()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetSkillInfo(new SetSkillInfoRequest 
-                {
-                    SkillId = 1,
-                    NewSkillName = "Support",
-                }).Result;
+            // Change the skill name.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetSkillInfo(
+                    "Support",
+                    skillId: 1L
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

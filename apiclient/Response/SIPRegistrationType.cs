@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The SIP registration ID.
         /// </summary>
         [JsonProperty("sip_registration_id")]
-        public long? SipRegistrationId { get; private set; }
+        public long SipRegistrationId { get; private set; }
 
         /// <summary>
         /// The user name from sip proxy.
@@ -31,7 +31,7 @@ namespace Voximplant.API.Response {
         /// The last time updated.
         /// </summary>
         [JsonProperty("last_updated")]
-        public long? LastUpdated { get; private set; }
+        public long LastUpdated { get; private set; }
 
         /// <summary>
         /// The SIP authentications user
@@ -64,25 +64,24 @@ namespace Voximplant.API.Response {
         public string ErrorMessage { get; private set; }
 
         /// <summary>
-        /// The subscription deactivation flag. The SIP registration is frozen if
-        /// true.
+        /// The subscription deactivation flag. The SIP registration is frozen if true.
         /// </summary>
         [JsonProperty("deactivated")]
-        public bool? Deactivated { get; private set; }
+        public bool Deactivated { get; private set; }
 
         /// <summary>
         /// The next subscription renewal date in format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("next_subscription_renewal")]
-        public DateTime? NextSubscriptionRenewal { get; private set; }
+        public DateTime NextSubscriptionRenewal { get; private set; }
 
         /// <summary>
         /// The purchase date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("purchase_date")]
-        public DateTime? PurchaseDate { get; private set; }
+        public DateTime PurchaseDate { get; private set; }
 
         /// <summary>
         /// The subscription monthly charge.
@@ -91,43 +90,43 @@ namespace Voximplant.API.Response {
         public string SubscriptionPrice { get; private set; }
 
         /// <summary>
-        /// Is SIP registration persistent or on the user logon?
+        /// SIP registration is persistent. Set false to activate it only on the user login.
         /// </summary>
         [JsonProperty("is_persistent")]
-        public bool? IsPersistent { get; private set; }
+        public bool IsPersistent { get; private set; }
 
         /// <summary>
-        /// The bound user ID.
+        /// The id of the bound user.
         /// </summary>
         [JsonProperty("user_id")]
         public long? UserId { get; private set; }
 
         /// <summary>
-        /// The bound user name.
+        /// The name of the bound user.
         /// </summary>
         [JsonProperty("user_name")]
         public string UserName { get; private set; }
 
         /// <summary>
-        /// The bound domain ID.
+        /// The id of the bound application.
         /// </summary>
         [JsonProperty("application_id")]
         public long? ApplicationId { get; private set; }
 
         /// <summary>
-        /// The bound application name.
+        /// The name of the bound application.
         /// </summary>
         [JsonProperty("application_name")]
         public string ApplicationName { get; private set; }
 
         /// <summary>
-        /// The bound rule ID.
+        /// The id of the bound rule.
         /// </summary>
         [JsonProperty("rule_id")]
         public long? RuleId { get; private set; }
 
         /// <summary>
-        /// The bound rule name.
+        /// The name of the bound rule.
         /// </summary>
         [JsonProperty("rule_name")]
         public string RuleName { get; private set; }

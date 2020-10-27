@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The regulation address ID.
         /// </summary>
         [JsonProperty("phone_region_id")]
-        public long? PhoneRegionId { get; private set; }
+        public long PhoneRegionId { get; private set; }
 
         /// <summary>
         /// The region name
@@ -31,7 +31,7 @@ namespace Voximplant.API.Response {
         /// The need to confirm the address
         /// </summary>
         [JsonProperty("is_need_regulation_address")]
-        public bool? IsNeedRegulationAddress { get; private set; }
+        public bool IsNeedRegulationAddress { get; private set; }
 
         /// <summary>
         /// The regulation address type. Available: LOCAL, NATIONAL, WORLDWIDE

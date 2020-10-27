@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the
-    /// [AccountCallback] structure.
+    /// The specific account callback details. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class CardPaymentCallback
     {
@@ -14,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The transaction ID.
         /// </summary>
         [JsonProperty("transaction_id")]
-        public long? TransactionId { get; private set; }
+        public long TransactionId { get; private set; }
 
         /// <summary>
         /// The transaction type.
@@ -26,7 +25,7 @@ namespace Voximplant.API.Response {
         /// The amount in the account currency.
         /// </summary>
         [JsonProperty("amount")]
-        public decimal? Amount { get; private set; }
+        public decimal Amount { get; private set; }
 
     }
 }

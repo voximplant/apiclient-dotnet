@@ -13,18 +13,10 @@ namespace Voximplant.API.Response {
         /// The callback ID (sequence).
         /// </summary>
         [JsonProperty("callback_id")]
-        public long? CallbackId { get; private set; }
+        public long CallbackId { get; private set; }
 
         /// <summary>
-        /// The callback type. The following values are possible:
-        /// account_document_verified, account_is_frozen, account_is_unfrozen,
-        /// activate_successful, call_history_report, card_expired,
-        /// card_expires_in_month, card_payment, card_payment_failed, js_fail,
-        /// min_balance, regulation_address_verified, renewed_subscriptions,
-        /// reset_account_password_request, sip_registration_fail,
-        /// stagnant_account, subscription_is_detached, subscription_is_frozen,
-        /// transaction_history_report, plan_config,
-        /// unverified_subscription_detached, sms_inbound.
+        /// The callback type. The following values are possible: account_document_verified, account_is_frozen, account_is_unfrozen, activate_successful, call_history_report, card_expired, card_expires_in_month, card_payment, card_payment_failed, js_fail, min_balance, regulation_address_verified, renewed_subscriptions, reset_account_password_request, sip_registration_fail, stagnant_account, subscription_is_detached, subscription_is_frozen, transaction_history_report, plan_config, unverified_subscription_detached, sms_inbound.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
@@ -33,11 +25,10 @@ namespace Voximplant.API.Response {
         /// The account ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
-        /// The security hash: hash = md5(account_salt + account_id + api_key +
-        /// callback_id). Example: 50c5fe2290cd7409b37e673b8b05e495
+        /// The security hash: hash = md5(account_salt + account_id + api_key + callback_id). Example: 50c5fe2290cd7409b37e673b8b05e495
         /// </summary>
         [JsonProperty("hash")]
         public string Hash { get; private set; }
@@ -76,7 +67,7 @@ namespace Voximplant.API.Response {
         /// The account's money.
         /// </summary>
         [JsonProperty("balance")]
-        public decimal? Balance { get; private set; }
+        public decimal Balance { get; private set; }
 
         /// <summary>
         /// The currency code (USD, RUR, EUR, ...).
@@ -163,8 +154,7 @@ namespace Voximplant.API.Response {
         public WireTransferCallback WireTransfer { get; private set; }
 
         /// <summary>
-        /// The specific account callback details. See the 'send_js_error'
-        /// parameter of the 'SetAccountInfo' function.
+        /// The specific account callback details. See the 'send_js_error' parameter of the 'SetAccountInfo' function.
         /// </summary>
         [JsonProperty("js_fail")]
         public JSFailCallback JsFail { get; private set; }
@@ -240,12 +230,6 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("expiring_callerid")]
         public ExpiringCallerIDCallback ExpiringCallerid { get; private set; }
-
-        /// <summary>
-        /// The specific account callback details.
-        /// </summary>
-        [JsonProperty("expired_callerid")]
-        public ExpiredCallerIDCallback ExpiredCallerid { get; private set; }
 
         /// <summary>
         /// The specific account callback details.

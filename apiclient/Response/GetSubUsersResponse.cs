@@ -8,7 +8,7 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<SubUserView> Result { get; private set; }
+        public SubUserView[] Result { get; private set; }
 
     }
 }

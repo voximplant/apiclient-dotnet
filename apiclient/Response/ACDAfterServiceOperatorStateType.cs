@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The user ID of the operator.
         /// </summary>
         [JsonProperty("user_id")]
-        public long? UserId { get; private set; }
+        public long UserId { get; private set; }
 
         /// <summary>
         /// The user name of the operator.
@@ -28,9 +28,7 @@ namespace Voximplant.API.Response {
         public string UserDisplayName { get; private set; }
 
         /// <summary>
-        /// The operator <a
-        /// href='//voximplant.com/docs/references/websdk/voximplant/operatoracdstatuses'>status
-        /// string</a>.
+        /// The operator <a href='//voximplant.com/docs/references/websdk/voximplant/operatoracdstatuses'>status string</a>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The ACD session history ID of the request.
         /// </summary>
         [JsonProperty("acd_session_history_id")]
-        public long? AcdSessionHistoryId { get; private set; }
+        public long AcdSessionHistoryId { get; private set; }
 
         /// <summary>
         /// The internal ACD session history ID.
@@ -25,7 +25,7 @@ namespace Voximplant.API.Response {
         /// The ACD queue ID.
         /// </summary>
         [JsonProperty("acd_queue_id")]
-        public long? AcdQueueId { get; private set; }
+        public long AcdQueueId { get; private set; }
 
         /// <summary>
         /// The ACD queue name.
@@ -44,7 +44,7 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("begin_time")]
-        public DateTime? BeginTime { get; private set; }
+        public DateTime BeginTime { get; private set; }
 
         /// <summary>
         /// The submission time of the request in 24-h format: YYYY-MM-DD HH:mm:ss

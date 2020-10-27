@@ -13,33 +13,32 @@ namespace Voximplant.API.Response {
         /// The call session history ID.
         /// </summary>
         [JsonProperty("call_session_history_id")]
-        public long? CallSessionHistoryId { get; private set; }
+        public long CallSessionHistoryId { get; private set; }
 
         /// <summary>
         /// The account ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
         /// The application ID.
         /// </summary>
         [JsonProperty("application_id")]
-        public long? ApplicationId { get; private set; }
+        public long ApplicationId { get; private set; }
 
         /// <summary>
         /// The user ID.
         /// </summary>
         [JsonProperty("user_id")]
-        public long? UserId { get; private set; }
+        public long UserId { get; private set; }
 
         /// <summary>
-        /// The start date in the selected timezone in 24-h format: YYYY-MM-DD
-        /// HH:mm:ss
+        /// The start date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("start_date")]
-        public DateTime? StartDate { get; private set; }
+        public DateTime StartDate { get; private set; }
 
         /// <summary>
         /// The session duration in seconds.
@@ -66,9 +65,7 @@ namespace Voximplant.API.Response {
         public string LogFileUrl { get; private set; }
 
         /// <summary>
-        /// The finish reason. Possible values are: __Normal termination__,
-        /// __Insufficient funds__, __Internal error (billing timeout)__,
-        /// __Terminated administratively__, __JS Error__, __Timeout__.
+        /// The finish reason. Possible values are: __Normal termination__, __Insufficient funds__, __Internal error (billing timeout)__, __Terminated administratively__, __JS Error__, __Timeout__.
         /// </summary>
         [JsonProperty("finish_reason")]
         public string FinishReason { get; private set; }
@@ -77,19 +74,19 @@ namespace Voximplant.API.Response {
         /// The bound calls.
         /// </summary>
         [JsonProperty("calls")]
-        public IReadOnlyList<CallInfoType> Calls { get; private set; }
+        public CallInfoType[] Calls { get; private set; }
 
         /// <summary>
         /// The used resorces.
         /// </summary>
         [JsonProperty("other_resource_usage")]
-        public IReadOnlyList<ResourceUsageType> OtherResourceUsage { get; private set; }
+        public ResourceUsageType[] OtherResourceUsage { get; private set; }
 
         /// <summary>
         /// The bound records.
         /// </summary>
         [JsonProperty("records")]
-        public IReadOnlyList<RecordType> Records { get; private set; }
+        public RecordType[] Records { get; private set; }
 
         /// <summary>
         /// The custom data.

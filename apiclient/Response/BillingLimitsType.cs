@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The payments limits applicable to each payment method. Payments that
-    /// are beyond limits are declined.
+    /// The payments limits applicable to each payment method. Payments that are beyond limits are declined.
     /// </summary>
     public class BillingLimitsType
     {

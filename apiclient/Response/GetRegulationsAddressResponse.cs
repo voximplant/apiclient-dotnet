@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// The RegulationAddress records.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<RegulationAddress> Result { get; private set; }
+        public RegulationAddress[] Result { get; private set; }
 
         /// <summary>
         /// The returned regulation address count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

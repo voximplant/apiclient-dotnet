@@ -8,13 +8,13 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
         /// <summary>
-        /// The number of fragments to which the message divided.
+        /// The number of fragments the message was divided into.
         /// </summary>
         [JsonProperty("fragments_count")]
-        public long? FragmentsCount { get; private set; }
+        public long FragmentsCount { get; private set; }
 
     }
 }

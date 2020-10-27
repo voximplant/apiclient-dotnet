@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// 1
         /// </summary>
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
         /// <summary>
         /// The ACD queue ID.
         /// </summary>
         [JsonProperty("acd_queue_id")]
-        public long? AcdQueueId { get; private set; }
+        public long AcdQueueId { get; private set; }
 
     }
 }

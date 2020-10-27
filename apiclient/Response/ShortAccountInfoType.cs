@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The account's ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
         /// Is account blocked by Voximplant admins or not.

@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The callerID id.
         /// </summary>
         [JsonProperty("callerid_id")]
-        public long? CalleridId { get; private set; }
+        public long CalleridId { get; private set; }
 
         /// <summary>
         /// The callerID number.
@@ -25,7 +25,7 @@ namespace Voximplant.API.Response {
         /// The active flag.
         /// </summary>
         [JsonProperty("active")]
-        public bool? Active { get; private set; }
+        public bool Active { get; private set; }
 
         /// <summary>
         /// The code entering attempts left for the unverified callerID.
@@ -40,8 +40,7 @@ namespace Voximplant.API.Response {
         public long? VerificationCallAttemptsLeft { get; private set; }
 
         /// <summary>
-        /// The verification ending date in format: YYYY-MM-DD (for the verified
-        /// callerID).
+        /// The verification ending date in format: YYYY-MM-DD (for the verified callerID).
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("verified_until")]

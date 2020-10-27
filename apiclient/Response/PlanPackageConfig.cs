@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The price group IDs.
         /// </summary>
         [JsonProperty("price_group_id")]
-        public long?[] PriceGroupId { get; private set; }
+        public long[] PriceGroupId { get; private set; }
 
         /// <summary>
         /// The package name.
@@ -28,16 +28,16 @@ namespace Voximplant.API.Response {
         public string PackageUuid { get; private set; }
 
         /// <summary>
-        /// Is overrun enabled?
+        /// Overrun is enabled.
         /// </summary>
         [JsonProperty("may_overrun")]
-        public bool? MayOverrun { get; private set; }
+        public bool MayOverrun { get; private set; }
 
         /// <summary>
         /// The current package size (including overrun).
         /// </summary>
         [JsonProperty("package_size")]
-        public long? PackageSize { get; private set; }
+        public long PackageSize { get; private set; }
 
     }
 }

@@ -16,16 +16,13 @@ namespace Voximplant.API.Response {
         public string VerificationName { get; private set; }
 
         /// <summary>
-        /// The account verification status. The following values are possible:
-        /// REQUIRED, IN_PROGRESS, VERIFIED, NOT_REQUIRED
+        /// The account verification status. The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED, NOT_REQUIRED
         /// </summary>
         [JsonProperty("verification_status")]
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Unverified subscriptions hold until the date in format: YYYY-MM-DD
-        /// (if the account verification is required). Some subscriptions will be
-        /// detached on that day automatically!
+        /// Unverified subscriptions hold until the date in format: YYYY-MM-DD (if the account verification is required). Some subscriptions will be detached on that day automatically!
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("unverified_hold_until")]
@@ -35,7 +32,7 @@ namespace Voximplant.API.Response {
         /// The uploaded documents.
         /// </summary>
         [JsonProperty("documents")]
-        public IReadOnlyList<AccountVerificationDocument> Documents { get; private set; }
+        public AccountVerificationDocument[] Documents { get; private set; }
 
     }
 }

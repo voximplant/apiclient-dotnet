@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The list ID.
         /// </summary>
         [JsonProperty("list_id")]
-        public long? ListId { get; private set; }
+        public long ListId { get; private set; }
 
         /// <summary>
         /// The list name.
@@ -22,35 +22,35 @@ namespace Voximplant.API.Response {
         public string ListName { get; private set; }
 
         /// <summary>
-        /// The priority of call list.
+        /// The priority of the call list.
         /// </summary>
         [JsonProperty("priority")]
-        public long? Priority { get; private set; }
+        public long Priority { get; private set; }
 
         /// <summary>
         /// The rule id.
         /// </summary>
         [JsonProperty("rule_id")]
-        public long? RuleId { get; private set; }
+        public long RuleId { get; private set; }
 
         /// <summary>
         /// The maximum number of simultaneous tasks.
         /// </summary>
         [JsonProperty("max_simultaneous")]
-        public long? MaxSimultaneous { get; private set; }
+        public long MaxSimultaneous { get; private set; }
 
         /// <summary>
         /// The number of task attempts run, which failed to call.
         /// </summary>
         [JsonProperty("num_attempts")]
-        public long? NumAttempts { get; private set; }
+        public long NumAttempts { get; private set; }
 
         /// <summary>
         /// The date of submitted the list in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("dt_submit")]
-        public DateTime? DtSubmit { get; private set; }
+        public DateTime DtSubmit { get; private set; }
 
         /// <summary>
         /// The completion date in 24-h format: YYYY-MM-DD HH:mm:ss
@@ -63,11 +63,10 @@ namespace Voximplant.API.Response {
         /// The interval between attempts in seconds.
         /// </summary>
         [JsonProperty("interval_seconds")]
-        public long? IntervalSeconds { get; private set; }
+        public long IntervalSeconds { get; private set; }
 
         /// <summary>
-        /// The status name. The possible values are: __In progress__,
-        /// __Completed__, __Canceled__.
+        /// The status name. The possible values are: __In progress__, __Completed__, __Canceled__.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

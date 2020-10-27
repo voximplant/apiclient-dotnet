@@ -13,14 +13,13 @@ namespace Voximplant.API.Response {
         /// Absolute number of calls.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
         /// <summary>
-        /// Percentage of answered/rejected/unanswered calls, is counted against
-        /// total number of calls.
+        /// Percentage of answered/rejected/unanswered calls, is counted against total number of calls.
         /// </summary>
         [JsonProperty("percent")]
-        public long? Percent { get; private set; }
+        public long Percent { get; private set; }
 
     }
 }

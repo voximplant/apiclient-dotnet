@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The phone ID.
         /// </summary>
         [JsonProperty("phone_id")]
-        public long? PhoneId { get; private set; }
+        public long PhoneId { get; private set; }
 
         /// <summary>
         /// The phone number.
@@ -25,13 +25,13 @@ namespace Voximplant.API.Response {
         /// The phone monthly charge.
         /// </summary>
         [JsonProperty("phone_price")]
-        public decimal? PhonePrice { get; private set; }
+        public decimal PhonePrice { get; private set; }
 
         /// <summary>
         /// The phone installation price (without the first monthly fee).
         /// </summary>
         [JsonProperty("phone_installation_price")]
-        public decimal? PhoneInstallationPrice { get; private set; }
+        public decimal PhoneInstallationPrice { get; private set; }
 
         /// <summary>
         /// The phone country code (2 symbols).
@@ -40,8 +40,7 @@ namespace Voximplant.API.Response {
         public string PhoneCountryCode { get; private set; }
 
         /// <summary>
-        /// The charge period in 24-h format: Y-M-D H:m:s. Example: 0-1-0 0:0:0
-        /// is 1 month.
+        /// The charge period in 24-h format: Y-M-D H:m:s. Example: 0-1-0 0:0:0 is 1 month.
         /// </summary>
         [JsonProperty("phone_period")]
         public string PhonePeriod { get; private set; }

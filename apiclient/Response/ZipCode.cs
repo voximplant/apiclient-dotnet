@@ -19,7 +19,6 @@ namespace Voximplant.API.Response {
         /// The zip code
         /// </summary>
         [JsonProperty("zip_code")]
-    
         public string Number { get; private set; }
 
     }

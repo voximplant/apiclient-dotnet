@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,33 +9,29 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetChildAccountInfoSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetChildAccountInfoSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Disable the child account.
-        */
         [Fact]
         public void SetChildAccountInfo()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetChildAccountInfo(new SetChildAccountInfoRequest 
-                {
-                    ChildAccountId = new Argument<long>(1321L),
-                    Active = false,
-                }).Result;
+            // Disable the child account.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetChildAccountInfo(
+                    childAccountId: "1321",
+                    active: false
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

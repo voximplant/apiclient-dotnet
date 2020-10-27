@@ -13,17 +13,16 @@ namespace Voximplant.API.Response {
         /// The push credential id
         /// </summary>
         [JsonProperty("push_credential_id")]
-        public long? PushCredentialId { get; private set; }
+        public long PushCredentialId { get; private set; }
 
         /// <summary>
         /// The push provider id
         /// </summary>
         [JsonProperty("push_provider_id")]
-        public long? PushProviderId { get; private set; }
+        public long PushProviderId { get; private set; }
 
         /// <summary>
-        /// The push provider name. The possible values are: APPLE, APPLE_VOIP,
-        /// GOOGLE
+        /// The push provider name. The possible values are: APPLE, APPLE_VOIP, GOOGLE
         /// </summary>
         [JsonProperty("push_provider_name")]
         public string PushProviderName { get; private set; }
@@ -44,7 +43,7 @@ namespace Voximplant.API.Response {
         /// Bound applications.
         /// </summary>
         [JsonProperty("applications")]
-        public IReadOnlyList<ApplicationInfoType> Applications { get; private set; }
+        public ApplicationInfoType[] Applications { get; private set; }
 
     }
 }

@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The regulation address ID.
         /// </summary>
         [JsonProperty("regulation_address_id")]
-        public long? RegulationAddressId { get; private set; }
+        public long RegulationAddressId { get; private set; }
 
         /// <summary>
         /// The external ID.
@@ -94,8 +94,7 @@ namespace Voximplant.API.Response {
         public string BuilderLatter { get; private set; }
 
         /// <summary>
-        /// The status verification. Possible values: IN_PROGRESS, VERIFIED,
-        /// DECLINED
+        /// The status verification. Possible values: IN_PROGRESS, VERIFIED, DECLINED
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }
@@ -105,12 +104,6 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("reject_message")]
         public string RejectMessage { get; private set; }
-
-        /// <summary>
-        /// The phone region code.
-        /// </summary>
-        [JsonProperty("phone_region_code")]
-        public string PhoneRegionCode { get; private set; }
 
     }
 }

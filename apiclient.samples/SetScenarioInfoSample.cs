@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,34 +9,30 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetScenarioInfoSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetScenarioInfoSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Add a new scenario: var s='hello';
-        */
         [Fact]
         public void SetScenarioInfo()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetScenarioInfo(new SetScenarioInfoRequest 
-                {
-                    ScenarioId = 1,
-                    ScenarioName = "call_scenario",
-                    ScenarioScript = "var s=\"hello world\";",
-                }).Result;
+            // Add a new scenario: var s='hello';
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetScenarioInfo(
+                    scenarioId: 1L,
+                    scenarioName: "call_scenario",
+                    scenarioScript: "var s=\"hello world\";"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

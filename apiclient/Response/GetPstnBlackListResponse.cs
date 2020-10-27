@@ -8,19 +8,19 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<PstnBlackListInfoType> Result { get; private set; }
+        public PstnBlackListInfoType[] Result { get; private set; }
 
         /// <summary>
         /// The total found phone numbers count.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
         /// <summary>
         /// The returned phone numbers count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

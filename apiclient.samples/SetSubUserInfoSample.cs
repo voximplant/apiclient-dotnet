@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,36 +9,32 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetSubUserInfoSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetSubUserInfoSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Edit the password and description for the subuser with id = 12 from
-        * account_id = 1
-        */
         [Fact]
         public void SetSubUserInfo()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetSubUserInfo(new SetSubUserInfoRequest 
-                {
-                    SubuserId = 12,
-                    OldSubuserPassword = "old_test_password",
-                    NewSubuserPassword = "test_pass",
-                    Description = "test_desc",
-                }).Result;
+            // Edit the password and description for the subuser with id = 12 from
+            // account_id = 1
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetSubUserInfo(
+                    12L,
+                    oldSubuserPassword: "old_test_password",
+                    newSubuserPassword: "test_pass",
+                    description: "test_desc"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,32 +9,28 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class DeactivatePhoneNumberSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public DeactivatePhoneNumberSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Deactivate the phone 1.
-        */
         [Fact]
         public void DeactivatePhoneNumber()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.DeactivatePhoneNumber(new DeactivatePhoneNumberRequest 
-                {
-                    PhoneId = new Argument<long>(1L),
-                }).Result;
+            // Deactivate the phone 1.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.DeactivatePhoneNumber(
+                    phoneId: "1"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

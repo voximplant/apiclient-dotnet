@@ -40,7 +40,6 @@ This example shows how you can use the API client.
 ```csharp
 using System;
 using Voximplant.API;
-using Voximplant.API.Request;
 
 namespace example
 {
@@ -48,20 +47,13 @@ namespace example
     {
         private static void Main(string[] args)
         {
-            try
-            {
+            try {
                 var voximplant = new VoximplantAPI();
-
-
-                var result = voximplant.GetSubscriptionPrice(new GetSubscriptionPriceRequest
-                {
-                    SubscriptionTemplateType = "SIP_REGISTRATION",
-                }).Result;
-
-                Console.WriteLine("OK");
-            }
-            catch (Exception e)
-            {
+                
+                var result = voximplant.GetSubscriptionPrice().Result;
+                
+                Console.WriteLine($"Response: {result.ToString()}");
+            } catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }
         }

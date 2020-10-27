@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,37 +9,30 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class GetSmsHistorySample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public GetSmsHistorySample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Get messages that had been sent to number 12345678222 starting from
-        * March 1, 2019. Number of resulting rows is limited to 2.
-        */
         [Fact]
         public void GetSmsHistory()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                
-                var fromDate = new DateTime(2019, 3, 1, 0, 0, 0)
-                    .ToUniversalTime();
-            
-                var result = voximplant.GetSmsHistory(new GetSmsHistoryRequest 
-                {
-                    DestinationNumber = "12345678222",
-                    FromDate = fromDate,
-                }).Result;
+            // Get messages that had been sent to number 12345678222 starting from
+            // March 1, 2019. Number of resulting rows is limited to 2.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.GetSmsHistory(
+                    destinationNumber: "12345678222",
+                    fromDate: new DateTime(2019, 3, 1, 0, 0, 0)
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

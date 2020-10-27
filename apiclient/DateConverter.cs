@@ -1,3 +1,4 @@
+using System.Globalization;
 using Newtonsoft.Json.Converters;
 
 namespace Voximplant.API
@@ -7,6 +8,7 @@ namespace Voximplant.API
         public DateConverter()
         {
             base.DateTimeFormat = "yyyy-MM-dd";
+            base.DateTimeStyles = DateTimeStyles.AssumeUniversal;
         }
     }
 }

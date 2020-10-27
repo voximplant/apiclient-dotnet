@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,36 +9,28 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetAccountInfoSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetAccountInfoSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Set the notification settings.
-        */
         [Fact]
         public void SetAccountInfo()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetAccountInfo(new SetAccountInfoRequest 
-                {
-                    LanguageCode = "en",
-                    Location = "GMT-8",
-                    MinBalanceToNotify = 1.50m,
-                    TariffChangingNotifications = true,
-                    NewsNotifications = true,
-                }).Result;
+            // Change the account's password.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetAccountInfo(
+                    newAccountPassword: "7654321"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

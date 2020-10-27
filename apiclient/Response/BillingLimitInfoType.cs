@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The minimum amount.
         /// </summary>
         [JsonProperty("min_amount")]
-        public long? MinAmount { get; private set; }
+        public long MinAmount { get; private set; }
 
         /// <summary>
         /// The currency.

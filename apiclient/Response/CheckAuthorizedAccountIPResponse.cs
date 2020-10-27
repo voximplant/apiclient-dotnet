@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
         /// True if IP is allowed.
         /// </summary>
         [JsonProperty("result")]
-        public bool? Result { get; private set; }
+        public bool Result { get; private set; }
 
         /// <summary>
         /// The matched authorized IP or network (if found).

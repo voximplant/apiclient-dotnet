@@ -5,9 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The HTTP account callbacks body. See <a
-    /// href='/docs/howtos/integration/httpapi/callbacks'>this article</a>
-    /// for details.
+    /// The HTTP account callbacks body. See <a href='/docs/howtos/integration/httpapi/callbacks'>this article</a> for details.
     /// </summary>
     public class AccountCallbacks
     {
@@ -15,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The account callback array.
         /// </summary>
         [JsonProperty("callbacks")]
-        public IReadOnlyList<AccountCallback> Callbacks { get; private set; }
+        public AccountCallback[] Callbacks { get; private set; }
 
     }
 }

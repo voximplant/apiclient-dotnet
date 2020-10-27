@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// Array of tasks for the roll call.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<CallListDetailType> Result { get; private set; }
+        public CallListDetailType[] Result { get; private set; }
 
         /// <summary>
         /// The number of tasks.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

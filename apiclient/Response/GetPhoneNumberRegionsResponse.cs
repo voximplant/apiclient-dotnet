@@ -8,7 +8,7 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<PhoneNumberCountryRegionInfoType> Result { get; private set; }
+        public PhoneNumberCountryRegionInfoType[] Result { get; private set; }
 
     }
 }

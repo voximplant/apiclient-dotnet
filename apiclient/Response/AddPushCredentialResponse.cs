@@ -8,11 +8,11 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
 
         [JsonProperty("push_credential_id")]
-        public long? PushCredentialId { get; private set; }
+        public long PushCredentialId { get; private set; }
 
     }
 }

@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The account's ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
         /// The account's name.
@@ -28,8 +28,7 @@ namespace Voximplant.API.Response {
         public string AccountEmail { get; private set; }
 
         /// <summary>
-        /// The account API key. Use password or api_key authentication to show
-        /// the api_key.
+        /// The account API key. Use password or api_key authentication to show the api_key.
         /// </summary>
         [JsonProperty("api_key")]
         public string ApiKey { get; private set; }
@@ -51,7 +50,7 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("created")]
-        public DateTime? Created { get; private set; }
+        public DateTime Created { get; private set; }
 
         /// <summary>
         /// The notification language code (2 symbols, ISO639-1). Examples: en, ru
@@ -60,8 +59,7 @@ namespace Voximplant.API.Response {
         public string LanguageCode { get; private set; }
 
         /// <summary>
-        /// The account location (timezone). Examples: America/Los_Angeles,
-        /// GMT-08:00
+        /// The account location (timezone). Examples: America/Los_Angeles, Etc/GMT-8, Etc/GMT+10
         /// </summary>
         [JsonProperty("location")]
         public string Location { get; private set; }
@@ -73,19 +71,19 @@ namespace Voximplant.API.Response {
         public decimal? MinBalanceToNotify { get; private set; }
 
         /// <summary>
-        /// Are the Voximplant notifications required?
+        /// Voximplant notifications are required.
         /// </summary>
         [JsonProperty("account_notifications")]
         public bool? AccountNotifications { get; private set; }
 
         /// <summary>
-        /// Are the Voximplant plan changing notifications required?
+        /// Voximplant plan changing notifications are required.
         /// </summary>
         [JsonProperty("tariff_changing_notifications")]
         public bool? TariffChangingNotifications { get; private set; }
 
         /// <summary>
-        /// Are the Voximplant news notifications required?
+        /// Voximplant news notifications are required.
         /// </summary>
         [JsonProperty("news_notifications")]
         public bool? NewsNotifications { get; private set; }
@@ -97,8 +95,7 @@ namespace Voximplant.API.Response {
         public string BillingAddressName { get; private set; }
 
         /// <summary>
-        /// The billing address country code (2 symbols, ISO 3166-1 alpha-2).
-        /// Examples: US, RU, GB
+        /// The billing address country code (2 symbols, ISO 3166-1 alpha-2). Examples: US, RU, GB
         /// </summary>
         [JsonProperty("billing_address_country_code")]
         public string BillingAddressCountryCode { get; private set; }
@@ -122,8 +119,7 @@ namespace Voximplant.API.Response {
         public string BillingAddressPhone { get; private set; }
 
         /// <summary>
-        /// The office state (US) or province (Canada), up to 100 characters.
-        /// Examples: California, Illinois, British Columbia.
+        /// The office state (US) or province (Canada), up to 100 characters. Examples: California, Illinois, British Columbia.
         /// </summary>
         [JsonProperty("billing_address_state")]
         public string BillingAddressState { get; private set; }
@@ -132,7 +128,7 @@ namespace Voximplant.API.Response {
         /// The account activation flag.
         /// </summary>
         [JsonProperty("active")]
-        public bool? Active { get; private set; }
+        public bool Active { get; private set; }
 
         /// <summary>
         /// Is account blocked by Voximplant admins or not.
@@ -159,25 +155,19 @@ namespace Voximplant.API.Response {
         public string Currency { get; private set; }
 
         /// <summary>
-        /// Is the robokassa payment system allowed?
+        /// Robokassa payments are allowed.
         /// </summary>
         [JsonProperty("support_robokassa")]
         public bool? SupportRobokassa { get; private set; }
 
         /// <summary>
-        /// Is the bank card payments allowed?
+        /// Bank card payments are allowed.
         /// </summary>
         [JsonProperty("support_bank_card")]
         public bool? SupportBankCard { get; private set; }
 
         /// <summary>
-        /// The possible values are: BRAINTREE, ALFABANK.
-        /// </summary>
-        [JsonProperty("bank_card_provider")]
-        public string BankCardProvider { get; private set; }
-
-        /// <summary>
-        /// Is the bank invoice allowed?
+        /// Bank invoices are allowed.
         /// </summary>
         [JsonProperty("support_invoice")]
         public bool? SupportInvoice { get; private set; }
@@ -201,27 +191,19 @@ namespace Voximplant.API.Response {
         public bool? WithAccessEntries { get; private set; }
 
         /// <summary>
-        /// If URL is specified, Voximplant cloud will make HTTP POST requests to
-        /// it when something happens. For a full list of reasons see the
-        /// <b>type</b> field of the [AccountCallback] structure. The HTTP
-        /// request will have a JSON-encoded body that conforms to the
-        /// [AccountCallbacks] structure
+        /// If URL is specified, Voximplant cloud will make HTTP POST requests to it when something happens. For a full list of reasons see the <b>type</b> field of the [AccountCallback] structure. The HTTP request will have a JSON-encoded body that conforms to the [AccountCallbacks] structure
         /// </summary>
         [JsonProperty("callback_url")]
         public string CallbackUrl { get; private set; }
 
         /// <summary>
-        /// If salt string is specified, each HTTP request made by the Voximplant
-        /// cloud toward the <b>callback_url</b> will have a <b>salt</b> field
-        /// set to MD5 hash of account information and salt. That hash can be
-        /// used be a developer to ensure that HTTP request is made by the
-        /// Voximplant cloud
+        /// If salt string is specified, each HTTP request made by the Voximplant cloud toward the <b>callback_url</b> will have a <b>salt</b> field set to MD5 hash of account information and salt. That hash can be used be a developer to ensure that HTTP request is made by the Voximplant cloud
         /// </summary>
         [JsonProperty("callback_salt")]
         public string CallbackSalt { get; private set; }
 
         /// <summary>
-        /// Is email sending on a JS error?
+        /// Sending email when a JS error occures.
         /// </summary>
         [JsonProperty("send_js_error")]
         public bool? SendJsError { get; private set; }

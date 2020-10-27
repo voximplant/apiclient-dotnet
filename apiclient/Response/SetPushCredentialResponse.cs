@@ -8,7 +8,7 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
     }
 }

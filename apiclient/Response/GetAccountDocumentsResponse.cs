@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
         /// The account verifications.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<AccountVerifications> Result { get; private set; }
+        public AccountVerifications[] Result { get; private set; }
 
     }
 }

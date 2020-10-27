@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The application ID.
         /// </summary>
         [JsonProperty("application_id")]
-        public long? ApplicationId { get; private set; }
+        public long ApplicationId { get; private set; }
 
         /// <summary>
         /// The full application name.
@@ -26,21 +26,19 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("modified")]
-        public DateTime? Modified { get; private set; }
+        public DateTime Modified { get; private set; }
 
         /// <summary>
-        /// This flag indicates whether a secure storage for logs and records is
-        /// enabled or not.
+        /// This flag indicates whether a secure storage for logs and records is enabled or not.
         /// </summary>
         [JsonProperty("secure_record_storage")]
-        public bool? SecureRecordStorage { get; private set; }
+        public bool SecureRecordStorage { get; private set; }
 
         /// <summary>
-        /// The filtered users. (Note: a user object contains the 'user_id' field
-        /// only)
+        /// The filtered users. (Note: a user object contains the 'user_id' field only)
         /// </summary>
         [JsonProperty("users")]
-        public IReadOnlyList<UserInfoType> Users { get; private set; }
+        public UserInfoType[] Users { get; private set; }
 
     }
 }

@@ -8,19 +8,19 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<ACDSessionInfoType> Result { get; private set; }
+        public ACDSessionInfoType[] Result { get; private set; }
 
         /// <summary>
         /// The total found ACD session count.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
         /// <summary>
         /// The returned ACD session count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

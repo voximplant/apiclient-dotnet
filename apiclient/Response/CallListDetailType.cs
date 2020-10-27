@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The list ID.
         /// </summary>
         [JsonProperty("list_id")]
-        public long? ListId { get; private set; }
+        public long ListId { get; private set; }
 
         /// <summary>
         /// Data for transmission to the script
@@ -34,8 +34,7 @@ namespace Voximplant.API.Response {
         public string FinishExecutionTime { get; private set; }
 
         /// <summary>
-        /// Results of the task, if it was granted, or information about the
-        /// runtime error.
+        /// Results of the task, if it was granted, or information about the runtime error.
         /// </summary>
         [JsonProperty("result_data")]
         public string ResultData { get; private set; }
@@ -50,20 +49,16 @@ namespace Voximplant.API.Response {
         /// Number of remaining attempts.
         /// </summary>
         [JsonProperty("attempts_left")]
-        public long? AttemptsLeft { get; private set; }
+        public long AttemptsLeft { get; private set; }
 
         /// <summary>
-        /// The status ID. The possible values are: __0__ (status = New), __1__
-        /// (status = In progress), __2__ (status = Processed), __3__ (status =
-        /// Error), __4__ (status = Cancelled).
+        /// The status ID. The possible values are: __0__ (status = New), __1__ (status = In progress), __2__ (status = Processed), __3__ (status = Error), __4__ (status = Cancelled).
         /// </summary>
         [JsonProperty("status_id")]
-        public long? StatusId { get; private set; }
+        public long StatusId { get; private set; }
 
         /// <summary>
-        /// The status name. The possible values are: __New__ (status_id = 0),
-        /// __In progress__ (status_id = 1), __Processed__ (status_id = 2),
-        /// __Error__ (status_id = 3), __Cancelled__ (status_id = 4).
+        /// The status name. The possible values are: __New__ (status_id = 0), __In progress__ (status_id = 1), __Processed__ (status_id = 2), __Error__ (status_id = 3), __Cancelled__ (status_id = 4).
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

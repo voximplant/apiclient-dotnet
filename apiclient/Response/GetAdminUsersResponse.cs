@@ -8,19 +8,19 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<AdminUserType> Result { get; private set; }
+        public AdminUserType[] Result { get; private set; }
 
         /// <summary>
         /// The total found admin user count.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
         /// <summary>
         /// The returned admin user count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using Voximplant.API.Request;
 using Voximplant.API.Response;
 
 namespace Voximplant.API
@@ -80,6 +79,8 @@ namespace Voximplant.API
             var credentials = new SigningCredentials(_credentials.PrivateKey, SecurityAlgorithms.RsaSha256);
 
             var token = tokenHandler.CreateJwtSecurityToken(issuer: _credentials.AccountId.ToString(),
+                // issuedAt:DateTime.Now,
+                // expires:DateTime.Now,
                 signingCredentials: credentials);
 
             var tokenString = tokenHandler.WriteToken(token);
@@ -93,13 +94,12 @@ namespace Voximplant.API
             return new Uri(uri);
         }
 
-        private async Task<TResponse> PerformRequest<TResponse, TRequest>(string node, TRequest request)
-            where TRequest : BaseRequest
+        private async Task<TResponse> PerformRequest<TResponse>(string node, IDictionary<string, string> request)
             where TResponse : BaseResponse
         {
             using (var client = new HttpClient())
             {
-                request.SetAccountId(_credentials.AccountId);
+                request["cmd"] = node;
                 var requestBody = new FormUrlEncodedContent(request);
 
                 var uri = RequestUri(node);
@@ -122,13 +122,13 @@ namespace Voximplant.API
                 if (result == null)
                 {
                     Log(LogSeverity.Error, "Empty response");
-                    throw new APIException("Empty response", 500);
+                    throw new VoximplantException("Empty response");
                 }
 
                 if (!result.HasError()) return result;
                 
                 Log(LogSeverity.Error, result.GetError().Msg);
-                throw new APIException(result.GetError().Msg, result.GetError().Code);
+                throw new VoximplantException(result.GetError().Msg, result.GetError().Code);
             }
         }
     }

@@ -8,11 +8,11 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<RegulationCountry> Result { get; private set; }
+        public RegulationCountry[] Result { get; private set; }
 
 
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

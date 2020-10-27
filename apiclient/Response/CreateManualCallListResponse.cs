@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
         /// true
         /// </summary>
         [JsonProperty("result")]
-        public bool? Result { get; private set; }
+        public bool Result { get; private set; }
 
         /// <summary>
-        /// The number of stored records
+        /// The number of stored records.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
         /// <summary>
         /// The list ID.
         /// </summary>
         [JsonProperty("list_id")]
-        public long? ListId { get; private set; }
+        public long ListId { get; private set; }
 
     }
 }

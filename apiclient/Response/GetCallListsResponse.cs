@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
         /// Array of lists.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<CallListType> Result { get; private set; }
+        public CallListType[] Result { get; private set; }
 
         /// <summary>
         /// The returned call list count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
         /// <summary>
         /// The total found call list count.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
     }
 }

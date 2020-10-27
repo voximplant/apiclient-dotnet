@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The account's ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
         /// The account's name.
@@ -31,7 +31,7 @@ namespace Voximplant.API.Response {
         /// The account activation flag.
         /// </summary>
         [JsonProperty("active")]
-        public bool? Active { get; private set; }
+        public bool Active { get; private set; }
 
         /// <summary>
         /// The account API key.
@@ -43,43 +43,43 @@ namespace Voximplant.API.Response {
         /// The cloned users.
         /// </summary>
         [JsonProperty("users")]
-        public IReadOnlyList<ClonedUserType> Users { get; private set; }
+        public ClonedUserType[] Users { get; private set; }
 
         /// <summary>
         /// The cloned scenarios.
         /// </summary>
         [JsonProperty("scenarios")]
-        public IReadOnlyList<ClonedScenarioType> Scenarios { get; private set; }
+        public ClonedScenarioType[] Scenarios { get; private set; }
 
         /// <summary>
         /// The cloned applications.
         /// </summary>
         [JsonProperty("applications")]
-        public IReadOnlyList<ClonedApplicationType> Applications { get; private set; }
+        public ClonedApplicationType[] Applications { get; private set; }
 
         /// <summary>
         /// The cloned ACD queues.
         /// </summary>
         [JsonProperty("acd_queues")]
-        public IReadOnlyList<ClonedACDQueueType> AcdQueues { get; private set; }
+        public ClonedACDQueueType[] AcdQueues { get; private set; }
 
         /// <summary>
         /// The cloned ACD skills.
         /// </summary>
         [JsonProperty("acd_skills")]
-        public IReadOnlyList<ClonedACDSkillType> AcdSkills { get; private set; }
+        public ClonedACDSkillType[] AcdSkills { get; private set; }
 
         /// <summary>
         /// The cloned admin roles.
         /// </summary>
         [JsonProperty("admin_roles")]
-        public IReadOnlyList<ClonedAdminRoleType> AdminRoles { get; private set; }
+        public ClonedAdminRoleType[] AdminRoles { get; private set; }
 
         /// <summary>
         /// The cloned admin users.
         /// </summary>
         [JsonProperty("admin_users")]
-        public IReadOnlyList<ClonedAdminUserType> AdminUsers { get; private set; }
+        public ClonedAdminUserType[] AdminUsers { get; private set; }
 
     }
 }

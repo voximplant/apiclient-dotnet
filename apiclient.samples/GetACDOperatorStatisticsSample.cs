@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,37 +9,30 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class GetACDOperatorStatisticsSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public GetACDOperatorStatisticsSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Get statistics for all operators and all queues from the specified
-        * date
-        */
         [Fact]
         public void GetACDOperatorStatistics()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                
-                var fromDate = new DateTime(2017, 1, 1, 0, 0, 0)
-                    .ToUniversalTime();
-            
-                var result = voximplant.GetACDOperatorStatistics(new GetACDOperatorStatisticsRequest 
-                {
-                    FromDate = fromDate,
-                    UserId = new Argument<long>(),
-                }).Result;
+            // Get statistics for all operators and all queues from the specified
+            // date
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.GetACDOperatorStatistics(
+                    new DateTime(2017, 1, 1, 0, 0, 0),
+                    "all"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The subscription template ID.
         /// </summary>
         [JsonProperty("subscription_template_id")]
-        public long? SubscriptionTemplateId { get; private set; }
+        public long SubscriptionTemplateId { get; private set; }
 
         /// <summary>
         /// The subscription template name.
@@ -25,13 +25,13 @@ namespace Voximplant.API.Response {
         /// The subscription template installation price.
         /// </summary>
         [JsonProperty("installation_price")]
-        public decimal? InstallationPrice { get; private set; }
+        public decimal InstallationPrice { get; private set; }
 
         /// <summary>
         /// The subscription template periodic price.
         /// </summary>
         [JsonProperty("periodic_price")]
-        public decimal? PeriodicPrice { get; private set; }
+        public decimal PeriodicPrice { get; private set; }
 
     }
 }

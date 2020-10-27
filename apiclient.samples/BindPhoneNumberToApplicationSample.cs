@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,33 +9,29 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class BindPhoneNumberToApplicationSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public BindPhoneNumberToApplicationSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Bind the phone 1 to the application 1.
-        */
         [Fact]
         public void BindPhoneNumberToApplication()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.BindPhoneNumberToApplication(new BindPhoneNumberToApplicationRequest 
-                {
-                    PhoneId = new Argument<long>(1L),
-                    ApplicationId = 1,
-                }).Result;
+            // Bind the phone 1 to the application 1.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.BindPhoneNumberToApplication(
+                    phoneId: "1",
+                    applicationId: 1L
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

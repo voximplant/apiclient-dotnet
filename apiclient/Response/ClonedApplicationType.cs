@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The application ID.
         /// </summary>
         [JsonProperty("application_id")]
-        public long? ApplicationId { get; private set; }
+        public long ApplicationId { get; private set; }
 
         /// <summary>
         /// The full application name.
@@ -25,7 +25,7 @@ namespace Voximplant.API.Response {
         /// The cloned rules.
         /// </summary>
         [JsonProperty("users")]
-        public IReadOnlyList<ClonedRuleType> Users { get; private set; }
+        public ClonedRuleType[] Users { get; private set; }
 
     }
 }

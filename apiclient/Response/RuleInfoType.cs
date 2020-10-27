@@ -13,13 +13,13 @@ namespace Voximplant.API.Response {
         /// The rule ID.
         /// </summary>
         [JsonProperty("rule_id")]
-        public long? RuleId { get; private set; }
+        public long RuleId { get; private set; }
 
         /// <summary>
         /// The application ID.
         /// </summary>
         [JsonProperty("application_id")]
-        public long? ApplicationId { get; private set; }
+        public long ApplicationId { get; private set; }
 
         /// <summary>
         /// The rule name.
@@ -40,23 +40,23 @@ namespace Voximplant.API.Response {
         public string RulePatternExclude { get; private set; }
 
         /// <summary>
-        /// Is video conference required?
+        /// Video conference is required.
         /// </summary>
         [JsonProperty("video_conference")]
-        public bool? VideoConference { get; private set; }
+        public bool VideoConference { get; private set; }
 
         /// <summary>
         /// The bound scenarios.
         /// </summary>
         [JsonProperty("scenarios")]
-        public IReadOnlyList<ScenarioInfoType> Scenarios { get; private set; }
+        public ScenarioInfoType[] Scenarios { get; private set; }
 
         /// <summary>
         /// The rule editing UTC date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("modified")]
-        public DateTime? Modified { get; private set; }
+        public DateTime Modified { get; private set; }
 
     }
 }

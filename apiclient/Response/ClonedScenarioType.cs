@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The scenario ID.
         /// </summary>
         [JsonProperty("scenario_id")]
-        public long? ScenarioId { get; private set; }
+        public long ScenarioId { get; private set; }
 
         /// <summary>
         /// The scenario name.

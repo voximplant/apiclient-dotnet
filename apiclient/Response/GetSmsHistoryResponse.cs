@@ -8,13 +8,13 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<SmsHistoryType> Result { get; private set; }
+        public SmsHistoryType[] Result { get; private set; }
 
         /// <summary>
         /// Total number of distinct messages fetched.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
     }
 }

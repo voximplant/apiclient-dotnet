@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,33 +9,31 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class UpdateSipRegistrationSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public UpdateSipRegistrationSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Bind SIP registration with id 1 to the application with id 123.
-        */
         [Fact]
         public void UpdateSipRegistration()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.UpdateSipRegistration(new UpdateSipRegistrationRequest 
-                {
-                    SipRegistrationId = 1,
-                    ApplicationId = 123,
-                }).Result;
+            // Update SIP registration with id 1.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.UpdateSipRegistration(
+                    1L,
+                    sipUsername: "HedyLamarr",
+                    outboundProxy: "12",
+                    password: "123456"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

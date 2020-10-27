@@ -14,7 +14,7 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("date")]
-        public DateTime? Date { get; private set; }
+        public DateTime Date { get; private set; }
 
         /// <summary>
         /// The error message.

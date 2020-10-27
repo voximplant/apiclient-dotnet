@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The [ACD](https://voximplant.com/docs/references/voxengine/acd) lock
-    /// type.
+    /// The [ACD](/docs/references/voxengine/voxengine/enqueueacdrequest) lock type.
     /// </summary>
     public class ACDLock
     {
@@ -21,7 +20,7 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("created")]
-        public DateTime? Created { get; private set; }
+        public DateTime Created { get; private set; }
 
     }
 }

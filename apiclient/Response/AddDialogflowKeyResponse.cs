@@ -8,11 +8,11 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
 
         [JsonProperty("dialogflow_key_id")]
-        public long? DialogflowKeyId { get; private set; }
+        public long DialogflowKeyId { get; private set; }
 
     }
 }

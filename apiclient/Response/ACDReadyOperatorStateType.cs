@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The user ID of the operator.
         /// </summary>
         [JsonProperty("user_id")]
-        public long? UserId { get; private set; }
+        public long UserId { get; private set; }
 
         /// <summary>
         /// The user name of the operator.
@@ -28,12 +28,10 @@ namespace Voximplant.API.Response {
         public string UserDisplayName { get; private set; }
 
         /// <summary>
-        /// The idle duration in seconds. The minimum of the duration after the
-        /// last hangup and the duration after the operator status changing to
-        /// READY.
+        /// The idle duration in seconds. The minimum of the duration after the last hangup and the duration after the operator status changing to READY.
         /// </summary>
         [JsonProperty("idle_duration")]
-        public long? IdleDuration { get; private set; }
+        public long IdleDuration { get; private set; }
 
     }
 }

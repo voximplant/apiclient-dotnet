@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The record ID.
         /// </summary>
         [JsonProperty("record_id")]
-        public long? RecordId { get; private set; }
+        public long RecordId { get; private set; }
 
         /// <summary>
         /// The record name.
@@ -28,12 +28,11 @@ namespace Voximplant.API.Response {
         public decimal? Cost { get; private set; }
 
         /// <summary>
-        /// The start recording time in the selected timezone in 24-h format:
-        /// YYYY-MM-DD HH:mm:ss
+        /// The start recording time in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("start_time")]
-        public DateTime? StartTime { get; private set; }
+        public DateTime StartTime { get; private set; }
 
         /// <summary>
         /// The call duration in seconds.
@@ -51,7 +50,7 @@ namespace Voximplant.API.Response {
         /// The transaction ID.
         /// </summary>
         [JsonProperty("transaction_id")]
-        public long? TransactionId { get; private set; }
+        public long TransactionId { get; private set; }
 
         /// <summary>
         /// The file size.
@@ -66,8 +65,7 @@ namespace Voximplant.API.Response {
         public string TranscriptionUrl { get; private set; }
 
         /// <summary>
-        /// The status of transcription. The possible values are: Not required,
-        /// In progress, Complete
+        /// The status of transcription. The possible values are: Not required, In progress, Complete
         /// </summary>
         [JsonProperty("transcription_status")]
         public string TranscriptionStatus { get; private set; }

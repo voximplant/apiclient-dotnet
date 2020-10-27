@@ -13,14 +13,14 @@ namespace Voximplant.API.Response {
         /// The current plan ID.
         /// </summary>
         [JsonProperty("plan_subscription_template_id")]
-        public long? PlanSubscriptionTemplateId { get; private set; }
+        public long PlanSubscriptionTemplateId { get; private set; }
 
         /// <summary>
         /// The next charge date, format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("next_charge")]
-        public DateTime? NextCharge { get; private set; }
+        public DateTime NextCharge { get; private set; }
 
         /// <summary>
         /// The plan type. The possible values are: IM, MAU.
@@ -38,13 +38,13 @@ namespace Voximplant.API.Response {
         /// The plan monthly charge.
         /// </summary>
         [JsonProperty("periodic_charge")]
-        public decimal? PeriodicCharge { get; private set; }
+        public decimal PeriodicCharge { get; private set; }
 
         /// <summary>
         /// The account plan package array.
         /// </summary>
         [JsonProperty("packages")]
-        public IReadOnlyList<AccountPlanPackageType> Packages { get; private set; }
+        public AccountPlanPackageType[] Packages { get; private set; }
 
     }
 }

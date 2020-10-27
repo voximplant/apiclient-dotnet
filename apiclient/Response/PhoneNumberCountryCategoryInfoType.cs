@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The 'phone_categories' element of the [GetPhoneNumberCategories]
-    /// function result.
+    /// The 'phone_categories' element of the [GetPhoneNumberCategories] function result.
     /// </summary>
     public class PhoneNumberCountryCategoryInfoType
     {
@@ -20,7 +19,25 @@ namespace Voximplant.API.Response {
         /// True if a country state is used to choose the phone with the category.
         /// </summary>
         [JsonProperty("country_has_states")]
-        public bool? CountryHasStates { get; private set; }
+        public bool CountryHasStates { get; private set; }
+
+        /// <summary>
+        /// The localized country name.
+        /// </summary>
+        [JsonProperty("localized_country_name")]
+        public string LocalizedCountryName { get; private set; }
+
+        /// <summary>
+        /// The localized phone category name.
+        /// </summary>
+        [JsonProperty("localized_phone_category_name")]
+        public string LocalizedPhoneCategoryName { get; private set; }
+
+        /// <summary>
+        /// The localized phone region name.
+        /// </summary>
+        [JsonProperty("localized_phone_region_name")]
+        public string LocalizedPhoneRegionName { get; private set; }
 
     }
 }

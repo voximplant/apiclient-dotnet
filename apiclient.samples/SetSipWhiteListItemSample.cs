@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,31 +9,28 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class SetSipWhiteListItemSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public SetSipWhiteListItemSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
-        
         
         [Fact]
         public void SetSipWhiteListItem()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.SetSipWhiteListItem(new SetSipWhiteListItemRequest 
-                {
-                    SipWhitelistId = 1,
-                    SipWhitelistNetwork = "192.168.1.5/16",
-                }).Result;
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.SetSipWhiteListItem(
+                    1L,
+                    "192.168.1.5/16"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

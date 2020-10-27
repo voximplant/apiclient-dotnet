@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,35 +9,31 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class GetRulesSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public GetRulesSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Get the first rule for the template 74951234567
-        */
         [Fact]
         public void GetRules()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.GetRules(new GetRulesRequest 
-                {
-                    ApplicationId = 1,
-                    Template = "74951234567",
-                    WithScenarios = true,
-                    Count = 1,
-                }).Result;
+            // Get the first rule for the template 74951234567
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.GetRules(
+                    applicationId: 1L,
+                    template: "74951234567",
+                    withScenarios: true,
+                    count: 1L
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

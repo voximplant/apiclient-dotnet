@@ -25,13 +25,13 @@ namespace Voximplant.API.Response {
         /// The call session history id.
         /// </summary>
         [JsonProperty("call_session_history_id")]
-        public long? CallSessionHistoryId { get; private set; }
+        public long CallSessionHistoryId { get; private set; }
 
         /// <summary>
         /// The cost of transcription.
         /// </summary>
         [JsonProperty("transcription_cost")]
-        public decimal? TranscriptionCost { get; private set; }
+        public decimal TranscriptionCost { get; private set; }
 
     }
 }

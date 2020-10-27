@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,34 +9,31 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class TransferMoneyToUserSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public TransferMoneyToUserSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Transfer the all money from the user 1 to the parent account.
-        */
         [Fact]
         public void TransferMoneyToUser()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.TransferMoneyToUser(new TransferMoneyToUserRequest 
-                {
-                    UserId = new Argument<long>(1L),
-                    Amount = -10000000m,
-                    StrictMode = false,
-                }).Result;
+            // Transfer 5.67 $ to the user 1 and transfer 5.67 $ to the user 2 too.
+            // The account spends 2*5.67= 11.34 $ in total.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.TransferMoneyToUser(
+                    5.67m,
+                    userId: "1;2",
+                    currency: "USD"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

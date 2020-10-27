@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
         /// The resource prices.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<ResourcePrice> Result { get; private set; }
+        public ResourcePrice[] Result { get; private set; }
 
     }
 }

@@ -19,7 +19,7 @@ namespace Voximplant.API.Response {
         /// The key roles.
         /// </summary>
         [JsonProperty("roles")]
-        public IReadOnlyList<RoleView> Roles { get; private set; }
+        public RoleView[] Roles { get; private set; }
 
         /// <summary>
         /// The key description.
@@ -31,7 +31,7 @@ namespace Voximplant.API.Response {
         /// The key subuser.
         /// </summary>
         [JsonProperty("subuser")]
-        public IReadOnlyList<SubUserView> Subuser { get; private set; }
+        public SubUserView[] Subuser { get; private set; }
 
     }
 }

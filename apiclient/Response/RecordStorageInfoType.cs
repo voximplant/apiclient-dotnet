@@ -21,11 +21,5 @@ namespace Voximplant.API.Response {
         [JsonProperty("record_storage_name")]
         public string RecordStorageName { get; private set; }
 
-        /// <summary>
-        /// The public flag (The admin permission required).
-        /// </summary>
-        [JsonProperty("is_public")]
-        public bool? IsPublic { get; private set; }
-
     }
 }

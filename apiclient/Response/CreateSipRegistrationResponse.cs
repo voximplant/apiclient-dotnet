@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// 1
         /// </summary>
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
         /// <summary>
         /// The sip registration id.
         /// </summary>
         [JsonProperty("sip_registration_id")]
-        public long? SipRegistrationId { get; private set; }
+        public long SipRegistrationId { get; private set; }
 
         /// <summary>
         /// The current account state.

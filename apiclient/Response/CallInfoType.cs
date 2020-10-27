@@ -13,15 +13,14 @@ namespace Voximplant.API.Response {
         /// The call history ID.
         /// </summary>
         [JsonProperty("call_id")]
-        public long? CallId { get; private set; }
+        public long CallId { get; private set; }
 
         /// <summary>
-        /// The start time in the selected timezone in 24-h format: YYYY-MM-DD
-        /// HH:mm:ss
+        /// The start time in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("start_time")]
-        public DateTime? StartTime { get; private set; }
+        public DateTime StartTime { get; private set; }
 
         /// <summary>
         /// The call duration in seconds.
@@ -51,19 +50,19 @@ namespace Voximplant.API.Response {
         /// The incoming flag.
         /// </summary>
         [JsonProperty("incoming")]
-        public bool? Incoming { get; private set; }
+        public bool Incoming { get; private set; }
 
         /// <summary>
         /// The success flag.
         /// </summary>
         [JsonProperty("successful")]
-        public bool? Successful { get; private set; }
+        public bool Successful { get; private set; }
 
         /// <summary>
         /// The transaction ID.
         /// </summary>
         [JsonProperty("transaction_id")]
-        public long? TransactionId { get; private set; }
+        public long TransactionId { get; private set; }
 
         /// <summary>
         /// The record URL.

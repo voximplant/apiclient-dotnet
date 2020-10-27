@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the
-    /// [AccountCallback] structure.
+    /// The specific account callback details. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class RegulationAddressVerifiedCallback
     {
@@ -14,12 +13,10 @@ namespace Voximplant.API.Response {
         /// The uploaded document ID.
         /// </summary>
         [JsonProperty("regulation_address_id")]
-        public long? RegulationAddressId { get; private set; }
+        public long RegulationAddressId { get; private set; }
 
         /// <summary>
-        /// The document verification status. The following values are possible:
-        /// WAITING_CONFIRMATION_DOCS, VERIFIED, REJECTED,
-        /// WAITING_PERIOD_EXPIRED.
+        /// The document verification status. The following values are possible: WAITING_CONFIRMATION_DOCS, VERIFIED, REJECTED, WAITING_PERIOD_EXPIRED.
         /// </summary>
         [JsonProperty("regulation_address_status")]
         public string RegulationAddressStatus { get; private set; }
@@ -29,13 +26,13 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("uploaded")]
-        public DateTime? Uploaded { get; private set; }
+        public DateTime Uploaded { get; private set; }
 
         /// <summary>
-        /// Is individual, isn't legal entity?
+        /// Account belongs to an individual.
         /// </summary>
         [JsonProperty("is_individual")]
-        public bool? IsIndividual { get; private set; }
+        public bool IsIndividual { get; private set; }
 
         /// <summary>
         /// The reviewer's comment.

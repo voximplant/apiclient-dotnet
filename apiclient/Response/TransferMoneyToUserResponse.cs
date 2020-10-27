@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// 1
         /// </summary>
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
         /// <summary>
         /// The new account balance.
         /// </summary>
         [JsonProperty("balance")]
-        public decimal? Balance { get; private set; }
+        public decimal Balance { get; private set; }
 
     }
 }

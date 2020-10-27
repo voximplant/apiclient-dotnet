@@ -36,7 +36,7 @@ namespace Voximplant.API
         {
             if (string.IsNullOrEmpty(filename) || !File.Exists(filename))
             {
-                throw new ClientException($"Key file not found: '{filename}'");
+                throw new VoximplantException($"Key file not found: '{filename}'");
             }
 
             var credentials = JsonConvert.DeserializeObject<Credentials>(File.ReadAllText(filename));

@@ -19,25 +19,25 @@ namespace Voximplant.API.Response {
         /// The price group ID.
         /// </summary>
         [JsonProperty("price_group_id")]
-        public long? PriceGroupId { get; private set; }
+        public long PriceGroupId { get; private set; }
 
         /// <summary>
         /// The price for the 'num_resources_per_price' resource count.
         /// </summary>
         [JsonProperty("price")]
-        public decimal? Price { get; private set; }
+        public decimal Price { get; private set; }
 
         /// <summary>
         /// The resource count per price.
         /// </summary>
         [JsonProperty("num_resources_per_price")]
-        public long? NumResourcesPerPrice { get; private set; }
+        public long NumResourcesPerPrice { get; private set; }
 
         /// <summary>
         /// The resource rounding quantum.
         /// </summary>
         [JsonProperty("quantum")]
-        public long? Quantum { get; private set; }
+        public long Quantum { get; private set; }
 
         /// <summary>
         /// The available resource parameters.

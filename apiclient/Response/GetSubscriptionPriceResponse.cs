@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
         /// The subscription template prices.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<SubscriptionTemplateType> Result { get; private set; }
+        public SubscriptionTemplateType[] Result { get; private set; }
 
     }
 }

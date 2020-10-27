@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The price group IDs.
         /// </summary>
         [JsonProperty("price_group_id")]
-        public long?[] PriceGroupId { get; private set; }
+        public long[] PriceGroupId { get; private set; }
 
         /// <summary>
         /// The package name.
@@ -22,40 +22,40 @@ namespace Voximplant.API.Response {
         public string PackageName { get; private set; }
 
         /// <summary>
-        /// Is overrun enabled?
+        /// Overrun is enabled.
         /// </summary>
         [JsonProperty("may_overrun")]
-        public bool? MayOverrun { get; private set; }
+        public bool MayOverrun { get; private set; }
 
         /// <summary>
         /// The overrun amount.
         /// </summary>
         [JsonProperty("overrun_price")]
-        public decimal? OverrunPrice { get; private set; }
+        public decimal OverrunPrice { get; private set; }
 
         /// <summary>
         /// The number of resources (e.g., messages) per overrun.
         /// </summary>
         [JsonProperty("overrun_resources")]
-        public long? OverrunResources { get; private set; }
+        public long OverrunResources { get; private set; }
 
         /// <summary>
         /// The resource left in the package.
         /// </summary>
         [JsonProperty("resource_left")]
-        public long? ResourceLeft { get; private set; }
+        public long ResourceLeft { get; private set; }
 
         /// <summary>
         /// The current package size (including overrun).
         /// </summary>
         [JsonProperty("package_size")]
-        public long? PackageSize { get; private set; }
+        public long PackageSize { get; private set; }
 
         /// <summary>
         /// The original package size (excluding overrun).
         /// </summary>
         [JsonProperty("orig_package_size")]
-        public long? OrigPackageSize { get; private set; }
+        public long OrigPackageSize { get; private set; }
 
     }
 }

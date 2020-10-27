@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The admin user ID.
         /// </summary>
         [JsonProperty("admin_user_id")]
-        public long? AdminUserId { get; private set; }
+        public long AdminUserId { get; private set; }
 
         /// <summary>
         /// The admin user name.
@@ -28,17 +28,17 @@ namespace Voximplant.API.Response {
         public string AdminUserDisplayName { get; private set; }
 
         /// <summary>
-        /// Is allowed to logon?
+        /// Login is allowed.
         /// </summary>
         [JsonProperty("admin_user_active")]
-        public bool? AdminUserActive { get; private set; }
+        public bool AdminUserActive { get; private set; }
 
         /// <summary>
         /// The admin user editing UTC date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("modified")]
-        public DateTime? Modified { get; private set; }
+        public DateTime Modified { get; private set; }
 
         /// <summary>
         /// The allowed access entries (the API function names).
@@ -50,7 +50,7 @@ namespace Voximplant.API.Response {
         /// The attached admin roles.
         /// </summary>
         [JsonProperty("admin_roles")]
-        public IReadOnlyList<AdminRoleType> AdminRoles { get; private set; }
+        public AdminRoleType[] AdminRoles { get; private set; }
 
     }
 }

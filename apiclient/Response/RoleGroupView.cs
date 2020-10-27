@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The role group ID.
         /// </summary>
         [JsonProperty("id")]
-        public long? Id { get; private set; }
+        public long Id { get; private set; }
 
         /// <summary>
         /// The role group name.

@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The MGP template ID.
         /// </summary>
         [JsonProperty("mgp_template_id")]
-        public long? MgpTemplateId { get; private set; }
+        public long MgpTemplateId { get; private set; }
 
         /// <summary>
         /// The MGP template name.
@@ -25,7 +25,7 @@ namespace Voximplant.API.Response {
         /// The MGP template price.
         /// </summary>
         [JsonProperty("mgp_template_price")]
-        public long? MgpTemplatePrice { get; private set; }
+        public long MgpTemplatePrice { get; private set; }
 
         /// <summary>
         /// The MGP template currency.

@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// The ZipCode records.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<ZipCode> Result { get; private set; }
+        public ZipCode[] Result { get; private set; }
 
         /// <summary>
         /// The returned zip codes count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

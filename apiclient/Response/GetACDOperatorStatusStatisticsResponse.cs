@@ -7,11 +7,10 @@ namespace Voximplant.API.Response {
     public class GetACDOperatorStatusStatisticsResponse : BaseResponse
     {
         /// <summary>
-        /// List of groups, grouped by user ID or date according to the 'group'
-        /// method call argument
+        /// List of groups, grouped by user ID or date according to the 'group' method call argument
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<ACDOperatorStatusAggregationGroupType> Result { get; private set; }
+        public ACDOperatorStatusAggregationGroupType[] Result { get; private set; }
 
     }
 }

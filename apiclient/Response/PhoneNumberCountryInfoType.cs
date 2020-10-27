@@ -25,13 +25,13 @@ namespace Voximplant.API.Response {
         /// True if can list phone numbers.
         /// </summary>
         [JsonProperty("can_list_phone_numbers")]
-        public bool? CanListPhoneNumbers { get; private set; }
+        public bool CanListPhoneNumbers { get; private set; }
 
         /// <summary>
         /// The phone categories.
         /// </summary>
         [JsonProperty("phone_categories")]
-        public IReadOnlyList<PhoneNumberCountryCategoryInfoType> PhoneCategories { get; private set; }
+        public PhoneNumberCountryCategoryInfoType[] PhoneCategories { get; private set; }
 
     }
 }

@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// 1
         /// </summary>
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
         /// <summary>
         /// The new rule ID.
         /// </summary>
         [JsonProperty("rule_id")]
-        public long? RuleId { get; private set; }
+        public long RuleId { get; private set; }
 
     }
 }

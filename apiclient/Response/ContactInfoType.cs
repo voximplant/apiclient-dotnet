@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The contact ID.
         /// </summary>
         [JsonProperty("contact_id")]
-        public long? ContactId { get; private set; }
+        public long ContactId { get; private set; }
 
         /// <summary>
         /// The contact type. The following values are available: 'email'.
@@ -31,7 +31,7 @@ namespace Voximplant.API.Response {
         /// The persistent flag.
         /// </summary>
         [JsonProperty("is_persistent")]
-        public bool? IsPersistent { get; private set; }
+        public bool IsPersistent { get; private set; }
 
         /// <summary>
         /// The contact description.
@@ -46,34 +46,31 @@ namespace Voximplant.API.Response {
         public long? NextVerificationAfterSec { get; private set; }
 
         /// <summary>
-        /// The activation time in the UTC timezone in 24-h format: YYYY-MM-DD
-        /// HH:mm:ss
+        /// The activation time in the UTC timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("verified")]
         public DateTime? Verified { get; private set; }
 
         /// <summary>
-        /// The attached notification group list. The following groups are
-        /// available: 'news', 'tariff_changing', 'account', 'development'.
+        /// The attached notification group list. The following groups are available: 'news', 'tariff_changing', 'account', 'development'.
         /// </summary>
         [JsonProperty("notification_group")]
         public string[] NotificationGroup { get; private set; }
 
         /// <summary>
-        /// The creation time in the UTC timezone in 24-h format: YYYY-MM-DD
-        /// HH:mm:ss
+        /// The creation time in the UTC timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("created")]
-        public DateTime? Created { get; private set; }
+        public DateTime Created { get; private set; }
 
         /// <summary>
         /// The contact editing UTC date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("modified")]
-        public DateTime? Modified { get; private set; }
+        public DateTime Modified { get; private set; }
 
     }
 }

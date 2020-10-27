@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,34 +9,31 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class AddPushCredentialSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public AddPushCredentialSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Add new Google credentials.
-        */
         [Fact]
         public void AddPushCredential()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.AddPushCredential(new AddPushCredentialRequest 
-                {
-                    PushProviderName = "GOOGLE",
-                    SenderId = "704777431520",
-                    ServerKey = "AAAAjM-LQsc:APA91bGyCb5WhcGtaM-RaOI1GqWps1Uh9K-YoY75HIBy-En-4piH4c6_50gIEbSaCfuDrsLNfyZCvteiu6EjxA_rEBOvlc4xZ30uiGgbuM_jdT6y6Ku55OwnCyIxRNznvmx1jkkLexSU",
-                }).Result;
+            // Add new Apple credentials.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.AddPushCredential(
+                    pushProviderName: "APPLE",
+                    certPassword: "12345678",
+                    certFileName: "apple_certificate_name",
+                    isDevMode: false
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

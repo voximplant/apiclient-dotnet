@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The phone ID.
         /// </summary>
         [JsonProperty("phone_id")]
-        public long? PhoneId { get; private set; }
+        public long PhoneId { get; private set; }
 
         /// <summary>
         /// The phone number.
@@ -22,16 +22,16 @@ namespace Voximplant.API.Response {
         public string PhoneNumber { get; private set; }
 
         /// <summary>
-        /// Is subscription frozen?
+        /// Subscription is frozen.
         /// </summary>
         [JsonProperty("deactivated")]
-        public bool? Deactivated { get; private set; }
+        public bool Deactivated { get; private set; }
 
         /// <summary>
-        /// Has phone been charged?
+        /// Phone number has been charged.
         /// </summary>
         [JsonProperty("is_charged")]
-        public bool? IsCharged { get; private set; }
+        public bool IsCharged { get; private set; }
 
     }
 }

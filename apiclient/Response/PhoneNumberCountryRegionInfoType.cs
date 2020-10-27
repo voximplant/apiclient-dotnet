@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The region ID.
         /// </summary>
         [JsonProperty("phone_region_id")]
-        public long? PhoneRegionId { get; private set; }
+        public long PhoneRegionId { get; private set; }
 
         /// <summary>
         /// The full region name.
@@ -31,11 +31,10 @@ namespace Voximplant.API.Response {
         /// The phone number count in stock for the region.
         /// </summary>
         [JsonProperty("phone_count")]
-        public long? PhoneCount { get; private set; }
+        public long PhoneCount { get; private set; }
 
         /// <summary>
-        /// The account verification status. The following values are possible:
-        /// REQUIRED, IN_PROGRESS, VERIFIED
+        /// The account verification status. The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED
         /// </summary>
         [JsonProperty("verification_status")]
         public string VerificationStatus { get; private set; }
@@ -50,17 +49,16 @@ namespace Voximplant.API.Response {
         /// The phone monthly charge.
         /// </summary>
         [JsonProperty("phone_price")]
-        public decimal? PhonePrice { get; private set; }
+        public decimal PhonePrice { get; private set; }
 
         /// <summary>
         /// The phone installation price (without the first monthly fee).
         /// </summary>
         [JsonProperty("phone_installation_price")]
-        public decimal? PhoneInstallationPrice { get; private set; }
+        public decimal PhoneInstallationPrice { get; private set; }
 
         /// <summary>
-        /// The charge period in 24-h format: Y-M-D H:m:s. Example: 0-1-0 0:0:0
-        /// is 1 month.
+        /// The charge period in 24-h format: Y-M-D H:m:s. Example: 0-1-0 0:0:0 is 1 month.
         /// </summary>
         [JsonProperty("phone_period")]
         public string PhonePeriod { get; private set; }
@@ -72,31 +70,40 @@ namespace Voximplant.API.Response {
         public bool? IsNeedRegulationAddress { get; private set; }
 
         /// <summary>
-        /// The type of regulation address. The possible values are: LOCAL,
-        /// NATIONAL, WORLDWIDE.
+        /// The type of regulation address. The possible values are: LOCAL, NATIONAL, WORLDWIDE.
         /// </summary>
         [JsonProperty("regulation_address_type")]
         public string RegulationAddressType { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, SMS is supported for phone numbers in this region.
-        /// SMS needs to be explicitly enabled for a phone number via the
-        /// [ControlSms] HTTP API before sending or receiving SMS. If SMS is
-        /// supported and enabled, SMS can be sent from a phone number using the
-        /// [SendSmsMessage] HTTP API and received using the [InboundSmsCallback]
-        /// property of the HTTP callback. See <a
-        /// href='/docs/howtos/integration/httpapi/callbacks'>this article</a>
-        /// for HTTP callback details.
+        /// If <b>true</b>, SMS is supported for phone numbers in this region. SMS needs to be explicitly enabled for a phone number via the [ControlSms] HTTP API before sending or receiving SMS. If SMS is supported and enabled, SMS can be sent from a phone number using the [SendSmsMessage] HTTP API and received using the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/howtos/integration/httpapi/callbacks'>this article</a> for HTTP callback details.
         /// </summary>
         [JsonProperty("is_sms_supported")]
-        public bool? IsSmsSupported { get; private set; }
+        public bool IsSmsSupported { get; private set; }
 
         /// <summary>
-        /// [Array](MultipleNumbersPrice) with info about multiple numbers
-        /// subscription for the child accounts.
+        /// [Array](MultipleNumbersPrice) with info about multiple numbers subscription for the child accounts.
         /// </summary>
         [JsonProperty("multiple_numbers_price")]
-        public IReadOnlyList<MultipleNumbersPrice> MultipleNumbersPrice { get; private set; }
+        public MultipleNumbersPrice[] MultipleNumbersPrice { get; private set; }
+
+        /// <summary>
+        /// The localized country name.
+        /// </summary>
+        [JsonProperty("localized_country_name")]
+        public string LocalizedCountryName { get; private set; }
+
+        /// <summary>
+        /// The localized phone category name.
+        /// </summary>
+        [JsonProperty("localized_phone_category_name")]
+        public string LocalizedPhoneCategoryName { get; private set; }
+
+        /// <summary>
+        /// The localized phone region name.
+        /// </summary>
+        [JsonProperty("localized_phone_region_name")]
+        public string LocalizedPhoneRegionName { get; private set; }
 
     }
 }

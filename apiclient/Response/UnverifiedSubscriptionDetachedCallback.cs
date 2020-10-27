@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the
-    /// [AccountCallback] structure.
+    /// The specific account callback details. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class UnverifiedSubscriptionDetachedCallback
     {
@@ -14,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The frozen subscription list.
         /// </summary>
         [JsonProperty("subscriptions")]
-        public IReadOnlyList<UnverifiedSubscriptionDetachedCallbackItem> Subscriptions { get; private set; }
+        public UnverifiedSubscriptionDetachedCallbackItem[] Subscriptions { get; private set; }
 
     }
 }

@@ -13,12 +13,10 @@ namespace Voximplant.API.Response {
         /// The ACD session history ID.
         /// </summary>
         [JsonProperty("acd_session_history_id")]
-        public long? AcdSessionHistoryId { get; private set; }
+        public long AcdSessionHistoryId { get; private set; }
 
         /// <summary>
-        /// The ACD request ID. See the
-        /// [ACDRequest.id()](https://voximplant.com/docs/references/voxengine/acd/acdrequest#id)
-        /// VoxEngine method.
+        /// The ACD request ID. See the [ACDRequest.id()](https://voximplant.com/docs/references/voxengine/acd/acdrequest#id) VoxEngine method.
         /// </summary>
         [JsonProperty("acd_request_id")]
         public string AcdRequestId { get; private set; }
@@ -27,20 +25,20 @@ namespace Voximplant.API.Response {
         /// The account ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
         /// The UTC start date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("begin_time")]
-        public DateTime? BeginTime { get; private set; }
+        public DateTime BeginTime { get; private set; }
 
         /// <summary>
         /// The request priority.
         /// </summary>
         [JsonProperty("priority")]
-        public long? Priority { get; private set; }
+        public long Priority { get; private set; }
 
         /// <summary>
         /// The ACD queue ID.
@@ -76,7 +74,7 @@ namespace Voximplant.API.Response {
         /// The bound events.
         /// </summary>
         [JsonProperty("events")]
-        public IReadOnlyList<ACDSessionEventInfoType> Events { get; private set; }
+        public ACDSessionEventInfoType[] Events { get; private set; }
 
     }
 }

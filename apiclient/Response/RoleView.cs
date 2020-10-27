@@ -19,7 +19,7 @@ namespace Voximplant.API.Response {
         /// The role ID.
         /// </summary>
         [JsonProperty("role_id")]
-        public long? RoleId { get; private set; }
+        public long RoleId { get; private set; }
 
         /// <summary>
         /// Shows that the role is inherited.
@@ -31,19 +31,19 @@ namespace Voximplant.API.Response {
         /// Child roles IDs array.
         /// </summary>
         [JsonProperty("child_ids")]
-        public long?[] ChildIds { get; private set; }
+        public long[] ChildIds { get; private set; }
 
         /// <summary>
         /// Parent roles IDs array.
         /// </summary>
         [JsonProperty("parent_role_id")]
-        public long?[] ParentRoleId { get; private set; }
+        public long[] ParentRoleId { get; private set; }
 
         /// <summary>
         /// Shows that the role is gui only.
         /// </summary>
         [JsonProperty("gui_only")]
-        public bool? GuiOnly { get; private set; }
+        public bool GuiOnly { get; private set; }
 
     }
 }

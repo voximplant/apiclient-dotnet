@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,34 +9,29 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class BindSkillSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public BindSkillSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Unbind the skills 1, 6 from the all users and the queues 11, 12.
-        */
         [Fact]
         public void BindSkill()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.BindSkill(new BindSkillRequest 
-                {
-                    SkillId = new Argument<long>(new[] {1L, 6L}),
-                    AcdQueueId = new Argument<long>(new[] {11L, 12L}),
-                    UserId = new Argument<long>(),
-                }).Result;
+            // Bind the skills 1, 5 to the users 5, 6, 10.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.BindSkill(
+                    skillId: "1;3",
+                    userId: "5;6;10"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

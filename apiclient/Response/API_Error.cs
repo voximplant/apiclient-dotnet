@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The error code.
         /// </summary>
         [JsonProperty("code")]
-        public long? Code { get; private set; }
+        public long Code { get; private set; }
 
         /// <summary>
         /// The error description.

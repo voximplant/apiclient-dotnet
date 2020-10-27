@@ -8,7 +8,7 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<DialogflowKeyInfo> Result { get; private set; }
+        public DialogflowKeyInfo[] Result { get; private set; }
 
     }
 }

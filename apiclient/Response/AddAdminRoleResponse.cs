@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// 1
         /// </summary>
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
         /// <summary>
         /// The new admin role ID.
         /// </summary>
         [JsonProperty("admin_role_id")]
-        public long? AdminRoleId { get; private set; }
+        public long AdminRoleId { get; private set; }
 
     }
 }

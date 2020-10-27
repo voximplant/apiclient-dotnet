@@ -20,7 +20,7 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("expiration_date")]
-        public DateTime? ExpirationDate { get; private set; }
+        public DateTime ExpirationDate { get; private set; }
 
     }
 }

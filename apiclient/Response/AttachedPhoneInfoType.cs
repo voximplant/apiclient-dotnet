@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The phone ID.
         /// </summary>
         [JsonProperty("phone_id")]
-        public long? PhoneId { get; private set; }
+        public long PhoneId { get; private set; }
 
         /// <summary>
         /// The phone number.
@@ -25,7 +25,7 @@ namespace Voximplant.API.Response {
         /// The phone monthly charge.
         /// </summary>
         [JsonProperty("phone_price")]
-        public decimal? PhonePrice { get; private set; }
+        public decimal PhonePrice { get; private set; }
 
         /// <summary>
         /// The phone country code (2 symbols).
@@ -38,53 +38,53 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("phone_next_renewal")]
-        public DateTime? PhoneNextRenewal { get; private set; }
+        public DateTime PhoneNextRenewal { get; private set; }
 
         /// <summary>
         /// The purchase date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("phone_purchase_date")]
-        public DateTime? PhonePurchaseDate { get; private set; }
+        public DateTime PhonePurchaseDate { get; private set; }
 
         /// <summary>
         /// The flag of the frozen subscription.
         /// </summary>
         [JsonProperty("deactivated")]
-        public bool? Deactivated { get; private set; }
+        public bool Deactivated { get; private set; }
 
         /// <summary>
         /// The flag of the deleted subscription.
         /// </summary>
         [JsonProperty("canceled")]
-        public bool? Canceled { get; private set; }
+        public bool Canceled { get; private set; }
 
         /// <summary>
         /// The auto_charge flag.
         /// </summary>
         [JsonProperty("auto_charge")]
-        public bool? AutoCharge { get; private set; }
+        public bool AutoCharge { get; private set; }
 
         /// <summary>
-        /// The bound application ID.
+        /// The id of the bound application.
         /// </summary>
         [JsonProperty("application_id")]
         public long? ApplicationId { get; private set; }
 
         /// <summary>
-        /// The bound application name.
+        /// The name of the bound application.
         /// </summary>
         [JsonProperty("application_name")]
         public string ApplicationName { get; private set; }
 
         /// <summary>
-        /// The bound rule ID.
+        /// The id of the bound rule.
         /// </summary>
         [JsonProperty("rule_id")]
         public long? RuleId { get; private set; }
 
         /// <summary>
-        /// The bound rule name.
+        /// The name of the bound rule.
         /// </summary>
         [JsonProperty("rule_name")]
         public string RuleName { get; private set; }
@@ -102,45 +102,41 @@ namespace Voximplant.API.Response {
         public string RequiredVerification { get; private set; }
 
         /// <summary>
-        /// The account verification status. The following values are possible:
-        /// REQUIRED, IN_PROGRESS, VERIFIED
+        /// The account verification status. The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED
         /// </summary>
         [JsonProperty("verification_status")]
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the
-        /// account verification is required). The number will be detached on
-        /// that day automatically!
+        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the account verification is required). The number will be detached on that day automatically!
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("unverified_hold_until")]
         public DateTime? UnverifiedHoldUntil { get; private set; }
 
         /// <summary>
-        /// Can the unverified account use the phone?
+        /// Unverified account can use the phone.
         /// </summary>
         [JsonProperty("can_be_used")]
-        public bool? CanBeUsed { get; private set; }
+        public bool CanBeUsed { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, SMS is supported for this phone number. SMS needs to
-        /// be explicitly enabled via the [ControlSms] HTTP API before sending or
-        /// receiving SMS. If SMS is supported and enabled, SMS can be sent from
-        /// this phone number using the [SendSmsMessage] HTTP API and received
-        /// using the [InboundSmsCallback] property of the HTTP callback. See <a
-        /// href='/docs/howtos/integration/httpapi/callbacks'>this article</a>
-        /// for HTTP callback details.
+        /// If <b>true</b>, SMS is supported for this phone number. SMS needs to be explicitly enabled via the [ControlSms] HTTP API before sending or receiving SMS. If SMS is supported and enabled, SMS can be sent from this phone number using the [SendSmsMessage] HTTP API and received using the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/howtos/integration/httpapi/callbacks'>this article</a> for HTTP callback details.
         /// </summary>
         [JsonProperty("is_sms_supported")]
-        public bool? IsSmsSupported { get; private set; }
+        public bool IsSmsSupported { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, SMS sending and receiving is enabled for this phone
-        /// number via the [ControlSms] HTTP API.
+        /// If <b>true</b>, SMS sending and receiving is enabled for this phone number via the [ControlSms] HTTP API.
         /// </summary>
         [JsonProperty("is_sms_enabled")]
-        public bool? IsSmsEnabled { get; private set; }
+        public bool IsSmsEnabled { get; private set; }
+
+        /// <summary>
+        /// If set, the callback of an inbound SMS will be sent to this url, otherwise, it will be sent to the general account URL.
+        /// </summary>
+        [JsonProperty("incoming_sms_callback_url")]
+        public string IncomingSmsCallbackUrl { get; private set; }
 
     }
 }

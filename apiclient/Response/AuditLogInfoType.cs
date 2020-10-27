@@ -13,21 +13,20 @@ namespace Voximplant.API.Response {
         /// The  ID.
         /// </summary>
         [JsonProperty("audit_log_id")]
-        public long? AuditLogId { get; private set; }
+        public long AuditLogId { get; private set; }
 
         /// <summary>
         /// The account ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
-        /// The action time in the selected timezone in 24-h format: YYYY-MM-DD
-        /// HH:mm:ss
+        /// The action time in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("requested")]
-        public DateTime? Requested { get; private set; }
+        public DateTime Requested { get; private set; }
 
         /// <summary>
         /// The initiator IP address.
@@ -45,13 +44,13 @@ namespace Voximplant.API.Response {
         /// The arguments of the called function (they may be masked or resolved).
         /// </summary>
         [JsonProperty("cmd_args")]
-        public Dictionary<string, object> CmdArgs { get; private set; }
+        public object CmdArgs { get; private set; }
 
         /// <summary>
         /// The modified values.
         /// </summary>
         [JsonProperty("cmd_result")]
-        public Dictionary<string, object> CmdResult { get; private set; }
+        public object CmdResult { get; private set; }
 
     }
 }

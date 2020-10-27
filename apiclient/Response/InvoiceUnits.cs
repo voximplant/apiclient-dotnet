@@ -25,13 +25,13 @@ namespace Voximplant.API.Response {
         /// The tax rate in the range of [0 ... 1].
         /// </summary>
         [JsonProperty("vat_rate")]
-        public decimal? VatRate { get; private set; }
+        public decimal VatRate { get; private set; }
 
         /// <summary>
         /// The tax amount.
         /// </summary>
         [JsonProperty("tax_amount")]
-        public decimal? TaxAmount { get; private set; }
+        public decimal TaxAmount { get; private set; }
 
     }
 }

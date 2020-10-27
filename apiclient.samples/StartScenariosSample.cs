@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,34 +9,29 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class StartScenariosSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public StartScenariosSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Start the scripts from the user 1.
-        */
         [Fact]
         public void StartScenarios()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.StartScenarios(new StartScenariosRequest 
-                {
-                    RuleId = 1,
-                    ScriptCustomData = "mystr",
-                    UserId = 1,
-                }).Result;
+            // Start the scripts from the account.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.StartScenarios(
+                    1L,
+                    scriptCustomData: "mystr"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

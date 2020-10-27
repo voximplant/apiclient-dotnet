@@ -13,19 +13,19 @@ namespace Voximplant.API.Response {
         /// Id of the message.
         /// </summary>
         [JsonProperty("sms_id")]
-        public long? SmsId { get; private set; }
+        public long SmsId { get; private set; }
 
         /// <summary>
         /// Number being called from.
         /// </summary>
         [JsonProperty("source_number")]
-        public long? SourceNumber { get; private set; }
+        public long SourceNumber { get; private set; }
 
         /// <summary>
         /// Number being called to.
         /// </summary>
         [JsonProperty("destination_number")]
-        public long? DestinationNumber { get; private set; }
+        public long DestinationNumber { get; private set; }
 
         /// <summary>
         /// Incoming or outgoing message.
@@ -37,19 +37,19 @@ namespace Voximplant.API.Response {
         /// Number of fragments the initial message was divided into.
         /// </summary>
         [JsonProperty("fragments")]
-        public long? Fragments { get; private set; }
+        public long Fragments { get; private set; }
 
         /// <summary>
         /// Cost of the message.
         /// </summary>
         [JsonProperty("cost")]
-        public decimal? Cost { get; private set; }
+        public decimal Cost { get; private set; }
 
         /// <summary>
         /// Status of the message. 1 - Success, 2 - Error.
         /// </summary>
         [JsonProperty("status_id")]
-        public long? StatusId { get; private set; }
+        public long StatusId { get; private set; }
 
         /// <summary>
         /// Error message if any.
@@ -62,7 +62,7 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("processed_date")]
-        public DateTime? ProcessedDate { get; private set; }
+        public DateTime ProcessedDate { get; private set; }
 
         /// <summary>
         /// Id of the transaction for this message.

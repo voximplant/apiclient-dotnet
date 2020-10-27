@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
         /// Active SIP registrations
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<SIPRegistrationType> Result { get; private set; }
+        public SIPRegistrationType[] Result { get; private set; }
 
         /// <summary>
         /// Count rows
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

@@ -8,19 +8,19 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<AuditLogInfoType> Result { get; private set; }
+        public AuditLogInfoType[] Result { get; private set; }
 
         /// <summary>
         /// The total found item count.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
         /// <summary>
         /// The returned item count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
         /// <summary>
         /// The used timezone.
@@ -32,7 +32,7 @@ namespace Voximplant.API.Response {
         /// The history report ID (async mode).
         /// </summary>
         [JsonProperty("history_report_id")]
-        public long? HistoryReportId { get; private set; }
+        public long HistoryReportId { get; private set; }
 
     }
 }

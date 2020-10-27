@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the
-    /// [AccountCallback] structure.
+    /// The specific account callback details. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class ExpiringAgreementCallback
     {
@@ -15,13 +14,13 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("expiration_date ")]
-        public DateTime? ExpirationDate  { get; private set; }
+        public DateTime ExpirationDate  { get; private set; }
 
         /// <summary>
         /// The number of days left until an expiration date.
         /// </summary>
         [JsonProperty("until_expiration")]
-        public long? UntilExpiration { get; private set; }
+        public long UntilExpiration { get; private set; }
 
     }
 }

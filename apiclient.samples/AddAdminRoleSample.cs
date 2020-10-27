@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,34 +9,30 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class AddAdminRoleSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public AddAdminRoleSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Add a new admin role with the GetAccountInfo and GetCallHistory
-        * permissions.
-        */
         [Fact]
         public void AddAdminRole()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.AddAdminRole(new AddAdminRoleRequest 
-                {
-                    AdminRoleName = "read_only",
-                    AllowedEntries = new Argument<string>(new[] {"GetAccountInfo", "GetCallHistory"}),
-                }).Result;
+            // Add a new admin role with the GetAccountInfo and GetCallHistory
+            // permissions.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.AddAdminRole(
+                    "read_only",
+                    allowedEntries: "GetAccountInfo;GetCallHistory"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

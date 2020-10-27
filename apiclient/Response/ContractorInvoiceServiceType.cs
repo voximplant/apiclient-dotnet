@@ -19,7 +19,7 @@ namespace Voximplant.API.Response {
         /// The service cost (RUR).
         /// </summary>
         [JsonProperty("service_cost")]
-        public decimal? ServiceCost { get; private set; }
+        public decimal ServiceCost { get; private set; }
 
     }
 }

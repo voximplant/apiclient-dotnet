@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The skill ID.
         /// </summary>
         [JsonProperty("skill_id")]
-        public long? SkillId { get; private set; }
+        public long SkillId { get; private set; }
 
         /// <summary>
         /// The skill name.

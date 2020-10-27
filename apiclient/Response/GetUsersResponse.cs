@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
         /// The UserInfoType records.
         /// </summary>
         [JsonProperty("result")]
-        public IReadOnlyList<UserInfoType> Result { get; private set; }
+        public UserInfoType[] Result { get; private set; }
 
         /// <summary>
         /// The total found user count.
         /// </summary>
         [JsonProperty("total_count")]
-        public long? TotalCount { get; private set; }
+        public long TotalCount { get; private set; }
 
         /// <summary>
         /// The returned user count.
         /// </summary>
         [JsonProperty("count")]
-        public long? Count { get; private set; }
+        public long Count { get; private set; }
 
     }
 }

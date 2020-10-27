@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The phone ID.
         /// </summary>
         [JsonProperty("phone_id")]
-        public long? PhoneId { get; private set; }
+        public long PhoneId { get; private set; }
 
         /// <summary>
         /// The phone number.
@@ -28,16 +28,13 @@ namespace Voximplant.API.Response {
         public string RequiredVerification { get; private set; }
 
         /// <summary>
-        /// The account verification status. The following values are possible:
-        /// REQUIRED, IN_PROGRESS, VERIFIED
+        /// The account verification status. The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED
         /// </summary>
         [JsonProperty("verification_status")]
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the
-        /// account verification is required). The number will be detached on
-        /// that day automatically!
+        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the account verification is required). The number will be detached on that day automatically!
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("unverified_hold_until")]

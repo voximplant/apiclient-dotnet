@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The scenario ID.
         /// </summary>
         [JsonProperty("scenario_id")]
-        public long? ScenarioId { get; private set; }
+        public long ScenarioId { get; private set; }
 
         /// <summary>
         /// The scenario name.
@@ -32,14 +32,13 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("modified")]
-        public DateTime? Modified { get; private set; }
+        public DateTime Modified { get; private set; }
 
         /// <summary>
-        /// 'True' if the scenario belongs to the parent account, 'false' if the
-        /// scenario belongs to the current account.
+        /// 'True' if the scenario belongs to the parent account, 'false' if the scenario belongs to the current account.
         /// </summary>
         [JsonProperty("parent")]
-        public bool? Parent { get; private set; }
+        public bool Parent { get; private set; }
 
     }
 }

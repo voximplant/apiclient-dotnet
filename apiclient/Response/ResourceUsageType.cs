@@ -13,12 +13,10 @@ namespace Voximplant.API.Response {
         /// The resource usage ID.
         /// </summary>
         [JsonProperty("resource_usage_id")]
-        public long? ResourceUsageId { get; private set; }
+        public long ResourceUsageId { get; private set; }
 
         /// <summary>
-        /// The resource type. The possible values are: CALLSESSION, VIDEOCALL,
-        /// VIDEORECORD, VOICEMAILDETECTION, YANDEXASR, ASR, TRANSCRIPTION,
-        /// TTS_TEXT_GOOGLE, TTS_YANDEX, AUDIOHDCONFERENCE.
+        /// The resource type. The possible values are: CALLSESSION, VIDEOCALL, VIDEORECORD, VOICEMAILDETECTION, YANDEXASR, ASR, TRANSCRIPTION, TTS_TEXT_GOOGLE, TTS_YANDEX, AUDIOHDCONFERENCE.
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
@@ -36,18 +34,17 @@ namespace Voximplant.API.Response {
         public string Description { get; private set; }
 
         /// <summary>
-        /// The start resource using time in the selected timezone in 24-h
-        /// format: YYYY-MM-DD HH:mm:ss
+        /// The start resource using time in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("used_at")]
-        public DateTime? UsedAt { get; private set; }
+        public DateTime UsedAt { get; private set; }
 
         /// <summary>
         /// The transaction ID.
         /// </summary>
         [JsonProperty("transaction_id")]
-        public long? TransactionId { get; private set; }
+        public long TransactionId { get; private set; }
 
         /// <summary>
         /// The resource quantity.

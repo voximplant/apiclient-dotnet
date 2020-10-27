@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The user ID.
         /// </summary>
         [JsonProperty("user_id")]
-        public long? UserId { get; private set; }
+        public long UserId { get; private set; }
 
         /// <summary>
         /// The user name.
@@ -31,45 +31,31 @@ namespace Voximplant.API.Response {
         /// The user active flag.
         /// </summary>
         [JsonProperty("user_active")]
-        public bool? UserActive { get; private set; }
+        public bool UserActive { get; private set; }
 
         /// <summary>
-        /// 'True' if the user uses the parent account's money, 'false' if the
-        /// user has a separate balance.
+        /// 'True' if the user uses the parent account's money, 'false' if the user has a separate balance.
         /// </summary>
         [JsonProperty("parent_accounting")]
-        public bool? ParentAccounting { get; private set; }
+        public bool ParentAccounting { get; private set; }
 
         /// <summary>
-        /// The user mobile phone.
-        /// </summary>
-        [JsonProperty("mobile_phone")]
-        public string MobilePhone { get; private set; }
-
-        /// <summary>
-        /// The current user's money in the currency specified for the account.
-        /// The value is the number rounded to 4 decimal places and it changes
-        /// during the calls, transcribing, purchases etc.
+        /// The current user's money in the currency specified for the account. The value is the number rounded to 4 decimal places and it changes during the calls, transcribing, purchases etc.
         /// </summary>
         [JsonProperty("live_balance")]
-        public decimal? LiveBalance { get; private set; }
+        public decimal LiveBalance { get; private set; }
 
         /// <summary>
-        /// The current user's money in the currency specified for the account.
-        /// The value is the number rounded to 4 decimal places. The parameter is
-        /// the alias to live_balance by default. But there is a possibility to
-        /// make the alias to fixed_balance: just to pass
-        /// return_live_balance=false into the [GetAccountInfo] method.
+        /// The current user's money in the currency specified for the account. The value is the number rounded to 4 decimal places. The parameter is the alias to live_balance by default. But there is a possibility to make the alias to fixed_balance: just to pass return_live_balance=false into the [GetAccountInfo] method.
         /// </summary>
         [JsonProperty("balance")]
-        public decimal? Balance { get; private set; }
+        public decimal Balance { get; private set; }
 
         /// <summary>
-        /// The last committed balance which was approved by billing's
-        /// transaction.
+        /// The last committed balance which was approved by billing's transaction.
         /// </summary>
         [JsonProperty("fixed_balance")]
-        public decimal? FixedBalance { get; private set; }
+        public decimal FixedBalance { get; private set; }
 
         /// <summary>
         /// The custom data.
@@ -81,23 +67,22 @@ namespace Voximplant.API.Response {
         /// The bound applications.
         /// </summary>
         [JsonProperty("applications")]
-        public IReadOnlyList<ApplicationInfoType> Applications { get; private set; }
+        public ApplicationInfoType[] Applications { get; private set; }
 
         /// <summary>
         /// The bound skills.
         /// </summary>
         [JsonProperty("skills")]
-        public IReadOnlyList<SkillInfoType> Skills { get; private set; }
+        public SkillInfoType[] Skills { get; private set; }
 
         /// <summary>
         /// The bound ACD queues.
         /// </summary>
         [JsonProperty("acd_queues")]
-        public IReadOnlyList<ACDQueueOperatorInfoType> AcdQueues { get; private set; }
+        public ACDQueueOperatorInfoType[] AcdQueues { get; private set; }
 
         /// <summary>
-        /// The ACD operator status. The following values are possible: OFFLINE,
-        /// ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND.
+        /// The ACD operator status. The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND.
         /// </summary>
         [JsonProperty("acd_status")]
         public string AcdStatus { get; private set; }
@@ -107,21 +92,21 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("acd_status_change_time")]
-        public DateTime? AcdStatusChangeTime { get; private set; }
+        public DateTime AcdStatusChangeTime { get; private set; }
 
         /// <summary>
         /// The user editing UTC date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("created")]
-        public DateTime? Created { get; private set; }
+        public DateTime Created { get; private set; }
 
         /// <summary>
         /// The user editing UTC date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("modified")]
-        public DateTime? Modified { get; private set; }
+        public DateTime Modified { get; private set; }
 
     }
 }

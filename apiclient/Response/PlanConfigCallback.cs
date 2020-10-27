@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the
-    /// [AccountCallback] structure.
+    /// The specific account callback details. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class PlanConfigCallback
     {
@@ -26,7 +25,7 @@ namespace Voximplant.API.Response {
         /// The account plan package array.
         /// </summary>
         [JsonProperty("packages")]
-        public IReadOnlyList<PlanPackageConfig> Packages { get; private set; }
+        public PlanPackageConfig[] Packages { get; private set; }
 
     }
 }

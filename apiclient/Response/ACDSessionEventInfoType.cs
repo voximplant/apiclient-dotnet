@@ -13,14 +13,14 @@ namespace Voximplant.API.Response {
         /// The ACD session event ID.
         /// </summary>
         [JsonProperty("acd_session_event_id")]
-        public long? AcdSessionEventId { get; private set; }
+        public long AcdSessionEventId { get; private set; }
 
         /// <summary>
         /// The UTC start date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("time")]
-        public DateTime? Time { get; private set; }
+        public DateTime Time { get; private set; }
 
         /// <summary>
         /// The event type name.

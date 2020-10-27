@@ -19,14 +19,14 @@ namespace Voximplant.API.Response {
         /// The allowed flag (true - whitelist, false - blacklist).
         /// </summary>
         [JsonProperty("allowed")]
-        public bool? Allowed { get; private set; }
+        public bool Allowed { get; private set; }
 
         /// <summary>
         /// The item creating UTC date in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("created")]
-        public DateTime? Created { get; private set; }
+        public DateTime Created { get; private set; }
 
     }
 }

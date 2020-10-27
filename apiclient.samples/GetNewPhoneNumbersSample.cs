@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,35 +9,31 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class GetNewPhoneNumbersSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public GetNewPhoneNumbersSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Get the two new fixed Russian phone numbers at max.
-        */
         [Fact]
         public void GetNewPhoneNumbers()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.GetNewPhoneNumbers(new GetNewPhoneNumbersRequest 
-                {
-                    CountryCode = "RU",
-                    PhoneCategoryName = "GEOGRAPHIC",
-                    PhoneRegionId = 1,
-                    Count = 2,
-                }).Result;
+            // Get the two new fixed Russian phone numbers at max.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.GetNewPhoneNumbers(
+                    "RU",
+                    "GEOGRAPHIC",
+                    1L,
+                    count: 2L
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

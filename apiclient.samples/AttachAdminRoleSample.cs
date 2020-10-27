@@ -1,7 +1,6 @@
 using System;
 using Voximplant.API;
 using Voximplant.API.Response;
-using Voximplant.API.Request;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -10,33 +9,29 @@ namespace apiclient.samples
     [Collection("Samples")]
     public class AttachAdminRoleSample
     {
-        private readonly ITestOutputHelper _outputHelper;
+        private ITestOutputHelper Console { get; }
         
         public AttachAdminRoleSample(ITestOutputHelper outputHelper)
         {
-            _outputHelper = outputHelper;
+            Console = outputHelper;
         }
         
-        /**
-        * Bind the all admin users with the admin roles 1, 2 and 3.
-        */
         [Fact]
         public void AttachAdminRole()
         {
-            try
-            {
-                var voximplant = new VoximplantAPI();
-            
-                            
-                var result = voximplant.AttachAdminRole(new AttachAdminRoleRequest 
-                {
-                    RequiredAdminUserId = new Argument<long>(),
-                    AdminRoleId = new Argument<long>(new[] {1L, 2L, 3L}),
-                }).Result;
+            // Bind the all admin users with the admin roles 1, 2 and 3.
 
-                _outputHelper.WriteLine("OK");
+            try {
+                var voximplant = new VoximplantAPI();
+
+                var result = voximplant.AttachAdminRole(
+                    requiredAdminUserId: "all",
+                    adminRoleId: "1;2;3"
+                ).Result;
+
+                Console.WriteLine($"Response: {result.ToString()}");
             } catch (Exception e) {
-                _outputHelper.WriteLine($"Error: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
     }

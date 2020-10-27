@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
         /// The removed network count.
         /// </summary>
         [JsonProperty("result")]
-        public long? Result { get; private set; }
+        public long Result { get; private set; }
 
     }
 }

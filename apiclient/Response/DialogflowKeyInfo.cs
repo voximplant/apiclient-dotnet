@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The Dialogflow key's id
         /// </summary>
         [JsonProperty("dialogflow_key_id")]
-        public long? DialogflowKeyId { get; private set; }
+        public long DialogflowKeyId { get; private set; }
 
         /// <summary>
         /// The key's content.
@@ -25,7 +25,7 @@ namespace Voximplant.API.Response {
         /// Bound applications.
         /// </summary>
         [JsonProperty("applications")]
-        public IReadOnlyList<ApplicationInfoType> Applications { get; private set; }
+        public ApplicationInfoType[] Applications { get; private set; }
 
     }
 }

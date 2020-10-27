@@ -16,8 +16,7 @@ namespace Voximplant.API.Response {
         public string Inn { get; private set; }
 
         /// <summary>
-        /// Additional Russian-specific ID for tax purposes for businesses; there
-        /// is no KPP for individual entrepreneurs.
+        /// Additional Russian-specific ID for tax purposes for businesses; there is no KPP for individual entrepreneurs.
         /// </summary>
         [JsonProperty("kpp")]
         public string Kpp { get; private set; }

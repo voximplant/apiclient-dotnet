@@ -22,10 +22,10 @@ namespace Voximplant.API.Response {
         public string InvoiceDate { get; private set; }
 
         /// <summary>
-        /// Is it a prepayment?
+        /// It's a prepayment.
         /// </summary>
         [JsonProperty("prepayment")]
-        public bool? Prepayment { get; private set; }
+        public bool Prepayment { get; private set; }
 
         /// <summary>
         /// The invoice currency.
@@ -37,19 +37,19 @@ namespace Voximplant.API.Response {
         /// The invoice's total amount including taxes.
         /// </summary>
         [JsonProperty("total_amount")]
-        public decimal? TotalAmount { get; private set; }
+        public decimal TotalAmount { get; private set; }
 
         /// <summary>
         /// The total amount of taxes.
         /// </summary>
         [JsonProperty("total_tax_amount")]
-        public decimal? TotalTaxAmount { get; private set; }
+        public decimal TotalTaxAmount { get; private set; }
 
         /// <summary>
         /// Array with the services that were provided.
         /// </summary>
         [JsonProperty("units")]
-        public IReadOnlyList<InvoiceUnits> Units { get; private set; }
+        public InvoiceUnits[] Units { get; private set; }
 
     }
 }

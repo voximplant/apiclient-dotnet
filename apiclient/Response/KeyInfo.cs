@@ -19,7 +19,7 @@ namespace Voximplant.API.Response {
         /// The account ID.
         /// </summary>
         [JsonProperty("account_id")]
-        public long? AccountId { get; private set; }
+        public long AccountId { get; private set; }
 
         /// <summary>
         /// The key ID.

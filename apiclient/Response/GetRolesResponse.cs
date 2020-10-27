@@ -8,7 +8,7 @@ namespace Voximplant.API.Response {
     {
 
         [JsonProperty("result")]
-        public IReadOnlyList<RoleView> Result { get; private set; }
+        public RoleView[] Result { get; private set; }
 
     }
 }

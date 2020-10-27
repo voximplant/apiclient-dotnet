@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         /// The user ID of the operator.
         /// </summary>
         [JsonProperty("user_id")]
-        public long? UserId { get; private set; }
+        public long UserId { get; private set; }
 
         /// <summary>
         /// The user name of the operator.
@@ -28,8 +28,7 @@ namespace Voximplant.API.Response {
         public string UserDisplayName { get; private set; }
 
         /// <summary>
-        /// The UTC time when the operator becomes unavailable in 24-h format:
-        /// YYYY-MM-DD HH:mm:ss
+        /// The UTC time when the operator becomes unavailable in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("unreached")]
@@ -39,20 +38,16 @@ namespace Voximplant.API.Response {
         /// The operator locks.
         /// </summary>
         [JsonProperty("locks")]
-        public IReadOnlyList<ACDLock> Locks { get; private set; }
+        public ACDLock[] Locks { get; private set; }
 
         /// <summary>
         /// The ACD operator calls.
         /// </summary>
         [JsonProperty("acd_calls")]
-        public IReadOnlyList<ACDOperatorCall> AcdCalls { get; private set; }
+        public ACDOperatorCall[] AcdCalls { get; private set; }
 
         /// <summary>
-        /// The operator <a
-        /// href='//voximplant.com/docs/references/websdk/voximplant/operatoracdstatuses'>status
-        /// string</a>. 'BANNED' string indicates temporarily <a
-        /// href='/docs/tutorials/step-by-step-call-center-tutorial'>banned
-        /// operators</a>. The following values are possible: READY, BANNED.
+        /// The operator <a href='//voximplant.com/docs/references/websdk/voximplant/operatoracdstatuses'>status string</a>. 'BANNED' string indicates temporarily <a href='/docs/tutorials/step-by-step-call-center-tutorial'>banned operators</a>. The following values are possible: READY, BANNED.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The [HistoryReportType] calculated_data object if the
-    /// [HistoryReportType] history_type parameter is set to 'transactions'.
+    /// The [HistoryReportType] calculated_data object if the [HistoryReportType] history_type parameter is set to 'transactions'.
     /// </summary>
     public class CalculatedTransactionHistoryDataType
     {
@@ -14,13 +13,13 @@ namespace Voximplant.API.Response {
         /// The transaction count in the report.
         /// </summary>
         [JsonProperty("transaction_count")]
-        public long? TransactionCount { get; private set; }
+        public long TransactionCount { get; private set; }
 
         /// <summary>
         /// The total found filtered transaction count.
         /// </summary>
         [JsonProperty("total_transaction_count")]
-        public long? TotalTransactionCount { get; private set; }
+        public long TotalTransactionCount { get; private set; }
 
         /// <summary>
         /// The start account/user balance with currency. Example: 2.3 USD
@@ -51,12 +50,6 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("user_name")]
         public long? UserName { get; private set; }
-
-        /// <summary>
-        /// true if balance&transactions are valid.
-        /// </summary>
-        [JsonProperty("is_checked")]
-        public bool? IsChecked { get; private set; }
 
         /// <summary>
         /// The selected timezone.

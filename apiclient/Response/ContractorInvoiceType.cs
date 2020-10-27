@@ -20,13 +20,13 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("invoice_date")]
-        public DateTime? InvoiceDate { get; private set; }
+        public DateTime InvoiceDate { get; private set; }
 
         /// <summary>
         /// The post payment flag
         /// </summary>
         [JsonProperty("is_post_payment")]
-        public bool? IsPostPayment { get; private set; }
+        public bool IsPostPayment { get; private set; }
 
         /// <summary>
         /// The from date in format: YYYY-MM-DD
@@ -46,7 +46,7 @@ namespace Voximplant.API.Response {
         /// The total invoice amount (RUR).
         /// </summary>
         [JsonProperty("total_amount")]
-        public decimal? TotalAmount { get; private set; }
+        public decimal TotalAmount { get; private set; }
 
         /// <summary>
         /// The paid amount (RUR).
