@@ -73,7 +73,7 @@ namespace Voximplant.API
             }
         }
 
-        private string GetAuthorizationHeader()
+        public string GetAuthorizationHeader()
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var credentials = new SigningCredentials(_credentials.PrivateKey, SecurityAlgorithms.RsaSha256);
