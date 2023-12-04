@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void RecoverCallList()
         {
-            // Restore list with id = 1
+            // Restore list with id = 1.
 
             try {
                 var voximplant = new VoximplantAPI();

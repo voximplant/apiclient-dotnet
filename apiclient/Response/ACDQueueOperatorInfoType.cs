@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class ACDQueueOperatorInfoType
     {
         /// <summary>
-        /// The ACD queue ID.
+        /// The ACD queue ID
         /// </summary>
         [JsonProperty("acd_queue_id")]
         public long AcdQueueId { get; private set; }
 
         /// <summary>
-        /// The ACD queue name.
+        /// The ACD queue name
         /// </summary>
         [JsonProperty("acd_queue_name")]
         public string AcdQueueName { get; private set; }
 
         /// <summary>
-        /// The user is bound to the ACD queue in manual mode if false.
+        /// The user is bound to the ACD queue in manual mode if false
         /// </summary>
         [JsonProperty("auto_link")]
         public bool AutoLink { get; private set; }

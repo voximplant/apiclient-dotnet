@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetPhoneNumbers()
         {
-            // Get the two attached phone numbers.
+            // Get two attached phone numbers.
 
             try {
                 var voximplant = new VoximplantAPI();

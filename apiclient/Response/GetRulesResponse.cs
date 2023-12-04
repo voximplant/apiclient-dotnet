@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public RuleInfoType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found rule count.
+        /// The total found rule count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned rule count.
+        /// The returned rule count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

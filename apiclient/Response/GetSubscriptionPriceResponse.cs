@@ -7,7 +7,7 @@ namespace Voximplant.API.Response {
     public class GetSubscriptionPriceResponse : BaseResponse
     {
         /// <summary>
-        /// The subscription template prices.
+        /// The subscription template prices
         /// </summary>
         [JsonProperty("result")]
         public SubscriptionTemplateType[] Result { get; private set; }

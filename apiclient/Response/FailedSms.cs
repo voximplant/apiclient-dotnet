@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class FailedSms
     {
         /// <summary>
-        /// The SMS destination number.
+        /// The SMS destination number
         /// </summary>
         [JsonProperty("destination_number")]
         public string DestinationNumber { get; private set; }
 
         /// <summary>
-        /// The error description.
+        /// The error description
         /// </summary>
         [JsonProperty("error_description")]
         public string ErrorDescription { get; private set; }
 
         /// <summary>
-        /// The error code.
+        /// The error code
         /// </summary>
         [JsonProperty("error_code")]
         public long ErrorCode { get; private set; }

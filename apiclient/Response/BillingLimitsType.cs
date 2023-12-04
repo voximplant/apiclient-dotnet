@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class BillingLimitsType
     {
         /// <summary>
-        /// The Robokassa limits.
+        /// The Robokassa limits
         /// </summary>
         [JsonProperty("robokassa")]
         public BillingLimitInfoType Robokassa { get; private set; }
 
         /// <summary>
-        /// The bank card limits.
+        /// The bank card limits
         /// </summary>
         [JsonProperty("bank_card")]
         public BankCardBillingLimitInfoType BankCard { get; private set; }
 
         /// <summary>
-        /// The invoice limits.
+        /// The invoice limits
         /// </summary>
         [JsonProperty("invoice")]
         public BillingLimitInfoType Invoice { get; private set; }

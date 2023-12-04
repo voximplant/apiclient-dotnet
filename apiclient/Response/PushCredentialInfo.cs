@@ -22,25 +22,25 @@ namespace Voximplant.API.Response {
         public long PushProviderId { get; private set; }
 
         /// <summary>
-        /// The push provider name. The possible values are: APPLE, APPLE_VOIP, GOOGLE
+        /// The push provider name. The possible values are APPLE, APPLE_VOIP, GOOGLE, HUAWEI
         /// </summary>
         [JsonProperty("push_provider_name")]
         public string PushProviderName { get; private set; }
 
         /// <summary>
-        /// The bundle of Android/iOS application.
+        /// The bundle of Android/iOS application
         /// </summary>
         [JsonProperty("credential_bundle")]
         public string CredentialBundle { get; private set; }
 
         /// <summary>
-        /// The credentials content.
+        /// The credentials content
         /// </summary>
         [JsonProperty("content")]
-        public PushCredentialContent Content { get; private set; }
+        public PushCredentialContent[] Content { get; private set; }
 
         /// <summary>
-        /// Bound applications.
+        /// Bound applications
         /// </summary>
         [JsonProperty("applications")]
         public ApplicationInfoType[] Applications { get; private set; }

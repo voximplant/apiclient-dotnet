@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class KeyView
     {
         /// <summary>
-        /// The key ID.
+        /// The key ID
         /// </summary>
         [JsonProperty("key_id")]
         public string KeyId { get; private set; }
 
         /// <summary>
-        /// The key roles.
+        /// The key roles
         /// </summary>
         [JsonProperty("roles")]
         public RoleView[] Roles { get; private set; }
 
         /// <summary>
-        /// The key description.
+        /// The key description
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
 
         /// <summary>
-        /// The key subuser.
+        /// The key subuser
         /// </summary>
         [JsonProperty("subuser")]
         public SubUserView[] Subuser { get; private set; }

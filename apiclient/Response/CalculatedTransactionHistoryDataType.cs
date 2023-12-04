@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class CalculatedTransactionHistoryDataType
     {
         /// <summary>
-        /// The transaction count in the report.
+        /// The transaction count in the report
         /// </summary>
         [JsonProperty("transaction_count")]
         public long TransactionCount { get; private set; }
 
         /// <summary>
-        /// The total found filtered transaction count.
+        /// The total found filtered transaction count
         /// </summary>
         [JsonProperty("total_transaction_count")]
         public long TotalTransactionCount { get; private set; }
@@ -34,25 +34,25 @@ namespace Voximplant.API.Response {
         public string EndBalance { get; private set; }
 
         /// <summary>
-        /// The account ID.
+        /// The account ID
         /// </summary>
         [JsonProperty("account_id")]
         public long? AccountId { get; private set; }
 
         /// <summary>
-        /// The user ID.
+        /// The user ID
         /// </summary>
         [JsonProperty("user_id")]
         public long? UserId { get; private set; }
 
         /// <summary>
-        /// The user name.
+        /// The user name
         /// </summary>
         [JsonProperty("user_name")]
         public long? UserName { get; private set; }
 
         /// <summary>
-        /// The selected timezone.
+        /// The selected timezone
         /// </summary>
         [JsonProperty("timezone")]
         public string Timezone { get; private set; }

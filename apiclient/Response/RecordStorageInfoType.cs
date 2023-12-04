@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class RecordStorageInfoType
     {
         /// <summary>
-        /// The record storage ID.
+        /// The record storage ID
         /// </summary>
         [JsonProperty("record_storage_id")]
         public long? RecordStorageId { get; private set; }
 
         /// <summary>
-        /// The record storage name.
+        /// The record storage name
         /// </summary>
         [JsonProperty("record_storage_name")]
         public string RecordStorageName { get; private set; }

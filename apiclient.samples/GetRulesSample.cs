@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetRules()
         {
-            // Get the first rule for the template 74951234567
+            // Get the first rule for the template 74951234567.
 
             try {
                 var voximplant = new VoximplantAPI();

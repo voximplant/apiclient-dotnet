@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void DelSubUser()
         {
-            // Delete the subuser with id = 12 from account_id = 1
+            // Delete the subuser with id = 12 from account_id = 1.
 
             try {
                 var voximplant = new VoximplantAPI();

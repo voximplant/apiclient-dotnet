@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetRegulationsAddress()
         {
-            // Search regulation address with ID = 1
+            // Search regulation address with ID = 1.
 
             try {
                 var voximplant = new VoximplantAPI();

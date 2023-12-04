@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public ACDReadyOperatorStateType[] ReadyOperators { get; private set; }
 
         /// <summary>
-        /// Number of ready operators.
+        /// Number of ready operators
         /// </summary>
         [JsonProperty("ready_operators_count")]
         public long ReadyOperatorsCount { get; private set; }
@@ -34,19 +34,19 @@ namespace Voximplant.API.Response {
         public ACDLockedOperatorStateType[] LockedOperators { get; private set; }
 
         /// <summary>
-        /// Number of locked operators.
+        /// Number of locked operators
         /// </summary>
         [JsonProperty("locked_operators_count")]
         public long LockedOperatorsCount { get; private set; }
 
         /// <summary>
-        /// List of operators with the 'AFTER_SERVICE' state. This state is set right after a call is ended to indicate a call postprocessing.
+        /// List of operators with the 'AFTER_SERVICE' state. This state is set right after a call is ended to indicate a call postprocessing
         /// </summary>
         [JsonProperty("after_service_operators")]
         public ACDAfterServiceOperatorStateType[] AfterServiceOperators { get; private set; }
 
         /// <summary>
-        /// Number of operators with the 'AFTER SERVICE' state.
+        /// Number of operators with the 'AFTER SERVICE' state
         /// </summary>
         [JsonProperty("after_service_operator_count")]
         public long AfterServiceOperatorCount { get; private set; }

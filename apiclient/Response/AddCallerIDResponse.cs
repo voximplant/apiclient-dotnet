@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         public long Result { get; private set; }
 
         /// <summary>
-        /// The id of the callerID object.
+        /// The id of the callerID object
         /// </summary>
         [JsonProperty("callerid_id")]
         public long CalleridId { get; private set; }

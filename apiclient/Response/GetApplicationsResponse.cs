@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public ApplicationInfoType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found application count.
+        /// The total found application count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned application count.
+        /// The returned application count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

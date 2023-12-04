@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
@@ -94,13 +95,32 @@ namespace Voximplant.API
             return new Uri(uri);
         }
 
-        private async Task<TResponse> PerformRequest<TResponse>(string node, IDictionary<string, string> request)
+        private async Task<TResponse> PerformRequest<TResponse>(string node, IDictionary<string, string> request, FileStream fileStream)
             where TResponse : BaseResponse
         {
             using (var client = new HttpClient())
             {
                 request["cmd"] = node;
-                var requestBody = new FormUrlEncodedContent(request);
+
+                var requestBody = new MultipartFormDataContent();
+
+                foreach (var item in request)
+                {
+                    requestBody.Add(new StringContent(item.Value), item.Key);
+                }
+
+                if (fileStream != null)
+                {
+                    BinaryReader binReader = new BinaryReader(fileStream);
+                    byte[] byteArray = new byte[fileStream.Length];
+                    for (long i = 0; i < fileStream.Length; i++)
+                    {
+                        byteArray[i] = binReader.ReadByte();
+                    }
+                    binReader.Close();
+                    ByteArrayContent byteContent = new ByteArrayContent(byteArray);
+                    requestBody.Add(byteContent, "file_content");
+                }
 
                 var uri = RequestUri(node);
                 var authHeader = GetAuthorizationHeader();

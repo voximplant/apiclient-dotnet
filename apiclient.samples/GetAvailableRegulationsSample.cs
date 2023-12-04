@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetAvailableRegulations()
         {
-            // Search available regulation address
+            // Search available regulation address.
 
             try {
                 var voximplant = new VoximplantAPI();

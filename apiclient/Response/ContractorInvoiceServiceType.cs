@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class ContractorInvoiceServiceType
     {
         /// <summary>
-        /// The service name.
+        /// The service name
         /// </summary>
         [JsonProperty("service_name")]
         public string ServiceName { get; private set; }
 
         /// <summary>
-        /// The service cost (RUR).
+        /// The service cost (RUR)
         /// </summary>
         [JsonProperty("service_cost")]
         public decimal ServiceCost { get; private set; }

@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class A2PSmsDeliveryCallback
     {
         /// <summary>
-        /// The SMS delivery ID.
+        /// The SMS delivery ID
         /// </summary>
         [JsonProperty("id")]
         public long Id { get; private set; }
 
         /// <summary>
-        /// The source number.
+        /// The source number
         /// </summary>
         [JsonProperty("source_number")]
         public string SourceNumber { get; private set; }
 
         /// <summary>
-        /// The SMS delivery status.
+        /// The SMS delivery status
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }
 
         /// <summary>
-        /// The destination number(s).
+        /// The destination number(s)
         /// </summary>
         [JsonProperty("destination_numbers")]
         public string DestinationNumbers { get; private set; }

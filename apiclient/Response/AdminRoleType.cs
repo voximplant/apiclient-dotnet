@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class AdminRoleType
     {
         /// <summary>
-        /// The admin role ID.
+        /// The admin role ID
         /// </summary>
         [JsonProperty("admin_role_id")]
         public long AdminRoleId { get; private set; }
 
         /// <summary>
-        /// The admin role name.
+        /// The admin role name
         /// </summary>
         [JsonProperty("admin_role_name")]
         public string AdminRoleName { get; private set; }
 
         /// <summary>
-        /// If false the allowed and denied entries have no affect.
+        /// If false the allowed and denied entries have no affect
         /// </summary>
         [JsonProperty("admin_role_active")]
         public bool AdminRoleActive { get; private set; }
 
         /// <summary>
-        /// It's a system role.
+        /// It's a system role
         /// </summary>
         [JsonProperty("system_role")]
         public bool SystemRole { get; private set; }
@@ -41,13 +41,13 @@ namespace Voximplant.API.Response {
         public DateTime Modified { get; private set; }
 
         /// <summary>
-        /// The allowed access entries (the API function names).
+        /// The allowed access entries (the API function names)
         /// </summary>
         [JsonProperty("allowed_entries")]
         public string[] AllowedEntries { get; private set; }
 
         /// <summary>
-        /// The denied access entries (the API function names).
+        /// The denied access entries (the API function names)
         /// </summary>
         [JsonProperty("denied_entries")]
         public string[] DeniedEntries { get; private set; }

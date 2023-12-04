@@ -10,31 +10,31 @@ namespace Voximplant.API.Response {
     public class PhoneNumberCountryCategoryInfoType
     {
         /// <summary>
-        /// The phone category name.
+        /// The phone category name
         /// </summary>
         [JsonProperty("phone_category_name")]
         public string PhoneCategoryName { get; private set; }
 
         /// <summary>
-        /// True if a country state is used to choose the phone with the category.
+        /// True if a country state is used to choose the phone with the category
         /// </summary>
         [JsonProperty("country_has_states")]
         public bool CountryHasStates { get; private set; }
 
         /// <summary>
-        /// The localized country name.
+        /// The localized country name
         /// </summary>
         [JsonProperty("localized_country_name")]
         public string LocalizedCountryName { get; private set; }
 
         /// <summary>
-        /// The localized phone category name.
+        /// The localized phone category name
         /// </summary>
         [JsonProperty("localized_phone_category_name")]
         public string LocalizedPhoneCategoryName { get; private set; }
 
         /// <summary>
-        /// The localized phone region name.
+        /// The localized phone region name
         /// </summary>
         [JsonProperty("localized_phone_region_name")]
         public string LocalizedPhoneRegionName { get; private set; }

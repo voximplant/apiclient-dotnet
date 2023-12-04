@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class ChargedPhoneType
     {
         /// <summary>
-        /// The phone ID.
+        /// The phone ID
         /// </summary>
         [JsonProperty("phone_id")]
         public long PhoneId { get; private set; }
 
         /// <summary>
-        /// The phone number.
+        /// The phone number
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; private set; }
 
         /// <summary>
-        /// Subscription is frozen.
+        /// Subscription is frozen
         /// </summary>
         [JsonProperty("deactivated")]
         public bool Deactivated { get; private set; }
 
         /// <summary>
-        /// Phone number has been charged.
+        /// Phone number has been charged
         /// </summary>
         [JsonProperty("is_charged")]
         public bool IsCharged { get; private set; }

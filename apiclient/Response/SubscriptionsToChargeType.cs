@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class SubscriptionsToChargeType
     {
         /// <summary>
-        /// The money amount to charge in the specified currency.
+        /// The money amount to charge in the specified currency
         /// </summary>
         [JsonProperty("subscription_amount")]
         public decimal SubscriptionAmount { get; private set; }
@@ -22,19 +22,19 @@ namespace Voximplant.API.Response {
         public string SubscriptionType { get; private set; }
 
         /// <summary>
-        /// The subscription description (details). Example: the subscribed phone number.
+        /// The subscription description (details). Example: the subscribed phone number
         /// </summary>
         [JsonProperty("subscription_description")]
         public string SubscriptionDescription { get; private set; }
 
         /// <summary>
-        /// The auto charge flag.
+        /// The auto charge flag
         /// </summary>
         [JsonProperty("subscription_auto_charge")]
         public bool SubscriptionAutoCharge { get; private set; }
 
         /// <summary>
-        /// The next renewal date, format: YYYY-MM-DD. Displayed for only verified phone numbers.
+        /// The next renewal date, format: YYYY-MM-DD. Displayed for only verified phone numbers
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("subscription_next_renewal")]

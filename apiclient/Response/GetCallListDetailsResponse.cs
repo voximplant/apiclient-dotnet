@@ -7,13 +7,13 @@ namespace Voximplant.API.Response {
     public class GetCallListDetailsResponse : BaseResponse
     {
         /// <summary>
-        /// Array of tasks for the roll call.
+        /// Array of tasks for the roll call
         /// </summary>
         [JsonProperty("result")]
         public CallListDetailType[] Result { get; private set; }
 
         /// <summary>
-        /// The number of tasks.
+        /// The number of tasks
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

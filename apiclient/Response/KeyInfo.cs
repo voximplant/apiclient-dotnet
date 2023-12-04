@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class KeyInfo
     {
         /// <summary>
-        /// Client email.
+        /// Client email
         /// </summary>
         [JsonProperty("account_email")]
         public string AccountEmail { get; private set; }
 
         /// <summary>
-        /// The account ID.
+        /// The account ID
         /// </summary>
         [JsonProperty("account_id")]
         public long AccountId { get; private set; }
 
         /// <summary>
-        /// The key ID.
+        /// The key ID
         /// </summary>
         [JsonProperty("key_id")]
         public string KeyId { get; private set; }
 
         /// <summary>
-        /// The private key.
+        /// The private key
         /// </summary>
         [JsonProperty("private_key")]
         public string PrivateKey { get; private set; }

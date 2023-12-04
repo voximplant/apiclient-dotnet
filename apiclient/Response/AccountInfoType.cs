@@ -10,37 +10,37 @@ namespace Voximplant.API.Response {
     public class AccountInfoType
     {
         /// <summary>
-        /// The account's ID.
+        /// The account's ID
         /// </summary>
         [JsonProperty("account_id")]
         public long AccountId { get; private set; }
 
         /// <summary>
-        /// The account's name.
+        /// The account's name
         /// </summary>
         [JsonProperty("account_name")]
         public string AccountName { get; private set; }
 
         /// <summary>
-        /// The account's email.
+        /// The account's email
         /// </summary>
         [JsonProperty("account_email")]
         public string AccountEmail { get; private set; }
 
         /// <summary>
-        /// The account API key. Use password or api_key authentication to show the api_key.
+        /// The account API key. Use password or api_key authentication to show the api_key
         /// </summary>
         [JsonProperty("api_key")]
         public string ApiKey { get; private set; }
 
         /// <summary>
-        /// The first name.
+        /// The first name
         /// </summary>
         [JsonProperty("account_first_name")]
         public string AccountFirstName { get; private set; }
 
         /// <summary>
-        /// The last name.
+        /// The last name
         /// </summary>
         [JsonProperty("account_last_name")]
         public string AccountLastName { get; private set; }
@@ -65,31 +65,31 @@ namespace Voximplant.API.Response {
         public string Location { get; private set; }
 
         /// <summary>
-        /// The min balance value to notify by email or SMS.
+        /// The min balance value to notify by email or SMS
         /// </summary>
         [JsonProperty("min_balance_to_notify")]
         public decimal? MinBalanceToNotify { get; private set; }
 
         /// <summary>
-        /// Voximplant notifications are required.
+        /// Voximplant notifications are required
         /// </summary>
         [JsonProperty("account_notifications")]
         public bool? AccountNotifications { get; private set; }
 
         /// <summary>
-        /// Voximplant plan changing notifications are required.
+        /// Voximplant plan changing notifications are required
         /// </summary>
         [JsonProperty("tariff_changing_notifications")]
         public bool? TariffChangingNotifications { get; private set; }
 
         /// <summary>
-        /// Voximplant news notifications are required.
+        /// Voximplant news notifications are required
         /// </summary>
         [JsonProperty("news_notifications")]
         public bool? NewsNotifications { get; private set; }
 
         /// <summary>
-        /// The company or businessman name.
+        /// The company or businessman name
         /// </summary>
         [JsonProperty("billing_address_name")]
         public string BillingAddressName { get; private set; }
@@ -101,91 +101,91 @@ namespace Voximplant.API.Response {
         public string BillingAddressCountryCode { get; private set; }
 
         /// <summary>
-        /// The office address.
+        /// The office address
         /// </summary>
         [JsonProperty("billing_address_address")]
         public string BillingAddressAddress { get; private set; }
 
         /// <summary>
-        /// The office ZIP.
+        /// The office ZIP
         /// </summary>
         [JsonProperty("billing_address_zip")]
         public string BillingAddressZip { get; private set; }
 
         /// <summary>
-        /// The office phone number.
+        /// The office phone number
         /// </summary>
         [JsonProperty("billing_address_phone")]
         public string BillingAddressPhone { get; private set; }
 
         /// <summary>
-        /// The office state (US) or province (Canada), up to 100 characters. Examples: California, Illinois, British Columbia.
+        /// The office state (US) or province (Canada), up to 100 characters. Examples: California, Illinois, British Columbia
         /// </summary>
         [JsonProperty("billing_address_state")]
         public string BillingAddressState { get; private set; }
 
         /// <summary>
-        /// The account activation flag.
+        /// The account activation flag
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; private set; }
 
         /// <summary>
-        /// Is account blocked by Voximplant admins or not.
+        /// Is account blocked by Voximplant admins or not
         /// </summary>
         [JsonProperty("frozen")]
         public bool? Frozen { get; private set; }
 
         /// <summary>
-        /// The account's money.
+        /// The account's money
         /// </summary>
         [JsonProperty("balance")]
         public decimal? Balance { get; private set; }
 
         /// <summary>
-        /// The account's credit limit.
+        /// The account's credit limit
         /// </summary>
         [JsonProperty("credit_limit")]
         public decimal? CreditLimit { get; private set; }
 
         /// <summary>
-        /// The currency code (USD, RUR, EUR, ...).
+        /// The currency code (USD, RUR, EUR, ...)
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; private set; }
 
         /// <summary>
-        /// Robokassa payments are allowed.
+        /// Robokassa payments are allowed
         /// </summary>
         [JsonProperty("support_robokassa")]
         public bool? SupportRobokassa { get; private set; }
 
         /// <summary>
-        /// Bank card payments are allowed.
+        /// Bank card payments are allowed
         /// </summary>
         [JsonProperty("support_bank_card")]
         public bool? SupportBankCard { get; private set; }
 
         /// <summary>
-        /// Bank invoices are allowed.
+        /// Bank invoices are allowed
         /// </summary>
         [JsonProperty("support_invoice")]
         public bool? SupportInvoice { get; private set; }
 
         /// <summary>
-        /// The custom data.
+        /// The custom data
         /// </summary>
         [JsonProperty("account_custom_data")]
         public string AccountCustomData { get; private set; }
 
         /// <summary>
-        /// The allowed access entries (the API function names).
+        /// The allowed access entries (the API function names)
         /// </summary>
         [JsonProperty("access_entries")]
         public string[] AccessEntries { get; private set; }
 
         /// <summary>
-        /// Set true to get the admin user permissions.
+        /// Set true to get the admin user permissions
         /// </summary>
         [JsonProperty("with_access_entries")]
         public bool? WithAccessEntries { get; private set; }
@@ -203,16 +203,22 @@ namespace Voximplant.API.Response {
         public string CallbackSalt { get; private set; }
 
         /// <summary>
-        /// Sending email when a JS error occures.
+        /// Sending email when a JS error occures
         /// </summary>
         [JsonProperty("send_js_error")]
         public bool? SendJsError { get; private set; }
 
         /// <summary>
-        /// The payments limits applicable to each payment method.
+        /// The payments limits applicable to each payment method
         /// </summary>
         [JsonProperty("billing_limits")]
         public BillingLimitsType BillingLimits { get; private set; }
+
+        /// <summary>
+        /// One-way SMS activation flag
+        /// </summary>
+        [JsonProperty("a2p_sms_enabled")]
+        public bool? A2pSmsEnabled { get; private set; }
 
     }
 }

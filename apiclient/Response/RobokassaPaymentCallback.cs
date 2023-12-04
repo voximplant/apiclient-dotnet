@@ -5,24 +5,24 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the [AccountCallback] structure.
+    /// Received when a robokassa payment is made. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class RobokassaPaymentCallback
     {
         /// <summary>
-        /// The transaction ID.
+        /// The transaction ID
         /// </summary>
         [JsonProperty("transaction_id")]
         public long TransactionId { get; private set; }
 
         /// <summary>
-        /// The transaction type.
+        /// The transaction type
         /// </summary>
         [JsonProperty("transaction_type")]
         public string TransactionType { get; private set; }
 
         /// <summary>
-        /// The amount in the account currency.
+        /// The amount in the account currency
         /// </summary>
         [JsonProperty("amount")]
         public decimal Amount { get; private set; }

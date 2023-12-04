@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class RoleGroupView
     {
         /// <summary>
-        /// The role group ID.
+        /// The role group ID
         /// </summary>
         [JsonProperty("id")]
         public long Id { get; private set; }
 
         /// <summary>
-        /// The role group name.
+        /// The role group name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; private set; }

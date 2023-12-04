@@ -7,7 +7,7 @@ namespace Voximplant.API.Response {
     public class GetCurrencyRateResponse : BaseResponse
     {
         /// <summary>
-        /// The exchange rates.
+        /// The exchange rates
         /// </summary>
         [JsonProperty("result")]
         public ExchangeRates Result { get; private set; }

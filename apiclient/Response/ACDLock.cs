@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class ACDLock
     {
         /// <summary>
-        /// The ACD lock ID.
+        /// The ACD lock ID
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; private set; }

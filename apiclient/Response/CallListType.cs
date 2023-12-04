@@ -10,37 +10,37 @@ namespace Voximplant.API.Response {
     public class CallListType
     {
         /// <summary>
-        /// The list ID.
+        /// The list ID
         /// </summary>
         [JsonProperty("list_id")]
         public long ListId { get; private set; }
 
         /// <summary>
-        /// The list name.
+        /// The list name
         /// </summary>
         [JsonProperty("list_name")]
         public string ListName { get; private set; }
 
         /// <summary>
-        /// The priority of the call list.
+        /// The priority of the call list
         /// </summary>
         [JsonProperty("priority")]
         public long Priority { get; private set; }
 
         /// <summary>
-        /// The rule id.
+        /// The rule id
         /// </summary>
         [JsonProperty("rule_id")]
         public long RuleId { get; private set; }
 
         /// <summary>
-        /// The maximum number of simultaneous tasks.
+        /// The maximum number of simultaneous tasks
         /// </summary>
         [JsonProperty("max_simultaneous")]
         public long MaxSimultaneous { get; private set; }
 
         /// <summary>
-        /// The number of task attempts run, which failed to call.
+        /// The number of task attempts run, which failed to call
         /// </summary>
         [JsonProperty("num_attempts")]
         public long NumAttempts { get; private set; }
@@ -60,13 +60,13 @@ namespace Voximplant.API.Response {
         public DateTime? DtComplete { get; private set; }
 
         /// <summary>
-        /// The interval between attempts in seconds.
+        /// The interval between attempts in seconds
         /// </summary>
         [JsonProperty("interval_seconds")]
         public long IntervalSeconds { get; private set; }
 
         /// <summary>
-        /// The status name. The possible values are: __In progress__, __Completed__, __Canceled__.
+        /// The status name. The possible values are __In progress__, __Completed__, __Canceled__
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class AllocateAlfaBankPaymentResultType
     {
         /// <summary>
-        /// The URL to redirect.
+        /// The URL to redirect
         /// </summary>
         [JsonProperty("formUrl")]
         public string FormUrl { get; private set; }
 
         /// <summary>
-        /// The payment ID.
+        /// The payment ID
         /// </summary>
         [JsonProperty("payment_id ")]
         public string PaymentId  { get; private set; }

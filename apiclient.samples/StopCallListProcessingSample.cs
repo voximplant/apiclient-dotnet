@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void StopCallListProcessing()
         {
-            // Cancel list with id = 1
+            // Cancel list with id = 1.
 
             try {
                 var voximplant = new VoximplantAPI();

@@ -6,18 +6,20 @@ namespace Voximplant.API.Response {
 
     public class GetPhoneNumbersResponse : BaseResponse
     {
-
+        /// <summary>
+        /// Phone numbers info
+        /// </summary>
         [JsonProperty("result")]
         public AttachedPhoneInfoType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found phone count.
+        /// The total found phone count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned phone count.
+        /// The returned phone count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

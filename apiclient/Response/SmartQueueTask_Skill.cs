@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class SmartQueueTask_Skill
     {
         /// <summary>
-        /// The skill name.
+        /// The skill name
         /// </summary>
         [JsonProperty("sq_skill_name")]
         public string SqSkillName { get; private set; }
 
         /// <summary>
-        /// The skill level.
+        /// The skill level
         /// </summary>
         [JsonProperty("sq_skill_level")]
         public long SqSkillLevel { get; private set; }

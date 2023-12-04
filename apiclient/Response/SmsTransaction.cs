@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class SmsTransaction
     {
         /// <summary>
-        /// The transaction ID.
+        /// Message ID
         /// </summary>
-        [JsonProperty("transaction_id")]
-        public long TransactionId { get; private set; }
+        [JsonProperty("message_id")]
+        public long MessageId { get; private set; }
 
         /// <summary>
-        /// The SMS destination number.
+        /// The SMS destination number
         /// </summary>
         [JsonProperty("destination_number")]
         public string DestinationNumber { get; private set; }

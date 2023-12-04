@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetZIPCodes()
         {
-            // Search for zip codes in Germany
+            // Search for zip codes in Germany.
 
             try {
                 var voximplant = new VoximplantAPI();

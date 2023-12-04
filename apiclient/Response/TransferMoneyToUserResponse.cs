@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         public long Result { get; private set; }
 
         /// <summary>
-        /// The new account balance.
+        /// The new account balance
         /// </summary>
         [JsonProperty("balance")]
         public decimal Balance { get; private set; }

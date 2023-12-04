@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class ACDLockedOperatorStateType
     {
         /// <summary>
-        /// The user ID of the operator.
+        /// The user ID of the operator
         /// </summary>
         [JsonProperty("user_id")]
         public long UserId { get; private set; }
 
         /// <summary>
-        /// The user name of the operator.
+        /// The user name of the operator
         /// </summary>
         [JsonProperty("user_name")]
         public string UserName { get; private set; }
 
         /// <summary>
-        /// The display user name of the operator.
+        /// The display user name of the operator
         /// </summary>
         [JsonProperty("user_display_name")]
         public string UserDisplayName { get; private set; }
@@ -35,19 +35,19 @@ namespace Voximplant.API.Response {
         public DateTime? Unreached { get; private set; }
 
         /// <summary>
-        /// The operator locks.
+        /// The operator locks
         /// </summary>
         [JsonProperty("locks")]
         public ACDLock[] Locks { get; private set; }
 
         /// <summary>
-        /// The ACD operator calls.
+        /// The ACD operator calls
         /// </summary>
         [JsonProperty("acd_calls")]
         public ACDOperatorCall[] AcdCalls { get; private set; }
 
         /// <summary>
-        /// The operator <a href='//voximplant.com/docs/references/websdk/voximplant/operatoracdstatuses'>status string</a>. 'BANNED' string indicates temporarily <a href='/docs/tutorials/step-by-step-call-center-tutorial'>banned operators</a>. The following values are possible: READY, BANNED.
+        /// The operator <a href='/docs/references/websdk/voximplant/operatoracdstatuses'>status string</a>. 'BANNED' string indicates temporarily <a href='/docs/guides/smartqueue/acdv1'>banned operators</a>. The following values are possible: READY, BANNED
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

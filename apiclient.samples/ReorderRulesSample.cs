@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void ReorderRules()
         {
-            // Set the rule selection order: 1, 7, 3
+            // Set the rule selection order: 1, 7, 3.
 
             try {
                 var voximplant = new VoximplantAPI();

@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class AdminUserType
     {
         /// <summary>
-        /// The admin user ID.
+        /// The admin user ID
         /// </summary>
         [JsonProperty("admin_user_id")]
         public long AdminUserId { get; private set; }
 
         /// <summary>
-        /// The admin user name.
+        /// The admin user name
         /// </summary>
         [JsonProperty("admin_user_name")]
         public string AdminUserName { get; private set; }
 
         /// <summary>
-        /// The admin user display name.
+        /// The admin user display name
         /// </summary>
         [JsonProperty("admin_user_display_name")]
         public string AdminUserDisplayName { get; private set; }
 
         /// <summary>
-        /// Login is allowed.
+        /// Login is allowed
         /// </summary>
         [JsonProperty("admin_user_active")]
         public bool AdminUserActive { get; private set; }
@@ -41,13 +41,13 @@ namespace Voximplant.API.Response {
         public DateTime Modified { get; private set; }
 
         /// <summary>
-        /// The allowed access entries (the API function names).
+        /// The allowed access entries (the API function names)
         /// </summary>
         [JsonProperty("access_entries")]
         public string[] AccessEntries { get; private set; }
 
         /// <summary>
-        /// The attached admin roles.
+        /// The attached admin roles
         /// </summary>
         [JsonProperty("admin_roles")]
         public AdminRoleType[] AdminRoles { get; private set; }

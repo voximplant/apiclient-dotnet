@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public CallerIDInfoType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found record count.
+        /// The total found record count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned record count.
+        /// The returned record count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

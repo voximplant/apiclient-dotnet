@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class CalculatedCallHistoryDataType
     {
         /// <summary>
-        /// The session count in the report.
+        /// The session count in the report
         /// </summary>
         [JsonProperty("session_count")]
         public long SessionCount { get; private set; }
 
         /// <summary>
-        /// The total found filtered session count.
+        /// The total found filtered session count
         /// </summary>
         [JsonProperty("total_session_count")]
         public long TotalSessionCount { get; private set; }
 
         /// <summary>
-        /// The selected timezone.
+        /// The selected timezone
         /// </summary>
         [JsonProperty("timezone")]
         public string Timezone { get; private set; }

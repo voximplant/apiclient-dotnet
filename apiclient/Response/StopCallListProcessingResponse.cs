@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         public bool Result { get; private set; }
 
         /// <summary>
-        /// Result message.
+        /// Result message
         /// </summary>
         [JsonProperty("msg")]
         public string Msg { get; private set; }

@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class ContractorInvoiceType
     {
         /// <summary>
-        /// The invoice number.
+        /// The invoice number
         /// </summary>
         [JsonProperty("invoice_number")]
         public string InvoiceNumber { get; private set; }
@@ -43,19 +43,19 @@ namespace Voximplant.API.Response {
         public DateTime? ToDate { get; private set; }
 
         /// <summary>
-        /// The total invoice amount (RUR).
+        /// The total invoice amount (RUR)
         /// </summary>
         [JsonProperty("total_amount")]
         public decimal TotalAmount { get; private set; }
 
         /// <summary>
-        /// The paid amount (RUR).
+        /// The paid amount (RUR)
         /// </summary>
         [JsonProperty("paid_amount")]
         public decimal? PaidAmount { get; private set; }
 
         /// <summary>
-        /// The service list.
+        /// The service list
         /// </summary>
         [JsonProperty("services")]
         public ContractorInvoiceServiceType Services { get; private set; }

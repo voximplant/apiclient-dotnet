@@ -5,18 +5,18 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the [AccountCallback] structure.
+    /// Received when a transaction history report is ready. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class TransactionHistoryReportCallback
     {
         /// <summary>
-        /// The history report ID.
+        /// The history report ID
         /// </summary>
         [JsonProperty("history_report_id")]
         public long HistoryReportId { get; private set; }
 
         /// <summary>
-        /// Success flag.
+        /// Success flag
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; private set; }

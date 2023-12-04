@@ -10,43 +10,43 @@ namespace Voximplant.API.Response {
     public class RuleInfoType
     {
         /// <summary>
-        /// The rule ID.
+        /// The rule ID
         /// </summary>
         [JsonProperty("rule_id")]
         public long RuleId { get; private set; }
 
         /// <summary>
-        /// The application ID.
+        /// The application ID
         /// </summary>
         [JsonProperty("application_id")]
         public long ApplicationId { get; private set; }
 
         /// <summary>
-        /// The rule name.
+        /// The rule name
         /// </summary>
         [JsonProperty("rule_name")]
         public string RuleName { get; private set; }
 
         /// <summary>
-        /// The rule pattern regex.
+        /// The rule pattern regex
         /// </summary>
         [JsonProperty("rule_pattern")]
         public string RulePattern { get; private set; }
 
         /// <summary>
-        /// The rule pattern exlude regex.
+        /// The rule pattern exlude regex
         /// </summary>
         [JsonProperty("rule_pattern_exclude")]
         public string RulePatternExclude { get; private set; }
 
         /// <summary>
-        /// Video conference is required.
+        /// Video conference is required
         /// </summary>
         [JsonProperty("video_conference")]
         public bool VideoConference { get; private set; }
 
         /// <summary>
-        /// The bound scenarios.
+        /// The bound scenarios
         /// </summary>
         [JsonProperty("scenarios")]
         public ScenarioInfoType[] Scenarios { get; private set; }

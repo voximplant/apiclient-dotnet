@@ -19,7 +19,7 @@ namespace Voximplant.API.Response {
         public string ApplicationName { get; private set; }
 
         /// <summary>
-        /// This flag indicates whether a secure storage for logs and records is enabled or not.
+        /// This flag indicates whether a secure storage for logs and records is enabled or not
         /// </summary>
         [JsonProperty("secure_record_storage")]
         public bool SecureRecordStorage { get; private set; }

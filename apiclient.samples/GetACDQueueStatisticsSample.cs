@@ -19,13 +19,17 @@ namespace apiclient.samples
         [Fact]
         public void GetACDQueueStatistics()
         {
-            // Get statistics for all queues from the specified date
+            // Get WT and TT statistics for the queue from the specified date.
 
             try {
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.GetACDQueueStatistics(
-                    new DateTime(2017, 1, 1, 0, 0, 0)
+                    new DateTime(2021, 4, 8, 0, 0, 0),
+                    toDate: new DateTime(2021, 4, 10, 0, 0, 0),
+                    acdQueueId: "54",
+                    report: "WT;TT",
+                    aggregation: "day"
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");

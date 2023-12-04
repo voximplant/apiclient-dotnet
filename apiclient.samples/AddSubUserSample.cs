@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void AddSubUser()
         {
-            // Create a new subuser for account_id = 1
+            // Create a new subuser for account_id = 1.
 
             try {
                 var voximplant = new VoximplantAPI();

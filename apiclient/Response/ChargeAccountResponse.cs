@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         public ChargeAccountResult Result { get; private set; }
 
         /// <summary>
-        /// The current account state.
+        /// The current account state
         /// </summary>
         [JsonProperty("account_info")]
         public ShortAccountInfoType AccountInfo { get; private set; }

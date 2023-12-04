@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class AccountVerificationType
     {
         /// <summary>
-        /// The verification name.
+        /// The verification name
         /// </summary>
         [JsonProperty("verification_name")]
         public string VerificationName { get; private set; }
@@ -29,7 +29,7 @@ namespace Voximplant.API.Response {
         public DateTime? UnverifiedHoldUntil { get; private set; }
 
         /// <summary>
-        /// The uploaded documents.
+        /// The uploaded documents
         /// </summary>
         [JsonProperty("documents")]
         public AccountVerificationDocument[] Documents { get; private set; }

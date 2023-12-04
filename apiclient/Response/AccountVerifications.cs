@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class AccountVerifications
     {
         /// <summary>
-        /// The account ID.
+        /// The account ID
         /// </summary>
         [JsonProperty("account_id")]
         public long AccountId { get; private set; }
 
         /// <summary>
-        /// The account verifications.
+        /// The account verifications
         /// </summary>
         [JsonProperty("verifications")]
         public AccountVerificationType[] Verifications { get; private set; }

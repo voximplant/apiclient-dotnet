@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetCallListDetails()
         {
-            // Get all lists registered by user
+            // Get all lists registered by user.
 
             try {
                 var voximplant = new VoximplantAPI();

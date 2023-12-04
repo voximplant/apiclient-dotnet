@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void ChargeAccount()
         {
-            // Charge the frozen phone number: 79993330011
+            // Charge the frozen phone number: 79993330011.
 
             try {
                 var voximplant = new VoximplantAPI();

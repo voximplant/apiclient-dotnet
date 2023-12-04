@@ -26,7 +26,7 @@ namespace apiclient.samples
 
                 var result = voximplant.SetKeyRoles(
                     "ab81c76e-573e-4046-9af9-105269dfafca",
-                    roleId: "1"
+                    roleId: "1;2;3"
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");

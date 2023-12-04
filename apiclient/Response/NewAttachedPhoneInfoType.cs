@@ -10,22 +10,22 @@ namespace Voximplant.API.Response {
     public class NewAttachedPhoneInfoType
     {
         /// <summary>
-        /// The phone ID.
+        /// The phone ID
         /// </summary>
         [JsonProperty("phone_id")]
         public long PhoneId { get; private set; }
 
         /// <summary>
-        /// The phone number.
+        /// The phone number
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; private set; }
 
         /// <summary>
-        /// The required account verification name.
+        /// Verification is required for the account
         /// </summary>
         [JsonProperty("required_verification")]
-        public string RequiredVerification { get; private set; }
+        public bool? RequiredVerification { get; private set; }
 
         /// <summary>
         /// The account verification status. The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED

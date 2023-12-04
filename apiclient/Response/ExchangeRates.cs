@@ -10,19 +10,25 @@ namespace Voximplant.API.Response {
     public class ExchangeRates
     {
         /// <summary>
-        /// The RUR exchange rate.
+        /// The RUR exchange rate
         /// </summary>
         [JsonProperty("RUR")]
         public decimal? RUR { get; private set; }
 
         /// <summary>
-        /// The EUR exchange rate.
+        /// The KZT exchange rate
+        /// </summary>
+        [JsonProperty("KZT")]
+        public decimal? KZT { get; private set; }
+
+        /// <summary>
+        /// The EUR exchange rate
         /// </summary>
         [JsonProperty("EUR")]
         public decimal? EUR { get; private set; }
 
         /// <summary>
-        /// The USD exchange rate. It's always equal to 1.
+        /// The USD exchange rate. It's always equal to 1
         /// </summary>
         [JsonProperty("USD")]
         public decimal? USD { get; private set; }

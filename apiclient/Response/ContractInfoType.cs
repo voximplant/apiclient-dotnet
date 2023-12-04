@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class ContractInfoType
     {
         /// <summary>
-        /// The agreement number.
+        /// The agreement number
         /// </summary>
         [JsonProperty("agreement_number")]
         public string AgreementNumber { get; private set; }

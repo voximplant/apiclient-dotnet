@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class ClonedUserType
     {
         /// <summary>
-        /// The user ID.
+        /// The user ID
         /// </summary>
         [JsonProperty("user_id")]
         public long UserId { get; private set; }
 
         /// <summary>
-        /// The user name.
+        /// The user name
         /// </summary>
         [JsonProperty("user_name")]
         public string UserName { get; private set; }

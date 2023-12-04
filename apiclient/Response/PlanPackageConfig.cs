@@ -10,31 +10,31 @@ namespace Voximplant.API.Response {
     public class PlanPackageConfig
     {
         /// <summary>
-        /// The price group IDs.
+        /// The price group IDs
         /// </summary>
         [JsonProperty("price_group_id")]
         public long[] PriceGroupId { get; private set; }
 
         /// <summary>
-        /// The package name.
+        /// The package name
         /// </summary>
         [JsonProperty("package_name")]
         public string PackageName { get; private set; }
 
         /// <summary>
-        /// The package UUID.
+        /// The package UUID
         /// </summary>
         [JsonProperty("package_uuid")]
         public string PackageUuid { get; private set; }
 
         /// <summary>
-        /// Overrun is enabled.
+        /// Overrun is enabled
         /// </summary>
         [JsonProperty("may_overrun")]
         public bool MayOverrun { get; private set; }
 
         /// <summary>
-        /// The current package size (including overrun).
+        /// The current package size (including overrun)
         /// </summary>
         [JsonProperty("package_size")]
         public long PackageSize { get; private set; }

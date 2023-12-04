@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class SmartQueueAgent_Skill
     {
         /// <summary>
-        /// The agent skill ID.
+        /// The agent skill ID
         /// </summary>
         [JsonProperty("sq_skill_id")]
         public long SqSkillId { get; private set; }
 
         /// <summary>
-        /// The agent skill name.
+        /// The agent skill name
         /// </summary>
         [JsonProperty("sq_skill_name")]
         public string SqSkillName { get; private set; }
 
         /// <summary>
-        /// The agent skill level.
+        /// The agent skill level
         /// </summary>
         [JsonProperty("sq_skill_level")]
         public long SqSkillLevel { get; private set; }

@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public AdminRoleType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found admin role count.
+        /// The total found admin role count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned admin role count.
+        /// The returned admin role count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

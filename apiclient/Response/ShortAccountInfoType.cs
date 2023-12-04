@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class ShortAccountInfoType
     {
         /// <summary>
-        /// The account's ID.
+        /// The account's ID
         /// </summary>
         [JsonProperty("account_id")]
         public long AccountId { get; private set; }
 
         /// <summary>
-        /// Is account blocked by Voximplant admins or not.
+        /// Is account blocked by Voximplant admins or not
         /// </summary>
         [JsonProperty("frozen")]
         public bool? Frozen { get; private set; }
 
         /// <summary>
-        /// The account's money.
+        /// The account's money
         /// </summary>
         [JsonProperty("balance")]
         public decimal? Balance { get; private set; }
 
         /// <summary>
-        /// The currency code (USD, RUR, EUR, ...).
+        /// The currency code (USD, RUR, EUR, ...)
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; private set; }

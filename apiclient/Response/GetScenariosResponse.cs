@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public ScenarioInfoType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found scenario count.
+        /// The total found scenario count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned scenario count.
+        /// The returned scenario count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

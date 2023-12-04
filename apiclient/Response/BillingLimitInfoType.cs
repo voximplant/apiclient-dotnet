@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class BillingLimitInfoType
     {
         /// <summary>
-        /// The minimum amount.
+        /// The minimum amount
         /// </summary>
         [JsonProperty("min_amount")]
-        public long MinAmount { get; private set; }
+        public decimal MinAmount { get; private set; }
 
         /// <summary>
-        /// The currency.
+        /// The currency
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; private set; }

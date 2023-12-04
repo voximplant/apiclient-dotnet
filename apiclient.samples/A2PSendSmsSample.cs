@@ -28,7 +28,7 @@ namespace apiclient.samples
 
                 var result = voximplant.A2PSendSms(
                     "447443332211",
-                    "447443332212",
+                    "447443332212;447443332213",
                     "Test message"
                 ).Result;
 

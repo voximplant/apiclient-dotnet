@@ -20,7 +20,7 @@ namespace apiclient.samples
         public void SetSubUserInfo()
         {
             // Edit the password and description for the subuser with id = 12 from
-            // account_id = 1
+            // account_id = 1.
 
             try {
                 var voximplant = new VoximplantAPI();

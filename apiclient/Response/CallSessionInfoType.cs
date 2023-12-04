@@ -10,25 +10,37 @@ namespace Voximplant.API.Response {
     public class CallSessionInfoType
     {
         /// <summary>
-        /// The call session history ID.
+        /// The routing rule name
+        /// </summary>
+        [JsonProperty("rule_name")]
+        public string RuleName { get; private set; }
+
+        /// <summary>
+        /// The application name
+        /// </summary>
+        [JsonProperty("application_name")]
+        public string ApplicationName { get; private set; }
+
+        /// <summary>
+        /// The unique JS session identifier
         /// </summary>
         [JsonProperty("call_session_history_id")]
         public long CallSessionHistoryId { get; private set; }
 
         /// <summary>
-        /// The account ID.
+        /// The account ID that initiates the JS session
         /// </summary>
         [JsonProperty("account_id")]
         public long AccountId { get; private set; }
 
         /// <summary>
-        /// The application ID.
+        /// The application ID that initiates the JS session
         /// </summary>
         [JsonProperty("application_id")]
         public long ApplicationId { get; private set; }
 
         /// <summary>
-        /// The user ID.
+        /// The user ID that initiates the JS session
         /// </summary>
         [JsonProperty("user_id")]
         public long UserId { get; private set; }
@@ -41,55 +53,55 @@ namespace Voximplant.API.Response {
         public DateTime StartDate { get; private set; }
 
         /// <summary>
-        /// The session duration in seconds.
+        /// The entire JS session duration in seconds. The session can contain multiple calls
         /// </summary>
         [JsonProperty("duration")]
         public long? Duration { get; private set; }
 
         /// <summary>
-        /// The initiator IP address.
+        /// The initiator IP address
         /// </summary>
         [JsonProperty("initiator_address")]
         public string InitiatorAddress { get; private set; }
 
         /// <summary>
-        /// The media server IP address.
+        /// The media server IP address
         /// </summary>
         [JsonProperty("media_server_address")]
         public string MediaServerAddress { get; private set; }
 
         /// <summary>
-        /// The session log URL.
+        /// The link to the session log. The log retention policy is 1 month, after that time this field clears. If you have issues accessing the log file, check if the application has "Secure storage of applications and logs" feature enabled. In this case, you need to <a href='/docs/guides/managementapi/secureobjects'>authorize</a>.
         /// </summary>
         [JsonProperty("log_file_url")]
         public string LogFileUrl { get; private set; }
 
         /// <summary>
-        /// The finish reason. Possible values are: __Normal termination__, __Insufficient funds__, __Internal error (billing timeout)__, __Terminated administratively__, __JS Error__, __Timeout__.
+        /// The finish reason. Possible values are __Normal termination__, __Insufficient funds__, __Internal error (billing timeout)__, __Terminated administratively__, __JS session error__, __Timeout__
         /// </summary>
         [JsonProperty("finish_reason")]
         public string FinishReason { get; private set; }
 
         /// <summary>
-        /// The bound calls.
+        /// The calls within JS session, including durations, cost, phone numbers and other information
         /// </summary>
         [JsonProperty("calls")]
         public CallInfoType[] Calls { get; private set; }
 
         /// <summary>
-        /// The used resorces.
+        /// The used resorces
         /// </summary>
         [JsonProperty("other_resource_usage")]
         public ResourceUsageType[] OtherResourceUsage { get; private set; }
 
         /// <summary>
-        /// The bound records.
+        /// The bound records
         /// </summary>
         [JsonProperty("records")]
         public RecordType[] Records { get; private set; }
 
         /// <summary>
-        /// The custom data.
+        /// The custom data
         /// </summary>
         [JsonProperty("custom_data")]
         public string CustomData { get; private set; }

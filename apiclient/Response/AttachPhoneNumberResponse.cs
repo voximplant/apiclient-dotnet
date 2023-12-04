@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         public long Result { get; private set; }
 
         /// <summary>
-        /// The attached phone numbers.
+        /// The attached phone numbers
         /// </summary>
         [JsonProperty("phone_numbers")]
         public NewAttachedPhoneInfoType[] PhoneNumbers { get; private set; }

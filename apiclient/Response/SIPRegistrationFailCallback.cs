@@ -5,15 +5,15 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the [AccountCallback] structure.
+    /// Received when one or several SIP registrations are failed. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class SIPRegistrationFailCallback
     {
         /// <summary>
-        /// The SIP registration ID.
+        /// SIP registration array
         /// </summary>
-        [JsonProperty("sip_registration_id")]
-        public long SipRegistrationId { get; private set; }
+        [JsonProperty("sip_registrations")]
+        public SIPRegistrationIsFailedCallbackItem[] SipRegistrations { get; private set; }
 
     }
 }

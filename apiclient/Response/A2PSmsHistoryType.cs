@@ -10,43 +10,43 @@ namespace Voximplant.API.Response {
     public class A2PSmsHistoryType
     {
         /// <summary>
-        /// The message ID.
+        /// Message ID
         /// </summary>
-        [JsonProperty("id")]
-        public long Id { get; private set; }
+        [JsonProperty("message_id")]
+        public long MessageId { get; private set; }
 
         /// <summary>
-        /// SMS source number.
+        /// SMS source number
         /// </summary>
         [JsonProperty("source_number")]
         public long SourceNumber { get; private set; }
 
         /// <summary>
-        /// SMS destination number.
+        /// SMS destination number
         /// </summary>
         [JsonProperty("destination_number")]
         public long DestinationNumber { get; private set; }
 
         /// <summary>
-        /// Number of fragments the initial message was divided into.
+        /// Number of fragments the initial message was divided into
         /// </summary>
         [JsonProperty("fragments")]
         public long Fragments { get; private set; }
 
         /// <summary>
-        /// The message cost.
+        /// The message cost
         /// </summary>
         [JsonProperty("cost")]
         public decimal Cost { get; private set; }
 
         /// <summary>
-        /// The message status. 1 - Success, 2 - Error.
+        /// The message status. 1 - Success, 2 - Error
         /// </summary>
         [JsonProperty("status_id")]
-        public long StatusId { get; private set; }
+        public string StatusId { get; private set; }
 
         /// <summary>
-        /// Error message (if any).
+        /// Error message (if any)
         /// </summary>
         [JsonProperty("error_message")]
         public string ErrorMessage { get; private set; }
@@ -59,7 +59,7 @@ namespace Voximplant.API.Response {
         public DateTime ProcessingDate { get; private set; }
 
         /// <summary>
-        /// The transaction ID for this message.
+        /// The transaction ID for this message
         /// </summary>
         [JsonProperty("transaction_id")]
         public long TransactionId { get; private set; }
@@ -69,6 +69,12 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("delivery_status")]
         public string DeliveryStatus { get; private set; }
+
+        /// <summary>
+        /// Stored message text
+        /// </summary>
+        [JsonProperty("text")]
+        public string Text { get; private set; }
 
     }
 }

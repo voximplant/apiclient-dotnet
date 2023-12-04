@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class ChargeAccountResult
     {
         /// <summary>
-        /// The charged money amount.
+        /// The charged money amount
         /// </summary>
         [JsonProperty("charged_amount")]
         public decimal ChargedAmount { get; private set; }
 
         /// <summary>
-        /// The charged phone list.
+        /// The charged phone list
         /// </summary>
         [JsonProperty("phones")]
         public ChargedPhoneType[] Phones { get; private set; }

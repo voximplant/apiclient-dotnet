@@ -7,13 +7,13 @@ namespace Voximplant.API.Response {
     public class GetZIPCodesResponse : BaseResponse
     {
         /// <summary>
-        /// The ZipCode records.
+        /// The ZipCode records
         /// </summary>
         [JsonProperty("result")]
         public ZipCode[] Result { get; private set; }
 
         /// <summary>
-        /// The returned zip codes count.
+        /// The returned zip codes count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

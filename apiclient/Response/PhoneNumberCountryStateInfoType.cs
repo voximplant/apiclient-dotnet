@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class PhoneNumberCountryStateInfoType
     {
         /// <summary>
-        /// The country state code.
+        /// The country state code
         /// </summary>
         [JsonProperty("country_state")]
         public string CountryState { get; private set; }
 
         /// <summary>
-        /// The full country state name.
+        /// The full country state name
         /// </summary>
         [JsonProperty("country_state_name")]
         public string CountryStateName { get; private set; }

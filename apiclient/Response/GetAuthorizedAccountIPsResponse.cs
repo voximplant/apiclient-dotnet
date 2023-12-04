@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public AuthorizedAccountIPType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found network count.
+        /// The total found network count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned network count.
+        /// The returned network count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

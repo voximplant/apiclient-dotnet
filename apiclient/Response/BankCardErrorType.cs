@@ -17,19 +17,19 @@ namespace Voximplant.API.Response {
         public DateTime Date { get; private set; }
 
         /// <summary>
-        /// The error message.
+        /// The error message
         /// </summary>
         [JsonProperty("msg")]
         public string Msg { get; private set; }
 
         /// <summary>
-        /// The amount in the payment currency.
+        /// The amount in the payment currency
         /// </summary>
         [JsonProperty("amount")]
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// The payment currency.
+        /// The payment currency
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; private set; }

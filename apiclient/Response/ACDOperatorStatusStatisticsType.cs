@@ -29,7 +29,7 @@ namespace Voximplant.API.Response {
         public long? Hour { get; private set; }
 
         /// <summary>
-        /// The user statistics.
+        /// The user statistics
         /// </summary>
         [JsonProperty("acd_status")]
         public ACDOperatorStatusStatisticsDetail[] AcdStatus { get; private set; }

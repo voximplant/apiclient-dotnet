@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class ScenarioInfoType
     {
         /// <summary>
-        /// The scenario ID.
+        /// The scenario ID
         /// </summary>
         [JsonProperty("scenario_id")]
         public long ScenarioId { get; private set; }
 
         /// <summary>
-        /// The scenario name.
+        /// The scenario name
         /// </summary>
         [JsonProperty("scenario_name")]
         public string ScenarioName { get; private set; }
 
         /// <summary>
-        /// The scenario text.
+        /// The scenario text
         /// </summary>
         [JsonProperty("scenario_script")]
         public string ScenarioScript { get; private set; }
@@ -35,7 +35,7 @@ namespace Voximplant.API.Response {
         public DateTime Modified { get; private set; }
 
         /// <summary>
-        /// 'True' if the scenario belongs to the parent account, 'false' if the scenario belongs to the current account.
+        /// 'True' if the scenario belongs to the parent account, 'false' if the scenario belongs to the current account
         /// </summary>
         [JsonProperty("parent")]
         public bool Parent { get; private set; }

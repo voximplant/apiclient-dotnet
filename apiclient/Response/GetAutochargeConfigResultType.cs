@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class GetAutochargeConfigResultType
     {
         /// <summary>
-        /// Is auto charge enabled or not.
+        /// Is auto charge enabled or not
         /// </summary>
         [JsonProperty("auto_charge")]
         public bool AutoCharge { get; private set; }
 
         /// <summary>
-        /// The auto charge threshold.
+        /// The auto charge threshold
         /// </summary>
         [JsonProperty("min_balance")]
         public long MinBalance { get; private set; }
 
         /// <summary>
-        /// The auto top-up amount in the account's currency.
+        /// The auto top-up amount in the account's currency
         /// </summary>
         [JsonProperty("card_overrun_value")]
         public string CardOverrunValue { get; private set; }
 
         /// <summary>
-        /// The email for receiving payment receipts.
+        /// The email for receiving payment receipts
         /// </summary>
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; private set; }

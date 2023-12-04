@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
         public SmsHistoryType[] Result { get; private set; }
 
         /// <summary>
-        /// Total number of distinct messages fetched.
+        /// Total number of messages matching the query parameters
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }

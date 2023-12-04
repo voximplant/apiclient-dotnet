@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class ClonedACDSkillType
     {
         /// <summary>
-        /// The ACD skill ID.
+        /// The ACD skill ID
         /// </summary>
         [JsonProperty("skill_id")]
         public long SkillId { get; private set; }
 
         /// <summary>
-        /// The ACD skill name.
+        /// The ACD skill name
         /// </summary>
         [JsonProperty("skill_name")]
         public string SkillName { get; private set; }

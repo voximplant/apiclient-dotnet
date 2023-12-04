@@ -5,12 +5,12 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the [AccountCallback] structure.
+    /// Received when proof of address is uploaded. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class RegulationAddressUploadedCallback
     {
         /// <summary>
-        /// The uploaded document ID. See GetRegulationsAddress.
+        /// The uploaded document ID. See GetRegulationsAddress
         /// </summary>
         [JsonProperty("regulation_address_id")]
         public long RegulationAddressId { get; private set; }
@@ -23,13 +23,13 @@ namespace Voximplant.API.Response {
         public DateTime Uploaded { get; private set; }
 
         /// <summary>
-        /// Account belongs to an individual.
+        /// Account belongs to an individual
         /// </summary>
         [JsonProperty("is_individual")]
         public bool IsIndividual { get; private set; }
 
         /// <summary>
-        /// The regulation address name.
+        /// The regulation address name
         /// </summary>
         [JsonProperty("regulation_address_name")]
         public string RegulationAddressName { get; private set; }

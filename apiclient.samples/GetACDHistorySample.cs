@@ -20,7 +20,7 @@ namespace apiclient.samples
         public void GetACDHistory()
         {
             // Get the two ACD session history records from the 2012-01-01 00:00:00
-            // to the 2014-04-01 00:00:00
+            // to the 2014-04-01 00:00:00.
 
             try {
                 var voximplant = new VoximplantAPI();

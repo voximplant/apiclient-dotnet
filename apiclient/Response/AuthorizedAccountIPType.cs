@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class AuthorizedAccountIPType
     {
         /// <summary>
-        /// The authorized IP4 or network.
+        /// The authorized IP4 or network
         /// </summary>
         [JsonProperty("authorized_ip")]
         public string AuthorizedIp { get; private set; }
 
         /// <summary>
-        /// The allowed flag (true - whitelist, false - blacklist).
+        /// The allowed flag (true - whitelist, false - blacklist)
         /// </summary>
         [JsonProperty("allowed")]
         public bool Allowed { get; private set; }

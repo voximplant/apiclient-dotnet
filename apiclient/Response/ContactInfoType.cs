@@ -10,37 +10,37 @@ namespace Voximplant.API.Response {
     public class ContactInfoType
     {
         /// <summary>
-        /// The contact ID.
+        /// The contact ID
         /// </summary>
         [JsonProperty("contact_id")]
         public long ContactId { get; private set; }
 
         /// <summary>
-        /// The contact type. The following values are available: 'email'.
+        /// The contact type. The following values are available: 'email'
         /// </summary>
         [JsonProperty("contact_type")]
         public string ContactType { get; private set; }
 
         /// <summary>
-        /// The contact data (i.g. email).
+        /// The contact data (i.g. email)
         /// </summary>
         [JsonProperty("contact_data")]
         public string ContactData { get; private set; }
 
         /// <summary>
-        /// The persistent flag.
+        /// The persistent flag
         /// </summary>
         [JsonProperty("is_persistent")]
         public bool IsPersistent { get; private set; }
 
         /// <summary>
-        /// The contact description.
+        /// The contact description
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
 
         /// <summary>
-        /// The verification code sending timeout is seconds.
+        /// The verification code sending timeout is seconds
         /// </summary>
         [JsonProperty("next_verification_after_sec")]
         public long? NextVerificationAfterSec { get; private set; }
@@ -53,7 +53,7 @@ namespace Voximplant.API.Response {
         public DateTime? Verified { get; private set; }
 
         /// <summary>
-        /// The attached notification group list. The following groups are available: 'news', 'tariff_changing', 'account', 'development'.
+        /// The attached notification group list. The following groups are available: 'news', 'tariff_changing', 'account', 'development'
         /// </summary>
         [JsonProperty("notification_group")]
         public string[] NotificationGroup { get; private set; }

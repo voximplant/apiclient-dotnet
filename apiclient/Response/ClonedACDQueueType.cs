@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class ClonedACDQueueType
     {
         /// <summary>
-        /// The ACD queue ID.
+        /// The ACD queue ID
         /// </summary>
         [JsonProperty("acd_queue_id")]
         public long AcdQueueId { get; private set; }
 
         /// <summary>
-        /// The ACD queue name.
+        /// The ACD queue name
         /// </summary>
         [JsonProperty("acd_queue_name")]
         public string AcdQueueName { get; private set; }

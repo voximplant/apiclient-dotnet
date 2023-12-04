@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetCountries()
         {
-            // Get Germany
+            // Get Germany.
 
             try {
                 var voximplant = new VoximplantAPI();

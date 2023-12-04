@@ -10,25 +10,25 @@ namespace Voximplant.API.Response {
     public class SubUserView
     {
         /// <summary>
-        /// The subuser ID.
+        /// The subuser ID
         /// </summary>
         [JsonProperty("subuser_id")]
         public long SubuserId { get; private set; }
 
         /// <summary>
-        /// The subuser name, can be used as __subuser_login__ to <a href="#how-auth-works">authenticate</a>.
+        /// The subuser name, can be used as __subuser_login__ to <a href='/docs/guides/managementapi/authorization'>authenticate</a>
         /// </summary>
         [JsonProperty("subuser_name")]
         public string SubuserName { get; private set; }
 
         /// <summary>
-        /// The subuser description.
+        /// The subuser description
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
 
         /// <summary>
-        /// The subuser roles.
+        /// The subuser roles
         /// </summary>
         [JsonProperty("roles")]
         public RoleView[] Roles { get; private set; }

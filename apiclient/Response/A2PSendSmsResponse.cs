@@ -15,7 +15,7 @@ namespace Voximplant.API.Response {
         public FailedSms[] Failed { get; private set; }
 
         /// <summary>
-        /// The number of fragments the message is divided into.
+        /// The number of fragments the message is divided into
         /// </summary>
         [JsonProperty("fragments_count")]
         public long FragmentsCount { get; private set; }

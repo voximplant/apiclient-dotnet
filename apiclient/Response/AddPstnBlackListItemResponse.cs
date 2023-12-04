@@ -13,7 +13,7 @@ namespace Voximplant.API.Response {
         public long Result { get; private set; }
 
         /// <summary>
-        /// The PSTN black list item ID.
+        /// The PSTN black list item ID
         /// </summary>
         [JsonProperty("pstn_blacklist_id")]
         public long PstnBlacklistId { get; private set; }

@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class QueueUsers
     {
         /// <summary>
-        /// The user ID.
+        /// The user ID
         /// </summary>
         [JsonProperty("user_id")]
         public long UserId { get; private set; }

@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetSubUsers()
         {
-            // Get subusers info
+            // Get subusers info.
 
             try {
                 var voximplant = new VoximplantAPI();

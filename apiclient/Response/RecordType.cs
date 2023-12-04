@@ -10,19 +10,19 @@ namespace Voximplant.API.Response {
     public class RecordType
     {
         /// <summary>
-        /// The record ID.
+        /// The record ID
         /// </summary>
         [JsonProperty("record_id")]
         public long RecordId { get; private set; }
 
         /// <summary>
-        /// The record name.
+        /// The record name
         /// </summary>
         [JsonProperty("record_name")]
         public string RecordName { get; private set; }
 
         /// <summary>
-        /// The record cost.
+        /// The record cost
         /// </summary>
         [JsonProperty("cost")]
         public decimal? Cost { get; private set; }
@@ -35,37 +35,37 @@ namespace Voximplant.API.Response {
         public DateTime StartTime { get; private set; }
 
         /// <summary>
-        /// The call duration in seconds.
+        /// The call duration in seconds
         /// </summary>
         [JsonProperty("duration")]
         public long? Duration { get; private set; }
 
         /// <summary>
-        /// The record URL.
+        /// The record URL.  If you have issues accessing the record file, check if the application has "Secure storage of applications and logs" feature enabled. In this case, you need to <a href='/docs/guides/managementapi/secureobjects'>authorize</a>.
         /// </summary>
         [JsonProperty("record_url")]
         public string RecordUrl { get; private set; }
 
         /// <summary>
-        /// The transaction ID.
+        /// The transaction ID
         /// </summary>
         [JsonProperty("transaction_id")]
         public long TransactionId { get; private set; }
 
         /// <summary>
-        /// The file size.
+        /// The file size
         /// </summary>
         [JsonProperty("file_size")]
         public decimal? FileSize { get; private set; }
 
         /// <summary>
-        /// The url of transcription.
+        /// Transcription URL. To open the URL, please add authorization parameters and <b>record_id</b> to it
         /// </summary>
         [JsonProperty("transcription_url")]
         public string TranscriptionUrl { get; private set; }
 
         /// <summary>
-        /// The status of transcription. The possible values are: Not required, In progress, Complete
+        /// The status of transcription. The possible values are Not required, In progress, Complete
         /// </summary>
         [JsonProperty("transcription_status")]
         public string TranscriptionStatus { get; private set; }

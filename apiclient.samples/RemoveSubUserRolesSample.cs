@@ -19,14 +19,14 @@ namespace apiclient.samples
         [Fact]
         public void RemoveSubUserRoles()
         {
-            // Remove roles 1,2,3 from the subuser with id = 12
+            // Remove roles 1,2,3 from the subuser with id = 12.
 
             try {
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.RemoveSubUserRoles(
                     12L,
-                    roleId: "1"
+                    roleId: "1;2;3"
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");

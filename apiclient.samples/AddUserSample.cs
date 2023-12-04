@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void AddUser()
         {
-            // Add a new user
+            // Add a new user.
 
             try {
                 var voximplant = new VoximplantAPI();

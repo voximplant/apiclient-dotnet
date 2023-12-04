@@ -16,13 +16,13 @@ namespace Voximplant.API.Response {
         public long DialogflowKeyId { get; private set; }
 
         /// <summary>
-        /// The key's content.
+        /// The key's content
         /// </summary>
         [JsonProperty("content")]
         public DialogflowKey Content { get; private set; }
 
         /// <summary>
-        /// Bound applications.
+        /// Bound applications
         /// </summary>
         [JsonProperty("applications")]
         public ApplicationInfoType[] Applications { get; private set; }

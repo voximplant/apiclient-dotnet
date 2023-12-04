@@ -5,18 +5,18 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the [AccountCallback] structure.
+    /// Received when an expiration date of the confirmation documents waiting period is changed. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class RestoredAgreementStatusCallback
     {
         /// <summary>
-        /// ID of the agreement document which status has been changed.
+        /// ID of the agreement document which status has been changed
         /// </summary>
         [JsonProperty("document_id")]
         public long DocumentId { get; private set; }
 
         /// <summary>
-        /// The new date of agreement expiration in format: YYYY-MM-DD.
+        /// The new date of agreement expiration in format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("expiration_date")]

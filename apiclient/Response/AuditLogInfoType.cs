@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class AuditLogInfoType
     {
         /// <summary>
-        /// The  ID.
+        /// The  ID
         /// </summary>
         [JsonProperty("audit_log_id")]
         public long AuditLogId { get; private set; }
 
         /// <summary>
-        /// The account ID.
+        /// The account ID
         /// </summary>
         [JsonProperty("account_id")]
         public long AccountId { get; private set; }
@@ -29,25 +29,25 @@ namespace Voximplant.API.Response {
         public DateTime Requested { get; private set; }
 
         /// <summary>
-        /// The initiator IP address.
+        /// The initiator IP address
         /// </summary>
         [JsonProperty("ip")]
         public string Ip { get; private set; }
 
         /// <summary>
-        /// The called function.
+        /// The called function
         /// </summary>
         [JsonProperty("cmd_name")]
         public string CmdName { get; private set; }
 
         /// <summary>
-        /// The arguments of the called function (they may be masked or resolved).
+        /// The arguments of the called function (they may be masked or resolved)
         /// </summary>
         [JsonProperty("cmd_args")]
         public object CmdArgs { get; private set; }
 
         /// <summary>
-        /// The modified values.
+        /// The modified values
         /// </summary>
         [JsonProperty("cmd_result")]
         public object CmdResult { get; private set; }

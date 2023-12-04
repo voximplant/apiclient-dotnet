@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class ClonedScenarioType
     {
         /// <summary>
-        /// The scenario ID.
+        /// The scenario ID
         /// </summary>
         [JsonProperty("scenario_id")]
         public long ScenarioId { get; private set; }
 
         /// <summary>
-        /// The scenario name.
+        /// The scenario name
         /// </summary>
         [JsonProperty("scenario_name")]
         public string ScenarioName { get; private set; }

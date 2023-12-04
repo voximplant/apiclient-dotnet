@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class ACDStateType
     {
         /// <summary>
-        /// The queues' states.
+        /// The queues' states
         /// </summary>
         [JsonProperty("acd_queues")]
         public ACDQueueStateType[] AcdQueues { get; private set; }

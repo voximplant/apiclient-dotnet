@@ -5,18 +5,18 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details.
+    /// Received when a caller ID is about to be expired.
     /// </summary>
     public class ExpiringCallerIDCallback
     {
         /// <summary>
-        /// The list of expiring Caller IDs.
+        /// The list of expiring Caller IDs
         /// </summary>
         [JsonProperty("callerids")]
         public string[] Callerids { get; private set; }
 
         /// <summary>
-        /// The Caller IDs expiration date in YYYY-MM-DD format.
+        /// The Caller IDs expiration date in YYYY-MM-DD format
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("expiration_date")]

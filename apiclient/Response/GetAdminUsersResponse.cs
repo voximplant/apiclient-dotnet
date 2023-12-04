@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public AdminUserType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found admin user count.
+        /// The total found admin user count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned admin user count.
+        /// The returned admin user count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

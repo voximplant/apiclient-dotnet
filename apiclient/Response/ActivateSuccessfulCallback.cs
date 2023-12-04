@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The specific account callback details. Received as part of the [AccountCallback] structure.
+    /// Received when a new (not child) account is created. Received as part of the [AccountCallback] structure.
     /// </summary>
     public class ActivateSuccessfulCallback
     {

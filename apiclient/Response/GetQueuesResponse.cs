@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public QueueInfoType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found queue count.
+        /// The total found queue count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned queue count.
+        /// The returned queue count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

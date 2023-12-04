@@ -10,43 +10,43 @@ namespace Voximplant.API.Response {
     public class NewInvoiceCallbackItem
     {
         /// <summary>
-        /// The invoice unique number.
+        /// The invoice unique number
         /// </summary>
         [JsonProperty("invoice_number")]
         public string InvoiceNumber { get; private set; }
 
         /// <summary>
-        /// The invoice date.
+        /// The invoice date
         /// </summary>
         [JsonProperty("invoice_date")]
         public string InvoiceDate { get; private set; }
 
         /// <summary>
-        /// It's a prepayment.
+        /// It's a prepayment
         /// </summary>
         [JsonProperty("prepayment")]
         public bool Prepayment { get; private set; }
 
         /// <summary>
-        /// The invoice currency.
+        /// The invoice currency
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; private set; }
 
         /// <summary>
-        /// The invoice's total amount including taxes.
+        /// The invoice's total amount including taxes
         /// </summary>
         [JsonProperty("total_amount")]
         public decimal TotalAmount { get; private set; }
 
         /// <summary>
-        /// The total amount of taxes.
+        /// The total amount of taxes
         /// </summary>
         [JsonProperty("total_tax_amount")]
         public decimal TotalTaxAmount { get; private set; }
 
         /// <summary>
-        /// Array with the services that were provided.
+        /// Array with the services that were provided
         /// </summary>
         [JsonProperty("units")]
         public InvoiceUnits[] Units { get; private set; }

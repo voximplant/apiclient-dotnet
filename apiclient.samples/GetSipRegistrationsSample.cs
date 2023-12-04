@@ -19,7 +19,7 @@ namespace apiclient.samples
         [Fact]
         public void GetSipRegistrations()
         {
-            // Get all active sip registrations
+            // Get all active sip registrations.
 
             try {
                 var voximplant = new VoximplantAPI();

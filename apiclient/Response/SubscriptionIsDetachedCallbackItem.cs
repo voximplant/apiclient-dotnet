@@ -16,10 +16,16 @@ namespace Voximplant.API.Response {
         public string Type { get; private set; }
 
         /// <summary>
-        /// The subscription description (details). Example: the subscribed phone number.
+        /// The subscription description (details). Example: the subscribed phone number
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; private set; }
+
+        /// <summary>
+        /// Info about the phone numbers or sip registrations that the subscription is attached to
+        /// </summary>
+        [JsonProperty("details")]
+        public SubscriptionCallbackDetails[] Details { get; private set; }
 
     }
 }

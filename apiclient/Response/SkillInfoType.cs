@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class SkillInfoType
     {
         /// <summary>
-        /// The skill ID.
+        /// The skill ID
         /// </summary>
         [JsonProperty("skill_id")]
         public long SkillId { get; private set; }
 
         /// <summary>
-        /// The skill name.
+        /// The skill name
         /// </summary>
         [JsonProperty("skill_name")]
         public string SkillName { get; private set; }

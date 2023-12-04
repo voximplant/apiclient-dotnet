@@ -11,13 +11,13 @@ namespace Voximplant.API.Response {
         public PstnBlackListInfoType[] Result { get; private set; }
 
         /// <summary>
-        /// The total found phone numbers count.
+        /// The total found phone numbers count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }
 
         /// <summary>
-        /// The returned phone numbers count.
+        /// The returned phone numbers count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

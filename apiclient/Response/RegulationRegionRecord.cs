@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class RegulationRegionRecord
     {
         /// <summary>
-        /// The regulation address ID.
+        /// The regulation address ID
         /// </summary>
         [JsonProperty("phone_region_id")]
         public long PhoneRegionId { get; private set; }

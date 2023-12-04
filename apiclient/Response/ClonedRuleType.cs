@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class ClonedRuleType
     {
         /// <summary>
-        /// The rule ID.
+        /// The rule ID
         /// </summary>
         [JsonProperty("rule_id")]
         public long RuleId { get; private set; }
 
         /// <summary>
-        /// The rule name.
+        /// The rule name
         /// </summary>
         [JsonProperty("rule_name")]
         public string RuleName { get; private set; }

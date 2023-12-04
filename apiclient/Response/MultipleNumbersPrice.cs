@@ -10,22 +10,58 @@ namespace Voximplant.API.Response {
     public class MultipleNumbersPrice
     {
         /// <summary>
-        /// The number of subscriptions which must be purchased simultaneously to enable a multiple numbers subscription.
+        /// The number of subscriptions which must be purchased simultaneously to enable a multiple numbers subscription
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }
 
         /// <summary>
-        /// The subscription price for one number, i.e., the total multiple numbers subscription price divided by the __count__ value.
+        /// The phone number installation tax reserve
         /// </summary>
-        [JsonProperty("price")]
-        public decimal Price { get; private set; }
+        [JsonProperty("installation_tax_reserve")]
+        public long InstallationTaxReserve { get; private set; }
 
         /// <summary>
-        /// The installation price for one number, i.e., the total multiple numbers installation price divided by the __count__ value.
+        /// The phone number tax reserve
         /// </summary>
-        [JsonProperty("installation_price")]
-        public decimal InstallationPrice { get; private set; }
+        [JsonProperty("tax_reserve")]
+        public long TaxReserve { get; private set; }
+
+        /// <summary>
+        /// Phone number price from the price list
+        /// </summary>
+        [JsonProperty("local_price")]
+        public long? LocalPrice { get; private set; }
+
+        /// <summary>
+        /// Phone number installation price from the price list
+        /// </summary>
+        [JsonProperty("local_installation_price")]
+        public long? LocalInstallationPrice { get; private set; }
+
+        /// <summary>
+        /// Price list currency
+        /// </summary>
+        [JsonProperty("local_currency")]
+        public string LocalCurrency { get; private set; }
+
+        /// <summary>
+        /// Phone number price in the account currency
+        /// </summary>
+        [JsonProperty("account_price")]
+        public long? AccountPrice { get; private set; }
+
+        /// <summary>
+        /// Phone number installation price in the account currency
+        /// </summary>
+        [JsonProperty("account_installation_price")]
+        public long? AccountInstallationPrice { get; private set; }
+
+        /// <summary>
+        /// Account currency
+        /// </summary>
+        [JsonProperty("account_currency")]
+        public string AccountCurrency { get; private set; }
 
     }
 }

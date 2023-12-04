@@ -10,21 +10,21 @@ namespace Voximplant.API.Response {
     public class SmartQueueMetricsGroupsValues
     {
         /// <summary>
-        /// The start of the period.
+        /// The start of the period
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("from_date")]
         public DateTime FromDate { get; private set; }
 
         /// <summary>
-        /// The end of the period.
+        /// The end of the period
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("to_date")]
         public DateTime ToDate { get; private set; }
 
         /// <summary>
-        /// The report value.
+        /// The report value
         /// </summary>
         [JsonProperty("value")]
         public long Value { get; private set; }

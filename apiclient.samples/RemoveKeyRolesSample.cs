@@ -26,7 +26,7 @@ namespace apiclient.samples
 
                 var result = voximplant.RemoveKeyRoles(
                     "ab81c90e-543e-4446-9af9-105269dfafca",
-                    roleId: "1"
+                    roleId: "1;2;3"
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");

@@ -10,13 +10,13 @@ namespace Voximplant.API.Response {
     public class API_Error
     {
         /// <summary>
-        /// The error code.
+        /// The error code
         /// </summary>
         [JsonProperty("code")]
         public long Code { get; private set; }
 
         /// <summary>
-        /// The error description.
+        /// The error description
         /// </summary>
         [JsonProperty("msg")]
         public string Msg { get; private set; }
