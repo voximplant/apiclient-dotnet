@@ -6,14 +6,14 @@
     <Title>voximplant-apiclient</Title>
     <Authors>Voximplant</Authors>
     <Description>Voximplant API client library</Description>
-    <Copyright>Copyright (c) 2019-2023 Voximplant</Copyright>
+    <Copyright>Copyright (c) 2019-2024 Voximplant</Copyright>
     <PackageProjectUrl>https://voximplant.com/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/voximplant/apiclient-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>voximplant</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <TargetFrameworks>net452;netstandard2.0;netcoreapp2.1</TargetFrameworks>
-    <PackageVersion>2.2.0</PackageVersion>
+    <PackageVersion>2.3.0</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

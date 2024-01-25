@@ -1110,7 +1110,7 @@ namespace Voximplant.API {
         /// <param name="userName">The user name that can be used instead of <b>user_id</b>. Run the scripts from the user if set</param>
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
-        /// <param name="scriptCustomData">The script custom data, that can be accessed in the scenario via the <a href='/docs/references/voxengine/voxengine/customdata'>VoxEngine.customData()</a> method. Use the application/x-www-form-urlencoded content type with UTF-8 encoding.</param>
+        /// <param name="scriptCustomData">The script custom data, that can be accessed in the scenario via the <a href='/docs/references/voxengine/voxengine/customdata'>VoxEngine.customData()</a> method. Use the application/x-www-form-urlencoded content type with UTF-8 encoding</param>
         /// <param name="referenceIp">Specifies the IP from the geolocation of predicted subscribers. It allows selecting the nearest server for serving subscribers</param>
         public async Task<StartScenariosResponse> StartScenarios(long ruleId, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null)
         {
@@ -5208,10 +5208,10 @@ namespace Voximplant.API {
         /// <param name="applicationId">ID of the application to bind to</param>
         /// <param name="sqQueueName">Unique SmartQueue name within the application, up to 100 characters</param>
         /// <param name="callAgentSelection">Agent selection strategy for calls. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME"</param>
-        /// <param name="callTaskSelection">Strategy of prioritizing CALL-type requests for service. Accepts one of the following values: "MAX_PRIORITY", "MAX_WAITING_TIME"</param>
+        /// <param name="callTaskSelection">Call type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values</param>
         /// <param name="applicationName">Name of the application to bind to. Can be used instead of <b>application_id</b></param>
         /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". Equals to the **call_agent_selection** value by default</param>
-        /// <param name="imTaskSelection">Strategy of prioritizing IM-type requests for service. Accepts one of the following values: "MAX_PRIORITY", "MAX_WAITING_TIME". Equals to the **call_task_selection** value by default</param>
+        /// <param name="imTaskSelection">IM type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values. Equals to the **call_task_selection** value by default</param>
         /// <param name="description">Comment, up to 200 characters</param>
         /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent</param>
         /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent</param>
@@ -5446,8 +5446,8 @@ namespace Voximplant.API {
         /// <param name="sqSkills">Skills to be bound to agents in the json array format. The array should contain objects with the <b>sq_skill_id</b>/<b>sq_skill_name</b> and <b>sq_skill_level</b> keys where skill levels range from 1 to 5</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="bindMode">Binding mode</param>
-        public async Task<SQ_BindSkillResponse> SQ_BindSkill(long applicationId, string userId, Object sqSkills, string applicationName = null, string userName = null, SQSkillBindingModes[] bindMode = null)
+        /// <param name="bindMode">Binding mode. Accepts one of the [SQSkillBindingModes] enum values</param>
+        public async Task<SQ_BindSkillResponse> SQ_BindSkill(long applicationId, string userId, Object sqSkills, string applicationName = null, string userName = null, string bindMode = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -5459,7 +5459,7 @@ namespace Voximplant.API {
             if (userName != null)
                 args["user_name"] = userName;
             if (bindMode != null)
-                args["bind_mode"] = bindMode.ToString();
+                args["bind_mode"] = bindMode;
         
             return await PerformRequest<SQ_BindSkillResponse>("SQ_BindSkill", args, null);
         }
@@ -5542,8 +5542,8 @@ namespace Voximplant.API {
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueName">Name of the SmartQueue. Pass a list of names divided by ; or the "all" keyword</param>
         /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="bindMode">Binding mode</param>
-        public async Task<SQ_BindAgentResponse> SQ_BindAgent(long applicationId, string sqQueueId, string userId, string applicationName = null, string sqQueueName = null, string userName = null, SQAgentBindingModes[] bindMode = null)
+        /// <param name="bindMode">Binding mode. Accepts one of the [SQAgentBindingModes] enum values</param>
+        public async Task<SQ_BindAgentResponse> SQ_BindAgent(long applicationId, string sqQueueId, string userId, string applicationName = null, string sqQueueName = null, string userName = null, string bindMode = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -5557,7 +5557,7 @@ namespace Voximplant.API {
             if (userName != null)
                 args["user_name"] = userName;
             if (bindMode != null)
-                args["bind_mode"] = bindMode.ToString();
+                args["bind_mode"] = bindMode;
         
             return await PerformRequest<SQ_BindAgentResponse>("SQ_BindAgent", args, null);
         }
