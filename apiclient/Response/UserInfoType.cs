@@ -28,13 +28,13 @@ namespace Voximplant.API.Response {
         public string UserDisplayName { get; private set; }
 
         /// <summary>
-        /// The user active flag
+        /// Whether the user is active
         /// </summary>
         [JsonProperty("user_active")]
         public bool UserActive { get; private set; }
 
         /// <summary>
-        /// 'True' if the user uses the parent account's money, 'false' if the user has a separate balance
+        /// Whether the user uses the parent account's money, 'false' if the user has a separate balance
         /// </summary>
         [JsonProperty("parent_accounting")]
         public bool ParentAccounting { get; private set; }

@@ -71,19 +71,19 @@ namespace Voximplant.API.Response {
         public decimal? MinBalanceToNotify { get; private set; }
 
         /// <summary>
-        /// Voximplant notifications are required
+        /// Whether Voximplant notifications are required
         /// </summary>
         [JsonProperty("account_notifications")]
         public bool? AccountNotifications { get; private set; }
 
         /// <summary>
-        /// Voximplant plan changing notifications are required
+        /// Whether Voximplant plan changing notifications are required
         /// </summary>
         [JsonProperty("tariff_changing_notifications")]
         public bool? TariffChangingNotifications { get; private set; }
 
         /// <summary>
-        /// Voximplant news notifications are required
+        /// Whether Voximplant news notifications are required
         /// </summary>
         [JsonProperty("news_notifications")]
         public bool? NewsNotifications { get; private set; }
@@ -125,13 +125,13 @@ namespace Voximplant.API.Response {
         public string BillingAddressState { get; private set; }
 
         /// <summary>
-        /// The account activation flag
+        /// Whether the account is ctive
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; private set; }
 
         /// <summary>
-        /// Is account blocked by Voximplant admins or not
+        /// Whether account is blocked by Voximplant admins
         /// </summary>
         [JsonProperty("frozen")]
         public bool? Frozen { get; private set; }
@@ -155,19 +155,19 @@ namespace Voximplant.API.Response {
         public string Currency { get; private set; }
 
         /// <summary>
-        /// Robokassa payments are allowed
+        /// Whether Robokassa payments are allowed
         /// </summary>
         [JsonProperty("support_robokassa")]
         public bool? SupportRobokassa { get; private set; }
 
         /// <summary>
-        /// Bank card payments are allowed
+        /// Whether Bank card payments are allowed
         /// </summary>
         [JsonProperty("support_bank_card")]
         public bool? SupportBankCard { get; private set; }
 
         /// <summary>
-        /// Bank invoices are allowed
+        /// Whether Bank invoices are allowed
         /// </summary>
         [JsonProperty("support_invoice")]
         public bool? SupportInvoice { get; private set; }
@@ -185,7 +185,7 @@ namespace Voximplant.API.Response {
         public string[] AccessEntries { get; private set; }
 
         /// <summary>
-        /// Set true to get the admin user permissions
+        /// Whether the admin user permissions are granted
         /// </summary>
         [JsonProperty("with_access_entries")]
         public bool? WithAccessEntries { get; private set; }
@@ -203,7 +203,7 @@ namespace Voximplant.API.Response {
         public string CallbackSalt { get; private set; }
 
         /// <summary>
-        /// Sending email when a JS error occures
+        /// Whether to send an email when a JS error occures
         /// </summary>
         [JsonProperty("send_js_error")]
         public bool? SendJsError { get; private set; }
@@ -215,7 +215,7 @@ namespace Voximplant.API.Response {
         public BillingLimitsType BillingLimits { get; private set; }
 
         /// <summary>
-        /// One-way SMS activation flag
+        /// Whether to activate one-way SMS
         /// </summary>
         [JsonProperty("a2p_sms_enabled")]
         public bool? A2pSmsEnabled { get; private set; }

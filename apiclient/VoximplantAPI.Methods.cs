@@ -100,9 +100,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits the account's profile.
         /// </summary>
-        /// <param name="childAccountId">The child account ID list separated by semicolon (;). Use the 'all' value to select all child accounts</param>
-        /// <param name="childAccountName">The child account name list separated by semicolon (;). Can be used instead of <b>child_account_id</b></param>
-        /// <param name="childAccountEmail">The child account email list separated by semicolon (;). Can be used instead of <b>child_account_id</b></param>
+        /// <param name="childAccountId">The child account ID list separated by semicolons (;). Use the 'all' value to select all child accounts</param>
+        /// <param name="childAccountName">The child account name list separated by semicolons (;). Can be used instead of <b>child_account_id</b></param>
+        /// <param name="childAccountEmail">The child account email list separated by semicolons (;). Can be used instead of <b>child_account_id</b></param>
         /// <param name="newChildAccountEmail">The new child account email</param>
         /// <param name="newChildAccountPassword">The new child account password. Must be at least 8 characters long and contain at least one uppercase and lowercase letter, one number, and one special character</param>
         /// <param name="accountNotifications">Voximplant notifications are required</param>
@@ -172,7 +172,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the exchange rate on selected date (per USD).
         /// </summary>
-        /// <param name="currency">The currency code list separated by semicolon (;). Examples: RUR, KZT, EUR, USD</param>
+        /// <param name="currency">The currency code list separated by semicolons (;). Examples: RUR, KZT, EUR, USD</param>
         /// <param name="date">The date, format: YYYY-MM-DD</param>
         public async Task<GetCurrencyRateResponse> GetCurrencyRate(string currency, DateTime? date = null)
         {
@@ -188,10 +188,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the resource price.
         /// </summary>
-        /// <param name="resourceType">The resource type list separated by semicolon (;). The possible values are AUDIOHDCONFERENCE, AUDIOHDRECORD, AUDIORECORD, CALLLIST, CALLSESSION, DIALOGFLOW, IM, PSTN_IN_ALASKA, PSTN_IN_GB, PSTN_IN_GEOGRAPHIC, PSTN_IN_GEO_PH, PSTN_IN_RU, PSTN_IN_RU_TOLLFREE, PSTN_INTERNATIONAL, PSTNINTEST, PSTN_IN_TF_AR, PSTN_IN_TF_AT, PSTN_IN_TF_AU, PSTN_IN_TF_BE, PSTN_IN_TF_BR, PSTN_IN_TF_CA, PSTN_IN_TF_CO, PSTN_IN_TF_CY, PSTN_IN_TF_DE, PSTN_IN_TF_DK, PSTN_IN_TF_DO, PSTN_IN_TF_FI, PSTN_IN_TF_FR, PSTN_IN_TF_GB, PSTN_IN_TF_HR, PSTN_IN_TF_HU, PSTN_IN_TF_IL, PSTN_IN_TF_LT, PSTN_IN_TF_PE, PSTN_IN_TF_US, PSTN_IN_US, PSTNOUT, PSTNOUT_EEA, PSTNOUTEMERG, PSTNOUT_KZ, PSTNOUT_LOCAL, PSTN_OUT_LOCAL_RU, RELAYED_TRAFFIC, SIPOUT, SIPOUTVIDEO, SMSINPUT, SMSOUT, SMSOUT_INTERNATIONAL, TRANSCRIPTION, TTS_TEXT_GOOGLE, TTS_YANDEX, USER_LOGON, VIDEOCALL, VIDEORECORD, VOICEMAILDETECTION, VOIPIN, VOIPOUT, VOIPOUTVIDEO, YANDEXASR, ASR, ASR_GOOGLE_ENHANCED</param>
-        /// <param name="priceGroupId">The price group ID list separated by semicolon (;)</param>
+        /// <param name="resourceType">The resource type list separated by semicolons (;). The possible values are AUDIOHDCONFERENCE, AUDIOHDRECORD, AUDIORECORD, CALLLIST, CALLSESSION, DIALOGFLOW, IM, PSTN_IN_ALASKA, PSTN_IN_GB, PSTN_IN_GEOGRAPHIC, PSTN_IN_GEO_PH, PSTN_IN_RU, PSTN_IN_RU_TOLLFREE, PSTN_INTERNATIONAL, PSTNINTEST, PSTN_IN_TF_AR, PSTN_IN_TF_AT, PSTN_IN_TF_AU, PSTN_IN_TF_BE, PSTN_IN_TF_BR, PSTN_IN_TF_CA, PSTN_IN_TF_CO, PSTN_IN_TF_CY, PSTN_IN_TF_DE, PSTN_IN_TF_DK, PSTN_IN_TF_DO, PSTN_IN_TF_FI, PSTN_IN_TF_FR, PSTN_IN_TF_GB, PSTN_IN_TF_HR, PSTN_IN_TF_HU, PSTN_IN_TF_IL, PSTN_IN_TF_LT, PSTN_IN_TF_PE, PSTN_IN_TF_US, PSTN_IN_US, PSTNOUT, PSTNOUT_EEA, PSTNOUTEMERG, PSTNOUT_KZ, PSTNOUT_LOCAL, PSTN_OUT_LOCAL_RU, RELAYED_TRAFFIC, SIPOUT, SIPOUTVIDEO, SMSINPUT, SMSOUT, SMSOUT_INTERNATIONAL, TRANSCRIPTION, TTS_TEXT_GOOGLE, TTS_YANDEX, USER_LOGON, VIDEOCALL, VIDEORECORD, VOICEMAILDETECTION, VOIPIN, VOIPOUT, VOIPOUTVIDEO, YANDEXASR, ASR, ASR_GOOGLE_ENHANCED</param>
+        /// <param name="priceGroupId">The price group ID list separated by semicolons (;)</param>
         /// <param name="priceGroupName">The price group name template to filter</param>
-        /// <param name="resourceParam">The resource parameter list separated by semicolon (;). Example: a phone number list</param>
+        /// <param name="resourceParam">The resource parameter list separated by semicolons (;). Example: a phone number list</param>
         public async Task<GetResourcePriceResponse> GetResourcePrice(string resourceType = null, string priceGroupId = null, string priceGroupName = null, string resourceParam = null)
         {
             var args = new Dictionary<string, string>();
@@ -211,7 +211,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the subscription template price.
         /// </summary>
-        /// <param name="subscriptionTemplateId">The subscription template ID list separated by semicolon (;)</param>
+        /// <param name="subscriptionTemplateId">The subscription template ID list separated by semicolons (;)</param>
         /// <param name="subscriptionTemplateType">The subscription template type. The following values are possible: PHONE_NUM, SIP_REGISTRATION</param>
         /// <param name="subscriptionTemplateName">The subscription template name  (example: SIP registration, Phone GB, Phone RU 495, ...)</param>
         /// <param name="count">The max returning record count</param>
@@ -237,9 +237,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the info about all children accounts.
         /// </summary>
-        /// <param name="childAccountId">The account ID list separated by semicolon (;). Use the 'all' value to select all accounts</param>
-        /// <param name="childAccountName">The child account name part to filter</param>
-        /// <param name="childAccountEmail">The child ccount email to filter</param>
+        /// <param name="childAccountId">The account ID list separated by semicolons (;). You need to specify at least one of the following parameters: `child_account_id`, `child_account_name`, `child_account_email`</param>
+        /// <param name="childAccountName">The child account name to filter. You need to specify at least one of the following parameters: `child_account_id`, `child_account_name`, `child_account_email`</param>
+        /// <param name="childAccountEmail">The child ccount email to filter. You need to specify at least one of the following parameters: `child_account_id`, `child_account_name`, `child_account_email`</param>
         /// <param name="active">The active flag to filter</param>
         /// <param name="frozen">The frozen flag to filter</param>
         /// <param name="ignoreInvalidAccounts">Set true to ignore the invalid 'child_account_id' items</param>
@@ -301,8 +301,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Charges the account in the manual mode. You should call the ChargeAccount function to charge the subscriptions having the auto_charge=false.
         /// </summary>
-        /// <param name="phoneId">The phone ID list separated by semicolon (;). Use the 'all' value to select all phone ids. You should specify the phones having the auto_charge=false</param>
-        /// <param name="phoneNumber">The phone number list separated by semicolon (;). Use the 'all' value to select all phone numbers. Can be used instead of <b>phone_id</b>. You should specify the phones having the auto_charge=false</param>
+        /// <param name="phoneId">The phone ID list separated by semicolons (;). Use the 'all' value to select all phone ids. You should specify the phones having the auto_charge=false</param>
+        /// <param name="phoneNumber">The phone number list separated by semicolons (;). Use the 'all' value to select all phone numbers. Can be used instead of <b>phone_id</b>. You should specify the phones having the auto_charge=false</param>
         public async Task<ChargeAccountResponse> ChargeAccount(string phoneId = null, string phoneNumber = null)
         {
             var passedArgs = new List<string>();
@@ -345,8 +345,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the account plans with packages.
         /// </summary>
-        /// <param name="planType">The plan type list separated by semicolon (;). The possible values are IM, MAU</param>
-        /// <param name="planSubscriptionTemplateId">The plan ID list separated by semicolon (;)</param>
+        /// <param name="planType">The plan type list separated by semicolons (;). The possible values are IM, MAU</param>
+        /// <param name="planSubscriptionTemplateId">The plan ID list separated by semicolons (;)</param>
         public async Task<GetAccountPlansResponse> GetAccountPlans(string planType = null, string planSubscriptionTemplateId = null)
         {
             var args = new Dictionary<string, string>();
@@ -362,8 +362,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the allowed plans to change.
         /// </summary>
-        /// <param name="planType">The plan type list separated by semicolon (;). The possible values are IM, MAU</param>
-        /// <param name="planSubscriptionTemplateId">The plan ID list separated by semicolon (;)</param>
+        /// <param name="planType">The plan type list separated by semicolons (;). The possible values are IM, MAU</param>
+        /// <param name="planSubscriptionTemplateId">The plan ID list separated by semicolons (;)</param>
         public async Task<GetAvailablePlansResponse> GetAvailablePlans(string planType = null, string planSubscriptionTemplateId = null)
         {
             var args = new Dictionary<string, string>();
@@ -395,8 +395,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the account's application.
         /// </summary>
-        /// <param name="applicationId">The application ID list separated by semicolon (;). Use the 'all' value to select all applications</param>
-        /// <param name="applicationName">The application name list separated by semicolon (;). Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">The application ID list separated by semicolons (;). Use the 'all' value to select all applications</param>
+        /// <param name="applicationName">The application name list separated by semicolons (;). Can be used instead of <b>application_id</b></param>
         public async Task<DelApplicationResponse> DelApplication(string applicationId = null, string applicationName = null)
         {
             var passedArgs = new List<string>();
@@ -529,8 +529,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the specified user(s).
         /// </summary>
-        /// <param name="userId">The user ID list separated by semicolon (;). Use the 'all' value to select all users</param>
-        /// <param name="userName">The user name list separated by semicolon (;) that can be used instead of <b>user_id</b></param>
+        /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to select all users</param>
+        /// <param name="userName">The user name list separated by semicolons (;) that can be used instead of <b>user_id</b></param>
         /// <param name="applicationId">Delete the specified users bound to the application ID. It is required if the <b>user_name</b> is specified</param>
         /// <param name="applicationName">Delete the specified users bound to the application name. Can be used instead of the <b>application_id</b> parameter</param>
         public async Task<DelUserResponse> DelUser(string userId = null, string userName = null, long? applicationId = null, string applicationName = null)
@@ -645,7 +645,7 @@ namespace Voximplant.API {
         /// <param name="userDisplayName">The user display name part to filter</param>
         /// <param name="withSkills">Set true to get the bound skills</param>
         /// <param name="withQueues">Set true to get the bound queues</param>
-        /// <param name="acdStatus">The ACD status list separated by semicolon (;) to filter. The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND</param>
+        /// <param name="acdStatus">The ACD status list separated by semicolons (;) to filter. The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND</param>
         /// <param name="showingSkillId">The skill to show in the 'skills' field output</param>
         /// <param name="count">The max returning record count</param>
         /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
@@ -710,8 +710,8 @@ namespace Voximplant.API {
         /// Transfer the account's money to the user or transfer the user's money to the account if the money amount is negative.
         /// </summary>
         /// <param name="amount">The money amount, $. The absolute amount value must be equal or greater than 0.01</param>
-        /// <param name="userId">The user ID list separated by semicolon (;). Use the 'all' value to select all users</param>
-        /// <param name="userName">The user name list separated by semicolon (;) that can be used instead of <b>user_id</b></param>
+        /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to select all users</param>
+        /// <param name="userName">The user name list separated by semicolons (;) that can be used instead of <b>user_id</b></param>
         /// <param name="applicationId">The application ID. It is required if the <b>user_name</b> is specified</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="currency">The amount currency. Examples: RUR, EUR, USD</param>
@@ -777,7 +777,8 @@ namespace Voximplant.API {
         /// <param name="delimiter">Separator values. The default is ';'</param>
         /// <param name="escape">Escape character for parsing csv</param>
         /// <param name="referenceIp">Specifies the IP from the geolocation of the call list subscribers. It allows selecting the nearest server for serving subscribers</param>
-        public async Task<CreateCallListResponse> CreateCallList(long ruleId, long priority, long maxSimultaneous, long numAttempts, string name, FileStream fileContent, long? intervalSeconds = null, string encoding = null, string delimiter = null, string escape = null, string referenceIp = null)
+        /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
+        public async Task<CreateCallListResponse> CreateCallList(long ruleId, long priority, long maxSimultaneous, long numAttempts, string name, FileStream fileContent, long? intervalSeconds = null, string encoding = null, string delimiter = null, string escape = null, string referenceIp = null, string serverLocation = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -797,6 +798,8 @@ namespace Voximplant.API {
                 args["escape"] = escape;
             if (referenceIp != null)
                 args["reference_ip"] = referenceIp;
+            if (serverLocation != null)
+                args["server_location"] = serverLocation;
         
             return await PerformRequest<CreateCallListResponse>("CreateCallList", args, fileContent);
         }
@@ -804,7 +807,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Get all call lists for the specified user.
         /// </summary>
-        /// <param name="listId">The list ID to filter. Can be a list separated by semicolon (;). Use the 'all' value to select all lists</param>
+        /// <param name="listId">The list ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all lists</param>
         /// <param name="name">Find call lists by name</param>
         /// <param name="isActive">Find only active call lists</param>
         /// <param name="fromDate">The UTC 'from' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
@@ -812,7 +815,7 @@ namespace Voximplant.API {
         /// <param name="typeList">The type of the call list. The possible values are AUTOMATIC and MANUAL</param>
         /// <param name="count">The max returning record count</param>
         /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
-        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolon (;). Use the 'all' value to select all applications</param>
+        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications</param>
         public async Task<GetCallListsResponse> GetCallLists(string listId = null, string name = null, bool? isActive = null, DateTime? fromDate = null, DateTime? toDate = null, string typeList = null, long? count = null, long? offset = null, string applicationId = null)
         {
             var args = new Dictionary<string, string>();
@@ -921,8 +924,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the scenario.
         /// </summary>
-        /// <param name="scenarioId">The scenario ID list separated by semicolon (;). Use the 'all' value to delete all scenarios in all applications</param>
-        /// <param name="scenarioName">The scenario name list separated by semicolon (;). Can be used instead of <b>scenario_id</b></param>
+        /// <param name="scenarioId">The scenario ID list separated by semicolons (;). Use the 'all' value to delete all scenarios in all applications</param>
+        /// <param name="scenarioName">The scenario name list separated by semicolons (;). Can be used instead of <b>scenario_id</b></param>
         public async Task<DelScenarioResponse> DelScenario(string scenarioId = null, string scenarioName = null)
         {
             var passedArgs = new List<string>();
@@ -949,8 +952,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Bind the scenario list to the rule. You should specify the application_id or application_name if you specify the rule_name. Please note, the scenario and the routing rule need to be within the same application.
         /// </summary>
-        /// <param name="scenarioId">The scenario ID list separated by semicolon (;)</param>
-        /// <param name="scenarioName">The scenario name list separated by semicolon (;). Can be used instead of <b>scenario_id</b></param>
+        /// <param name="scenarioId">The scenario ID list separated by semicolons (;)</param>
+        /// <param name="scenarioName">The scenario name list separated by semicolons (;). Can be used instead of <b>scenario_id</b></param>
         /// <param name="ruleId">The rule ID to bind the scenario. The rule and the scenario need to be in the same application</param>
         /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
         /// <param name="applicationId">The application ID</param>
@@ -1076,7 +1079,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="ruleId">The rule ID</param>
         /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
-        /// <param name="scenarioId">The scenario ID list separated by semicolon (;)</param>
+        /// <param name="scenarioId">The scenario ID list separated by semicolons (;)</param>
         public async Task<ReorderScenariosResponse> ReorderScenarios(long? ruleId = null, string ruleName = null, string scenarioId = null)
         {
             var passedArgs = new List<string>();
@@ -1112,7 +1115,8 @@ namespace Voximplant.API {
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="scriptCustomData">The script custom data, that can be accessed in the scenario via the <a href='/docs/references/voxengine/voxengine/customdata'>VoxEngine.customData()</a> method. Use the application/x-www-form-urlencoded content type with UTF-8 encoding</param>
         /// <param name="referenceIp">Specifies the IP from the geolocation of predicted subscribers. It allows selecting the nearest server for serving subscribers</param>
-        public async Task<StartScenariosResponse> StartScenarios(long ruleId, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null)
+        /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
+        public async Task<StartScenariosResponse> StartScenarios(long ruleId, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null, string serverLocation = null)
         {
             var passedArgs = new List<string>();
         
@@ -1147,6 +1151,8 @@ namespace Voximplant.API {
                 args["script_custom_data"] = scriptCustomData;
             if (referenceIp != null)
                 args["reference_ip"] = referenceIp;
+            if (serverLocation != null)
+                args["server_location"] = serverLocation;
         
             return await PerformRequest<StartScenariosResponse>("StartScenarios", args, null);
         }
@@ -1162,7 +1168,8 @@ namespace Voximplant.API {
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="scriptCustomData">The script custom data, that can be accessed in the scenario via the <a href='/docs/references/voxengine/voxengine/customdata'>VoxEngine.customData()</a> method. Use the application/x-www-form-urlencoded content type with UTF-8 encoding.</param>
         /// <param name="referenceIp">Specifies the IP from the geolocation of predicted subscribers. It allows selecting the nearest server for serving subscribers</param>
-        public async Task<StartConferenceResponse> StartConference(string conferenceName, long ruleId, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null)
+        /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
+        public async Task<StartConferenceResponse> StartConference(string conferenceName, long ruleId, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null, string serverLocation = null)
         {
             var passedArgs = new List<string>();
         
@@ -1198,6 +1205,8 @@ namespace Voximplant.API {
                 args["script_custom_data"] = scriptCustomData;
             if (referenceIp != null)
                 args["reference_ip"] = referenceIp;
+            if (serverLocation != null)
+                args["server_location"] = serverLocation;
         
             return await PerformRequest<StartConferenceResponse>("StartConference", args, null);
         }
@@ -1211,8 +1220,8 @@ namespace Voximplant.API {
         /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
         /// <param name="rulePatternExclude">The exclude pattern regex. The length must be less than 64 KB</param>
         /// <param name="videoConference">Video conference is required</param>
-        /// <param name="scenarioId">The scenario ID list separated by semicolon (;)</param>
-        /// <param name="scenarioName">The scenario name list separated by semicolon (;). Can be used instead of <b>scenario_id</b></param>
+        /// <param name="scenarioId">The scenario ID list separated by semicolons (;)</param>
+        /// <param name="scenarioName">The scenario name list separated by semicolons (;). Can be used instead of <b>scenario_id</b></param>
         public async Task<AddRuleResponse> AddRule(string ruleName, string rulePattern, long? applicationId = null, string applicationName = null, string rulePatternExclude = null, bool? videoConference = null, string scenarioId = null, string scenarioName = null)
         {
             var passedArgs = new List<string>();
@@ -1260,10 +1269,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the rule.
         /// </summary>
-        /// <param name="ruleId">The rule ID list separated by semicolon (;). Use the 'all' value to select all rules</param>
-        /// <param name="ruleName">The rule name list separated by semicolon (;). Can be used instead of <b>rule_id</b></param>
-        /// <param name="applicationId">The application ID list separated by semicolon (;). Use the 'all' value to select all applications</param>
-        /// <param name="applicationName">The application name list separated by semicolon (;). Can be used instead of <b>application_id</b></param>
+        /// <param name="ruleId">The rule ID list separated by semicolons (;). Use the 'all' value to select all rules</param>
+        /// <param name="ruleName">The rule name list separated by semicolons (;). Can be used instead of <b>rule_id</b></param>
+        /// <param name="applicationId">The application ID list separated by semicolons (;). Use the 'all' value to select all applications</param>
+        /// <param name="applicationName">The application name list separated by semicolons (;). Can be used instead of <b>application_id</b></param>
         public async Task<DelRuleResponse> DelRule(string ruleId = null, string ruleName = null, string applicationId = null, string applicationName = null)
         {
             var passedArgs = new List<string>();
@@ -1379,7 +1388,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Configures the rules' order in the <a href='//manage.voximplant.com/applications'>Applications</a> section of Control panel. Note: the rules must belong to the same application!
         /// </summary>
-        /// <param name="ruleId">The rule ID list separated by semicolon (;)</param>
+        /// <param name="ruleId">The rule ID list separated by semicolons (;)</param>
         public async Task<ReorderRulesResponse> ReorderRules(string ruleId)
         {
             var args = new Dictionary<string, string>();
@@ -1397,15 +1406,15 @@ namespace Voximplant.API {
         /// <param name="callSessionHistoryId">To get the call history for the specific sessions, pass the session IDs to this parameter separated by a semicolon (;). You can find the session ID in the <a href='/docs/references/voxengine/appevents#started'>AppEvents.Started</a> event's <b>sessionID</b> property in a scenario, or retrieve it from the <b>call_session_history_id</b> value returned from the <a href='https://voximplant.com/docs/references/httpapi/scenarios#reorderscenarios'>StartScenarios</a> or <a href='https://voximplant.com/docs/references/httpapi/scenarios#startconference'>StartConference</a> methods</param>
         /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
         /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
-        /// <param name="userId">To receive the call history for a specific users, pass the user ID list separated by semicolon (;). If it's specified, the output contains the calls from the listed users only</param>
+        /// <param name="userId">To receive the call history for a specific users, pass the user ID list separated by semicolons (;). If it's specified, the output contains the calls from the listed users only</param>
         /// <param name="ruleName">To receive the call history for a specific routing rule, pass the rule name to this parameter. Applies only if you set application_id or application_name</param>
-        /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolon (;). A remote number is a number on the client side</param>
-        /// <param name="localNumber">To receive a call history for a specific local numbers, pass the number list separated by semicolon (;). A local number is a number on the platform side</param>
+        /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolons (;). A remote number is a number on the client side</param>
+        /// <param name="localNumber">To receive a call history for a specific local numbers, pass the number list separated by semicolons (;). A local number is a number on the platform side</param>
         /// <param name="callSessionHistoryCustomData">To filter the call history by the custom_data passed to the call sessions, pass the custom data to this parameter</param>
         /// <param name="withCalls">Specifies whether to receive a list of sessions with all calls within the sessions, including phone numbers, call cost and other information</param>
         /// <param name="withRecords">Specifies whether to get the calls' records</param>
         /// <param name="withOtherResources">Set true to get other resources usage (see [ResourceUsageType])</param>
-        /// <param name="childAccountId">The child account ID list separated by semicolon (;). Use the 'all' value to select all child accounts</param>
+        /// <param name="childAccountId">The child account ID list separated by semicolons (;)</param>
         /// <param name="childrenCallsOnly">Set true to get the children account calls only</param>
         /// <param name="withHeader">Set false to get a CSV file without the column names if the output=csv</param>
         /// <param name="descOrder">Set true to get records in the descent order</param>
@@ -1484,8 +1493,8 @@ namespace Voximplant.API {
         /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
         /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
         /// <param name="ruleName">To receive the call history for a specific routing rule, pass the rule name to this parameter. Applies only if you set application_id or application_name</param>
-        /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolon (;). A remote number is a number on the client side</param>
-        /// <param name="localNumber">To receive a call history for a specific local numbers, pass the number list separated by semicolon (;). A local number is a number on the platform side</param>
+        /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolons (;). A remote number is a number on the client side</param>
+        /// <param name="localNumber">To receive a call history for a specific local numbers, pass the number list separated by semicolons (;). A local number is a number on the platform side</param>
         /// <param name="callSessionHistoryCustomData">To filter the call history by the custom_data passed to the call sessions, pass the custom data to this parameter</param>
         /// <param name="withHeader">Set false to get a CSV file without the column names if the output=csv</param>
         /// <param name="descOrder">Set true to get records in the descent order</param>
@@ -1532,14 +1541,14 @@ namespace Voximplant.API {
         /// Gets the list of history reports and their statuses. The method returns info about reports made via [GetCallHistory] with the specified __output=csv__ and **is_async=true** parameters. Note that the **file_size** field in response is valid only for video calls.
         /// </summary>
         /// <param name="historyReportId">The history report ID to filter</param>
-        /// <param name="historyType">The history report type list separated by semicolon (;). Use the 'all' value to select all history report types. The following values are possible: calls, calls_brief, transactions, audit, call_list</param>
+        /// <param name="historyType">The history report type list separated by semicolons (;). Use the 'all' value to select all history report types. The following values are possible: calls, calls_brief, transactions, audit, call_list</param>
         /// <param name="createdFrom">The UTC creation from date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="createdTo">The UTC creation to date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="isCompleted">Report is completed</param>
         /// <param name="descOrder">Set true to get records in the descent order</param>
         /// <param name="count">The max returning record count</param>
         /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
-        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolon (;). Use the 'all' value to select all applications</param>
+        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications</param>
         public async Task<GetHistoryReportsResponse> GetHistoryReports(long? historyReportId = null, string historyType = null, DateTime? createdFrom = null, DateTime? createdTo = null, bool? isCompleted = null, bool? descOrder = null, long? count = null, long? offset = null, string applicationId = null)
         {
             var args = new Dictionary<string, string>();
@@ -1571,10 +1580,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss</param>
-        /// <param name="transactionId">The transaction ID list separated by semicolon (;)</param>
-        /// <param name="transactionType">The transaction type list separated by semicolon (;). The following values are possible: resource_charge, money_distribution, subscription_charge, subscription_installation_charge, card_periodic_payment, card_overrun_payment, card_payment, rub_card_periodic_payment, rub_card_overrun_payment, rub_card_payment, robokassa_payment, gift, promo, adjustment, wire_transfer, us_wire_transfer, refund, discount, mgp_charge, mgp_startup, mgp_business, mgp_big_business, mgp_enterprise, mgp_large_enterprise, techsupport_charge, tax_charge, monthly_fee_charge, grace_credit_payment, grace_credit_provision, mau_charge, mau_overrun, im_charge, im_overrun, fmc_charge, sip_registration_charge, development_fee, money_transfer_to_child, money_transfer_to_parent, money_acceptance_from_child, money_acceptance_from_parent, phone_number_installation, phone_number_charge, toll_free_phone_number_installation, toll_free_phone_number_charge, services, user_money_transfer, paypal_payment, paypal_overrun_payment, paypal_periodic_payment</param>
-        /// <param name="userId">The user ID list separated by semicolon (;)</param>
-        /// <param name="childAccountId">The child account ID list separated by semicolon (;). Use the 'all' value to select all child accounts</param>
+        /// <param name="transactionId">The transaction ID list separated by semicolons (;)</param>
+        /// <param name="transactionType">The transaction type list separated by semicolons (;). The following values are possible: gift_revoke, resource_charge, money_distribution, subscription_charge, subscription_installation_charge, card_periodic_payment, card_overrun_payment, card_payment, rub_card_periodic_payment, rub_card_overrun_payment, rub_card_payment, robokassa_payment, gift, promo, adjustment, wire_transfer, us_wire_transfer, refund, discount, mgp_charge, mgp_startup, mgp_business, mgp_big_business, mgp_enterprise, mgp_large_enterprise, techsupport_charge, tax_charge, monthly_fee_charge, grace_credit_payment, grace_credit_provision, mau_charge, mau_overrun, im_charge, im_overrun, fmc_charge, sip_registration_charge, development_fee, money_transfer_to_child, money_transfer_to_parent, money_acceptance_from_child, money_acceptance_from_parent, phone_number_installation, phone_number_charge, toll_free_phone_number_installation, toll_free_phone_number_charge, services, user_money_transfer, paypal_payment, paypal_overrun_payment, paypal_periodic_payment</param>
+        /// <param name="userId">The user ID list separated by semicolons (;)</param>
+        /// <param name="childAccountId">The child account ID list separated by semicolons (;). Use the 'all' value to select all child accounts</param>
         /// <param name="childrenTransactionsOnly">Set true to get the children account transactions only</param>
         /// <param name="usersTransactionsOnly">Set true to get the users' transactions only</param>
         /// <param name="descOrder">Set true to get records in the descent order</param>
@@ -1639,10 +1648,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="fromDate">The UTC 'from' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toDate">The UTC 'to' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
-        /// <param name="acdSessionHistoryId">The ACD session history ID list separated by semicolon (;)</param>
-        /// <param name="acdRequestId">The ACD request ID list separated by semicolon (;)</param>
-        /// <param name="acdQueueId">The ACD queue ID list to filter separated by semicolon (;)</param>
-        /// <param name="userId">The user ID list to filter separated by semicolon (;)</param>
+        /// <param name="acdSessionHistoryId">The ACD session history ID list separated by semicolons (;)</param>
+        /// <param name="acdRequestId">The ACD request ID list separated by semicolons (;)</param>
+        /// <param name="acdQueueId">The ACD queue ID list to filter separated by semicolons (;)</param>
+        /// <param name="userId">The user ID list to filter separated by semicolons (;)</param>
         /// <param name="operatorHangup">Set true to get the calls terminated by the operator</param>
         /// <param name="unserviced">The unserviced calls by the operator</param>
         /// <param name="minWaitingTime">The min waiting time filter</param>
@@ -1696,10 +1705,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="fromDate">The UTC 'from' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toDate">The UTC 'to' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
-        /// <param name="auditLogId">The audit history ID list separated by semicolon (;)</param>
+        /// <param name="auditLogId">The audit history ID list separated by semicolons (;)</param>
         /// <param name="filteredAdminUserId">The admin user ID to filter</param>
-        /// <param name="filteredIp">The IP list separated by semicolon (;) to filter</param>
-        /// <param name="filteredCmd">The function list separated by semicolon (;) to filter</param>
+        /// <param name="filteredIp">The IP list separated by semicolons (;) to filter</param>
+        /// <param name="filteredCmd">The function list separated by semicolons (;) to filter</param>
         /// <param name="advancedFilters">A relation ID to filter (for example: a phone_number value, a user_id value, an application_id value)</param>
         /// <param name="withHeader">Set false to get a CSV file without the column names if the output=csv</param>
         /// <param name="descOrder">Set true to get records in the descent order</param>
@@ -2101,13 +2110,13 @@ namespace Voximplant.API {
         /// <param name="deactivated">Set true to show the frozen SIP registrations only</param>
         /// <param name="successful">Set false to show the unsuccessful SIP registrations only</param>
         /// <param name="isPersistent">The persistent flag to filter</param>
-        /// <param name="applicationId">The application ID list separated by semicolon (;) to filter. Can be used instead of <b>application_name</b></param>
-        /// <param name="applicationName">The application name list separated by semicolon (;) to filter. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">The application ID list separated by semicolons (;) to filter. Can be used instead of <b>application_name</b></param>
+        /// <param name="applicationName">The application name list separated by semicolons (;) to filter. Can be used instead of <b>application_id</b></param>
         /// <param name="isBoundToApplication">Is a SIP registration bound to an application</param>
-        /// <param name="ruleId">The rule ID list separated by semicolon (;) to filter. Can be used instead of <b>rule_name</b></param>
-        /// <param name="ruleName">The rule name list separated by semicolon (;) to filter. Can be used instead of <b>rule_id</b></param>
-        /// <param name="userId">The user ID list separated by semicolon (;) to filter. Can be used instead of <b>user_name</b></param>
-        /// <param name="userName">The user name list separated by semicolon (;) to filter. Can be used instead of <b>user_id</b></param>
+        /// <param name="ruleId">The rule ID list separated by semicolons (;) to filter. Can be used instead of <b>rule_name</b></param>
+        /// <param name="ruleName">The rule name list separated by semicolons (;) to filter. Can be used instead of <b>rule_id</b></param>
+        /// <param name="userId">The user ID list separated by semicolons (;) to filter. Can be used instead of <b>user_name</b></param>
+        /// <param name="userName">The user name list separated by semicolons (;) to filter. Can be used instead of <b>user_id</b></param>
         /// <param name="proxy">The list of proxy servers to use, divided by semicolon (;)</param>
         /// <param name="inProgress">SIP registration is still in progress</param>
         /// <param name="statusCode">The list of SIP response codes. The __code1:code2__ means a range from __code1__ to __code2__ including; the __code1;code2__ meanse either __code1__ or __code2__. You can combine ranges, e.g., __code1;code2:code3__</param>
@@ -2229,8 +2238,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Bind the phone number to the application or unbind the phone number from the application. You should specify the application_id or application_name if you specify the rule_name.
         /// </summary>
-        /// <param name="phoneId">The phone ID list separated by semicolon (;). Use the 'all' value to select all phone ids</param>
-        /// <param name="phoneNumber">The phone number list separated by semicolon (;) that can be used instead of <b>phone_id</b></param>
+        /// <param name="phoneId">The phone ID list separated by semicolons (;). Use the 'all' value to select all phone ids</param>
+        /// <param name="phoneNumber">The phone number list separated by semicolons (;) that can be used instead of <b>phone_id</b></param>
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="ruleId">The rule ID</param>
@@ -2292,8 +2301,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Deactivates the phone number.
         /// </summary>
-        /// <param name="phoneId">The phone ID list separated by semicolon (;). Use the 'all' value to select all phone ids</param>
-        /// <param name="phoneNumber">The phone number list separated by semicolon (;) that can be used instead of <b>phone_id</b></param>
+        /// <param name="phoneId">The phone ID list separated by semicolons (;). Use the 'all' value to select all phone ids</param>
+        /// <param name="phoneNumber">The phone number list separated by semicolons (;) that can be used instead of <b>phone_id</b></param>
         public async Task<DeactivatePhoneNumberResponse> DeactivatePhoneNumber(string phoneId = null, string phoneNumber = null)
         {
             var passedArgs = new List<string>();
@@ -2320,8 +2329,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Set the phone number information.
         /// </summary>
-        /// <param name="phoneId">The phone ID list separated by semicolon (;). Use the 'all' value to select all phone ids</param>
-        /// <param name="phoneNumber">The phone number list separated by semicolon (;) that can be used instead of <b>phone_id</b></param>
+        /// <param name="phoneId">The phone ID list separated by semicolons (;). Use the 'all' value to select all phone ids</param>
+        /// <param name="phoneNumber">The phone number list separated by semicolons (;) that can be used instead of <b>phone_id</b></param>
         /// <param name="incomingSmsCallbackUrl">If set, the callback of an incoming SMS will be sent to this url, otherwise, it will be sent to the general account URL</param>
         public async Task<SetPhoneNumberInfoResponse> SetPhoneNumberInfo(string phoneId = null, string phoneNumber = null, string incomingSmsCallbackUrl = null)
         {
@@ -2352,12 +2361,12 @@ namespace Voximplant.API {
         /// Gets the account phone numbers.
         /// </summary>
         /// <param name="phoneId">The particular phone ID to filter</param>
-        /// <param name="phoneNumber">The phone number list separated by semicolon (;) that can be used instead of <b>phone_id</b></param>
+        /// <param name="phoneNumber">The phone number list separated by semicolons (;) that can be used instead of <b>phone_id</b></param>
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="isBoundToApplication">Is a phone bound to an application</param>
         /// <param name="phoneTemplate">The phone number start to filter</param>
-        /// <param name="countryCode">The country code list separated by semicolon (;)</param>
+        /// <param name="countryCode">The country code list separated by semicolons (;)</param>
         /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method</param>
         /// <param name="canceled">The flag of the canceled (deleted) subscription to filter</param>
         /// <param name="deactivated">The flag of the deactivated (frozen) subscription to filter</param>
@@ -2366,10 +2375,10 @@ namespace Voximplant.API {
         /// <param name="toPhoneNextRenewal">The UTC 'to' date filter in format: YYYY-MM-DD</param>
         /// <param name="fromPhonePurchaseDate">The UTC 'from' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toPhonePurchaseDate">The UTC 'to' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
-        /// <param name="childAccountId">The child account ID list separated by semicolon (;). Use the 'all' value to select all child accounts</param>
+        /// <param name="childAccountId">The child account ID list separated by semicolons (;). Use the 'all' value to select all child accounts</param>
         /// <param name="childrenPhonesOnly">Set true to get the children phones only</param>
         /// <param name="verificationName">The required account verification name to filter</param>
-        /// <param name="verificationStatus">The account verification status list separated by semicolon (;). The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED</param>
+        /// <param name="verificationStatus">The account verification status list separated by semicolons (;). The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED</param>
         /// <param name="fromUnverifiedHoldUntil">Unverified phone hold until the date (from ...) in format: YYYY-MM-DD</param>
         /// <param name="toUnverifiedHoldUntil">Unverified phone hold until the date (... to) in format: YYYY-MM-DD</param>
         /// <param name="canBeUsed">Unverified account can use the phone</param>
@@ -2377,9 +2386,9 @@ namespace Voximplant.API {
         /// <param name="sandbox">Flag allows you to display only the numbers of the sandbox, real numbers, or all numbers. The following values are possible: 'all', 'true', 'false'</param>
         /// <param name="count">The max returning record count</param>
         /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
-        /// <param name="phoneRegionName">The region names list separated by semicolon (;)</param>
-        /// <param name="ruleId">The rule ID list separated by semicolon (;)</param>
-        /// <param name="ruleName">The rule names list separated by semicolon (;). Can be used only if __application_id__ or __application_name__ is specified</param>
+        /// <param name="phoneRegionName">The region names list separated by semicolons (;)</param>
+        /// <param name="ruleId">The rule ID list separated by semicolons (;)</param>
+        /// <param name="ruleName">The rule names list separated by semicolons (;). Can be used only if __application_id__ or __application_name__ is specified</param>
         /// <param name="isBoundToRule">Number is bound to some rule</param>
         public async Task<GetPhoneNumbersResponse> GetPhoneNumbers(string phoneId = null, string phoneNumber = null, long? applicationId = null, string applicationName = null, bool? isBoundToApplication = null, string phoneTemplate = null, string countryCode = null, string phoneCategoryName = null, bool? canceled = null, bool? deactivated = null, bool? autoCharge = null, DateTime? fromPhoneNextRenewal = null, DateTime? toPhoneNextRenewal = null, DateTime? fromPhonePurchaseDate = null, DateTime? toPhonePurchaseDate = null, string childAccountId = null, bool? childrenPhonesOnly = null, string verificationName = null, string verificationStatus = null, DateTime? fromUnverifiedHoldUntil = null, DateTime? toUnverifiedHoldUntil = null, bool? canBeUsed = null, string orderBy = null, string sandbox = null, long? count = null, long? offset = null, string phoneRegionName = null, string ruleId = null, string ruleName = null, bool? isBoundToRule = null)
         {
@@ -2487,7 +2496,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the phone number categories.
         /// </summary>
-        /// <param name="countryCode">Country code list separated by semicolon (;)</param>
+        /// <param name="countryCode">Country code list separated by semicolons (;)</param>
         /// <param name="sandbox">Flag allows you to display phone number categories only of the sandbox, real or all .The following values are possible: 'all', 'true', 'false'</param>
         /// <param name="locale">The 2-letter locale code. Supported values are EN, RU</param>
         public async Task<GetPhoneNumberCategoriesResponse> GetPhoneNumberCategories(string countryCode = null, string sandbox = null, string locale = null)
@@ -2819,10 +2828,10 @@ namespace Voximplant.API {
         /// <param name="bind">Bind or unbind users</param>
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
-        /// <param name="userId">The user ID list separated by semicolon (;). Use the 'all' value to specify all users bound to the application</param>
-        /// <param name="userName">The user name list separated by semicolon (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
-        /// <param name="acdQueueId">The ACD queue ID list separated by semicolon (;). Use the 'all' value to specify all queues bound to the application</param>
-        /// <param name="acdQueueName">The queue name that can be used instead of <b>acd_queue_id</b>. The queue name list separated by semicolon (;)</param>
+        /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to specify all users bound to the application</param>
+        /// <param name="userName">The user name list separated by semicolons (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
+        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to specify all queues bound to the application</param>
+        /// <param name="acdQueueName">The queue name that can be used instead of <b>acd_queue_id</b>. The queue name list separated by semicolons (;)</param>
         public async Task<BindUserToQueueResponse> BindUserToQueue(bool bind, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string acdQueueId = null, string acdQueueName = null)
         {
             var passedArgs = new List<string>();
@@ -2880,8 +2889,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the ACD queue.
         /// </summary>
-        /// <param name="acdQueueId">The ACD queue ID list separated by semicolon (;)</param>
-        /// <param name="acdQueueName">The ACD queue name that can be used instead of <b>acd_queue_id</b>. The ACD queue name list separated by semicolon (;)</param>
+        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;)</param>
+        /// <param name="acdQueueName">The ACD queue name that can be used instead of <b>acd_queue_id</b>. The ACD queue name list separated by semicolons (;)</param>
         public async Task<DelQueueResponse> DelQueue(string acdQueueId = null, string acdQueueName = null)
         {
             var passedArgs = new List<string>();
@@ -3001,7 +3010,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the current ACD queue state.
         /// </summary>
-        /// <param name="acdQueueId">The ACD queue ID list separated by semicolon (;). Use the 'all' value to select all ACD queues</param>
+        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
         public async Task<GetACDStateResponse> GetACDState(string acdQueueId = null)
         {
             var args = new Dictionary<string, string>();
@@ -3016,11 +3025,11 @@ namespace Voximplant.API {
         /// Get statistics for calls distributed to users (referred as 'operators') via the 'ACD' module. This method can filter statistic based on operator ids, queue ids and date-time interval. It can also group results by day or hour.
         /// </summary>
         /// <param name="fromDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
-        /// <param name="userId">The user ID list separated by semicolon (;). Use the 'all' value to select all users</param>
+        /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to select all users</param>
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
-        /// <param name="acdQueueId">The ACD queue ID list separated by semicolon (;). Use the 'all' value to select all ACD queues</param>
+        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
         /// <param name="abbreviation">If set to <b>true</b>, key names in returned JSON will be abbreviated to reduce response byte size. The abbreviations are: 'SA' for 'SpeedOfAnswer', 'HT' for 'HandlingTime', 'TT' for 'TalkTime', 'ACW' for 'AfterCallWork', 'TDT' for 'TotalDialingTime', 'THT' for 'TotalHandlingTime', 'TTT' for 'TotalTalkTime', 'TACW' for 'TotalAfterCallWork', 'AC' for 'AnsweredCalls', 'UAC' for 'UnansweredCalls'</param>
-        /// <param name="report">List of item names abbreviations separated by semicolon (;). Returned JSON will include keys only for the selected items. Special 'all' value defines all possible items, see [ACDOperatorStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
+        /// <param name="report">List of item names abbreviations separated by semicolons (;). Returned JSON will include keys only for the selected items. Special 'all' value defines all possible items, see [ACDOperatorStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
         /// <param name="group">If set to 'user', first-level array in the resulting JSON will group records by the user ID, and second-level array will group them by date according to the 'aggregation' parameter. If set to 'aggregation', first-level array in the resulting JSON will group records according to the 'aggregation' parameter, and second-level array will group them by the user ID</param>
         public async Task<GetACDOperatorStatisticsResponse> GetACDOperatorStatistics(DateTime fromDate, string userId, DateTime? toDate = null, string acdQueueId = null, bool? abbreviation = null, string report = null, string aggregation = null, string group = null)
@@ -3051,8 +3060,8 @@ namespace Voximplant.API {
         /// <param name="fromDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
         /// <param name="abbreviation">If set to <b>true</b>, key names in returned JSON will be abbreviated to reduce response byte size. The abbreviations are: 'WT' for 'WaitingTime', 'SA' for 'SpeedOfAnswer', 'AT' is for 'AbandonmentTime', 'HT' is for 'HandlingTime', 'TT' is for 'TalkTime', 'ACW' is for 'AfterCallWork', 'QL' is for 'QueueLength', 'TC' is for 'TotalCalls', 'AC' is for 'AnsweredCalls', 'UAC' is for 'UnansweredCalls', 'RC' is for 'RejectedCalls', 'SL' is for 'ServiceLevel', 'TWT' is for 'TotalWaitingTime', 'TST' is for 'TotalSubmissionTime', 'TAT' is for 'TotalAbandonmentTime', 'THT' is for 'TotalHandlingTime', 'TTT' is for 'TotalTalkTime', 'TACW' is for 'TotalAfterCallWork'</param>
-        /// <param name="acdQueueId">The ACD queue ID list separated by semicolon (;). Use the 'all' value to select all ACD queues</param>
-        /// <param name="report">List of item names abbreviations separated by semicolon (;). Returned JSON will include keys only for the selected items. Special 'all' value defines all possible items, see [ACDQueueStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
+        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
+        /// <param name="report">List of item names abbreviations separated by semicolons (;). Returned JSON will include keys only for the selected items. Special 'all' value defines all possible items, see [ACDQueueStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
         public async Task<GetACDQueueStatisticsResponse> GetACDQueueStatistics(DateTime fromDate, DateTime? toDate = null, bool? abbreviation = null, string acdQueueId = null, string report = null, string aggregation = null)
         {
@@ -3077,9 +3086,9 @@ namespace Voximplant.API {
         /// Get statistics for the specified operators and ACD statuses. This method can filter statistics by operator ids and statuses. It can also group results by day/hour or users.
         /// </summary>
         /// <param name="fromDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
-        /// <param name="userId">The user ID list separated by semicolon (;). Use the 'all' value to select all users</param>
+        /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to select all users</param>
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
-        /// <param name="acdStatus">The ACD status list separated by semicolon (;). The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND</param>
+        /// <param name="acdStatus">The ACD status list separated by semicolons (;). The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
         /// <param name="group">If set to 'user', first-level array in the resulting JSON will group records by the user ID, and second-level array will group them by date according to the 'aggregation' parameter. If set to 'aggregation', first-level array in the resulting JSON will group records according to the 'aggregation' parameter, and second-level array will group them by the user ID</param>
         public async Task<GetACDOperatorStatusStatisticsResponse> GetACDOperatorStatusStatistics(DateTime fromDate, string userId, DateTime? toDate = null, string acdStatus = null, string aggregation = null, string group = null)
@@ -3106,10 +3115,10 @@ namespace Voximplant.API {
         /// <param name="reportType">The report type. Possible values are: calls_blocked_percentage, count_blocked_calls, im_blocked_chats_percentage, im_count_blocked_chats, im_answered_chats_rate, average_abandonment_rate, count_abandonment_calls, service_level, im_service_level, occupancy_rate, im_agent_occupancy_rate, agent_utilization_rate, im_agent_utilization_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_in_service_incoming_time, sum_agents_in_service_outcoming_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_custom_1_time, sum_agents_custom_2_time, sum_agents_custom_3_time, sum_agents_custom_4_time, sum_agents_custom_5_time, sum_agents_custom_6_time, sum_agents_custom_7_time, sum_agents_custom_8_time, sum_agents_custom_9_time, sum_agents_custom_10_time, sum_agents_banned_time, im_sum_agents_online_time, im_sum_agents_ready_time, im_sum_agents_in_service_time, im_sum_agents_dnd_time, im_sum_agents_custom_1_time, im_sum_agents_custom_2_time, im_sum_agents_custom_3_time, im_sum_agents_custom_4_time, im_sum_agents_custom_5_time, im_sum_agents_custom_6_time, im_sum_agents_custom_7_time, im_sum_agents_custom_8_time, im_sum_agents_custom_9_time, im_sum_agents_custom_10_time, im_sum_agents_banned_time, average_agents_idle_time, max_agents_idle_time, min_agents_idle_time, percentile_0_25_agents_idle_time, percentile_0_50_agents_idle_time, percentile_0_75_agents_idle_time, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, im_min_answer_speed, im_max_answer_speed, im_average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime, count_agent_unanswered_calls, im_count_agent_unanswered_chats, min_reaction_time, max_reaction_time, average_reaction_time, im_min_reaction_time, im_max_reaction_time, im_average_reaction_time, im_count_abandonment_chats, im_count_lost_chats, im_lost_chats_rate</param>
         /// <param name="applicationId">The application ID to search by</param>
         /// <param name="applicationName">The application name to search by. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolon (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="userName">The user name list separated by semicolon (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
-        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolon (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
+        /// <param name="userName">The user name list separated by semicolons (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
+        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time minus 30 minutes</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time</param>
         /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
@@ -3184,10 +3193,10 @@ namespace Voximplant.API {
         /// <param name="reportType">The report type. Possible values are: calls_blocked_percentage, count_blocked_calls, im_blocked_chats_percentage, im_count_blocked_chats, im_answered_chats_rate, average_abandonment_rate, count_abandonment_calls, service_level, im_service_level, occupancy_rate, im_agent_occupancy_rate, agent_utilization_rate, im_agent_utilization_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_in_service_incoming_time, sum_agents_in_service_outcoming_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_custom_1_time, sum_agents_custom_2_time, sum_agents_custom_3_time, sum_agents_custom_4_time, sum_agents_custom_5_time, sum_agents_custom_6_time, sum_agents_custom_7_time, sum_agents_custom_8_time, sum_agents_custom_9_time, sum_agents_custom_10_time, sum_agents_banned_time, im_sum_agents_online_time, im_sum_agents_ready_time, im_sum_agents_in_service_time, im_sum_agents_dnd_time, im_sum_agents_custom_1_time, im_sum_agents_custom_2_time, im_sum_agents_custom_3_time, im_sum_agents_custom_4_time, im_sum_agents_custom_5_time, im_sum_agents_custom_6_time, im_sum_agents_custom_7_time, im_sum_agents_custom_8_time, im_sum_agents_custom_9_time, im_sum_agents_custom_10_time, im_sum_agents_banned_time, average_agents_idle_time, max_agents_idle_time, min_agents_idle_time, percentile_0_25_agents_idle_time, percentile_0_50_agents_idle_time, percentile_0_75_agents_idle_time, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, im_min_answer_speed, im_max_answer_speed, im_average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime, count_agent_unanswered_calls, im_count_agent_unanswered_chats, min_reaction_time, max_reaction_time, average_reaction_time, im_min_reaction_time, im_max_reaction_time, im_average_reaction_time, im_count_abandonment_chats, im_count_lost_chats, im_lost_chats_rate</param>
         /// <param name="applicationId">The application ID to search by</param>
         /// <param name="applicationName">The application name to search by. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolon (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="userName">The user name list separated by semicolon (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
-        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolon (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
+        /// <param name="userName">The user name list separated by semicolons (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
+        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time minus 1 day</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time</param>
         /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
@@ -3266,10 +3275,10 @@ namespace Voximplant.API {
         /// <param name="reportType">The report type. Possible values are: calls_blocked_percentage, count_blocked_calls, im_blocked_chats_percentage, im_count_blocked_chats, im_answered_chats_rate, average_abandonment_rate, count_abandonment_calls, service_level, im_service_level, occupancy_rate, im_agent_occupancy_rate, agent_utilization_rate, im_agent_utilization_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_in_service_incoming_time, sum_agents_in_service_outcoming_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_custom_1_time, sum_agents_custom_2_time, sum_agents_custom_3_time, sum_agents_custom_4_time, sum_agents_custom_5_time, sum_agents_custom_6_time, sum_agents_custom_7_time, sum_agents_custom_8_time, sum_agents_custom_9_time, sum_agents_custom_10_time, sum_agents_banned_time, im_sum_agents_online_time, im_sum_agents_ready_time, im_sum_agents_in_service_time, im_sum_agents_dnd_time, im_sum_agents_custom_1_time, im_sum_agents_custom_2_time, im_sum_agents_custom_3_time, im_sum_agents_custom_4_time, im_sum_agents_custom_5_time, im_sum_agents_custom_6_time, im_sum_agents_custom_7_time, im_sum_agents_custom_8_time, im_sum_agents_custom_9_time, im_sum_agents_custom_10_time, im_sum_agents_banned_time, average_agents_idle_time, max_agents_idle_time, min_agents_idle_time, percentile_0_25_agents_idle_time, percentile_0_50_agents_idle_time, percentile_0_75_agents_idle_time, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, im_min_answer_speed, im_max_answer_speed, im_average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime, count_agent_unanswered_calls, im_count_agent_unanswered_chats, min_reaction_time, max_reaction_time, average_reaction_time, im_min_reaction_time, im_max_reaction_time, im_average_reaction_time, im_count_abandonment_chats, im_count_lost_chats, im_lost_chats_rate</param>
         /// <param name="applicationId">The application ID to search by</param>
         /// <param name="applicationName">The application name to search by. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolon (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="userName">The user name list separated by semicolon (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolon (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
+        /// <param name="userName">The user name list separated by semicolons (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
         /// <param name="interval">Interval format: YYYY-MM-DD HH:mm:ss. Default is 1 day</param>
         /// <param name="groupBy">Group the result by **agent** or *queue*. The **agent** grouping is allowed only for 1 queue and for the occupancy_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_banned_time, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types. The **queue** grouping allowed for the calls_blocked_percentage, count_blocked_calls, average_abandonment_rate, count_abandonment_calls, service_level, occupancy_rate, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types</param>
@@ -3341,8 +3350,8 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="applicationId">The application ID to search by</param>
         /// <param name="applicationName">The application name to search by. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="sqQueueId">The SmartQueue ID list separated by semicolon (;). Use the 'all' value to select all SmartQueues</param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="sqQueueId">The SmartQueue ID list separated by semicolons (;). Use the 'all' value to select all SmartQueues</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
         public async Task<GetSQStateResponse> GetSQState(long? applicationId = null, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string timezone = null)
         {
@@ -3528,12 +3537,12 @@ namespace Voximplant.API {
         /// <summary>
         /// Binds the specified skills to the users (ACD operators) and/or the ACD queues. Works only for ACDv1. For SmartQueue/ACDv2, use <a href="#how-auth-works">this reference</a>.
         /// </summary>
-        /// <param name="skillId">The skill ID list separated by semicolon (;). Use the 'all' value to select all skills</param>
-        /// <param name="skillName">The skill name list separated by semicolon (;). Can be used instead of <b>skill_id</b></param>
-        /// <param name="userId">The user ID list separated by semicolon (;). Use the 'all' value to select all users</param>
-        /// <param name="userName">The user name list separated by semicolon (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
-        /// <param name="acdQueueId">The ACD queue ID list separated by semicolon (;). Use the 'all' value to select all ACD queues</param>
-        /// <param name="acdQueueName">The ACD queue name that can be used instead of <b>acd_queue_id</b>. The ACD queue name list separated by semicolon (;)</param>
+        /// <param name="skillId">The skill ID list separated by semicolons (;). Use the 'all' value to select all skills</param>
+        /// <param name="skillName">The skill name list separated by semicolons (;). Can be used instead of <b>skill_id</b></param>
+        /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to select all users</param>
+        /// <param name="userName">The user name list separated by semicolons (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
+        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
+        /// <param name="acdQueueName">The ACD queue name that can be used instead of <b>acd_queue_id</b>. The ACD queue name list separated by semicolons (;)</param>
         /// <param name="applicationId">The application ID. It is required if the <b>user_name</b> is specified</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="bind">Bind or unbind (set true or false respectively)</param>
@@ -3610,10 +3619,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="withDetails">Set true to view the uploaded document statuses. (The flag is ignored with the child_account_id=all)</param>
         /// <param name="verificationName">The required account verification name to filter</param>
-        /// <param name="verificationStatus">The account verification status list separated by semicolon (;). The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED</param>
+        /// <param name="verificationStatus">The account verification status list separated by semicolons (;). The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED</param>
         /// <param name="fromUnverifiedHoldUntil">Unverified subscriptions hold until the date (from ...) in format: YYYY-MM-DD</param>
         /// <param name="toUnverifiedHoldUntil">Unverified subscriptions hold until the date (... to) in format: YYYY-MM-DD</param>
-        /// <param name="childAccountId">The child account ID list separated by semicolon (;). Use the 'all' value to select all child accounts</param>
+        /// <param name="childAccountId">The child account ID list separated by semicolons (;). Use the 'all' value to select all child accounts</param>
         /// <param name="childrenVerificationsOnly">Set true to get the children account verifications only</param>
         public async Task<GetAccountDocumentsResponse> GetAccountDocuments(bool? withDetails = null, string verificationName = null, string verificationStatus = null, DateTime? fromUnverifiedHoldUntil = null, DateTime? toUnverifiedHoldUntil = null, string childAccountId = null, bool? childrenVerificationsOnly = null)
         {
@@ -3644,7 +3653,7 @@ namespace Voximplant.API {
         /// <param name="adminUserDisplayName">The admin user display name. The length must be less than 256</param>
         /// <param name="newAdminUserPassword">The admin user password. The length must be at least 6 symbols</param>
         /// <param name="adminUserActive">The admin user enable flag</param>
-        /// <param name="adminRoleId">The role(s) ID created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The attaching admin role ID list separated by semicolon (;). Use the 'all' value to select all admin roles</param>
+        /// <param name="adminRoleId">The role(s) ID created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The attaching admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles</param>
         /// <param name="adminRoleName">The role(s) name(s) created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The attaching admin role name that can be used instead of <b>admin_role_id</b></param>
         public async Task<AddAdminUserResponse> AddAdminUser(string newAdminUserName, string adminUserDisplayName, string newAdminUserPassword, bool? adminUserActive = null, string adminRoleId = null, string adminRoleName = null)
         {
@@ -3675,7 +3684,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the specified admin user.
         /// </summary>
-        /// <param name="requiredAdminUserId">The admin user ID list separated by semicolon (;). Use the 'all' value to select all admin users</param>
+        /// <param name="requiredAdminUserId">The admin user ID list separated by semicolons (;). Use the 'all' value to select all admin users</param>
         /// <param name="requiredAdminUserName">The admin user name to delete, can be used instead of <b>required_admin_user_id</b></param>
         public async Task<DelAdminUserResponse> DelAdminUser(string requiredAdminUserId = null, string requiredAdminUserName = null)
         {
@@ -3780,10 +3789,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="adminRoleName">The admin role name. The length must be less than 50</param>
         /// <param name="adminRoleActive">The admin role enable flag. If false the allowed and denied entries have no affect</param>
-        /// <param name="likeAdminRoleId">The admin role ID list separated by semicolon (;). Use the 'all' value to select all admin roles. The list specifies the roles from which the new role automatically copies all permissions (allowed_entries and denied_entries)</param>
+        /// <param name="likeAdminRoleId">The admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles. The list specifies the roles from which the new role automatically copies all permissions (allowed_entries and denied_entries)</param>
         /// <param name="likeAdminRoleName">The admin role name that can be used instead of <b>like_admin_role_id</b>. The name specifies a role from which the new role automatically copies all permissions (allowed_entries and denied_entries)</param>
-        /// <param name="allowedEntries">The list of allowed access entries separated by semicolon (;) (the API function names)</param>
-        /// <param name="deniedEntries">The list of denied access entries separated by semicolon (;) (the API function names)</param>
+        /// <param name="allowedEntries">The list of allowed access entries separated by semicolons (;) (the API function names)</param>
+        /// <param name="deniedEntries">The list of denied access entries separated by semicolons (;) (the API function names)</param>
         public async Task<AddAdminRoleResponse> AddAdminRole(string adminRoleName, bool? adminRoleActive = null, string likeAdminRoleId = null, string likeAdminRoleName = null, string allowedEntries = null, string deniedEntries = null)
         {
             var passedArgs = new List<string>();
@@ -3815,7 +3824,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the specified admin role.
         /// </summary>
-        /// <param name="adminRoleId">The admin role ID list separated by semicolon (;). Use the 'all' value to select all admin roles</param>
+        /// <param name="adminRoleId">The admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles</param>
         /// <param name="adminRoleName">The admin role name to delete, can be used instead of <b>admin_role_id</b></param>
         public async Task<DelAdminRoleResponse> DelAdminRole(string adminRoleId = null, string adminRoleName = null)
         {
@@ -3848,9 +3857,9 @@ namespace Voximplant.API {
         /// <param name="newAdminRoleName">The new admin role name. The length must be less than 50</param>
         /// <param name="adminRoleActive">The admin role enable flag. If false the allowed and denied entries have no affect</param>
         /// <param name="entryModificationMode">The modification mode of the permission lists (allowed_entries and denied_entries). The following values are possible: add, del, set</param>
-        /// <param name="allowedEntries">The list of allowed access entry changes separated by semicolon (;) (the API function names)</param>
-        /// <param name="deniedEntries">The list of denied access entry changes separated by semicolon (;) (the API function names)</param>
-        /// <param name="likeAdminRoleId">The admin role ID list separated by semicolon (;). Use the 'all' value to select all admin roles. The list specifies the roles from which the allowed_entries and denied_entries will be merged</param>
+        /// <param name="allowedEntries">The list of allowed access entry changes separated by semicolons (;) (the API function names)</param>
+        /// <param name="deniedEntries">The list of denied access entry changes separated by semicolons (;) (the API function names)</param>
+        /// <param name="likeAdminRoleId">The admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles. The list specifies the roles from which the allowed_entries and denied_entries will be merged</param>
         /// <param name="likeAdminRoleName">The admin role name, can be used instead of <b>like_admin_role_id</b>. The name specifies a role from which the allowed_entries and denied_entries will be merged</param>
         public async Task<SetAdminRoleInfoResponse> SetAdminRoleInfo(long? adminRoleId = null, string adminRoleName = null, string newAdminRoleName = null, bool? adminRoleActive = null, string entryModificationMode = null, string allowedEntries = null, string deniedEntries = null, string likeAdminRoleId = null, string likeAdminRoleName = null)
         {
@@ -3907,8 +3916,8 @@ namespace Voximplant.API {
         /// <param name="withEntries">Set true to get the permissions</param>
         /// <param name="withAccountRoles">Set false to omit the account roles</param>
         /// <param name="withParentRoles">Set false to omit the parent roles</param>
-        /// <param name="includedAdminUserId">The attached admin user ID list separated by semicolon (;). Use the 'all' value to select all admin users</param>
-        /// <param name="excludedAdminUserId">Not attached admin user ID list separated by semicolon (;). Use the 'all' value to select all admin users</param>
+        /// <param name="includedAdminUserId">The attached admin user ID list separated by semicolons (;). Use the 'all' value to select all admin users</param>
+        /// <param name="excludedAdminUserId">Not attached admin user ID list separated by semicolons (;). Use the 'all' value to select all admin users</param>
         /// <param name="fullAdminUsersMatching">Set false to get roles with partial admin user list matching</param>
         /// <param name="showingAdminUserId">The admin user to show in the 'admin_users' field output</param>
         /// <param name="count">The max returning record count</param>
@@ -3948,9 +3957,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Attaches the admin role(s) to the already existing admin(s).
         /// </summary>
-        /// <param name="requiredAdminUserId">The admin user ID list separated by semicolon (;). Use the 'all' value to select all admin users</param>
+        /// <param name="requiredAdminUserId">The admin user ID list separated by semicolons (;). Use the 'all' value to select all admin users</param>
         /// <param name="requiredAdminUserName">The admin user name to bind, can be used instead of <b>required_admin_user_id</b></param>
-        /// <param name="adminRoleId">The role(s) ID created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The attached admin role ID list separated by semicolon (;). Use the 'all' value to select alladmin roles</param>
+        /// <param name="adminRoleId">The role(s) ID created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The attached admin role ID list separated by semicolons (;). Use the 'all' value to select alladmin roles</param>
         /// <param name="adminRoleName">The role(s) name(s) created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The admin role name to attach, can be used instead of <b>admin_role_id</b></param>
         /// <param name="mode">The merge mode. The following values are possible: add, del, set</param>
         public async Task<AttachAdminRoleResponse> AttachAdminRole(string requiredAdminUserId = null, string requiredAdminUserName = null, string adminRoleId = null, string adminRoleName = null, string mode = null)
@@ -4212,7 +4221,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets all countries where the specific account has phone numbers.
         /// </summary>
-        /// <param name="applicationId">The application ID list separated by semicolon (;) to filter</param>
+        /// <param name="applicationId">The application ID list separated by semicolons (;) to filter</param>
         public async Task<GetAccountPhoneNumberCountriesResponse> GetAccountPhoneNumberCountries(string applicationId = null)
         {
             var args = new Dictionary<string, string>();
@@ -4479,8 +4488,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Binds push credentials to applications.
         /// </summary>
-        /// <param name="pushCredentialId">The push credentials ID list separated by semicolon (;)</param>
-        /// <param name="applicationId">The application ID list separated by semicolon (;). Use the 'all' value to select all applications</param>
+        /// <param name="pushCredentialId">The push credentials ID list separated by semicolons (;)</param>
+        /// <param name="applicationId">The application ID list separated by semicolons (;). Use the 'all' value to select all applications</param>
         /// <param name="bind">Set to false for unbind. Default value is true</param>
         public async Task<BindPushCredentialResponse> BindPushCredential(string pushCredentialId, string applicationId, bool? bind = null)
         {
@@ -4500,7 +4509,7 @@ namespace Voximplant.API {
         /// <param name="applicationId">The application ID</param>
         /// <param name="jsonCredentials">Dialogflow credentials, provided by JWK (Json web key)</param>
         /// <param name="applicationName">The application name. Can be used instead of <b>application_id</b></param>
-        /// <param name="description">The Dialogflow keys's description</param>
+        /// <param name="description">The Dialogflow key's description</param>
         public async Task<AddDialogflowKeyResponse> AddDialogflowKey(string applicationId, string jsonCredentials, string applicationName = null, string description = null)
         {
             var args = new Dictionary<string, string>();
@@ -4567,7 +4576,7 @@ namespace Voximplant.API {
         /// Binds a Dialogflow key to the specified applications.
         /// </summary>
         /// <param name="dialogflowKeyId">The Dialogflow key's ID </param>
-        /// <param name="applicationId">The application ID list separated by semicolon (;). Use the 'all' value to select all applications</param>
+        /// <param name="applicationId">The application ID list separated by semicolons (;). Use the 'all' value to select all applications</param>
         /// <param name="bind">Set to false to unbind. Default value is true</param>
         public async Task<BindDialogflowKeysResponse> BindDialogflowKeys(long dialogflowKeyId, string applicationId, bool? bind = null)
         {
@@ -4605,7 +4614,7 @@ namespace Voximplant.API {
         /// Sends an SMS message from the application to customers. The source phone number should be purchased from Voximplant and support SMS (which is indicated by the <b>is_sms_supported</b> property in the objects returned by the <a href='/docs/references/httpapi/managing_phone_numbers#getphonenumbers'>/GetPhoneNumbers</a> Management API) and SMS should be enabled for it via the <a href='/docs/references/httpapi/managing_sms#controlsms'>/ControlSms</a> Management API.
         /// </summary>
         /// <param name="srcNumber">The SenderID for outbound SMS. Please contact support for installing a SenderID</param>
-        /// <param name="dstNumbers">The destination phone numbers separated by semicolon (;). The maximum number of these phone numbers is 100</param>
+        /// <param name="dstNumbers">The destination phone numbers separated by semicolons (;). The maximum number of these phone numbers is 100</param>
         /// <param name="text">The message text, up to 1600 characters. We split long messages greater than 160 GSM-7 characters or 70 UTF-16 characters into multiple segments. Each segment is charged as one message</param>
         /// <param name="storeBody">Set to true to store outbound message texts. Default value is false</param>
         public async Task<A2PSendSmsResponse> A2PSendSms(string srcNumber, string dstNumbers, string text, bool? storeBody = null)
@@ -4639,8 +4648,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the record storages.
         /// </summary>
-        /// <param name="recordStorageId">The record storage ID list separated by semicolon (;)</param>
-        /// <param name="recordStorageName">The record storage name list separated by semicolon (;)</param>
+        /// <param name="recordStorageId">The record storage ID list separated by semicolons (;)</param>
+        /// <param name="recordStorageName">The record storage name list separated by semicolons (;)</param>
         public async Task<GetRecordStoragesResponse> GetRecordStorages(string recordStorageId = null, string recordStorageName = null)
         {
             var args = new Dictionary<string, string>();
@@ -4657,8 +4666,8 @@ namespace Voximplant.API {
         /// Creates a public/private key pair. You can optionally specify one or more roles for the key.
         /// </summary>
         /// <param name="description">The key's description</param>
-        /// <param name="roleId">The role ID list separated by semicolon (;). Use it instead of **role_name**, but not combine with</param>
-        /// <param name="roleName">The role name list separated by semicolon (;). Use it instead of **role_id**, but not combine with</param>
+        /// <param name="roleId">The role ID list separated by semicolons (;). Use it instead of **role_name**, but not combine with</param>
+        /// <param name="roleName">The role name list separated by semicolons (;). Use it instead of **role_id**, but not combine with</param>
         public async Task<CreateKeyResponse> CreateKey(string description = null, string roleId = null, string roleName = null)
         {
             var passedArgs = new List<string>();
@@ -4737,8 +4746,8 @@ namespace Voximplant.API {
         /// Set roles for the specified key.
         /// </summary>
         /// <param name="keyId">The key's ID</param>
-        /// <param name="roleId">The role id list separated by semicolon (;)</param>
-        /// <param name="roleName">The role name list separated by semicolon (;)</param>
+        /// <param name="roleId">The role id list separated by semicolons (;)</param>
+        /// <param name="roleName">The role name list separated by semicolons (;)</param>
         public async Task<SetKeyRolesResponse> SetKeyRoles(string keyId, string roleId = null, string roleName = null)
         {
             var passedArgs = new List<string>();
@@ -4783,8 +4792,8 @@ namespace Voximplant.API {
         /// Removes the specified roles of a key.
         /// </summary>
         /// <param name="keyId">The key's ID</param>
-        /// <param name="roleId">The role id list separated by semicolon (;)</param>
-        /// <param name="roleName">The role name list separated by semicolon (;)</param>
+        /// <param name="roleId">The role id list separated by semicolons (;)</param>
+        /// <param name="roleName">The role name list separated by semicolons (;)</param>
         public async Task<RemoveKeyRolesResponse> RemoveKeyRoles(string keyId, string roleId = null, string roleName = null)
         {
             var passedArgs = new List<string>();
@@ -4814,8 +4823,8 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="newSubuserName">The new subuser login for managent api authentication, should be unique within the Voximplant account. The login specified is always converted to lowercase</param>
         /// <param name="newSubuserPassword">The new subuser password. Must be at least 8 characters long and contain at least one uppercase and lowercase letter, one number, and one special character</param>
-        /// <param name="roleId">The role id list separated by semicolon (;)</param>
-        /// <param name="roleName">The role name list separated by semicolon (;)</param>
+        /// <param name="roleId">The role id list separated by semicolons (;)</param>
+        /// <param name="roleName">The role name list separated by semicolons (;)</param>
         /// <param name="description">Description of a new subuser</param>
         public async Task<AddSubUserResponse> AddSubUser(string newSubuserName, string newSubuserPassword, string roleId = null, string roleName = null, string description = null)
         {
@@ -4904,8 +4913,8 @@ namespace Voximplant.API {
         /// Adds the specified roles for a subuser.
         /// </summary>
         /// <param name="subuserId">The subuser's ID</param>
-        /// <param name="roleId">The role id list separated by semicolon (;)</param>
-        /// <param name="roleName">The role name list separated by semicolon (;)</param>
+        /// <param name="roleId">The role id list separated by semicolons (;)</param>
+        /// <param name="roleName">The role name list separated by semicolons (;)</param>
         public async Task<SetSubUserRolesResponse> SetSubUserRoles(long subuserId, string roleId = null, string roleName = null)
         {
             var passedArgs = new List<string>();
@@ -4950,8 +4959,8 @@ namespace Voximplant.API {
         /// Removes the specified roles of a subuser.
         /// </summary>
         /// <param name="subuserId">The subuser's ID</param>
-        /// <param name="roleId">The role id list separated by semicolon (;)</param>
-        /// <param name="roleName">The role name list separated by semicolon (;)</param>
+        /// <param name="roleId">The role id list separated by semicolons (;)</param>
+        /// <param name="roleName">The role name list separated by semicolons (;)</param>
         /// <param name="force">Remove roles from all subuser keys</param>
         public async Task<RemoveSubUserRolesResponse> RemoveSubUserRoles(long subuserId, string roleId = null, string roleName = null, bool? force = null)
         {
@@ -5118,7 +5127,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets all invoices of the specified USD or EUR account.
         /// </summary>
-        /// <param name="count">Number of invooces to show per page. Default value is 20</param>
+        /// <param name="count">Number of invoices to show per page. Default value is 20</param>
         /// <param name="offset">Number of invoices to skip (e.g. if you set count = 20 and offset = 0 the first time, the next time, offset has to be equal to 20 to skip the items shown earlier). Default value is 0</param>
         public async Task<GetAccountInvoicesResponse> GetAccountInvoices(long? count = null, long? offset = null)
         {
@@ -5306,9 +5315,9 @@ namespace Voximplant.API {
         /// Deletes a queue.
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolon (;). Use 'all' to delete all the queues</param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to delete all the queues</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         public async Task<SQ_DelQueueResponse> SQ_DelQueue(long applicationId, string sqQueueId, string applicationName = null, string sqQueueName = null)
         {
             var args = new Dictionary<string, string>();
@@ -5328,8 +5337,8 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolon (;)</param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;)</param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="sqQueueNameTemplate">Substring of the SmartQueue name to filter</param>
         /// <param name="userId">ID of the user that is bound to the queue</param>
         /// <param name="userName">Name of the user that is bound to the queue. Can be used instead of <b>user_id</b></param>
@@ -5394,9 +5403,9 @@ namespace Voximplant.API {
         /// Deletes a skill and detaches it from agents.
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="sqSkillId">List of skill IDs separated by semicolon (;). Use 'all' to delete all the skills</param>
+        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to delete all the skills</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqSkillName">List of skill names separated by semicolon (;). Can be used instead of <b>sq_skill_id</b></param>
+        /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
         public async Task<SQ_DelSkillResponse> SQ_DelSkill(long applicationId, string sqSkillId, string applicationName = null, string sqSkillName = null)
         {
             var args = new Dictionary<string, string>();
@@ -5442,10 +5451,10 @@ namespace Voximplant.API {
         /// Binds skills to agents.
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="userId">List of user IDs separated by semicolon (;). Use 'all' to select all the users</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="sqSkills">Skills to be bound to agents in the json array format. The array should contain objects with the <b>sq_skill_id</b>/<b>sq_skill_name</b> and <b>sq_skill_level</b> keys where skill levels range from 1 to 5</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="bindMode">Binding mode. Accepts one of the [SQSkillBindingModes] enum values</param>
         public async Task<SQ_BindSkillResponse> SQ_BindSkill(long applicationId, string userId, Object sqSkills, string applicationName = null, string userName = null, string bindMode = null)
         {
@@ -5468,11 +5477,11 @@ namespace Voximplant.API {
         /// Unbinds skills from agents.
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="userId">List of user IDs separated by semicolon (;). Use 'all' to select all the users</param>
-        /// <param name="sqSkillId">List of skill IDs separated by semicolon (;). Use 'all' to undbind all the skills</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
+        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to undbind all the skills</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="sqSkillName">List of skill names separated by semicolon (;). Can be used instead of <b>sq_skill_id</b></param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
         public async Task<SQ_UnbindSkillResponse> SQ_UnbindSkill(long applicationId, string userId, string sqSkillId, string applicationName = null, string userName = null, string sqSkillName = null)
         {
             var args = new Dictionary<string, string>();
@@ -5495,10 +5504,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userId">List of user IDs separated by semicolon (;)</param>
-        /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="sqSkillId">List of skill IDs separated by semicolon (;)</param>
-        /// <param name="sqSkillName">List of skill names separated by semicolon (;). Can be used instead of <b>sq_skill_id</b></param>
+        /// <param name="userId">List of user IDs separated by semicolons (;)</param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;)</param>
+        /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
         /// <param name="sqSkillNameTemplate">Substring of the skill name to filter, case-insensitive</param>
         /// <param name="excludedUserId">ID of the user that is not bound to the skill</param>
         /// <param name="excludedUserName">Name of the user that is not bound to the skill. Can be used instead of <b>excluded_user_id</b></param>
@@ -5538,10 +5547,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
         /// <param name="sqQueueId">ID of the SmartQueue. Pass a list of values divided by ; or the "all" keyword</param>
-        /// <param name="userId">List of user IDs separated by semicolon (;). Use 'all' to select all the users</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueName">Name of the SmartQueue. Pass a list of names divided by ; or the "all" keyword</param>
-        /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="bindMode">Binding mode. Accepts one of the [SQAgentBindingModes] enum values</param>
         public async Task<SQ_BindAgentResponse> SQ_BindAgent(long applicationId, string sqQueueId, string userId, string applicationName = null, string sqQueueName = null, string userName = null, string bindMode = null)
         {
@@ -5566,11 +5575,11 @@ namespace Voximplant.API {
         /// Unbinds agents from queues.
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolon (;). Use 'all' to select all the queues</param>
-        /// <param name="userId">List of user IDs separated by semicolon (;). Use 'all' to select all the users</param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
-        /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         public async Task<SQ_UnbindAgentResponse> SQ_UnbindAgent(long applicationId, string sqQueueId, string userId, string applicationName = null, string sqQueueName = null, string userName = null)
         {
             var args = new Dictionary<string, string>();
@@ -5594,13 +5603,13 @@ namespace Voximplant.API {
         /// <param name="applicationId">ID of the application to search by</param>
         /// <param name="handleCalls">The agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolon (;). Use 'all' to select all the queues</param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolon (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues</param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="excludedSqQueueId">ID of the SmartQueue to exclude</param>
         /// <param name="excludedSqQueueName">Name of the SmartQueue to exclude. Can be used instead of <b>excluded_sq_queue_id</b></param>
         /// <param name="sqSkills">Skills to filter in the json array format. The array should contain objects with the <b>sq_skill_id</b>/<b>sq_skill_name</b>, <b>min_sq_skill_level</b>, and <b>max_sq_skill_level</b> keys where skill levels range from 1 to 5</param>
-        /// <param name="userId">List of user IDs separated by semicolon (;)</param>
-        /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="userId">List of user IDs separated by semicolons (;)</param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="userNameTemplate">Substring of the user name to filter</param>
         /// <param name="sqStatuses">Filter statuses in the json array format. The array should contain objects with the <b>sq_status_type</b> and <b>sq_status_name</b> keys. Possible values for <b>sq_status_type</b> are 'CALL' and'IM'. Possible values for <b>sq_status_name</b> are 'OFFLINE', 'ONLINE', 'READY', 'IN_SERVICE', 'AFTER_SERVICE', 'DND'</param>
         /// <param name="withSqSkills">Display agent skills</param>
@@ -5652,10 +5661,10 @@ namespace Voximplant.API {
         /// Edits the agent settings.
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="userId">List of user IDs separated by semicolon (;). Use 'all' to select all the users</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="handleCalls">The agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userName">List of user names separated by semicolon (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="maxSimultaneousConversations">Maximum number of chats that the user processes simultaneously</param>
         public async Task<SQ_SetAgentInfoResponse> SQ_SetAgentInfo(long applicationId, string userId, bool handleCalls, string applicationName = null, string userName = null, long? maxSimultaneousConversations = null)
         {

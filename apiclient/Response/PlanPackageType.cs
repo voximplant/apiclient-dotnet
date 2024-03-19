@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public string PackageName { get; private set; }
 
         /// <summary>
-        /// Overrun is enabled
+        /// Whether overrun is enabled
         /// </summary>
         [JsonProperty("may_overrun")]
         public bool MayOverrun { get; private set; }

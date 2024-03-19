@@ -77,31 +77,31 @@ namespace Voximplant.API.Response {
         public string LogFileUrl { get; private set; }
 
         /// <summary>
-        /// The finish reason. Possible values are __Normal termination__, __Insufficient funds__, __Internal error (billing timeout)__, __Terminated administratively__, __JS session error__, __Timeout__
+        /// Finish reason. Possible values are __Normal termination__, __Insufficient funds__, __Internal error (billing timeout)__, __Terminated administratively__, __JS session error__, __Timeout__
         /// </summary>
         [JsonProperty("finish_reason")]
         public string FinishReason { get; private set; }
 
         /// <summary>
-        /// The calls within JS session, including durations, cost, phone numbers and other information
+        /// Calls within the JS session, including durations, cost, phone numbers and other information
         /// </summary>
         [JsonProperty("calls")]
         public CallInfoType[] Calls { get; private set; }
 
         /// <summary>
-        /// The used resorces
+        /// Used resources
         /// </summary>
         [JsonProperty("other_resource_usage")]
         public ResourceUsageType[] OtherResourceUsage { get; private set; }
 
         /// <summary>
-        /// The bound records
+        /// Bound records
         /// </summary>
         [JsonProperty("records")]
         public RecordType[] Records { get; private set; }
 
         /// <summary>
-        /// The custom data
+        /// Custom data
         /// </summary>
         [JsonProperty("custom_data")]
         public string CustomData { get; private set; }

@@ -47,13 +47,13 @@ namespace Voximplant.API.Response {
         public string RemoteNumberType { get; private set; }
 
         /// <summary>
-        /// The incoming flag
+        /// Whether the call is incoming
         /// </summary>
         [JsonProperty("incoming")]
         public bool Incoming { get; private set; }
 
         /// <summary>
-        /// The success flag
+        /// Whether the call is successful
         /// </summary>
         [JsonProperty("successful")]
         public bool Successful { get; private set; }

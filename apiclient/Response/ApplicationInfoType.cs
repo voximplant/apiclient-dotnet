@@ -29,7 +29,7 @@ namespace Voximplant.API.Response {
         public DateTime Modified { get; private set; }
 
         /// <summary>
-        /// This flag indicates whether a secure storage for logs and records is enabled or not
+        /// Whether a secure storage for logs and records is enabled
         /// </summary>
         [JsonProperty("secure_record_storage")]
         public bool SecureRecordStorage { get; private set; }

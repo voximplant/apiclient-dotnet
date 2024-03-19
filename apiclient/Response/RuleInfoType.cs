@@ -34,13 +34,13 @@ namespace Voximplant.API.Response {
         public string RulePattern { get; private set; }
 
         /// <summary>
-        /// The rule pattern exlude regex
+        /// The rule pattern excluding regex
         /// </summary>
         [JsonProperty("rule_pattern_exclude")]
         public string RulePatternExclude { get; private set; }
 
         /// <summary>
-        /// Video conference is required
+        /// Whether video conference is required
         /// </summary>
         [JsonProperty("video_conference")]
         public bool VideoConference { get; private set; }

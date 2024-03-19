@@ -154,7 +154,7 @@ namespace Voximplant.API.Response {
         public WireTransferCallback WireTransfer { get; private set; }
 
         /// <summary>
-        /// Received when <b>send_js_error</b> is set to true and a JS error occures. See the 'send_js_error' parameter of the 'SetAccountInfo' function
+        /// Received when <b>send_js_error</b> is set to true and a JS error occurs. See the 'send_js_error' parameter of the 'SetAccountInfo' function
         /// </summary>
         [JsonProperty("js_fail")]
         public JSFailCallback JsFail { get; private set; }

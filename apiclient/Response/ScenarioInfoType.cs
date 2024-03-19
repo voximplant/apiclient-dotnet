@@ -35,7 +35,7 @@ namespace Voximplant.API.Response {
         public DateTime Modified { get; private set; }
 
         /// <summary>
-        /// 'True' if the scenario belongs to the parent account, 'false' if the scenario belongs to the current account
+        /// Whether the scenario belongs to the parent account, 'false' if the scenario belongs to the current account
         /// </summary>
         [JsonProperty("parent")]
         public bool Parent { get; private set; }

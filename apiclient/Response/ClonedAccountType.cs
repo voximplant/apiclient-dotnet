@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public string AccountEmail { get; private set; }
 
         /// <summary>
-        /// The account activation flag
+        /// Whether the account is active
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; private set; }
