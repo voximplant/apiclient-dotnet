@@ -7,7 +7,7 @@ namespace Voximplant.API.Response {
     public class CheckAuthorizedAccountIPResponse : BaseResponse
     {
         /// <summary>
-        /// True if IP is allowed
+        /// Whether the IP is allowed
         /// </summary>
         [JsonProperty("result")]
         public bool Result { get; private set; }

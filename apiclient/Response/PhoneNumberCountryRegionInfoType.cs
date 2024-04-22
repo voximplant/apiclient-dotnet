@@ -40,7 +40,7 @@ namespace Voximplant.API.Response {
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Verification is required for the account
+        /// Whether verification is required for the account
         /// </summary>
         [JsonProperty("required_verification")]
         public bool? RequiredVerification { get; private set; }
@@ -52,7 +52,7 @@ namespace Voximplant.API.Response {
         public string PhonePeriod { get; private set; }
 
         /// <summary>
-        /// The flag of the need proof of address
+        /// Whether to need proof of address
         /// </summary>
         [JsonProperty("is_need_regulation_address")]
         public bool? IsNeedRegulationAddress { get; private set; }
@@ -64,7 +64,7 @@ namespace Voximplant.API.Response {
         public string RegulationAddressType { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, SMS is supported for phone numbers in this region. SMS needs to be explicitly enabled for a phone number via the [ControlSms] Management API before sending or receiving SMS. If SMS is supported and enabled, SMS can be sent from a phone number using the [SendSmsMessage] Management API and received using the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/guides/managementapi/callbacks'>this article</a> for HTTP callback details
+        /// Whether SMS is supported for phone numbers in this region. SMS needs to be explicitly enabled for a phone number via the [ControlSms] Management API before sending or receiving SMS. If SMS is supported and enabled, SMS can be sent from a phone number via the [SendSmsMessage] Management API and received via the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/guides/managementapi/callbacks'>this article</a> for HTTP callback details
         /// </summary>
         [JsonProperty("is_sms_supported")]
         public bool IsSmsSupported { get; private set; }

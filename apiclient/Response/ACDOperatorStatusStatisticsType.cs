@@ -10,20 +10,20 @@ namespace Voximplant.API.Response {
     public class ACDOperatorStatusStatisticsType
     {
         /// <summary>
-        /// If aggregation was enabled, contains user ID  for the results
+        /// If aggregation is enabled, contains user ID for the results
         /// </summary>
         [JsonProperty("user_id")]
         public string UserId { get; private set; }
 
         /// <summary>
-        /// If aggregation was enabled, contains UTC date  for the results in 24-h 'YYYY-MM-DD' format
+        /// If aggregation is enabled, contains UTC date for the results in 24-h 'YYYY-MM-DD' format
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("date")]
         public DateTime? Date { get; private set; }
 
         /// <summary>
-        /// If aggregation was enabled, contains the  60-minute interval number from 1 to 24
+        /// If aggregation is enabled, contains the 60-minute interval number from 1 to 24
         /// </summary>
         [JsonProperty("hour")]
         public long? Hour { get; private set; }

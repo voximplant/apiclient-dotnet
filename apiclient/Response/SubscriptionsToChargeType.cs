@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public string SubscriptionDescription { get; private set; }
 
         /// <summary>
-        /// The auto charge flag
+        /// Whether the subscription charges automatically
         /// </summary>
         [JsonProperty("subscription_auto_charge")]
         public bool SubscriptionAutoCharge { get; private set; }

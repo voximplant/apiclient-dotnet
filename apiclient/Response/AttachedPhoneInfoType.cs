@@ -48,19 +48,19 @@ namespace Voximplant.API.Response {
         public DateTime PhonePurchaseDate { get; private set; }
 
         /// <summary>
-        /// The flag of the frozen subscription
+        /// Whether the subscription is frozen
         /// </summary>
         [JsonProperty("deactivated")]
         public bool Deactivated { get; private set; }
 
         /// <summary>
-        /// The flag of the deleted subscription
+        /// Whether the subscription is cancelled
         /// </summary>
         [JsonProperty("canceled")]
         public bool Canceled { get; private set; }
 
         /// <summary>
-        /// The auto_charge flag
+        /// Whether to charge automatically
         /// </summary>
         [JsonProperty("auto_charge")]
         public bool AutoCharge { get; private set; }
@@ -96,7 +96,7 @@ namespace Voximplant.API.Response {
         public string CategoryName { get; private set; }
 
         /// <summary>
-        /// Verification is required for the account
+        /// Whether the verification is required for the account
         /// </summary>
         [JsonProperty("required_verification")]
         public bool? RequiredVerification { get; private set; }
@@ -108,44 +108,44 @@ namespace Voximplant.API.Response {
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the account verification is required). The number will be detached on that day automatically!
+        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the account verification is required). The number is detached on that day automatically!
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("unverified_hold_until")]
         public DateTime? UnverifiedHoldUntil { get; private set; }
 
         /// <summary>
-        /// Unverified account can use the phone
+        /// Whether a not verified account can use the phone
         /// </summary>
         [JsonProperty("can_be_used")]
         public bool CanBeUsed { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, SMS is supported for this phone number. SMS needs to be explicitly enabled via the [ControlSms] Management API before sending or receiving SMS. If SMS is supported and enabled, SMS can be sent from this phone number using the [SendSmsMessage] Management API and received using the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/guides/managementapi/callbacks'>this article</a> for HTTP callback details
+        /// Whether SMS is supported for this phone number. SMS needs to be explicitly enabled via the [ControlSms] Management API before sending or receiving SMS. If SMS is supported and enabled, SMS can be sent from this phone number via the [SendSmsMessage] Management API and received via the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/guides/managementapi/callbacks'>this article</a> for HTTP callback details
         /// </summary>
         [JsonProperty("is_sms_supported")]
         public bool IsSmsSupported { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, SMS sending and receiving is enabled for this phone number via the [ControlSms] Management API
+        /// Whether SMS sending and receiving is enabled for this phone number via the [ControlSms] Management API
         /// </summary>
         [JsonProperty("is_sms_enabled")]
         public bool IsSmsEnabled { get; private set; }
 
         /// <summary>
-        /// If set, the callback of an incoming SMS will be sent to this url, otherwise, it will be sent to the general account URL
+        /// If set, the callback of an incoming SMS is sent to this url, otherwise, it is sent to the general account URL
         /// </summary>
         [JsonProperty("incoming_sms_callback_url")]
         public string IncomingSmsCallbackUrl { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, you need to make a request to enable calls to emergency numbers
+        /// Whether you need to make a request to enable calls to emergency numbers
         /// </summary>
         [JsonProperty("emergency_calls_to_be_enabled")]
         public bool EmergencyCallsToBeEnabled { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, calls to emergency numbers are enabled
+        /// Whether calls to emergency numbers are enabled
         /// </summary>
         [JsonProperty("emergency_calls_enabled")]
         public bool EmergencyCallsEnabled { get; private set; }

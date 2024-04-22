@@ -64,7 +64,7 @@ namespace Voximplant.API.Response {
         public string SubscriptionTemplateName { get; private set; }
 
         /// <summary>
-        /// Verification is required for the account
+        /// Whether verification is required for the account
         /// </summary>
         [JsonProperty("required_verification")]
         public bool RequiredVerification { get; private set; }

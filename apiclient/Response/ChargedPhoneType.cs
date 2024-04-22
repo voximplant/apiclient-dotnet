@@ -22,13 +22,13 @@ namespace Voximplant.API.Response {
         public string PhoneNumber { get; private set; }
 
         /// <summary>
-        /// Subscription is frozen
+        /// Whether the subscription is frozen
         /// </summary>
         [JsonProperty("deactivated")]
         public bool Deactivated { get; private set; }
 
         /// <summary>
-        /// Phone number has been charged
+        /// Whether the phone number has been charged
         /// </summary>
         [JsonProperty("is_charged")]
         public bool IsCharged { get; private set; }

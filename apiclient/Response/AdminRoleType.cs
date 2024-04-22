@@ -22,13 +22,13 @@ namespace Voximplant.API.Response {
         public string AdminRoleName { get; private set; }
 
         /// <summary>
-        /// If false the allowed and denied entries have no affect
+        /// Whether to ignore the allowed and denied entries
         /// </summary>
         [JsonProperty("admin_role_active")]
         public bool AdminRoleActive { get; private set; }
 
         /// <summary>
-        /// It's a system role
+        /// Whether it is a system role
         /// </summary>
         [JsonProperty("system_role")]
         public bool SystemRole { get; private set; }

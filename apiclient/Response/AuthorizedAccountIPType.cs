@@ -16,7 +16,7 @@ namespace Voximplant.API.Response {
         public string AuthorizedIp { get; private set; }
 
         /// <summary>
-        /// The allowed flag (true - whitelist, false - blacklist)
+        /// Whether the IP is allowed (true - whitelist, false - blacklist)
         /// </summary>
         [JsonProperty("allowed")]
         public bool Allowed { get; private set; }

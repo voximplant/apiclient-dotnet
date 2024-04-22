@@ -7,7 +7,7 @@ namespace Voximplant.API.Response {
     public class GetAvailableRegulationsResponse : BaseResponse
     {
         /// <summary>
-        /// If result equals 1: 1) the user has at least one regulation address which is appropriate for verification or 2) the verification is not required. If result equals 0, the regulations address needs to be created
+        /// Whether the user has at least one regulation address which is appropriate for verification or the verification is not required. If result is false, the regulations address needs to be created
         /// </summary>
         [JsonProperty("result")]
         public bool Result { get; private set; }

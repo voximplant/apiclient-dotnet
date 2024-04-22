@@ -12,7 +12,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the account's info such as account_id, account_name, account_email etc.
         /// </summary>
-        /// <param name="returnLiveBalance">Set true to get the account's live balance</param>
+        /// <param name="returnLiveBalance">Whether to get the account's live balance</param>
         public async Task<GetAccountInfoResponse> GetAccountInfo(bool? returnLiveBalance = null)
         {
             var args = new Dictionary<string, string>();
@@ -33,20 +33,20 @@ namespace Voximplant.API {
         /// <param name="accountFirstName">The first name</param>
         /// <param name="accountLastName">The last name</param>
         /// <param name="minBalanceToNotify">The min balance value to notify by email or SMS</param>
-        /// <param name="accountNotifications">Voximplant notifications are required</param>
-        /// <param name="tariffChangingNotifications">Set to true to receive the emails about the Voximplant plan changing</param>
-        /// <param name="newsNotifications">Set to true to receive the emails about the Voximplant news</param>
-        /// <param name="sendJsError">Set to true to receive the emails about a JS scenario error</param>
+        /// <param name="accountNotifications">Whether Voximplant notifications are required</param>
+        /// <param name="tariffChangingNotifications">Whether to receive the emails about the Voximplant plan changing</param>
+        /// <param name="newsNotifications">Whether to receive the emails about the Voximplant news</param>
+        /// <param name="sendJsError">Whether to receive the emails about a JS scenario error</param>
         /// <param name="billingAddressName">The company or businessman name</param>
         /// <param name="billingAddressCountryCode">The billing address country code (2 symbols, ISO 3166-1 alpha-2). The following values are available: AF (Afghanistan), AL (Albania), DZ (Algeria), AS (American Samoa), AD (Andorra), AO (Angola), AI (Anguilla), AQ (Antarctica), AG (Antigua and Barbuda), AR (Argentina), AM (Armenia), AW (Aruba), AU (Australia), AT (Austria), AZ (Azerbaijan), BH (Bahrain), BD (Bangladesh), BB (Barbados), BY (Belarus), BE (Belgium), BZ (Belize), BJ (Benin), BM (Bermuda), BT (Bhutan), BO (Bolivia), BA (Bosnia and Herzegovina), BW (Botswana), BV (Bouvet Island), BR (Brazil), IO (British Indian Ocean Territory), BN (Brunei), BG (Bulgaria), BF (Burkina Faso), BI (Burundi), KH (Cambodia), CM (Cameroon), CA (Canada), CV (Cape Verde), KY (Cayman Islands), CF (Central African Republic), TD (Chad), CL (Chile), CN (China), CX (Christmas Island), CO (Colombia), KM (Comoros), CG (Congo), CK (Cook Islands), CR (Costa Rica), HR (Croatia), CU (Cuba), CY (Cyprus), CZ (Czech Republic), DK (Denmark), DJ (Djibouti), DM (Dominica), DO (Dominican Republic), EC (Ecuador), EG (Egypt), SV (El Salvador), GQ (Equatorial Guinea), ER (Eritrea), EE (Estonia), ET (Ethiopia), FO (Faroe Islands), FJ (Fiji Islands), FI (Finland), FR (France), GF (French Guiana), PF (French Polynesia), TF (French Southern and Antarctic Lands), GA (Gabon), GE (Georgia), DE (Germany), GH (Ghana), GI (Gibraltar), GR (Greece), GL (Greenland), GD (Grenada), GP (Guadeloupe), GU (Guam), GT (Guatemala), GG (Guernsey), GN (Guinea), GY (Guyana), HT (Haiti), HM (Heard Island and McDonald Islands), HN (Honduras), HU (Hungary), IS (Iceland), IN (India), ID (Indonesia), IR (Iran), IQ (Iraq), IE (Ireland), IL (Israel), IT (Italy), JM (Jamaica), JP (Japan), JE (Jersey), JO (Jordan), KZ (Kazakhstan), KE (Kenya), KI (Kiribati), KR (Korea), KW (Kuwait), KG (Kyrgyzstan), LA (Laos), LV (Latvia), LB (Lebanon), LS (Lesotho), LR (Liberia), LY (Libya), LI (Liechtenstein), LT (Lithuania), LU (Luxembourg), MG (Madagascar), MW (Malawi), MY (Malaysia), MV (Maldives), ML (Mali), MT (Malta), MH (Marshall Islands), MQ (Martinique), MR (Mauritania), MU (Mauritius), YT (Mayotte), MX (Mexico), FM (Micronesia), MD (Moldova), MC (Monaco), MN (Mongolia), ME (Montenegro), MS (Montserrat), MA (Morocco), MZ (Mozambique), MM (Myanmar), NA (Namibia), NR (Nauru), NP (Nepal), NL (Netherlands), AN (Netherlands Antilles), NC (New Caledonia), NZ (New Zealand), NI (Nicaragua), NE (Niger), NG (Nigeria), NU (Niue), NF (Norfolk Island), KP (North Korea), MP (Northern Mariana Islands), NO (Norway), OM (Oman), PK (Pakistan), PW (Palau), PS (Palestinian Authority), PA (Panama), PG (Papua New Guinea), PY (Paraguay), PE (Peru), PH (Philippines), PN (Pitcairn Islands), PL (Poland), PT (Portugal), PR (Puerto Rico), QA (Qatar), RE (Reunion), RO (Romania), RU (Russia), RW (Rwanda), WS (Samoa), SM (San Marino), SA (Saudi Arabia), SN (Senegal), RS (Serbia), SC (Seychelles), SL (Sierra Leone), SG (Singapore), SK (Slovakia), SI (Slovenia), SB (Solomon Islands), SO (Somalia), ZA (South Africa), GS (South Georgia and the South Sandwich Islands), ES (Spain), LK (Sri Lanka), SD (Sudan), SR (Suriname), SZ (Swaziland), SE (Sweden), CH (Switzerland), SY (Syria), ST (Sao Tome and Principe), TW (Taiwan), TJ (Tajikistan), TZ (Tanzania), TH (Thailand), TG (Togo), TK (Tokelau), TO (Tonga), TT (Trinidad and Tobago), TN (Tunisia), TR (Turkey), TM (Turkmenistan), TC (Turks and Caicos Islands), TV (Tuvalu), UG (Uganda), UA (Ukraine), AE (United Arab Emirates), GB (United Kingdom), US (United States), UY (Uruguay), UZ (Uzbekistan), VU (Vanuatu), VA (Vatican City), VE (Venezuela), VN (Vietnam), VI (Virgin Islands), WF (Wallis and Futuna), EH (Western Sahara), YE (Yemen), ZM (Zambia), ZW (Zimbabwe), AX (Aland Islands)</param>
-        /// <param name="billingAddressAddress">The valid address that needs to be specified to pay for any services. It can't be deleted later, only changed</param>
+        /// <param name="billingAddressAddress">The valid address that needs to be specified to pay for any services. You cannot delete it later, only change</param>
         /// <param name="billingAddressZip">The office ZIP</param>
         /// <param name="billingAddressPhone">The office phone number</param>
         /// <param name="accountCustomData">The custom data</param>
-        /// <param name="callbackUrl">If URL is specified, Voximplant cloud will make HTTP POST requests to it when something happens. For a full list of reasons see the <b>type</b> field of the [AccountCallback] structure. The HTTP request will have a JSON-encoded body that conforms to the [AccountCallbacks] structure</param>
-        /// <param name="callbackSalt">If salt string is specified, each HTTP request made by the Voximplant cloud toward the <b>callback_url</b> will have a <b>salt</b> field set to MD5 hash of account information and salt. That hash can be used be a developer to ensure that HTTP request is made by the Voximplant cloud</param>
-        /// <param name="storeOutboundSms">Set to true to store outbound message texts. Default value is false</param>
-        /// <param name="storeInboundSms">Set to true to store incoming message texts. Default value is false</param>
+        /// <param name="callbackUrl">If URL is specified, Voximplant cloud makes HTTP POST requests to it when something happens. For a full list of reasons see the <b>type</b> field of the [AccountCallback] structure. The HTTP request has a JSON-encoded body that conforms to the [AccountCallbacks] structure</param>
+        /// <param name="callbackSalt">If salt string is specified, each HTTP request made by the Voximplant cloud toward the <b>callback_url</b> has a <b>salt</b> field set to MD5 hash of account information and salt. That hash can be used be a developer to ensure that HTTP request is made by the Voximplant cloud</param>
+        /// <param name="storeOutboundSms">Whether to store outgoing message texts. Default value is false</param>
+        /// <param name="storeInboundSms">Whether to store incoming message texts. Default value is false</param>
         public async Task<SetAccountInfoResponse> SetAccountInfo(string newAccountEmail = null, string newAccountPassword = null, string languageCode = null, string location = null, string accountFirstName = null, string accountLastName = null, decimal? minBalanceToNotify = null, bool? accountNotifications = null, bool? tariffChangingNotifications = null, bool? newsNotifications = null, bool? sendJsError = null, string billingAddressName = null, string billingAddressCountryCode = null, string billingAddressAddress = null, string billingAddressZip = null, string billingAddressPhone = null, string accountCustomData = null, string callbackUrl = null, string callbackSalt = null, bool? storeOutboundSms = null, bool? storeInboundSms = null)
         {
             var args = new Dictionary<string, string>();
@@ -105,17 +105,17 @@ namespace Voximplant.API {
         /// <param name="childAccountEmail">The child account email list separated by semicolons (;). Can be used instead of <b>child_account_id</b></param>
         /// <param name="newChildAccountEmail">The new child account email</param>
         /// <param name="newChildAccountPassword">The new child account password. Must be at least 8 characters long and contain at least one uppercase and lowercase letter, one number, and one special character</param>
-        /// <param name="accountNotifications">Voximplant notifications are required</param>
-        /// <param name="tariffChangingNotifications">Set to true to receive the emails about the Voximplant plan changing</param>
-        /// <param name="newsNotifications">Set to true to receive the emails about the Voximplant news</param>
-        /// <param name="active">Set false to disable the child account</param>
+        /// <param name="accountNotifications">Whether Voximplant notifications are required</param>
+        /// <param name="tariffChangingNotifications">Whether to receive the emails about the Voximplant plan changing</param>
+        /// <param name="newsNotifications">Whether to receive the emails about the Voximplant news</param>
+        /// <param name="active">Whether to enable the child account</param>
         /// <param name="languageCode">The notification language code (2 symbols, ISO639-1). The following values are available: aa (Afar), ab (Abkhazian), af (Afrikaans), am (Amharic), ar (Arabic), as (Assamese), ay (Aymara), az (Azerbaijani), ba (Bashkir), be (Belarusian), bg (Bulgarian), bh (Bihari), bi (Bislama), bn (Bengali), bo (Tibetan), br (Breton), ca (Catalan), co (Corsican), cs (Czech), cy (Welch), da (Danish), de (German), dz (Bhutani), el (Greek), en (English), eo (Esperanto), es (Spanish), et (Estonian), eu (Basque), fa (Persian), fi (Finnish), fj (Fiji), fo (Faeroese), fr (French), fy (Frisian), ga (Irish), gd (Scots Gaelic), gl (Galician), gn (Guarani), gu (Gujarati), ha (Hausa), hi (Hindi), he (Hebrew), hr (Croatian), hu (Hungarian), hy (Armenian), ia (Interlingua), id (Indonesian), ie (Interlingue), ik (Inupiak), in (Indonesian), is (Icelandic), it (Italian), iu (Inuktitut), iw (Hebrew), ja (Japanese), ji (Yiddish), jw (Javanese), ka (Georgian), kk (Kazakh), kl (Greenlandic), km (Cambodian), kn (Kannada), ko (Korean), ks (Kashmiri), ku (Kurdish), ky (Kirghiz), la (Latin), ln (Lingala), lo (Laothian), lt (Lithuanian), lv (Latvian), mg (Malagasy), mi (Maori), mk (Macedonian), ml (Malayalam), mn (Mongolian), mo (Moldavian), mr (Marathi), ms (Malay), mt (Maltese), my (Burmese), na (Nauru), ne (Nepali), nl (Dutch), no (Norwegian), oc (Occitan), om (Oromo), or (Oriya), pa (Punjabi), pl (Polish), ps (Pashto), pt (Portuguese), qu (Quechua), rm (Rhaeto-Romance), rn (Kirundi), ro (Romanian), ru (Russian), rw (Kinyarwanda), sa (Sanskrit), sd (Sindhi), sg (Sangro), sh (Serbo-Croatian), si (Singhalese), sk (Slovak), sl (Slovenian), sm (Samoan), sn (Shona), so (Somali), sq (Albanian), sr (Serbian), ss (Siswati), st (Sesotho), su (Sudanese), sv (Swedish), sw (Swahili), ta (Tamil), te (Tegulu), tg (Tajik), th (Thai), ti (Tigrinya), tk (Turkmen), tl (Tagalog), tn (Setswana), to (Tonga), tr (Turkish), ts (Tsonga), tt (Tatar), tw (Twi), ug (Uigur), uk (Ukrainian), ur (Urdu), uz (Uzbek), vi (Vietnamese), vo (Volapuk), wo (Wolof), xh (Xhosa), yi (Yiddish), yo (Yoruba), za (Zhuang), zh (Chinese), zu (Zulu)</param>
         /// <param name="location">The child account location (timezone). Examples: America/Los_Angeles, Etc/GMT-8, Etc/GMT+10</param>
         /// <param name="minBalanceToNotify">The min balance value to notify by email or SMS</param>
-        /// <param name="supportRobokassa">Set to true to allow the robokassa payments</param>
-        /// <param name="supportBankCard">Set to true to allow the bank card payments</param>
-        /// <param name="supportInvoice">Set to true to allow the bank invoices</param>
-        /// <param name="canUseRestricted">Set to true to allow use restricted directions</param>
+        /// <param name="supportRobokassa">Whether to allow the robokassa payments</param>
+        /// <param name="supportBankCard">Whether to allow the bank card payments</param>
+        /// <param name="supportInvoice">Whether to allow the bank invoices</param>
+        /// <param name="canUseRestricted">Whether to allow use restricted directions</param>
         public async Task<SetChildAccountInfoResponse> SetChildAccountInfo(string childAccountId = null, string childAccountName = null, string childAccountEmail = null, string newChildAccountEmail = null, string newChildAccountPassword = null, bool? accountNotifications = null, bool? tariffChangingNotifications = null, bool? newsNotifications = null, bool? active = null, string languageCode = null, string location = null, decimal? minBalanceToNotify = null, bool? supportRobokassa = null, bool? supportBankCard = null, bool? supportInvoice = null, bool? canUseRestricted = null)
         {
             var passedArgs = new List<string>();
@@ -215,7 +215,7 @@ namespace Voximplant.API {
         /// <param name="subscriptionTemplateType">The subscription template type. The following values are possible: PHONE_NUM, SIP_REGISTRATION</param>
         /// <param name="subscriptionTemplateName">The subscription template name  (example: SIP registration, Phone GB, Phone RU 495, ...)</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetSubscriptionPriceResponse> GetSubscriptionPrice(string subscriptionTemplateId = null, string subscriptionTemplateType = null, string subscriptionTemplateName = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -240,15 +240,15 @@ namespace Voximplant.API {
         /// <param name="childAccountId">The account ID list separated by semicolons (;). You need to specify at least one of the following parameters: `child_account_id`, `child_account_name`, `child_account_email`</param>
         /// <param name="childAccountName">The child account name to filter. You need to specify at least one of the following parameters: `child_account_id`, `child_account_name`, `child_account_email`</param>
         /// <param name="childAccountEmail">The child ccount email to filter. You need to specify at least one of the following parameters: `child_account_id`, `child_account_name`, `child_account_email`</param>
-        /// <param name="active">The active flag to filter</param>
-        /// <param name="frozen">The frozen flag to filter</param>
-        /// <param name="ignoreInvalidAccounts">Set true to ignore the invalid 'child_account_id' items</param>
-        /// <param name="briefOutput">Set true to output the account_id only</param>
-        /// <param name="mediumOutput">Set true to output the account_id, account_name, account_email only</param>
+        /// <param name="active">Whether the filter is active</param>
+        /// <param name="frozen">Whether the filter is frozen</param>
+        /// <param name="ignoreInvalidAccounts">Whether to ignore the invalid 'child_account_id' items</param>
+        /// <param name="briefOutput">Whether to output the account_id only</param>
+        /// <param name="mediumOutput">Whether to output the account_id, account_name, account_email only</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="orderBy">The following values are available: 'child_account_id', 'child_account_name' and 'child_account_email'</param>
-        /// <param name="returnLiveBalance">Set true to get the user live balance</param>
+        /// <param name="returnLiveBalance">Whether to get the user live balance</param>
         public async Task<GetChildrenAccountsResponse> GetChildrenAccounts(string childAccountId = null, string childAccountName = null, string childAccountEmail = null, bool? active = null, bool? frozen = null, bool? ignoreInvalidAccounts = null, bool? briefOutput = null, bool? mediumOutput = null, long? count = null, long? offset = null, string orderBy = null, bool? returnLiveBalance = null)
         {
             var args = new Dictionary<string, string>();
@@ -380,7 +380,7 @@ namespace Voximplant.API {
         /// Adds a new account's application.
         /// </summary>
         /// <param name="applicationName">The short application name in format \[a-z\]\[a-z0-9-\]{1,64}</param>
-        /// <param name="secureRecordStorage">Enable secure storage for all logs and records of the application</param>
+        /// <param name="secureRecordStorage">Whether to enable secure storage for all logs and records of the application</param>
         public async Task<AddApplicationResponse> AddApplication(string applicationName, bool? secureRecordStorage = null)
         {
             var args = new Dictionary<string, string>();
@@ -426,7 +426,7 @@ namespace Voximplant.API {
         /// <param name="applicationId">The application ID</param>
         /// <param name="requiredApplicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="applicationName">The new short application name in format [a-z][a-z0-9-]{1,79}</param>
-        /// <param name="secureRecordStorage">Enable secure storage for all logs and records of the application</param>
+        /// <param name="secureRecordStorage">Whether to enable secure storage for all logs and records of the application</param>
         public async Task<SetApplicationInfoResponse> SetApplicationInfo(long? applicationId = null, string requiredApplicationName = null, string applicationName = null, bool? secureRecordStorage = null)
         {
             var passedArgs = new List<string>();
@@ -459,10 +459,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="applicationId">The application ID to filter</param>
         /// <param name="applicationName">The application name part to filter</param>
-        /// <param name="withRules">Set true to get bound rules info</param>
-        /// <param name="withScenarios">Set true to get bound rules and scenarios info</param>
+        /// <param name="withRules">Whether to get bound rules info</param>
+        /// <param name="withScenarios">Whether to get bound rules and scenarios info</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetApplicationsResponse> GetApplications(long? applicationId = null, string applicationName = null, bool? withRules = null, bool? withScenarios = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -489,10 +489,10 @@ namespace Voximplant.API {
         /// <param name="userName">The user name in format [a-z0-9][a-z0-9_-]{2,49}</param>
         /// <param name="userDisplayName">The user display name. The length must be less than 256</param>
         /// <param name="userPassword">The user password. Must be at least 8 characters long and contain at least one uppercase and lowercase letter, one number, and one special character</param>
-        /// <param name="applicationId">The application ID which a new user will be bound to. Can be used instead of the <b>application_name</b> parameter</param>
-        /// <param name="applicationName">The application name which a new user will be bound to. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="parentAccounting">'True' if the user will use the parent account's money, 'false' if the user will have a separate balance</param>
-        /// <param name="userActive">The user enable flag</param>
+        /// <param name="applicationId">The application ID which a new user is to be bound to. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name which a new user is to be bound to. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="parentAccounting">Whether the user uses the parent account's money, 'false' if the user has a separate balance</param>
+        /// <param name="userActive">Whether the user is active. Inactive users cannot log in to applications</param>
         /// <param name="userCustomData">Any string</param>
         public async Task<AddUserResponse> AddUser(string userName, string userDisplayName, string userPassword, long? applicationId = null, string applicationName = null, bool? parentAccounting = null, bool? userActive = null, string userCustomData = null)
         {
@@ -579,8 +579,8 @@ namespace Voximplant.API {
         /// <param name="newUserName">The new user name in format [a-z0-9][a-z0-9_-]{2,49}</param>
         /// <param name="userDisplayName">The new user display name. The length must be less than 256</param>
         /// <param name="userPassword">The new user password. Must be at least 8 characters long and contain at least one uppercase and lowercase letter, one number, and one special character</param>
-        /// <param name="parentAccounting"> Set 'true' to use the parent account's money, 'false' to use a separate user balance</param>
-        /// <param name="userActive">The user enable flag</param>
+        /// <param name="parentAccounting">Whether to use the parent account's money, 'false' to use a separate user balance</param>
+        /// <param name="userActive">Whether the user is active. Inactive users cannot log in to applications</param>
         /// <param name="userCustomData">Any string</param>
         public async Task<SetUserInfoResponse> SetUserInfo(long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string newUserName = null, string userDisplayName = null, string userPassword = null, bool? parentAccounting = null, bool? userActive = null, string userCustomData = null)
         {
@@ -641,16 +641,16 @@ namespace Voximplant.API {
         /// <param name="excludedAcdQueueId">The excluded ACD queue ID to filter</param>
         /// <param name="userId">The user ID to filter</param>
         /// <param name="userName">The user name part to filter</param>
-        /// <param name="userActive">The user active flag to filter</param>
+        /// <param name="userActive">Whether the user is active to filter. Inactive users cannot log in to applications</param>
         /// <param name="userDisplayName">The user display name part to filter</param>
-        /// <param name="withSkills">Set true to get the bound skills</param>
-        /// <param name="withQueues">Set true to get the bound queues</param>
+        /// <param name="withSkills">Whether to get the bound skills</param>
+        /// <param name="withQueues">Whether to get the bound queues</param>
         /// <param name="acdStatus">The ACD status list separated by semicolons (;) to filter. The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND</param>
         /// <param name="showingSkillId">The skill to show in the 'skills' field output</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="orderBy">The following values are available: 'user_id', 'user_name' and 'user_display_name'</param>
-        /// <param name="returnLiveBalance">Set true to get the user live balance</param>
+        /// <param name="returnLiveBalance">Whether to get the user live balance</param>
         public async Task<GetUsersResponse> GetUsers(long? applicationId = null, string applicationName = null, long? skillId = null, long? excludedSkillId = null, long? acdQueueId = null, long? excludedAcdQueueId = null, long? userId = null, string userName = null, bool? userActive = null, string userDisplayName = null, bool? withSkills = null, bool? withQueues = null, string acdStatus = null, long? showingSkillId = null, long? count = null, long? offset = null, string orderBy = null, bool? returnLiveBalance = null)
         {
             var passedArgs = new List<string>();
@@ -715,7 +715,7 @@ namespace Voximplant.API {
         /// <param name="applicationId">The application ID. It is required if the <b>user_name</b> is specified</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="currency">The amount currency. Examples: RUR, EUR, USD</param>
-        /// <param name="strictMode">Returns error if strict_mode is true and a user or the account hasn't enough money</param>
+        /// <param name="strictMode">Whether to enable the strict mode. Returns error if strict_mode is true and a user or the account does not have enough money</param>
         /// <param name="userTransactionDescription">The user transaction description</param>
         /// <param name="accountTransactionDescription">The account transaction description. The following macro available: ${user_id}, ${user_name}</param>
         public async Task<TransferMoneyToUserResponse> TransferMoneyToUser(decimal amount, string userId = null, string userName = null, long? applicationId = null, string applicationName = null, string currency = null, bool? strictMode = null, string userTransactionDescription = null, string accountTransactionDescription = null)
@@ -764,13 +764,13 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Adds a new CSV file for call list processing and starts the specified rule immediately. To send a file, use the request body. To set the call time constraints, use the following options in a CSV file: <ul><li>**__start_execution_time** – when the call list processing will start every day, UTC+0 24-h format: HH:mm:ss</li><li>**__end_execution_time** – when the call list processing will stop every day,  UTC+0 24-h format: HH:mm:ss</li><li>**__start_at** – when the call list processing will start, UNIX timestamp. If not specified, the processing will start immediately after a method call</li></ul><br>This method accepts CSV files with custom delimiters, such a commas (,), semicolons (;) and other. To specify a delimiter, pass it to the <b>delimiter</b> parameter.<br/><b>IMPORTANT:</b> the account's balance should be equal or greater than 1 USD. If the balance is lower than 1 USD, the call list processing won't start, or it stops immediately if it was active.
+        /// Adds a new CSV file for call list processing and starts the specified rule immediately. To send a file, use the request body. To set the call time constraints, use the following options in a CSV file: <ul><li>**__start_execution_time** – when the call list processing starts every day, UTC+0 24-h format: HH:mm:ss</li><li>**__end_execution_time** – when the call list processing stops every day,  UTC+0 24-h format: HH:mm:ss</li><li>**__start_at** – when the call list processing starts, UNIX timestamp. If not specified, the processing starts immediately after a method call</li></ul><br>This method accepts CSV files with custom delimiters, such a commas (,), semicolons (;) and other. To specify a delimiter, pass it to the <b>delimiter</b> parameter.<br/><b>IMPORTANT:</b> the account's balance should be equal or greater than 1 USD. If the balance is lower than 1 USD, the call list processing does not start, or it stops immediately if it is active.
         /// </summary>
-        /// <param name="ruleId">The rule ID. It's specified in the <a href='//manage.voximplant.com/applications'>Applications</a> section of the Control Panel</param>
+        /// <param name="ruleId">The rule ID. It is specified in the <a href='//manage.voximplant.com/applications'>Applications</a> section of the Control Panel</param>
         /// <param name="priority">Call list priority. The value is in the range of [0 ... 2^31] where zero is the highest priority</param>
         /// <param name="maxSimultaneous">Number of simultaneously processed tasks</param>
         /// <param name="numAttempts">Number of attempts. Minimum is <b>1</b>, maximum is <b>5</b></param>
-        /// <param name="name">File name, up to 255 characters and can't contain the '/' and '\' symbols</param>
+        /// <param name="name">File name, up to 255 characters and cannot contain the '/' and '\' symbols</param>
         /// <param name="fileContent">Send as "body" part of the HTTP request or as multiform. The sending "file_content" via URL is at its own risk because the network devices tend to drop HTTP requests with large headers</param>
         /// <param name="intervalSeconds">Interval between call attempts in seconds. The default is 0</param>
         /// <param name="encoding">Encoding file. The default is UTF-8</param>
@@ -809,12 +809,12 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="listId">The list ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all lists</param>
         /// <param name="name">Find call lists by name</param>
-        /// <param name="isActive">Find only active call lists</param>
+        /// <param name="isActive">Whether to find only active call lists</param>
         /// <param name="fromDate">The UTC 'from' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toDate">The UTC 'to' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="typeList">The type of the call list. The possible values are AUTOMATIC and MANUAL</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications</param>
         public async Task<GetCallListsResponse> GetCallLists(string listId = null, string name = null, bool? isActive = null, DateTime? fromDate = null, DateTime? toDate = null, string typeList = null, long? count = null, long? offset = null, string applicationId = null)
         {
@@ -847,7 +847,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="listId">The list ID</param>
         /// <param name="count">Maximum number of entries in the result</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="output">Output format (CSV/JSON/XLS). Default CSV</param>
         /// <param name="encoding">Encoding of the output file. Default UTF-8</param>
         /// <param name="delimiter">Separator values. The default is ';'</param>
@@ -903,7 +903,7 @@ namespace Voximplant.API {
         /// <param name="scenarioScript">The scenario text. Use the application/x-www-form-urlencoded content type with UTF-8 encoding. The length must be less than 128 KB</param>
         /// <param name="ruleId">The rule ID. The new scenario binds to the specified rule. Please note, if you do not bind the scenario to any rule, you cannot execute the scenario</param>
         /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
-        /// <param name="rewrite">Rewrite the existing scenario</param>
+        /// <param name="rewrite">Whether to rewrite the existing scenario</param>
         public async Task<AddScenarioResponse> AddScenario(string scenarioName, string scenarioScript = null, long? ruleId = null, string ruleName = null, bool? rewrite = null)
         {
             var args = new Dictionary<string, string>();
@@ -958,7 +958,7 @@ namespace Voximplant.API {
         /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
-        /// <param name="bind">Bind or unbind (set true or false respectively)</param>
+        /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindScenarioResponse> BindScenario(string scenarioId = null, string scenarioName = null, long? ruleId = null, string ruleName = null, long? applicationId = null, string applicationName = null, bool? bind = null)
         {
             var passedArgs = new List<string>();
@@ -1018,10 +1018,10 @@ namespace Voximplant.API {
         /// Gets the account's scenarios.
         /// </summary>
         /// <param name="scenarioId">The scenario ID to filter</param>
-        /// <param name="scenarioName">The scenario name to filter. Can be used instead of <b>scenario_id</b>. All scenarios containing this param in their names will be returned. The parameter is case insensitive</param>
-        /// <param name="withScript">Set true to get the scenario text. You must specify the 'scenario_id' too!</param>
+        /// <param name="scenarioName">The scenario name to filter. Can be used instead of <b>scenario_id</b>. All scenarios containing this param in their names are returned. The parameter is case insensitive</param>
+        /// <param name="withScript">Whether to get the scenario text. You must specify the 'scenario_id' too!</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetScenariosResponse> GetScenarios(long? scenarioId = null, string scenarioName = null, bool? withScript = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -1158,7 +1158,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Runs a session for video conferencing or joins the existing video conference session.<br/><br/>When you create a session by calling this method, a scenario runs on one of the servers dedicated to video conferencing. All further method calls with the same **conference_name** won't create a new video conference session but join the existing one.<br/><br/>Use the [StartScenarios] method for creating audio conferences.
+        /// Runs a session for video conferencing or joins the existing video conference session.<br/><br/>When you create a session by calling this method, a scenario runs on one of the servers dedicated to video conferencing. All further method calls with the same **conference_name** do not create a new video conference session but join the existing one.<br/><br/>Use the [StartScenarios] method for creating audio conferences.
         /// </summary>
         /// <param name="conferenceName">The conference name. The name length must be less than 50 symbols</param>
         /// <param name="ruleId">The rule ID that needs to be launched. Please note, the necessary scenario needs to be attached to the rule</param>
@@ -1219,7 +1219,7 @@ namespace Voximplant.API {
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
         /// <param name="rulePatternExclude">The exclude pattern regex. The length must be less than 64 KB</param>
-        /// <param name="videoConference">Video conference is required</param>
+        /// <param name="videoConference">Whether video conference is required</param>
         /// <param name="scenarioId">The scenario ID list separated by semicolons (;)</param>
         /// <param name="scenarioName">The scenario name list separated by semicolons (;). Can be used instead of <b>scenario_id</b></param>
         public async Task<AddRuleResponse> AddRule(string ruleName, string rulePattern, long? applicationId = null, string applicationName = null, string rulePatternExclude = null, bool? videoConference = null, string scenarioId = null, string scenarioName = null)
@@ -1318,7 +1318,7 @@ namespace Voximplant.API {
         /// <param name="ruleName">The new rule name. The length must be less than 100</param>
         /// <param name="rulePattern">The new rule pattern regex. The length must be less than 64 KB</param>
         /// <param name="rulePatternExclude">The new exclude pattern regex. The length must be less than 64 KB</param>
-        /// <param name="videoConference">Video conference is required</param>
+        /// <param name="videoConference">Whether video conference is required</param>
         public async Task<SetRuleInfoResponse> SetRuleInfo(long ruleId, string ruleName = null, string rulePattern = null, string rulePatternExclude = null, bool? videoConference = null)
         {
             var args = new Dictionary<string, string>();
@@ -1343,11 +1343,11 @@ namespace Voximplant.API {
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="ruleId">The rule ID to filter</param>
         /// <param name="ruleName">The rule name part to filter</param>
-        /// <param name="videoConference">The video conference flag to filter</param>
+        /// <param name="videoConference">Whether it is a video conference to filter</param>
         /// <param name="template">Search for template matching</param>
-        /// <param name="withScenarios">Set true to get bound scenarios info</param>
+        /// <param name="withScenarios">Whether to get bound scenarios info</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetRulesResponse> GetRules(long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, bool? videoConference = null, string template = null, bool? withScenarios = null, long? count = null, long? offset = null)
         {
             var passedArgs = new List<string>();
@@ -1406,23 +1406,23 @@ namespace Voximplant.API {
         /// <param name="callSessionHistoryId">To get the call history for the specific sessions, pass the session IDs to this parameter separated by a semicolon (;). You can find the session ID in the <a href='/docs/references/voxengine/appevents#started'>AppEvents.Started</a> event's <b>sessionID</b> property in a scenario, or retrieve it from the <b>call_session_history_id</b> value returned from the <a href='https://voximplant.com/docs/references/httpapi/scenarios#reorderscenarios'>StartScenarios</a> or <a href='https://voximplant.com/docs/references/httpapi/scenarios#startconference'>StartConference</a> methods</param>
         /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
         /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
-        /// <param name="userId">To receive the call history for a specific users, pass the user ID list separated by semicolons (;). If it's specified, the output contains the calls from the listed users only</param>
+        /// <param name="userId">To receive the call history for a specific users, pass the user ID list separated by semicolons (;). If it is specified, the output contains the calls from the listed users only</param>
         /// <param name="ruleName">To receive the call history for a specific routing rule, pass the rule name to this parameter. Applies only if you set application_id or application_name</param>
         /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolons (;). A remote number is a number on the client side</param>
         /// <param name="localNumber">To receive a call history for a specific local numbers, pass the number list separated by semicolons (;). A local number is a number on the platform side</param>
         /// <param name="callSessionHistoryCustomData">To filter the call history by the custom_data passed to the call sessions, pass the custom data to this parameter</param>
-        /// <param name="withCalls">Specifies whether to receive a list of sessions with all calls within the sessions, including phone numbers, call cost and other information</param>
-        /// <param name="withRecords">Specifies whether to get the calls' records</param>
-        /// <param name="withOtherResources">Set true to get other resources usage (see [ResourceUsageType])</param>
+        /// <param name="withCalls">Whether to receive a list of sessions with all calls within the sessions, including phone numbers, call cost and other information</param>
+        /// <param name="withRecords">Whether to get the calls' records</param>
+        /// <param name="withOtherResources">Whether to get other resources usage (see [ResourceUsageType])</param>
         /// <param name="childAccountId">The child account ID list separated by semicolons (;)</param>
-        /// <param name="childrenCallsOnly">Set true to get the children account calls only</param>
-        /// <param name="withHeader">Set false to get a CSV file without the column names if the output=csv</param>
-        /// <param name="descOrder">Set true to get records in the descent order</param>
-        /// <param name="withTotalCount">Set false to omit the 'total_count' and increase performance</param>
+        /// <param name="childrenCallsOnly">Whether to get the children account calls only</param>
+        /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
+        /// <param name="descOrder">Whether to get records in the descent order</param>
+        /// <param name="withTotalCount">Whether to include the 'total_count' and increase performance</param>
         /// <param name="count">The number of returning records. In the synchronous mode, the maximum value is 1000</param>
         /// <param name="offset">The number of records to skip in the output with a maximum value of 10000</param>
         /// <param name="output">The output format. The following values available: json, csv</param>
-        /// <param name="isAsync">Set true to get records in the asynchronous mode (for csv output only). <b>Use this mode to download large amounts of data</b>. See the [GetHistoryReports], [DownloadHistoryReport] functions for details</param>
+        /// <param name="isAsync">Whether to get records in the asynchronous mode (for csv output only). <b>Use this mode to download large amounts of data</b>. See the [GetHistoryReports], [DownloadHistoryReport] functions for details</param>
         public async Task<GetCallHistoryResponse> GetCallHistory(DateTime fromDate, DateTime toDate, string callSessionHistoryId = null, long? applicationId = null, string applicationName = null, string userId = null, string ruleName = null, string remoteNumber = null, string localNumber = null, string callSessionHistoryCustomData = null, bool? withCalls = null, bool? withRecords = null, bool? withOtherResources = null, string childAccountId = null, bool? childrenCallsOnly = null, bool? withHeader = null, bool? descOrder = null, bool? withTotalCount = null, long? count = null, long? offset = null, string output = null, bool? isAsync = null)
         {
             var passedArgs = new List<string>();
@@ -1488,7 +1488,7 @@ namespace Voximplant.API {
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="output">The output format. The following values available: csv</param>
-        /// <param name="isAsync">Set true to get records in the asynchronous mode. <b>Use this mode to download large amounts of data</b>. See the [GetHistoryReports], [DownloadHistoryReport] functions for details</param>
+        /// <param name="isAsync">Whether to get records in the asynchronous mode. <b>Use this mode to download large amounts of data</b>. See the [GetHistoryReports], [DownloadHistoryReport] functions for details</param>
         /// <param name="callSessionHistoryId">To get the call history for the specific sessions, pass the session IDs to this parameter separated by a semicolon (;). You can find the session ID in the <a href='/docs/references/voxengine/appevents#started'>AppEvents.Started</a> event's <b>sessionID</b> property in a scenario, or retrieve it from the <b>call_session_history_id</b> value returned from the <a href='https://voximplant.com/docs/references/httpapi/scenarios#reorderscenarios'>StartScenarios</a> or <a href='https://voximplant.com/docs/references/httpapi/scenarios#startconference'>StartConference</a> methods</param>
         /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
         /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
@@ -1496,8 +1496,8 @@ namespace Voximplant.API {
         /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolons (;). A remote number is a number on the client side</param>
         /// <param name="localNumber">To receive a call history for a specific local numbers, pass the number list separated by semicolons (;). A local number is a number on the platform side</param>
         /// <param name="callSessionHistoryCustomData">To filter the call history by the custom_data passed to the call sessions, pass the custom data to this parameter</param>
-        /// <param name="withHeader">Set false to get a CSV file without the column names if the output=csv</param>
-        /// <param name="descOrder">Set true to get records in the descent order</param>
+        /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
+        /// <param name="descOrder">Whether to get records in the descent order</param>
         public async Task<GetBriefCallHistoryResponse> GetBriefCallHistory(DateTime fromDate, DateTime toDate, string output, bool isAsync, string callSessionHistoryId = null, long? applicationId = null, string applicationName = null, string ruleName = null, string remoteNumber = null, string localNumber = null, string callSessionHistoryCustomData = null, bool? withHeader = null, bool? descOrder = null)
         {
             var passedArgs = new List<string>();
@@ -1544,10 +1544,10 @@ namespace Voximplant.API {
         /// <param name="historyType">The history report type list separated by semicolons (;). Use the 'all' value to select all history report types. The following values are possible: calls, calls_brief, transactions, audit, call_list</param>
         /// <param name="createdFrom">The UTC creation from date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="createdTo">The UTC creation to date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
-        /// <param name="isCompleted">Report is completed</param>
-        /// <param name="descOrder">Set true to get records in the descent order</param>
+        /// <param name="isCompleted">Whether the report is completed</param>
+        /// <param name="descOrder">Whether to get records in the descent order</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications</param>
         public async Task<GetHistoryReportsResponse> GetHistoryReports(long? historyReportId = null, string historyType = null, DateTime? createdFrom = null, DateTime? createdTo = null, bool? isCompleted = null, bool? descOrder = null, long? count = null, long? offset = null, string applicationId = null)
         {
@@ -1584,14 +1584,14 @@ namespace Voximplant.API {
         /// <param name="transactionType">The transaction type list separated by semicolons (;). The following values are possible: gift_revoke, resource_charge, money_distribution, subscription_charge, subscription_installation_charge, card_periodic_payment, card_overrun_payment, card_payment, rub_card_periodic_payment, rub_card_overrun_payment, rub_card_payment, robokassa_payment, gift, promo, adjustment, wire_transfer, us_wire_transfer, refund, discount, mgp_charge, mgp_startup, mgp_business, mgp_big_business, mgp_enterprise, mgp_large_enterprise, techsupport_charge, tax_charge, monthly_fee_charge, grace_credit_payment, grace_credit_provision, mau_charge, mau_overrun, im_charge, im_overrun, fmc_charge, sip_registration_charge, development_fee, money_transfer_to_child, money_transfer_to_parent, money_acceptance_from_child, money_acceptance_from_parent, phone_number_installation, phone_number_charge, toll_free_phone_number_installation, toll_free_phone_number_charge, services, user_money_transfer, paypal_payment, paypal_overrun_payment, paypal_periodic_payment</param>
         /// <param name="userId">The user ID list separated by semicolons (;)</param>
         /// <param name="childAccountId">The child account ID list separated by semicolons (;). Use the 'all' value to select all child accounts</param>
-        /// <param name="childrenTransactionsOnly">Set true to get the children account transactions only</param>
-        /// <param name="usersTransactionsOnly">Set true to get the users' transactions only</param>
-        /// <param name="descOrder">Set true to get records in the descent order</param>
+        /// <param name="childrenTransactionsOnly">Whether to get the children account transactions only</param>
+        /// <param name="usersTransactionsOnly">Whether to get the users' transactions only</param>
+        /// <param name="descOrder">Whether to get records in the descent order</param>
         /// <param name="count">The number of returning records. In the synchronous mode, the maximum value is 1000</param>
         /// <param name="offset">The number of records to skip in the output with a maximum value of 10000</param>
         /// <param name="output">The output format. The following values available: json, csv</param>
-        /// <param name="isAsync">Set true to get records in the asynchronous mode (for csv output only). <b>Use this mode to download large amounts of data</b>. See the [GetHistoryReports], [DownloadHistoryReport] functions for details</param>
-        /// <param name="isUncommitted">Set true to get transactions on hold (transactions for which money is reserved but not yet withdrawn from the account)</param>
+        /// <param name="isAsync">Whether to get records in the asynchronous mode (for csv output only). <b>Use this mode to download large amounts of data</b>. See the [GetHistoryReports], [DownloadHistoryReport] functions for details</param>
+        /// <param name="isUncommitted">Whether to get transactions on hold (transactions for which money is reserved but not yet withdrawn from the account)</param>
         public async Task<GetTransactionHistoryResponse> GetTransactionHistory(DateTime fromDate, DateTime toDate, string transactionId = null, string transactionType = null, string userId = null, string childAccountId = null, bool? childrenTransactionsOnly = null, bool? usersTransactionsOnly = null, bool? descOrder = null, long? count = null, long? offset = null, string output = null, bool? isAsync = null, bool? isUncommitted = null)
         {
             var args = new Dictionary<string, string>();
@@ -1652,15 +1652,15 @@ namespace Voximplant.API {
         /// <param name="acdRequestId">The ACD request ID list separated by semicolons (;)</param>
         /// <param name="acdQueueId">The ACD queue ID list to filter separated by semicolons (;)</param>
         /// <param name="userId">The user ID list to filter separated by semicolons (;)</param>
-        /// <param name="operatorHangup">Set true to get the calls terminated by the operator</param>
-        /// <param name="unserviced">The unserviced calls by the operator</param>
+        /// <param name="operatorHangup">Whether to get the calls terminated by the operator</param>
+        /// <param name="unserviced">Whether the call is unserviced by the operator</param>
         /// <param name="minWaitingTime">The min waiting time filter</param>
-        /// <param name="rejected">The rejected calls by the 'max_queue_size', 'max_waiting_time' threshold</param>
-        /// <param name="withEvents">Set true to get the bound events</param>
-        /// <param name="withHeader">Set false to get a CSV file without the column names if the output=csv</param>
-        /// <param name="descOrder">Set true to get records in the descent order</param>
+        /// <param name="rejected">Whether the call is rejected calls by the 'max_queue_size', 'max_waiting_time' threshold</param>
+        /// <param name="withEvents">Whether to get the bound events</param>
+        /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
+        /// <param name="descOrder">Whether to get records in the descent order</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="output">The output format. The following values available: json, csv</param>
         public async Task<GetACDHistoryResponse> GetACDHistory(DateTime fromDate, DateTime toDate, string acdSessionHistoryId = null, string acdRequestId = null, string acdQueueId = null, string userId = null, bool? operatorHangup = null, bool? unserviced = null, long? minWaitingTime = null, bool? rejected = null, bool? withEvents = null, bool? withHeader = null, bool? descOrder = null, long? count = null, long? offset = null, string output = null)
         {
@@ -1710,13 +1710,13 @@ namespace Voximplant.API {
         /// <param name="filteredIp">The IP list separated by semicolons (;) to filter</param>
         /// <param name="filteredCmd">The function list separated by semicolons (;) to filter</param>
         /// <param name="advancedFilters">A relation ID to filter (for example: a phone_number value, a user_id value, an application_id value)</param>
-        /// <param name="withHeader">Set false to get a CSV file without the column names if the output=csv</param>
-        /// <param name="descOrder">Set true to get records in the descent order</param>
-        /// <param name="withTotalCount">Set false to omit the 'total_count' and increase performance</param>
+        /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
+        /// <param name="descOrder">Whether to get records in the descent order</param>
+        /// <param name="withTotalCount">Whether to include the 'total_count' and increase performance</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="output">The output format. The following values available: json, csv</param>
-        /// <param name="isAsync">Set true to get records in the asynchronous mode (for csv output only). If it's true, the request is available via [GetHistoryReports] and [DownloadHistoryReport] methods</param>
+        /// <param name="isAsync">Whether to get records in the asynchronous mode (for csv output only). If it is true, the request is available via [GetHistoryReports] and [DownloadHistoryReport] methods</param>
         public async Task<GetAuditLogResponse> GetAuditLog(DateTime fromDate, DateTime toDate, string auditLogId = null, string filteredAdminUserId = null, string filteredIp = null, string filteredCmd = null, string advancedFilters = null, bool? withHeader = null, bool? descOrder = null, bool? withTotalCount = null, long? count = null, long? offset = null, string output = null, bool? isAsync = null)
         {
             var args = new Dictionary<string, string>();
@@ -1752,7 +1752,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Add a new phone number to the PSTN blacklist. Blacklist is used to block incoming calls from specified phone numbers to numbers purchased from Voximplant. Since we have no control over exact phone number format for calls from SIP integrations, blacklisting such numbers should be done via JavaScript scenarios.
+        /// Add a new phone number to the PSTN blacklist. Use blacklist to block incoming calls from specified phone numbers to numbers purchased from Voximplant. Since we have no control over exact phone number format for calls from SIP integrations, blacklisting such numbers should be done via JavaScript scenarios.
         /// </summary>
         /// <param name="pstnBlacklistPhone">The phone number in format e164 or regex pattern</param>
         public async Task<AddPstnBlackListItemResponse> AddPstnBlackListItem(string pstnBlacklistPhone)
@@ -1798,7 +1798,7 @@ namespace Voximplant.API {
         /// <param name="pstnBlacklistId">The PSTN black list item ID for filter</param>
         /// <param name="pstnBlacklistPhone">The phone number in format e164 for filter</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetPstnBlackListResponse> GetPstnBlackList(long? pstnBlacklistId = null, string pstnBlacklistPhone = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -1867,7 +1867,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="sipWhitelistId">The SIP white list item ID to filter</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetSipWhiteListResponse> GetSipWhiteList(long? sipWhitelistId = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -1883,20 +1883,20 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Create a new SIP registration. You should specify the application_id or application_name if you specify the rule_name or user_id, or user_name. You should set is_persistent=true if you specify the user_id or user_name. You can bind only one SIP registration to the user (the previous SIP registration will be auto unbound).<br><br>Please note that when you create a SIP registration, we reserve the subscription fee and taxes for the upcoming month. Read more in the <a href='/docs/gettingstarted/billing'>Billing</a> page.
+        /// Create a new SIP registration. You should specify the application_id or application_name if you specify the rule_name or user_id, or user_name. You should set is_persistent=true if you specify the user_id or user_name. You can bind only one SIP registration to the user (the previous SIP registration are automatically unbound).<br><br>Please note that when you create a SIP registration, we reserve the subscription fee and taxes for the upcoming month. Read more in the <a href='/docs/gettingstarted/billing'>Billing</a> page.
         /// </summary>
         /// <param name="sipUsername">The user name</param>
         /// <param name="proxy">The SIP proxy</param>
         /// <param name="authUser">The SIP authentications user</param>
-        /// <param name="outboundProxy">The outbound SIP proxy</param>
+        /// <param name="outboundProxy">The outgoing SIP proxy</param>
         /// <param name="password">The SIP password</param>
-        /// <param name="isPersistent">SIP registration is persistent. Set false to activate it only on the user login</param>
-        /// <param name="applicationId">The application ID which a new SIP registration will be bound to. Can be used instead of the <b>application_name</b> parameter</param>
-        /// <param name="applicationName">The application name which a new SIP registration will be bound to. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="ruleId">The rule ID which a new SIP registration will be bound to. Can be used instead of the <b>rule_name</b> parameter</param>
-        /// <param name="ruleName">The rule name which a new SIP registration will be bound to. Can be used instead of the <b>rule_id</b> parameter</param>
-        /// <param name="userId">The user ID which a new SIP registration will be bound to. Can be used instead of the <b>user_name</b> parameter</param>
-        /// <param name="userName">The user name which a new SIP registration will be bound to. Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="isPersistent">Whether SIP registration is persistent. Set false to activate it only on the user login</param>
+        /// <param name="applicationId">The application ID which a new SIP registration is to be bound to. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name which a new SIP registration is to be bound to. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="ruleId">The rule ID which a new SIP registration is to be bound to. Can be used instead of the <b>rule_name</b> parameter</param>
+        /// <param name="ruleName">The rule name which a new SIP registration is to be bound to. Can be used instead of the <b>rule_id</b> parameter</param>
+        /// <param name="userId">The user ID which a new SIP registration is to be bound to. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name which a new SIP registration is to be bound to. Can be used instead of the <b>user_id</b> parameter</param>
         public async Task<CreateSipRegistrationResponse> CreateSipRegistration(string sipUsername, string proxy, string authUser = null, string outboundProxy = null, string password = null, bool? isPersistent = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, long? userId = null, string userName = null)
         {
             var passedArgs = new List<string>();
@@ -1955,20 +1955,20 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Update SIP registration. You should specify the application_id or application_name if you specify the rule_name or user_id, or user_name. You can bind only one SIP registration to the user (the previous SIP registration will be auto unbound).
+        /// Update SIP registration. You should specify the application_id or application_name if you specify the rule_name or user_id, or user_name. You can bind only one SIP registration to the user (the previous SIP registration is automatically unbound).
         /// </summary>
         /// <param name="sipRegistrationId">The registration ID</param>
         /// <param name="sipUsername">The user name</param>
         /// <param name="proxy">The SIP proxy</param>
         /// <param name="authUser">The SIP authentications user</param>
-        /// <param name="outboundProxy">The outbound SIP proxy</param>
+        /// <param name="outboundProxy">The outgoing SIP proxy</param>
         /// <param name="password">The SIP password</param>
-        /// <param name="applicationId">The application ID which the SIP registration will be bound to. Can be used instead of the <b>application_name</b> parameter</param>
-        /// <param name="applicationName">The application name which the SIP registration will be bound to. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="ruleId">The rule ID which the SIP registration will be bound to. Can be used instead of the <b>rule_name</b> parameter</param>
-        /// <param name="ruleName">The rule name which the SIP registration will be bound to. Can be used instead of the <b>rule_id</b> parameter</param>
-        /// <param name="userId">The user ID which the SIP registration will be bound to. Can be used instead of the <b>user_name</b> parameter</param>
-        /// <param name="userName">The user name which the SIP registration will be bound to. Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="applicationId">The application ID which the SIP registration is to be bound to. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name which the SIP registration is to be bound to. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="ruleId">The rule ID which the SIP registration is to be bound to. Can be used instead of the <b>rule_name</b> parameter</param>
+        /// <param name="ruleName">The rule name which the SIP registration is to be bound to. Can be used instead of the <b>rule_id</b> parameter</param>
+        /// <param name="userId">The user ID which the SIP registration is to be bound to. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name which the SIP registration is to be bound to. Can be used instead of the <b>user_id</b> parameter</param>
         public async Task<UpdateSipRegistrationResponse> UpdateSipRegistration(long sipRegistrationId, string sipUsername = null, string proxy = null, string authUser = null, string outboundProxy = null, string password = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, long? userId = null, string userName = null)
         {
             var passedArgs = new List<string>();
@@ -2028,16 +2028,16 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Bind the SIP registration to the application/user or unbind the SIP registration from the application/user. You should specify the application_id or application_name if you specify the rule_name or user_id, or user_name. You should specify the sip_registration_id if you set bind=true. You can bind only one SIP registration to the user (the previous SIP registration will be auto unbound).
+        /// Bind the SIP registration to the application/user or unbind the SIP registration from the application/user. You should specify the application_id or application_name if you specify the rule_name or user_id, or user_name. You should specify the sip_registration_id if you set bind=true. You can bind only one SIP registration to the user (the previous SIP registration is automatically unbound).
         /// </summary>
         /// <param name="sipRegistrationId">The registration ID</param>
-        /// <param name="applicationId">The application ID which the SIP registration will be bound to. Can be used instead of the <b>application_name</b> parameter</param>
-        /// <param name="applicationName">The application name which the SIP registration will be bound to. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="ruleId">The rule ID which the SIP registration will be bound to. Can be used instead of the <b>rule_name</b> parameter</param>
-        /// <param name="ruleName">The rule name which the SIP registration will be bound to. Can be used instead of the <b>rule_id</b> parameter</param>
-        /// <param name="userId">The user ID which the SIP registration will be bound to. Can be used instead of the <b>user_name</b> parameter</param>
-        /// <param name="userName">The user name which the SIP registration will be bound to. Can be used instead of the <b>user_id</b> parameter</param>
-        /// <param name="bind">Bind or unbind (set true or false respectively)</param>
+        /// <param name="applicationId">The application ID which the SIP registration is to be bound to. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name which the SIP registration is to be bound to. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="ruleId">The rule ID which the SIP registration is to be bound to. Can be used instead of the <b>rule_name</b> parameter</param>
+        /// <param name="ruleName">The rule name which the SIP registration is to be bound to. Can be used instead of the <b>rule_id</b> parameter</param>
+        /// <param name="userId">The user ID which the SIP registration is to be bound to. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name which the SIP registration is to be bound to. Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindSipRegistrationResponse> BindSipRegistration(long? sipRegistrationId = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, long? userId = null, string userName = null, bool? bind = null)
         {
             var passedArgs = new List<string>();
@@ -2107,21 +2107,21 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="sipRegistrationId">The SIP registration ID</param>
         /// <param name="sipUsername">The SIP user name to filter</param>
-        /// <param name="deactivated">Set true to show the frozen SIP registrations only</param>
-        /// <param name="successful">Set false to show the unsuccessful SIP registrations only</param>
-        /// <param name="isPersistent">The persistent flag to filter</param>
+        /// <param name="deactivated">Whether to show the frozen SIP registrations only</param>
+        /// <param name="successful">Whether to show the successful SIP registrations only</param>
+        /// <param name="isPersistent">Whether the SIP registration is persistent to filter</param>
         /// <param name="applicationId">The application ID list separated by semicolons (;) to filter. Can be used instead of <b>application_name</b></param>
         /// <param name="applicationName">The application name list separated by semicolons (;) to filter. Can be used instead of <b>application_id</b></param>
-        /// <param name="isBoundToApplication">Is a SIP registration bound to an application</param>
+        /// <param name="isBoundToApplication">Whether SIP registration bound to an application</param>
         /// <param name="ruleId">The rule ID list separated by semicolons (;) to filter. Can be used instead of <b>rule_name</b></param>
         /// <param name="ruleName">The rule name list separated by semicolons (;) to filter. Can be used instead of <b>rule_id</b></param>
         /// <param name="userId">The user ID list separated by semicolons (;) to filter. Can be used instead of <b>user_name</b></param>
         /// <param name="userName">The user name list separated by semicolons (;) to filter. Can be used instead of <b>user_id</b></param>
         /// <param name="proxy">The list of proxy servers to use, divided by semicolon (;)</param>
-        /// <param name="inProgress">SIP registration is still in progress</param>
+        /// <param name="inProgress">Whether SIP registration is still in progress</param>
         /// <param name="statusCode">The list of SIP response codes. The __code1:code2__ means a range from __code1__ to __code2__ including; the __code1;code2__ meanse either __code1__ or __code2__. You can combine ranges, e.g., __code1;code2:code3__</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetSipRegistrationsResponse> GetSipRegistrations(long? sipRegistrationId = null, string sipUsername = null, bool? deactivated = null, bool? successful = null, bool? isPersistent = null, string applicationId = null, string applicationName = null, bool? isBoundToApplication = null, string ruleId = null, string ruleName = null, string userId = null, string userName = null, string proxy = null, bool? inProgress = null, string statusCode = null, long? count = null, long? offset = null)
         {
             var passedArgs = new List<string>();
@@ -2244,7 +2244,7 @@ namespace Voximplant.API {
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="ruleId">The rule ID</param>
         /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
-        /// <param name="bind">Bind or unbind (set true or false respectively)</param>
+        /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindPhoneNumberToApplicationResponse> BindPhoneNumberToApplication(string phoneId = null, string phoneNumber = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, bool? bind = null)
         {
             var passedArgs = new List<string>();
@@ -2331,7 +2331,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="phoneId">The phone ID list separated by semicolons (;). Use the 'all' value to select all phone ids</param>
         /// <param name="phoneNumber">The phone number list separated by semicolons (;) that can be used instead of <b>phone_id</b></param>
-        /// <param name="incomingSmsCallbackUrl">If set, the callback of an incoming SMS will be sent to this url, otherwise, it will be sent to the general account URL</param>
+        /// <param name="incomingSmsCallbackUrl">If set, the callback of an incoming SMS is sent to this url, otherwise, it is sent to the general account URL</param>
         public async Task<SetPhoneNumberInfoResponse> SetPhoneNumberInfo(string phoneId = null, string phoneNumber = null, string incomingSmsCallbackUrl = null)
         {
             var passedArgs = new List<string>();
@@ -2364,32 +2364,32 @@ namespace Voximplant.API {
         /// <param name="phoneNumber">The phone number list separated by semicolons (;) that can be used instead of <b>phone_id</b></param>
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
-        /// <param name="isBoundToApplication">Is a phone bound to an application</param>
+        /// <param name="isBoundToApplication">Whether the phone number bound to an application</param>
         /// <param name="phoneTemplate">The phone number start to filter</param>
         /// <param name="countryCode">The country code list separated by semicolons (;)</param>
         /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method</param>
-        /// <param name="canceled">The flag of the canceled (deleted) subscription to filter</param>
-        /// <param name="deactivated">The flag of the deactivated (frozen) subscription to filter</param>
-        /// <param name="autoCharge">The auto_charge flag to filter</param>
+        /// <param name="canceled">Whether the subscription is cancelled to filter</param>
+        /// <param name="deactivated">Whether the subscription is frozen to filter</param>
+        /// <param name="autoCharge">Whether the auto_charge flag is enabled</param>
         /// <param name="fromPhoneNextRenewal">The UTC 'from' date filter in format: YYYY-MM-DD</param>
         /// <param name="toPhoneNextRenewal">The UTC 'to' date filter in format: YYYY-MM-DD</param>
         /// <param name="fromPhonePurchaseDate">The UTC 'from' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toPhonePurchaseDate">The UTC 'to' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="childAccountId">The child account ID list separated by semicolons (;). Use the 'all' value to select all child accounts</param>
-        /// <param name="childrenPhonesOnly">Set true to get the children phones only</param>
+        /// <param name="childrenPhonesOnly">Whether to get the children phones only</param>
         /// <param name="verificationName">The required account verification name to filter</param>
         /// <param name="verificationStatus">The account verification status list separated by semicolons (;). The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED</param>
         /// <param name="fromUnverifiedHoldUntil">Unverified phone hold until the date (from ...) in format: YYYY-MM-DD</param>
         /// <param name="toUnverifiedHoldUntil">Unverified phone hold until the date (... to) in format: YYYY-MM-DD</param>
-        /// <param name="canBeUsed">Unverified account can use the phone</param>
+        /// <param name="canBeUsed">Whether a not verified account can use the phone</param>
         /// <param name="orderBy">The following values are available: 'phone_number' (ascent order), 'phone_price' (ascent order), 'phone_country_code' (ascent order), 'deactivated' (deactivated first, active last), 'purchase_date' (descent order), 'phone_next_renewal' (ascent order), 'verification_status', 'unverified_hold_until' (ascent order), 'verification_name'</param>
         /// <param name="sandbox">Flag allows you to display only the numbers of the sandbox, real numbers, or all numbers. The following values are possible: 'all', 'true', 'false'</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="phoneRegionName">The region names list separated by semicolons (;)</param>
         /// <param name="ruleId">The rule ID list separated by semicolons (;)</param>
         /// <param name="ruleName">The rule names list separated by semicolons (;). Can be used only if __application_id__ or __application_name__ is specified</param>
-        /// <param name="isBoundToRule">Number is bound to some rule</param>
+        /// <param name="isBoundToRule">Whether the phone number is bound to some rule</param>
         public async Task<GetPhoneNumbersResponse> GetPhoneNumbers(string phoneId = null, string phoneNumber = null, long? applicationId = null, string applicationName = null, bool? isBoundToApplication = null, string phoneTemplate = null, string countryCode = null, string phoneCategoryName = null, bool? canceled = null, bool? deactivated = null, bool? autoCharge = null, DateTime? fromPhoneNextRenewal = null, DateTime? toPhoneNextRenewal = null, DateTime? fromPhonePurchaseDate = null, DateTime? toPhonePurchaseDate = null, string childAccountId = null, bool? childrenPhonesOnly = null, string verificationName = null, string verificationStatus = null, DateTime? fromUnverifiedHoldUntil = null, DateTime? toUnverifiedHoldUntil = null, bool? canBeUsed = null, string orderBy = null, string sandbox = null, long? count = null, long? offset = null, string phoneRegionName = null, string ruleId = null, string ruleName = null, bool? isBoundToRule = null)
         {
             var passedArgs = new List<string>();
@@ -2475,7 +2475,7 @@ namespace Voximplant.API {
         /// <param name="phoneRegionId">The phone region ID. See the [GetPhoneNumberRegions] method</param>
         /// <param name="countryState">The country state. See the GetPhoneNumberCategories and GetPhoneNumberCountryStates functions</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetNewPhoneNumbersResponse> GetNewPhoneNumbers(string countryCode, string phoneCategoryName, long phoneRegionId, string countryState = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -2532,12 +2532,12 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Get the country regions of the phone numbers. The response will also contain the info about multiple numbers subscription for the child accounts.
+        /// Get the country regions of the phone numbers. The response also contains the info about multiple numbers subscription for the child accounts.
         /// </summary>
         /// <param name="countryCode">The country code</param>
         /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method</param>
         /// <param name="countryState">The country state code (example: AL, CA, ... )</param>
-        /// <param name="omitEmpty">Set to 'false' to show all the regions (with and without phone numbers in stock)</param>
+        /// <param name="omitEmpty">Whether not to show all the regions (with and without phone numbers in stock)</param>
         /// <param name="phoneRegionId">The phone region ID to filter</param>
         /// <param name="phoneRegionName">The phone region name to filter</param>
         /// <param name="phoneRegionCode">The region phone prefix to filter</param>
@@ -2565,7 +2565,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Get actual info on the country region of the phone numbers. The response will also contain the info about multiple numbers subscription for the child accounts.
+        /// Get actual info on the country region of the phone numbers. The response also contains the info about multiple numbers subscription for the child accounts.
         /// </summary>
         /// <param name="countryCode">The country code</param>
         /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method</param>
@@ -2588,7 +2588,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Adds a new caller ID. Caller ID is the phone that will be displayed to the called user. This number can be used for call back.
+        /// Adds a new caller ID. Caller ID is the phone that is displayed to the called user. This number can be used for call back.
         /// </summary>
         /// <param name="calleridNumber">The callerID number in E.164 format</param>
         public async Task<AddCallerIDResponse> AddCallerID(string calleridNumber)
@@ -2631,7 +2631,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Deletes the CallerID. Note: you can't delete a CID permanently (the antispam defence).
+        /// Deletes the CallerID. Note: you cannot delete a CID permanently (the antispam defence).
         /// </summary>
         /// <param name="calleridId">The id of the callerID object</param>
         /// <param name="calleridNumber">The callerID number that can be used instead of <b>callerid_id</b></param>
@@ -2663,10 +2663,10 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="calleridId">The id of the callerID object to filter</param>
         /// <param name="calleridNumber">The phone number to filter</param>
-        /// <param name="active">The active flag to filter</param>
+        /// <param name="active">Whether the account is active to filter</param>
         /// <param name="orderBy">The following values are available: 'caller_number' (ascent order), 'verified_until' (ascent order)</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetCallerIDsResponse> GetCallerIDs(long? calleridId = null, string calleridNumber = null, bool? active = null, string orderBy = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -2716,7 +2716,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Adds a personal phone number to test outbound calls. Only one personal phone number can be used. To replace it with another, delete the existing one first.
+        /// Adds a personal phone number to test outgoing calls. Only one personal phone number can be used. To replace it with another, delete the existing one first.
         /// </summary>
         /// <param name="phoneNumber">The personal phone number in the E.164 format</param>
         public async Task<AddOutboundTestPhoneNumberResponse> AddOutboundTestPhoneNumber(string phoneNumber)
@@ -2781,7 +2781,7 @@ namespace Voximplant.API {
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="acdQueuePriority">The integer queue priority. The highest priority is 0</param>
-        /// <param name="autoBinding">Set false to disable the auto binding of operators to a queue by skills comparing</param>
+        /// <param name="autoBinding">Whether to enable the auto binding of operators to a queue by skills comparing</param>
         /// <param name="serviceProbability">The value in the range of [0.5 ... 1.0]. The value 1.0 means the service probability 100% in challenge with a lower priority queue</param>
         /// <param name="maxQueueSize">The max queue size</param>
         /// <param name="maxWaitingTime">The max predicted waiting time in minutes. The client is rejected if the predicted waiting time is greater than the max predicted waiting time</param>
@@ -2825,7 +2825,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Bind/unbind users to/from the specified ACD queues. Note that users and queues should be already bound to the same application.
         /// </summary>
-        /// <param name="bind">Bind or unbind users</param>
+        /// <param name="bind">Whether to bind or unbind users</param>
         /// <param name="applicationId">The application ID</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to specify all users bound to the application</param>
@@ -2921,7 +2921,7 @@ namespace Voximplant.API {
         /// <param name="acdQueueName">The ACD queue name that can be used instead of <b>acd_queue_id</b></param>
         /// <param name="newAcdQueueName">The new queue name. The length must be less than 100</param>
         /// <param name="acdQueuePriority">The integer queue priority. The highest priority is 0</param>
-        /// <param name="autoBinding">Set false to disable the auto binding of operators to a queue by skills comparing</param>
+        /// <param name="autoBinding">Whether to enable the auto binding of operators to a queue by skills comparing</param>
         /// <param name="serviceProbability">The value in the range of [0.5 ... 1.0]. The value 1.0 means the service probability 100% in challenge with a lower priority queue</param>
         /// <param name="maxQueueSize">The max queue size</param>
         /// <param name="maxWaitingTime">The max predicted waiting time in minutes. The client is rejected if the predicted waiting time is greater than the max predicted waiting time</param>
@@ -2974,11 +2974,11 @@ namespace Voximplant.API {
         /// <param name="applicationId">The application ID to filter</param>
         /// <param name="skillId">The skill ID to filter</param>
         /// <param name="excludedSkillId">The excluded skill ID to filter</param>
-        /// <param name="withSkills">Set true to get the bound skills</param>
+        /// <param name="withSkills">Whether to get the bound skills</param>
         /// <param name="showingSkillId">The skill to show in the 'skills' field output</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
-        /// <param name="withOperatorcount">Number of agents bound to the queue</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
+        /// <param name="withOperatorcount">Whether to include the number of agents bound to the queue</param>
         public async Task<GetQueuesResponse> GetQueues(long? acdQueueId = null, string acdQueueName = null, long? applicationId = null, long? skillId = null, long? excludedSkillId = null, bool? withSkills = null, long? showingSkillId = null, long? count = null, long? offset = null, bool? withOperatorcount = null)
         {
             var args = new Dictionary<string, string>();
@@ -3028,10 +3028,10 @@ namespace Voximplant.API {
         /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to select all users</param>
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
         /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
-        /// <param name="abbreviation">If set to <b>true</b>, key names in returned JSON will be abbreviated to reduce response byte size. The abbreviations are: 'SA' for 'SpeedOfAnswer', 'HT' for 'HandlingTime', 'TT' for 'TalkTime', 'ACW' for 'AfterCallWork', 'TDT' for 'TotalDialingTime', 'THT' for 'TotalHandlingTime', 'TTT' for 'TotalTalkTime', 'TACW' for 'TotalAfterCallWork', 'AC' for 'AnsweredCalls', 'UAC' for 'UnansweredCalls'</param>
-        /// <param name="report">List of item names abbreviations separated by semicolons (;). Returned JSON will include keys only for the selected items. Special 'all' value defines all possible items, see [ACDOperatorStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
+        /// <param name="abbreviation">Whether key names in returned JSON are abbreviated to reduce response byte size. The abbreviations are: 'SA' for 'SpeedOfAnswer', 'HT' for 'HandlingTime', 'TT' for 'TalkTime', 'ACW' for 'AfterCallWork', 'TDT' for 'TotalDialingTime', 'THT' for 'TotalHandlingTime', 'TTT' for 'TotalTalkTime', 'TACW' for 'TotalAfterCallWork', 'AC' for 'AnsweredCalls', 'UAC' for 'UnansweredCalls'</param>
+        /// <param name="report">List of item names abbreviations separated by semicolons (;). Returned JSON includes keys only for the selected items. Special 'all' value defines all possible items, see [ACDOperatorStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
-        /// <param name="group">If set to 'user', first-level array in the resulting JSON will group records by the user ID, and second-level array will group them by date according to the 'aggregation' parameter. If set to 'aggregation', first-level array in the resulting JSON will group records according to the 'aggregation' parameter, and second-level array will group them by the user ID</param>
+        /// <param name="group">If set to 'user', first-level array in the resulting JSON groups records by the user ID, and second-level array groups them by date according to the 'aggregation' parameter. If set to 'aggregation', first-level array in the resulting JSON groups records according to the 'aggregation' parameter, and second-level array groups them by the user ID</param>
         public async Task<GetACDOperatorStatisticsResponse> GetACDOperatorStatistics(DateTime fromDate, string userId, DateTime? toDate = null, string acdQueueId = null, bool? abbreviation = null, string report = null, string aggregation = null, string group = null)
         {
             var args = new Dictionary<string, string>();
@@ -3059,9 +3059,9 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="fromDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
-        /// <param name="abbreviation">If set to <b>true</b>, key names in returned JSON will be abbreviated to reduce response byte size. The abbreviations are: 'WT' for 'WaitingTime', 'SA' for 'SpeedOfAnswer', 'AT' is for 'AbandonmentTime', 'HT' is for 'HandlingTime', 'TT' is for 'TalkTime', 'ACW' is for 'AfterCallWork', 'QL' is for 'QueueLength', 'TC' is for 'TotalCalls', 'AC' is for 'AnsweredCalls', 'UAC' is for 'UnansweredCalls', 'RC' is for 'RejectedCalls', 'SL' is for 'ServiceLevel', 'TWT' is for 'TotalWaitingTime', 'TST' is for 'TotalSubmissionTime', 'TAT' is for 'TotalAbandonmentTime', 'THT' is for 'TotalHandlingTime', 'TTT' is for 'TotalTalkTime', 'TACW' is for 'TotalAfterCallWork'</param>
+        /// <param name="abbreviation">Whether key names in returned JSON are abbreviated to reduce response byte size. The abbreviations are: 'WT' for 'WaitingTime', 'SA' for 'SpeedOfAnswer', 'AT' is for 'AbandonmentTime', 'HT' is for 'HandlingTime', 'TT' is for 'TalkTime', 'ACW' is for 'AfterCallWork', 'QL' is for 'QueueLength', 'TC' is for 'TotalCalls', 'AC' is for 'AnsweredCalls', 'UAC' is for 'UnansweredCalls', 'RC' is for 'RejectedCalls', 'SL' is for 'ServiceLevel', 'TWT' is for 'TotalWaitingTime', 'TST' is for 'TotalSubmissionTime', 'TAT' is for 'TotalAbandonmentTime', 'THT' is for 'TotalHandlingTime', 'TTT' is for 'TotalTalkTime', 'TACW' is for 'TotalAfterCallWork'</param>
         /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
-        /// <param name="report">List of item names abbreviations separated by semicolons (;). Returned JSON will include keys only for the selected items. Special 'all' value defines all possible items, see [ACDQueueStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
+        /// <param name="report">List of item names abbreviations separated by semicolons (;). Returned JSON includes keys only for the selected items. Special 'all' value defines all possible items, see [ACDQueueStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
         public async Task<GetACDQueueStatisticsResponse> GetACDQueueStatistics(DateTime fromDate, DateTime? toDate = null, bool? abbreviation = null, string acdQueueId = null, string report = null, string aggregation = null)
         {
@@ -3090,7 +3090,7 @@ namespace Voximplant.API {
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
         /// <param name="acdStatus">The ACD status list separated by semicolons (;). The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
-        /// <param name="group">If set to 'user', first-level array in the resulting JSON will group records by the user ID, and second-level array will group them by date according to the 'aggregation' parameter. If set to 'aggregation', first-level array in the resulting JSON will group records according to the 'aggregation' parameter, and second-level array will group them by the user ID</param>
+        /// <param name="group">If set to 'user', first-level array in the resulting JSON groups records by the user ID, and second-level array groups them by date according to the 'aggregation' parameter. If set to 'aggregation', first-level array in the resulting JSON groups records according to the 'aggregation' parameter, and second-level array groups them by the user ID</param>
         public async Task<GetACDOperatorStatusStatisticsResponse> GetACDOperatorStatusStatistics(DateTime fromDate, string userId, DateTime? toDate = null, string acdStatus = null, string aggregation = null, string group = null)
         {
             var args = new Dictionary<string, string>();
@@ -3517,7 +3517,7 @@ namespace Voximplant.API {
         /// <param name="skillId">The skill ID to filter</param>
         /// <param name="skillName">The skill name part to filter</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetSkillsResponse> GetSkills(long? skillId = null, string skillName = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -3545,7 +3545,7 @@ namespace Voximplant.API {
         /// <param name="acdQueueName">The ACD queue name that can be used instead of <b>acd_queue_id</b>. The ACD queue name list separated by semicolons (;)</param>
         /// <param name="applicationId">The application ID. It is required if the <b>user_name</b> is specified</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
-        /// <param name="bind">Bind or unbind (set true or false respectively)</param>
+        /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindSkillResponse> BindSkill(string skillId = null, string skillName = null, string userId = null, string userName = null, string acdQueueId = null, string acdQueueName = null, long? applicationId = null, string applicationName = null, bool? bind = null)
         {
             var passedArgs = new List<string>();
@@ -3617,13 +3617,13 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the account documents and the verification states.
         /// </summary>
-        /// <param name="withDetails">Set true to view the uploaded document statuses. (The flag is ignored with the child_account_id=all)</param>
+        /// <param name="withDetails">Whether to view the uploaded document statuses. (The flag is ignored with the child_account_id=all)</param>
         /// <param name="verificationName">The required account verification name to filter</param>
         /// <param name="verificationStatus">The account verification status list separated by semicolons (;). The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED</param>
         /// <param name="fromUnverifiedHoldUntil">Unverified subscriptions hold until the date (from ...) in format: YYYY-MM-DD</param>
         /// <param name="toUnverifiedHoldUntil">Unverified subscriptions hold until the date (... to) in format: YYYY-MM-DD</param>
         /// <param name="childAccountId">The child account ID list separated by semicolons (;). Use the 'all' value to select all child accounts</param>
-        /// <param name="childrenVerificationsOnly">Set true to get the children account verifications only</param>
+        /// <param name="childrenVerificationsOnly">Whether to get the children account verifications only</param>
         public async Task<GetAccountDocumentsResponse> GetAccountDocuments(bool? withDetails = null, string verificationName = null, string verificationStatus = null, DateTime? fromUnverifiedHoldUntil = null, DateTime? toUnverifiedHoldUntil = null, string childAccountId = null, bool? childrenVerificationsOnly = null)
         {
             var args = new Dictionary<string, string>();
@@ -3652,7 +3652,7 @@ namespace Voximplant.API {
         /// <param name="newAdminUserName">The admin user name. The length must be less than 50</param>
         /// <param name="adminUserDisplayName">The admin user display name. The length must be less than 256</param>
         /// <param name="newAdminUserPassword">The admin user password. The length must be at least 6 symbols</param>
-        /// <param name="adminUserActive">The admin user enable flag</param>
+        /// <param name="adminUserActive">Whether the admin user is active</param>
         /// <param name="adminRoleId">The role(s) ID created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The attaching admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles</param>
         /// <param name="adminRoleName">The role(s) name(s) created via <a href='/docs/references/httpapi/adminroles'>Managing Admin Roles</a> methods. The attaching admin role name that can be used instead of <b>admin_role_id</b></param>
         public async Task<AddAdminUserResponse> AddAdminUser(string newAdminUserName, string adminUserDisplayName, string newAdminUserPassword, bool? adminUserActive = null, string adminRoleId = null, string adminRoleName = null)
@@ -3717,7 +3717,7 @@ namespace Voximplant.API {
         /// <param name="newAdminUserName">The new admin user name. The length must be less than 50</param>
         /// <param name="adminUserDisplayName">The new admin user display name. The length must be less than 256</param>
         /// <param name="newAdminUserPassword">The new admin user password. The length must be at least 6 symbols</param>
-        /// <param name="adminUserActive">The admin user enable flag</param>
+        /// <param name="adminUserActive">Whether the admin user is active</param>
         public async Task<SetAdminUserInfoResponse> SetAdminUserInfo(long? requiredAdminUserId = null, string requiredAdminUserName = null, string newAdminUserName = null, string adminUserDisplayName = null, string newAdminUserPassword = null, bool? adminUserActive = null)
         {
             var passedArgs = new List<string>();
@@ -3755,11 +3755,11 @@ namespace Voximplant.API {
         /// <param name="requiredAdminUserId">The admin user ID to filter</param>
         /// <param name="requiredAdminUserName">The admin user name part to filter</param>
         /// <param name="adminUserDisplayName">The admin user display name part to filter</param>
-        /// <param name="adminUserActive">The admin user active flag to filter</param>
-        /// <param name="withRoles">Set true to get the attached admin roles</param>
-        /// <param name="withAccessEntries">Set true to get the admin user permissions</param>
+        /// <param name="adminUserActive">Whether the admin user is active to filter</param>
+        /// <param name="withRoles">Whether to get the attached admin roles</param>
+        /// <param name="withAccessEntries">Whether to get the admin user permissions</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetAdminUsersResponse> GetAdminUsers(long? requiredAdminUserId = null, string requiredAdminUserName = null, string adminUserDisplayName = null, bool? adminUserActive = null, bool? withRoles = null, bool? withAccessEntries = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -3788,7 +3788,7 @@ namespace Voximplant.API {
         /// Adds a new admin role.
         /// </summary>
         /// <param name="adminRoleName">The admin role name. The length must be less than 50</param>
-        /// <param name="adminRoleActive">The admin role enable flag. If false the allowed and denied entries have no affect</param>
+        /// <param name="adminRoleActive">Whether the admin role is enabled. If false the allowed and denied entries have no affect</param>
         /// <param name="likeAdminRoleId">The admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles. The list specifies the roles from which the new role automatically copies all permissions (allowed_entries and denied_entries)</param>
         /// <param name="likeAdminRoleName">The admin role name that can be used instead of <b>like_admin_role_id</b>. The name specifies a role from which the new role automatically copies all permissions (allowed_entries and denied_entries)</param>
         /// <param name="allowedEntries">The list of allowed access entries separated by semicolons (;) (the API function names)</param>
@@ -3855,12 +3855,12 @@ namespace Voximplant.API {
         /// <param name="adminRoleId">The admin role to edit</param>
         /// <param name="adminRoleName">The admin role to edit, can be used instead of <b>admin_role_id</b></param>
         /// <param name="newAdminRoleName">The new admin role name. The length must be less than 50</param>
-        /// <param name="adminRoleActive">The admin role enable flag. If false the allowed and denied entries have no affect</param>
+        /// <param name="adminRoleActive">Whether the admin role is enabled. If false the allowed and denied entries have no affect</param>
         /// <param name="entryModificationMode">The modification mode of the permission lists (allowed_entries and denied_entries). The following values are possible: add, del, set</param>
         /// <param name="allowedEntries">The list of allowed access entry changes separated by semicolons (;) (the API function names)</param>
         /// <param name="deniedEntries">The list of denied access entry changes separated by semicolons (;) (the API function names)</param>
-        /// <param name="likeAdminRoleId">The admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles. The list specifies the roles from which the allowed_entries and denied_entries will be merged</param>
-        /// <param name="likeAdminRoleName">The admin role name, can be used instead of <b>like_admin_role_id</b>. The name specifies a role from which the allowed_entries and denied_entries will be merged</param>
+        /// <param name="likeAdminRoleId">The admin role ID list separated by semicolons (;). Use the 'all' value to select all admin roles. The list specifies the roles from which the allowed_entries and denied_entries are merged</param>
+        /// <param name="likeAdminRoleName">The admin role name, can be used instead of <b>like_admin_role_id</b>. The name specifies a role from which the allowed_entries and denied_entries are merged</param>
         public async Task<SetAdminRoleInfoResponse> SetAdminRoleInfo(long? adminRoleId = null, string adminRoleName = null, string newAdminRoleName = null, bool? adminRoleActive = null, string entryModificationMode = null, string allowedEntries = null, string deniedEntries = null, string likeAdminRoleId = null, string likeAdminRoleName = null)
         {
             var passedArgs = new List<string>();
@@ -3912,16 +3912,16 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="adminRoleId">The admin role ID to filter</param>
         /// <param name="adminRoleName">The admin role name part to filter</param>
-        /// <param name="adminRoleActive">The admin role active flag to filter</param>
-        /// <param name="withEntries">Set true to get the permissions</param>
-        /// <param name="withAccountRoles">Set false to omit the account roles</param>
-        /// <param name="withParentRoles">Set false to omit the parent roles</param>
+        /// <param name="adminRoleActive">Whether the admin role is enabled to filter</param>
+        /// <param name="withEntries">Whether to get the permissions</param>
+        /// <param name="withAccountRoles">Whether to include the account roles</param>
+        /// <param name="withParentRoles">Whether to include the parent roles</param>
         /// <param name="includedAdminUserId">The attached admin user ID list separated by semicolons (;). Use the 'all' value to select all admin users</param>
         /// <param name="excludedAdminUserId">Not attached admin user ID list separated by semicolons (;). Use the 'all' value to select all admin users</param>
         /// <param name="fullAdminUsersMatching">Set false to get roles with partial admin user list matching</param>
         /// <param name="showingAdminUserId">The admin user to show in the 'admin_users' field output</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetAdminRolesResponse> GetAdminRoles(long? adminRoleId = null, string adminRoleName = null, bool? adminRoleActive = null, bool? withEntries = null, bool? withAccountRoles = null, bool? withParentRoles = null, string includedAdminUserId = null, string excludedAdminUserId = null, string fullAdminUsersMatching = null, long? showingAdminUserId = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -4017,7 +4017,7 @@ namespace Voximplant.API {
         /// Adds a new authorized IP4 or network to the white/black list.
         /// </summary>
         /// <param name="authorizedIp">The authorized IP4 or network</param>
-        /// <param name="allowed">Set false to add the IP to the blacklist</param>
+        /// <param name="allowed">Whether to remove the IP from the blacklist</param>
         /// <param name="description">The IP address description</param>
         public async Task<AddAuthorizedAccountIPResponse> AddAuthorizedAccountIP(string authorizedIp, bool? allowed = null, string description = null)
         {
@@ -4037,7 +4037,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="authorizedIp">The authorized IP4 or network to remove. Set to 'all' to remove all items</param>
         /// <param name="containsIp">Specify the parameter to remove the networks that contains the particular IP4. Can be used instead of <b>autharized_ip</b></param>
-        /// <param name="allowed">Set true to remove the network from the white list. Set false to remove the network from the black list. Omit the parameter to remove the network from all lists</param>
+        /// <param name="allowed">Whether to remove the network from the white list. Set false to remove the network from the black list. Omit the parameter to remove the network from all lists</param>
         public async Task<DelAuthorizedAccountIPResponse> DelAuthorizedAccountIP(string authorizedIp = null, string containsIp = null, bool? allowed = null)
         {
             var passedArgs = new List<string>();
@@ -4067,10 +4067,10 @@ namespace Voximplant.API {
         /// Gets the authorized IP4 or network.
         /// </summary>
         /// <param name="authorizedIp">The authorized IP4 or network to filter</param>
-        /// <param name="allowed">The allowed flag to filter</param>
+        /// <param name="allowed">Whether the IP is allowed</param>
         /// <param name="containsIp">Specify the parameter to filter the networks that contains the particular IP4</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="description">The IP address description</param>
         public async Task<GetAuthorizedAccountIPsResponse> GetAuthorizedAccountIPs(string authorizedIp = null, bool? allowed = null, string containsIp = null, long? count = null, long? offset = null, string description = null)
         {
@@ -4141,7 +4141,7 @@ namespace Voximplant.API {
         /// <param name="countryCode">The country code according to the <b>ISO 3166-1 alpha-2</b></param>
         /// <param name="phoneRegionCode">The phone region code</param>
         /// <param name="count">The max returning record count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetZIPCodesResponse> GetZIPCodes(string countryCode, string phoneRegionCode = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -4164,8 +4164,8 @@ namespace Voximplant.API {
         /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method</param>
         /// <param name="phoneRegionCode">The phone region code. See the [GetRegions] method</param>
         /// <param name="regulationAddressId">The regulation address ID</param>
-        /// <param name="verified">Show only verified regulation address</param>
-        /// <param name="inProgress">Show only in progress regulation address</param>
+        /// <param name="verified">Whether to show only verified regulation address</param>
+        /// <param name="inProgress">Whether to show only in progress regulation address</param>
         public async Task<GetRegulationsAddressResponse> GetRegulationsAddress(string countryCode = null, string phoneCategoryName = null, string phoneRegionCode = null, long? regulationAddressId = null, bool? verified = null, bool? inProgress = null)
         {
             var args = new Dictionary<string, string>();
@@ -4239,7 +4239,7 @@ namespace Voximplant.API {
         /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method</param>
         /// <param name="cityName">The pattern of city's name</param>
         /// <param name="count">The returned regions count</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetRegionsResponse> GetRegions(string countryCode, string phoneCategoryName, string cityName = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, string>();
@@ -4267,7 +4267,7 @@ namespace Voximplant.API {
         /// <param name="certContent">Public and private keys in PKCS12 format. Credentials for APPLE push</param>
         /// <param name="certFileName">The parameter is required, when set 'cert_content' as POST body. Credentials for APPLE push</param>
         /// <param name="certPassword">The secret password for private key. Credentials for APPLE push</param>
-        /// <param name="isDevMode">Set true to use this certificate in apple's sandbox environment. Credentials for APPLE push</param>
+        /// <param name="isDevMode">Whether to use this certificate in apple's sandbox environment. Credentials for APPLE push</param>
         /// <param name="senderId">The sender id, provided by Google. Credentials for GOOGLE push</param>
         /// <param name="serverKey">The server key, provided by Google. Credentials for GOOGLE push</param>
         /// <param name="serviceAccountFile">The service account key file, provided by Google. Can be used instead of <b>server_key</b>. Credentials for GOOGLE push</param>
@@ -4370,7 +4370,7 @@ namespace Voximplant.API {
         /// <param name="pushCredentialId">The push credentials id</param>
         /// <param name="certContent">Public and private keys in PKCS12 format. Credentials for APPLE push</param>
         /// <param name="certPassword">The secret password for private key. Credentials for APPLE push</param>
-        /// <param name="isDevMode">Set true to use this certificate in apple's sandbox environment. Credentials for APPLE push</param>
+        /// <param name="isDevMode">Whether to use this certificate in apple's sandbox environment. Credentials for APPLE push</param>
         /// <param name="senderId">The sender id, provided by Google. Credentials for GOOGLE push</param>
         /// <param name="serverKey">The server key, provided by Google. Credentials for GOOGLE push</param>
         /// <param name="serviceAccountFile">The service account key file, provided by Google. Can be used instead of <b>server_key</b>. Credentials for GOOGLE push</param>
@@ -4464,7 +4464,7 @@ namespace Voximplant.API {
         /// <param name="pushProviderId">The push provider id. Can be used instead of <b>push_provider_name</b></param>
         /// <param name="applicationName">The name of the bound application</param>
         /// <param name="applicationId">The id of the bound application</param>
-        /// <param name="withCert">Set true to get the user's certificate</param>
+        /// <param name="withCert">Whether to get the user's certificate</param>
         public async Task<GetPushCredentialResponse> GetPushCredential(long? pushCredentialId = null, string pushProviderName = null, long? pushProviderId = null, string applicationName = null, long? applicationId = null, bool? withCert = null)
         {
             var args = new Dictionary<string, string>();
@@ -4490,7 +4490,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="pushCredentialId">The push credentials ID list separated by semicolons (;)</param>
         /// <param name="applicationId">The application ID list separated by semicolons (;). Use the 'all' value to select all applications</param>
-        /// <param name="bind">Set to false for unbind. Default value is true</param>
+        /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindPushCredentialResponse> BindPushCredential(string pushCredentialId, string applicationId, bool? bind = null)
         {
             var args = new Dictionary<string, string>();
@@ -4577,7 +4577,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="dialogflowKeyId">The Dialogflow key's ID </param>
         /// <param name="applicationId">The application ID list separated by semicolons (;). Use the 'all' value to select all applications</param>
-        /// <param name="bind">Set to false to unbind. Default value is true</param>
+        /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindDialogflowKeysResponse> BindDialogflowKeys(long dialogflowKeyId, string applicationId, bool? bind = null)
         {
             var args = new Dictionary<string, string>();
@@ -4596,7 +4596,7 @@ namespace Voximplant.API {
         /// <param name="source">The source phone number</param>
         /// <param name="destination">The destination phone number</param>
         /// <param name="smsBody">The message text, up to 765 characters. We split long messages greater than 160 GSM-7 characters or 70 UTF-16 characters into multiple segments. Each segment is charged as one message</param>
-        /// <param name="storeBody">Set to true to store outbound message texts. Default value is false</param>
+        /// <param name="storeBody">Whether to store outgoing message texts. Default value is false</param>
         public async Task<SendSmsMessageResponse> SendSmsMessage(string source, string destination, string smsBody, bool? storeBody = null)
         {
             var args = new Dictionary<string, string>();
@@ -4613,10 +4613,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Sends an SMS message from the application to customers. The source phone number should be purchased from Voximplant and support SMS (which is indicated by the <b>is_sms_supported</b> property in the objects returned by the <a href='/docs/references/httpapi/managing_phone_numbers#getphonenumbers'>/GetPhoneNumbers</a> Management API) and SMS should be enabled for it via the <a href='/docs/references/httpapi/managing_sms#controlsms'>/ControlSms</a> Management API.
         /// </summary>
-        /// <param name="srcNumber">The SenderID for outbound SMS. Please contact support for installing a SenderID</param>
+        /// <param name="srcNumber">The SenderID for outgoing SMS. Please contact support for installing a SenderID</param>
         /// <param name="dstNumbers">The destination phone numbers separated by semicolons (;). The maximum number of these phone numbers is 100</param>
         /// <param name="text">The message text, up to 1600 characters. We split long messages greater than 160 GSM-7 characters or 70 UTF-16 characters into multiple segments. Each segment is charged as one message</param>
-        /// <param name="storeBody">Set to true to store outbound message texts. Default value is false</param>
+        /// <param name="storeBody">Whether to store outgoing message texts. Default value is false</param>
         public async Task<A2PSendSmsResponse> A2PSendSms(string srcNumber, string dstNumbers, string text, bool? storeBody = null)
         {
             var args = new Dictionary<string, string>();
@@ -4631,7 +4631,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Enables or disables sending and receiving SMS for the phone number. Can be used only for phone numbers with SMS support, which is indicated by the <b>is_sms_supported</b> property in the objects returned by the [GetPhoneNumbers] Management API. Each incoming SMS message is charged according to the <a href='//voximplant.com/pricing'>pricing</a>. If enabled, SMS can be sent from this phone number using the [SendSmsMessage] Management API and received using the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/guides/managementapi/callbacks'>this article</a> for HTTP callback details.
+        /// Enables or disables sending and receiving SMS for the phone number. Can be used only for phone numbers with SMS support, which is indicated by the <b>is_sms_supported</b> property in the objects returned by the [GetPhoneNumbers] Management API. Each incoming SMS message is charged according to the <a href='//voximplant.com/pricing'>pricing</a>. If enabled, SMS can be sent from this phone number via the [SendSmsMessage] Management API and received via the [InboundSmsCallback] property of the HTTP callback. See <a href='/docs/guides/managementapi/callbacks'>this article</a> for HTTP callback details.
         /// </summary>
         /// <param name="phoneNumber">The phone number</param>
         /// <param name="command">The SMS control command. The following values are possible: enable, disable</param>
@@ -4666,9 +4666,10 @@ namespace Voximplant.API {
         /// Creates a public/private key pair. You can optionally specify one or more roles for the key.
         /// </summary>
         /// <param name="description">The key's description</param>
+        /// <param name="keyName">The key's name, up to 50 characters. Cannot be empty</param>
         /// <param name="roleId">The role ID list separated by semicolons (;). Use it instead of **role_name**, but not combine with</param>
         /// <param name="roleName">The role name list separated by semicolons (;). Use it instead of **role_id**, but not combine with</param>
-        public async Task<CreateKeyResponse> CreateKey(string description = null, string roleId = null, string roleName = null)
+        public async Task<CreateKeyResponse> CreateKey(string description = null, string keyName = null, string roleId = null, string roleName = null)
         {
             var passedArgs = new List<string>();
         
@@ -4683,6 +4684,8 @@ namespace Voximplant.API {
 
             if (description != null)
                 args["description"] = description;
+            if (keyName != null)
+                args["key_name"] = keyName;
             if (roleId != null)
                 args["role_id"] = roleId;
             if (roleName != null)
@@ -4695,8 +4698,8 @@ namespace Voximplant.API {
         /// Gets key info of the specified account.
         /// </summary>
         /// <param name="keyId">The key's ID</param>
-        /// <param name="withRoles">Show roles for the key</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="withRoles">Whether to show roles for the key</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="count">The max returning record count</param>
         public async Task<GetKeysResponse> GetKeys(string keyId = null, bool? withRoles = null, long? offset = null, long? count = null)
         {
@@ -4719,12 +4722,15 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="keyId">The key's ID</param>
         /// <param name="description">The key's description</param>
-        public async Task<UpdateKeyResponse> UpdateKey(string keyId, string description)
+        /// <param name="keyName">The key's name, up to 50 characters. Cannot be empty</param>
+        public async Task<UpdateKeyResponse> UpdateKey(string keyId, string description, string keyName = null)
         {
             var args = new Dictionary<string, string>();
 
             args["key_id"] = keyId;
             args["description"] = description;
+            if (keyName != null)
+                args["key_name"] = keyName;
         
             return await PerformRequest<UpdateKeyResponse>("UpdateKey", args, null);
         }
@@ -4776,7 +4782,7 @@ namespace Voximplant.API {
         /// Gets roles of the specified key.
         /// </summary>
         /// <param name="keyId">The key's ID</param>
-        /// <param name="withExpandedRoles">Show the roles' additional properties</param>
+        /// <param name="withExpandedRoles">Whether to show the roles' additional properties</param>
         public async Task<GetKeyRolesResponse> GetKeyRoles(string keyId, bool? withExpandedRoles = null)
         {
             var args = new Dictionary<string, string>();
@@ -4855,8 +4861,8 @@ namespace Voximplant.API {
         /// Gets subusers.
         /// </summary>
         /// <param name="subuserId">The subuser's ID</param>
-        /// <param name="withRoles">Show subuser's roles</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="withRoles">Whether to show subuser's roles</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="count">The max returning record count</param>
         public async Task<GetSubUsersResponse> GetSubUsers(long? subuserId = null, bool? withRoles = null, long? offset = null, long? count = null)
         {
@@ -4943,7 +4949,7 @@ namespace Voximplant.API {
         /// Gets the subuser's roles.
         /// </summary>
         /// <param name="subuserId">The subuser's ID</param>
-        /// <param name="withExpandedRoles">Show the roles' additional properties</param>
+        /// <param name="withExpandedRoles">Whether to show the roles' additional properties</param>
         public async Task<GetSubUserRolesResponse> GetSubUserRoles(long subuserId, bool? withExpandedRoles = null)
         {
             var args = new Dictionary<string, string>();
@@ -4961,7 +4967,7 @@ namespace Voximplant.API {
         /// <param name="subuserId">The subuser's ID</param>
         /// <param name="roleId">The role id list separated by semicolons (;)</param>
         /// <param name="roleName">The role name list separated by semicolons (;)</param>
-        /// <param name="force">Remove roles from all subuser keys</param>
+        /// <param name="force">Whether to remove roles from all subuser keys</param>
         public async Task<RemoveSubUserRolesResponse> RemoveSubUserRoles(long subuserId, string roleId = null, string roleName = null, bool? force = null)
         {
             var passedArgs = new List<string>();
@@ -5014,7 +5020,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Creates or updates a key-value pair. If an existing key is passed, the method will return the existing item and will change the value if needed. The keys should be unique within a Voximplant application.
+        /// Creates or updates a key-value pair. If an existing key is passed, the method returns the existing item and changes the value if needed. The keys should be unique within a Voximplant application.
         /// </summary>
         /// <param name="key">Key, up to 200 characters. A key can contain a namespace that is written before the ':' symbol, for example, test:1234. Thus, namespace 'test' can be used as a pattern in the [GetKeyValueItems](/docs/references/httpapi/keyvaluestorage#getkeyvalueitems) and [GetKeyValueKeys](/docs/references/httpapi/keyvaluestorage#getkeyvaluekeys) methods to find the keys with the same namespace</param>
         /// <param name="value">Value for the specified key, up to 2000 characters</param>
@@ -5147,8 +5153,8 @@ namespace Voximplant.API {
         /// <param name="sourceNumber">The source phone number</param>
         /// <param name="destinationNumber">The destination phone number</param>
         /// <param name="direction">Sent or received SMS. Possible values: 'IN', 'OUT', 'in, 'out'. Leave blank to get both incoming and outgoing messages</param>
-        /// <param name="count">Maximum number of resulting rows fetched. Must be not bigger than 1000. If left blank, then the default value of 1000 will be used</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="count">Maximum number of resulting rows fetched. Must be not bigger than 1000. If left blank, then the default value of 1000 is used</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="fromDate">Date from which to perform search. Format is 'yyyy-MM-dd HH:mm:ss', time zone is UTC</param>
         /// <param name="toDate">Date until which to perform search. Format is 'yyyy-MM-dd HH:mm:ss', time zone is UTC</param>
         /// <param name="output">The output format. The following values available: json, csv</param>
@@ -5181,8 +5187,8 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="sourceNumber">The source phone number</param>
         /// <param name="destinationNumber">The destination phone number</param>
-        /// <param name="count">Maximum number of resulting rows fetched. Must be not bigger than 1000. If left blank, then the default value of 1000 will be used</param>
-        /// <param name="offset">The first <b>N</b> records will be skipped in the output</param>
+        /// <param name="count">Maximum number of resulting rows fetched. Must be not bigger than 1000. If left blank, then the default value of 1000 is used</param>
+        /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="fromDate">Date from which the search is to start. Format is 'yyyy-MM-dd HH:mm:ss', time zone is UTC</param>
         /// <param name="toDate">Date from which the search is to end. Format is 'yyyy-MM-dd HH:mm:ss', time zone is UTC</param>
         /// <param name="output">The output format. The possible values are json, csv</param>
@@ -5219,8 +5225,8 @@ namespace Voximplant.API {
         /// <param name="callAgentSelection">Agent selection strategy for calls. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME"</param>
         /// <param name="callTaskSelection">Call type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values</param>
         /// <param name="applicationName">Name of the application to bind to. Can be used instead of <b>application_id</b></param>
-        /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". Equals to the **call_agent_selection** value by default</param>
-        /// <param name="imTaskSelection">IM type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values. Equals to the **call_task_selection** value by default</param>
+        /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". The default value is **call_agent_selection**</param>
+        /// <param name="imTaskSelection">IM type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values. The default value is **call_task_selection**</param>
         /// <param name="description">Comment, up to 200 characters</param>
         /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent</param>
         /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent</param>
@@ -5266,9 +5272,9 @@ namespace Voximplant.API {
         /// <param name="sqQueueName">Name of the SmartQueue to search for. Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="newSqQueueName">New SmartQueue name within the application, up to 100 characters</param>
         /// <param name="callAgentSelection">Agent selection strategy for calls. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME"</param>
-        /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". Equals to the **call_agent_selection** value by default</param>
+        /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". The default value is **call_agent_selection**</param>
         /// <param name="callTaskSelection">Strategy of prioritizing CALL-type requests for service. Accepts one of the following values: "MAX_PRIORITY", "MAX_WAITING_TIME"</param>
-        /// <param name="imTaskSelection">Strategy of prioritizing IM-type requests for service. Accepts one of the following values: "MAX_PRIORITY", "MAX_WAITING_TIME". Equals to the **call_task_selection** value by default</param>
+        /// <param name="imTaskSelection">Strategy of prioritizing IM-type requests for service. Accepts one of the following values: "MAX_PRIORITY", "MAX_WAITING_TIME". The default value is **call_task_selection**</param>
         /// <param name="description">Comment, up to 200 characters</param>
         /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent</param>
         /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent</param>
@@ -5346,7 +5352,7 @@ namespace Voximplant.API {
         /// <param name="excludedUserName">Name of the user that is not bound to the queue. Can be used instead of <b>excluded_user_id</b></param>
         /// <param name="count">Number of items to show in the output</param>
         /// <param name="offset">Number of items to skip in the output</param>
-        /// <param name="withAgentcount">Number of agents bound to the queue</param>
+        /// <param name="withAgentcount">Whether to include the number of agents bound to the queue</param>
         public async Task<SQ_GetQueuesResponse> SQ_GetQueues(long applicationId, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string sqQueueNameTemplate = null, long? userId = null, string userName = null, long? excludedUserId = null, string excludedUserName = null, long? count = null, long? offset = null, bool? withAgentcount = null)
         {
             var args = new Dictionary<string, string>();
@@ -5601,7 +5607,7 @@ namespace Voximplant.API {
         /// Gets agents.
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="handleCalls">The agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
+        /// <param name="handleCalls">Whether the agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues</param>
         /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
@@ -5612,9 +5618,9 @@ namespace Voximplant.API {
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="userNameTemplate">Substring of the user name to filter</param>
         /// <param name="sqStatuses">Filter statuses in the json array format. The array should contain objects with the <b>sq_status_type</b> and <b>sq_status_name</b> keys. Possible values for <b>sq_status_type</b> are 'CALL' and'IM'. Possible values for <b>sq_status_name</b> are 'OFFLINE', 'ONLINE', 'READY', 'IN_SERVICE', 'AFTER_SERVICE', 'DND'</param>
-        /// <param name="withSqSkills">Display agent skills</param>
-        /// <param name="withSqQueues">Display agent queues</param>
-        /// <param name="withSqStatuses">Display agent current statuses</param>
+        /// <param name="withSqSkills">Whether to display agent skills</param>
+        /// <param name="withSqQueues">Whether to display agent queues</param>
+        /// <param name="withSqStatuses">Whether to display agent current statuses</param>
         /// <param name="count">Number of items to show in the output</param>
         /// <param name="offset">Number of items to skip in the output</param>
         public async Task<SQ_GetAgentsResponse> SQ_GetAgents(long applicationId, bool handleCalls, string applicationName = null, string sqQueueId = null, string sqQueueName = null, long? excludedSqQueueId = null, string excludedSqQueueName = null, Object sqSkills = null, string userId = null, string userName = null, string userNameTemplate = null, Object sqStatuses = null, bool? withSqSkills = null, bool? withSqQueues = null, bool? withSqStatuses = null, long? count = null, long? offset = null)
@@ -5662,7 +5668,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="applicationId">ID of the application to search by</param>
         /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
-        /// <param name="handleCalls">The agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
+        /// <param name="handleCalls">Whether the agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="maxSimultaneousConversations">Maximum number of chats that the user processes simultaneously</param>

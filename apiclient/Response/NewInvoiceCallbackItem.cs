@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public string InvoiceDate { get; private set; }
 
         /// <summary>
-        /// It's a prepayment
+        /// Whether it is a prepayment
         /// </summary>
         [JsonProperty("prepayment")]
         public bool Prepayment { get; private set; }

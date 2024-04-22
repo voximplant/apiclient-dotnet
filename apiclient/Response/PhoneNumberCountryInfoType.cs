@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public string PhonePrefix { get; private set; }
 
         /// <summary>
-        /// True if can list phone numbers
+        /// Whether to list phone numbers
         /// </summary>
         [JsonProperty("can_list_phone_numbers")]
         public bool CanListPhoneNumbers { get; private set; }
@@ -34,7 +34,7 @@ namespace Voximplant.API.Response {
         public PhoneNumberCountryCategoryInfoType[] PhoneCategories { get; private set; }
 
         /// <summary>
-        /// If <b>true</b>, you need to make a request to enable calls to emergency numbers
+        /// Whether you need to make a request to enable calls to emergency numbers
         /// </summary>
         [JsonProperty("emergency_calls_to_be_enabled")]
         public bool EmergencyCallsToBeEnabled { get; private set; }

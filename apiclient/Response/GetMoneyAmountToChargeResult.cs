@@ -22,25 +22,25 @@ namespace Voximplant.API.Response {
         public decimal MinAmount { get; private set; }
 
         /// <summary>
-        /// Exists if bank card payments are allowed. It's the maximum of the 'amount' in USD and the min_card_payment (10$)
+        /// Exists if bank card payments are allowed. It is the maximum of the 'amount' in USD and the min_card_payment (10$)
         /// </summary>
         [JsonProperty("bank_card_amount_usd")]
         public decimal? BankCardAmountUsd { get; private set; }
 
         /// <summary>
-        /// Exists if bank card payments are allowed. It's the maximum of the 'min_amount' in USD and the min_card_payment (10$)
+        /// Exists if bank card payments are allowed. It is the maximum of the 'min_amount' in USD and the min_card_payment (10$)
         /// </summary>
         [JsonProperty("min_bank_card_amount_usd")]
         public decimal? MinBankCardAmountUsd { get; private set; }
 
         /// <summary>
-        /// Exists if robokassa payments are allowed. It's the maximum of the 'min_amount' in RUR and the min_robokassa_payment (500 RUR)
+        /// Exists if robokassa payments are allowed. It is the maximum of the 'min_amount' in RUR and the min_robokassa_payment (500 RUR)
         /// </summary>
         [JsonProperty("robokassa_amount_rub")]
         public decimal? RobokassaAmountRub { get; private set; }
 
         /// <summary>
-        /// Exists if robokassa payments are allowed. It's the maximum of the 'min_amount' in RUR and the min_robokassa_payment (500 RUR)
+        /// Exists if robokassa payments are allowed. It is the maximum of the 'min_amount' in RUR and the min_robokassa_payment (500 RUR)
         /// </summary>
         [JsonProperty("min_robokassa_amount_rub")]
         public decimal? MinRobokassaAmountRub { get; private set; }

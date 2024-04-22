@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public string CalleridNumber { get; private set; }
 
         /// <summary>
-        /// The active flag
+        /// Whether active
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; private set; }

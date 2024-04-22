@@ -23,7 +23,7 @@ namespace Voximplant.API.Response {
         public DateTime InvoiceDate { get; private set; }
 
         /// <summary>
-        /// The post payment flag
+        /// Whether it is post payment
         /// </summary>
         [JsonProperty("is_post_payment")]
         public bool IsPostPayment { get; private set; }

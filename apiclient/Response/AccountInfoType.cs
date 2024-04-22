@@ -191,13 +191,13 @@ namespace Voximplant.API.Response {
         public bool? WithAccessEntries { get; private set; }
 
         /// <summary>
-        /// If URL is specified, Voximplant cloud will make HTTP POST requests to it when something happens. For a full list of reasons see the <b>type</b> field of the [AccountCallback] structure. The HTTP request will have a JSON-encoded body that conforms to the [AccountCallbacks] structure
+        /// If URL is specified, Voximplant cloud makes HTTP POST requests to it when something happens. For a full list of reasons see the <b>type</b> field of the [AccountCallback] structure. The HTTP request has a JSON-encoded body that conforms to the [AccountCallbacks] structure
         /// </summary>
         [JsonProperty("callback_url")]
         public string CallbackUrl { get; private set; }
 
         /// <summary>
-        /// If salt string is specified, each HTTP request made by the Voximplant cloud toward the <b>callback_url</b> will have a <b>salt</b> field set to MD5 hash of account information and salt. That hash can be used be a developer to ensure that HTTP request is made by the Voximplant cloud
+        /// If salt string is specified, each HTTP request made by the Voximplant cloud toward the <b>callback_url</b> has a <b>salt</b> field set to MD5 hash of account information and salt. That hash can be used be a developer to ensure that HTTP request is made by the Voximplant cloud
         /// </summary>
         [JsonProperty("callback_salt")]
         public string CallbackSalt { get; private set; }

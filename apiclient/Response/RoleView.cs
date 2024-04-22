@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public long RoleId { get; private set; }
 
         /// <summary>
-        /// Shows that the role is inherited
+        /// Whether the role is inherited
         /// </summary>
         [JsonProperty("inherited")]
         public bool? Inherited { get; private set; }
@@ -40,7 +40,7 @@ namespace Voximplant.API.Response {
         public long[] ParentRoleId { get; private set; }
 
         /// <summary>
-        /// Shows that the role is gui only
+        /// Whether the role is gui only
         /// </summary>
         [JsonProperty("gui_only")]
         public bool GuiOnly { get; private set; }

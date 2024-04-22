@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public string AdminUserDisplayName { get; private set; }
 
         /// <summary>
-        /// Login is allowed
+        /// Whether login is allowed
         /// </summary>
         [JsonProperty("admin_user_active")]
         public bool AdminUserActive { get; private set; }

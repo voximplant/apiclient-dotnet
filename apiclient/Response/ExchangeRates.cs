@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public decimal? EUR { get; private set; }
 
         /// <summary>
-        /// The USD exchange rate. It's always equal to 1
+        /// The USD exchange rate. It is always equal to 1
         /// </summary>
         [JsonProperty("USD")]
         public decimal? USD { get; private set; }

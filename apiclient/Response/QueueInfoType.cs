@@ -40,7 +40,7 @@ namespace Voximplant.API.Response {
         public long ServiceProbability { get; private set; }
 
         /// <summary>
-        /// Set false to disable the auto binding of operators to a queue by skills comparing
+        /// Whether to enable the auto binding of operators to a queue by skills comparing
         /// </summary>
         [JsonProperty("auto_binding")]
         public bool AutoBinding { get; private set; }

@@ -36,7 +36,7 @@ namespace Voximplant.API.Response {
         public DateTime FinishExecutionTime { get; private set; }
 
         /// <summary>
-        /// Results of the task, if it was granted, or information about the runtime error
+        /// Results of the task, if it is granted, or information about the runtime error
         /// </summary>
         [JsonProperty("result_data")]
         public string ResultData { get; private set; }

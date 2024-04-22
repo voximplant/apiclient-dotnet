@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public long ReadyOperatorsCount { get; private set; }
 
         /// <summary>
-        /// List of operators with the 'READY' state that can't accept a call from this queue. Operator can't accept a call if they are temporarily banned or they are servicing a call right now
+        /// List of operators with the 'READY' state that cannot accept a call from this queue. Operator cannot accept a call if they are temporarily banned or they are servicing a call right now
         /// </summary>
         [JsonProperty("locked_operators")]
         public ACDLockedOperatorStateType[] LockedOperators { get; private set; }

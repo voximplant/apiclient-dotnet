@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public string UserDisplayName { get; private set; }
 
         /// <summary>
-        /// Whether the user is active
+        /// Whether the user is active. Inactive users cannot log in to applications
         /// </summary>
         [JsonProperty("user_active")]
         public bool UserActive { get; private set; }
@@ -52,7 +52,7 @@ namespace Voximplant.API.Response {
         public decimal Balance { get; private set; }
 
         /// <summary>
-        /// The last committed balance which was approved by billing's transaction
+        /// The last committed balance which has been approved by billing's transaction
         /// </summary>
         [JsonProperty("fixed_balance")]
         public decimal FixedBalance { get; private set; }

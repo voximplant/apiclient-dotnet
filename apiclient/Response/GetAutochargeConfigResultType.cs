@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class GetAutochargeConfigResultType
     {
         /// <summary>
-        /// Is auto charge enabled or not
+        /// Whether auto charge enabled or not
         /// </summary>
         [JsonProperty("auto_charge")]
         public bool AutoCharge { get; private set; }

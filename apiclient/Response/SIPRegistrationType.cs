@@ -40,13 +40,13 @@ namespace Voximplant.API.Response {
         public string AuthUser { get; private set; }
 
         /// <summary>
-        /// The outbound proxy
+        /// The outgoing proxy
         /// </summary>
         [JsonProperty("outbound_proxy")]
         public string OutboundProxy { get; private set; }
 
         /// <summary>
-        /// The successful SIP registration
+        /// Whether the SIP registration is successful
         /// </summary>
         [JsonProperty("successful")]
         public bool? Successful { get; private set; }
@@ -64,7 +64,7 @@ namespace Voximplant.API.Response {
         public string ErrorMessage { get; private set; }
 
         /// <summary>
-        /// The subscription deactivation flag. The SIP registration is frozen if true
+        /// Whether the subscription is deactivation. The SIP registration is frozen if true
         /// </summary>
         [JsonProperty("deactivated")]
         public bool Deactivated { get; private set; }
@@ -90,7 +90,7 @@ namespace Voximplant.API.Response {
         public string SubscriptionPrice { get; private set; }
 
         /// <summary>
-        /// SIP registration is persistent. Set false to activate it only on the user login
+        /// Whether the SIP registration is persistent. Set false to activate it only on the user login
         /// </summary>
         [JsonProperty("is_persistent")]
         public bool IsPersistent { get; private set; }

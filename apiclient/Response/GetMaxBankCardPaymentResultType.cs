@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class GetMaxBankCardPaymentResultType
     {
         /// <summary>
-        /// The maximum payment for the specified card. It's always equal or less than **new_max_payment**
+        /// The maximum payment for the specified card. It always equals or less than **new_max_payment**
         /// </summary>
         [JsonProperty("max_payment")]
         public long MaxPayment { get; private set; }

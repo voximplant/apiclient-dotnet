@@ -16,7 +16,7 @@ namespace Voximplant.API.Response {
         public string PhoneCategoryName { get; private set; }
 
         /// <summary>
-        /// True if a country state is used to choose the phone with the category
+        /// Whether the chosen phone number country has states
         /// </summary>
         [JsonProperty("country_has_states")]
         public bool CountryHasStates { get; private set; }

@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public string PhoneNumber { get; private set; }
 
         /// <summary>
-        /// Verification is required for the account
+        /// Whether verification is required for the account
         /// </summary>
         [JsonProperty("required_verification")]
         public bool? RequiredVerification { get; private set; }
@@ -34,7 +34,7 @@ namespace Voximplant.API.Response {
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the account verification is required). The number will be detached on that day automatically!
+        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the account verification is required). The number is detached on that day automatically!
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("unverified_hold_until")]

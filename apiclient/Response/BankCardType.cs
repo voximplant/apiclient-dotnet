@@ -16,7 +16,7 @@ namespace Voximplant.API.Response {
         public string BankCardProvider { get; private set; }
 
         /// <summary>
-        /// The auto_charge flag
+        /// Whether the auto_charge is enabled
         /// </summary>
         [JsonProperty("auto_charge")]
         public bool AutoCharge { get; private set; }

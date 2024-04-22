@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public long DestinationNumber { get; private set; }
 
         /// <summary>
-        /// Number of fragments the initial message was divided into
+        /// Number of fragments the initial message is divided into
         /// </summary>
         [JsonProperty("fragments")]
         public long Fragments { get; private set; }

@@ -23,7 +23,7 @@ namespace Voximplant.API.Response {
         public DateTime Uploaded { get; private set; }
 
         /// <summary>
-        /// Account belongs to an individual
+        /// Whether the account belongs to an individual
         /// </summary>
         [JsonProperty("is_individual")]
         public bool IsIndividual { get; private set; }

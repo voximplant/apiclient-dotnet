@@ -10,7 +10,7 @@ namespace Voximplant.API.Response {
     public class ACDQueueStatisticsServiceLevelType
     {
         /// <summary>
-        /// Maximum time, is seconds, user was waiting operator for a given service level
+        /// Maximum time, is seconds, user is waiting operator for a given service level
         /// </summary>
         [JsonProperty("acceptable_waiting_time")]
         public long AcceptableWaitingTime { get; private set; }

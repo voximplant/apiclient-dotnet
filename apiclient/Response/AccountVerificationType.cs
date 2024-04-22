@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Unverified subscriptions hold until the date in format: YYYY-MM-DD (if the account verification is required). Some subscriptions will be detached on that day automatically!
+        /// Unverified subscriptions hold until the date in format: YYYY-MM-DD (if the account verification is required). Some subscriptions are detached on that day automatically!
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("unverified_hold_until")]

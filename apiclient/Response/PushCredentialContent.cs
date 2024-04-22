@@ -22,7 +22,7 @@ namespace Voximplant.API.Response {
         public string CertContent { get; private set; }
 
         /// <summary>
-        /// The use in a Apple sandbox environment. Credentials for APPLE push
+        /// Whether to use in a Apple sandbox environment. Credentials for APPLE push
         /// </summary>
         [JsonProperty("is_dev_mode")]
         public bool IsDevMode { get; private set; }

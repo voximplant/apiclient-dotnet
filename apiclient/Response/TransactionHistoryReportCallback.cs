@@ -16,7 +16,7 @@ namespace Voximplant.API.Response {
         public long HistoryReportId { get; private set; }
 
         /// <summary>
-        /// Success flag
+        /// Whether the request is successful
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; private set; }

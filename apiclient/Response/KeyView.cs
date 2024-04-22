@@ -33,5 +33,11 @@ namespace Voximplant.API.Response {
         [JsonProperty("subuser")]
         public SubUserView[] Subuser { get; private set; }
 
+        /// <summary>
+        /// The key's name
+        /// </summary>
+        [JsonProperty("key_name")]
+        public string KeyName { get; private set; }
+
     }
 }

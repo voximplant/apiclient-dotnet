@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public string ContactData { get; private set; }
 
         /// <summary>
-        /// The persistent flag
+        /// Whether the contact is persistent
         /// </summary>
         [JsonProperty("is_persistent")]
         public bool IsPersistent { get; private set; }

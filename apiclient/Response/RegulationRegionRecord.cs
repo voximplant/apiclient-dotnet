@@ -28,7 +28,7 @@ namespace Voximplant.API.Response {
         public string PhoneRegionCode { get; private set; }
 
         /// <summary>
-        /// The need to confirm the address
+        /// Whether need to confirm the address
         /// </summary>
         [JsonProperty("is_need_regulation_address")]
         public bool IsNeedRegulationAddress { get; private set; }
