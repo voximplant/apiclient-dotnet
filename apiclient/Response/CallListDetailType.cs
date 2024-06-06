@@ -65,5 +65,17 @@ namespace Voximplant.API.Response {
         [JsonProperty("status")]
         public string Status { get; private set; }
 
+        /// <summary>
+        /// The call list task ID
+        /// </summary>
+        [JsonProperty("task_id")]
+        public long TaskId { get; private set; }
+
+        /// <summary>
+        /// The call list task UUID
+        /// </summary>
+        [JsonProperty("task_uuid")]
+        public string TaskUuid { get; private set; }
+
     }
 }

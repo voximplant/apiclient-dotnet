@@ -764,7 +764,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Adds a new CSV file for call list processing and starts the specified rule immediately. To send a file, use the request body. To set the call time constraints, use the following options in a CSV file: <ul><li>**__start_execution_time** – when the call list processing starts every day, UTC+0 24-h format: HH:mm:ss</li><li>**__end_execution_time** – when the call list processing stops every day,  UTC+0 24-h format: HH:mm:ss</li><li>**__start_at** – when the call list processing starts, UNIX timestamp. If not specified, the processing starts immediately after a method call</li></ul><br>This method accepts CSV files with custom delimiters, such a commas (,), semicolons (;) and other. To specify a delimiter, pass it to the <b>delimiter</b> parameter.<br/><b>IMPORTANT:</b> the account's balance should be equal or greater than 1 USD. If the balance is lower than 1 USD, the call list processing does not start, or it stops immediately if it is active.
+        /// Adds a new CSV file for call list processing and starts the specified rule immediately. To send a file, use the request body. To set the call time constraints, use the following options in a CSV file: <ul><li>**__start_execution_time** – when the call list processing starts every day, UTC+0 24-h format: HH:mm:ss</li><li>**__end_execution_time** – when the call list processing stops every day,  UTC+0 24-h format: HH:mm:ss</li><li>**__start_at** – when the call list processing starts, UNIX timestamp. If not specified, the processing starts immediately after a method call</li><li>**__task_uuid** – call list UUID. A string up to 40 characters, can contain latin letters, digits, hyphens (-) and colons (:). Unique within the call list</li></ul><br>This method accepts CSV files with custom delimiters, such a commas (,), semicolons (;) and other. To specify a delimiter, pass it to the <b>delimiter</b> parameter.<br/><b>IMPORTANT:</b> the account's balance should be equal or greater than 1 USD. If the balance is lower than 1 USD, the call list processing does not start, or it stops immediately if it is active.
         /// </summary>
         /// <param name="ruleId">The rule ID. It is specified in the <a href='//manage.voximplant.com/applications'>Applications</a> section of the Control Panel</param>
         /// <param name="priority">Call list priority. The value is in the range of [0 ... 2^31] where zero is the highest priority</param>
@@ -778,7 +778,7 @@ namespace Voximplant.API {
         /// <param name="escape">Escape character for parsing csv</param>
         /// <param name="referenceIp">Specifies the IP from the geolocation of the call list subscribers. It allows selecting the nearest server for serving subscribers</param>
         /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
-        public async Task<CreateCallListResponse> CreateCallList(long ruleId, long priority, long maxSimultaneous, long numAttempts, string name, FileStream fileContent, long? intervalSeconds = null, string encoding = null, string delimiter = null, string escape = null, string referenceIp = null, string serverLocation = null)
+        public async Task<CreateCallListResponse> CreateCallList(long ruleId, long priority, long maxSimultaneous, long numAttempts, string name, string fileContent, long? intervalSeconds = null, string encoding = null, string delimiter = null, string escape = null, string referenceIp = null, string serverLocation = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -787,7 +787,7 @@ namespace Voximplant.API {
             args["max_simultaneous"] = maxSimultaneous.ToString();
             args["num_attempts"] = numAttempts.ToString();
             args["name"] = name;
-            args["file_content"] = "file_content";;
+            args["file_content"] = fileContent;
             if (intervalSeconds.HasValue)
                 args["interval_seconds"] = intervalSeconds.Value.ToString();
             if (encoding != null)
@@ -801,7 +801,7 @@ namespace Voximplant.API {
             if (serverLocation != null)
                 args["server_location"] = serverLocation;
         
-            return await PerformRequest<CreateCallListResponse>("CreateCallList", args, fileContent);
+            return await PerformRequest<CreateCallListResponse>("CreateCallList", args, null);
         }
 
         /// <summary>
@@ -1220,9 +1220,10 @@ namespace Voximplant.API {
         /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
         /// <param name="rulePatternExclude">The exclude pattern regex. The length must be less than 64 KB</param>
         /// <param name="videoConference">Whether video conference is required</param>
+        /// <param name="bindKeyId">The service account ID to bind to the rule. Read more in the [guide](/docs/guides/voxengine/management-api)</param>
         /// <param name="scenarioId">The scenario ID list separated by semicolons (;)</param>
         /// <param name="scenarioName">The scenario name list separated by semicolons (;). Can be used instead of <b>scenario_id</b></param>
-        public async Task<AddRuleResponse> AddRule(string ruleName, string rulePattern, long? applicationId = null, string applicationName = null, string rulePatternExclude = null, bool? videoConference = null, string scenarioId = null, string scenarioName = null)
+        public async Task<AddRuleResponse> AddRule(string ruleName, string rulePattern, long? applicationId = null, string applicationName = null, string rulePatternExclude = null, bool? videoConference = null, string bindKeyId = null, string scenarioId = null, string scenarioName = null)
         {
             var passedArgs = new List<string>();
         
@@ -1258,6 +1259,8 @@ namespace Voximplant.API {
                 args["rule_pattern_exclude"] = rulePatternExclude;
             if (videoConference.HasValue)
                 args["video_conference"] = videoConference.Value ? "1" : "0";
+            if (bindKeyId != null)
+                args["bind_key_id"] = bindKeyId;
             if (scenarioId != null)
                 args["scenario_id"] = scenarioId;
             if (scenarioName != null)
@@ -1319,7 +1322,8 @@ namespace Voximplant.API {
         /// <param name="rulePattern">The new rule pattern regex. The length must be less than 64 KB</param>
         /// <param name="rulePatternExclude">The new exclude pattern regex. The length must be less than 64 KB</param>
         /// <param name="videoConference">Whether video conference is required</param>
-        public async Task<SetRuleInfoResponse> SetRuleInfo(long ruleId, string ruleName = null, string rulePattern = null, string rulePatternExclude = null, bool? videoConference = null)
+        /// <param name="bindKeyId">The service account ID to bind to the rule. Read more in the [guide](/docs/guides/voxengine/management-api)</param>
+        public async Task<SetRuleInfoResponse> SetRuleInfo(long ruleId, string ruleName = null, string rulePattern = null, string rulePatternExclude = null, bool? videoConference = null, string bindKeyId = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -1332,6 +1336,8 @@ namespace Voximplant.API {
                 args["rule_pattern_exclude"] = rulePatternExclude;
             if (videoConference.HasValue)
                 args["video_conference"] = videoConference.Value ? "1" : "0";
+            if (bindKeyId != null)
+                args["bind_key_id"] = bindKeyId;
         
             return await PerformRequest<SetRuleInfoResponse>("SetRuleInfo", args, null);
         }
@@ -1344,11 +1350,12 @@ namespace Voximplant.API {
         /// <param name="ruleId">The rule ID to filter</param>
         /// <param name="ruleName">The rule name part to filter</param>
         /// <param name="videoConference">Whether it is a video conference to filter</param>
+        /// <param name="attachedKeyId">The service account ID bound to the rule. Read more in the [guide](/docs/guides/voxengine/management-api)</param>
         /// <param name="template">Search for template matching</param>
         /// <param name="withScenarios">Whether to get bound scenarios info</param>
         /// <param name="count">The max returning record count</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
-        public async Task<GetRulesResponse> GetRules(long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, bool? videoConference = null, string template = null, bool? withScenarios = null, long? count = null, long? offset = null)
+        public async Task<GetRulesResponse> GetRules(long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, bool? videoConference = null, string attachedKeyId = null, string template = null, bool? withScenarios = null, long? count = null, long? offset = null)
         {
             var passedArgs = new List<string>();
         
@@ -1373,6 +1380,8 @@ namespace Voximplant.API {
                 args["rule_name"] = ruleName;
             if (videoConference.HasValue)
                 args["video_conference"] = videoConference.Value ? "1" : "0";
+            if (attachedKeyId != null)
+                args["attached_key_id"] = attachedKeyId;
             if (template != null)
                 args["template"] = template;
             if (withScenarios.HasValue)
@@ -4260,7 +4269,7 @@ namespace Voximplant.API {
         /// Adds push credentials.
         /// </summary>
         /// <param name="pushProviderName">The push provider name. The possible values are APPLE, APPLE_VOIP, GOOGLE, HUAWEI</param>
-        /// <param name="pushProviderId">The push provider id. Can be used instead of <b>push_provider_name</b></param>
+        /// <param name="pushProviderId">The push provider id. Can be used instead of <b>push_provider_name</b>. The possible values are: 1 — APPLE, 2 — GOOGLE, 3 — APPLE_VOIP, 5 — HUAWEI.</param>
         /// <param name="applicationId">The application id</param>
         /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
         /// <param name="credentialBundle">The bundle of Android/iOS/Huawei application</param>
@@ -4461,7 +4470,7 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="pushCredentialId">The push credentials id</param>
         /// <param name="pushProviderName">The push provider name. The possible values are APPLE, APPLE_VOIP, GOOGLE, HUAWEI</param>
-        /// <param name="pushProviderId">The push provider id. Can be used instead of <b>push_provider_name</b></param>
+        /// <param name="pushProviderId">The push provider id. Can be used instead of <b>push_provider_name</b>. The possible values are: 1 — APPLE, 2 — GOOGLE, 3 — APPLE_VOIP, 5 — HUAWEI.</param>
         /// <param name="applicationName">The name of the bound application</param>
         /// <param name="applicationId">The id of the bound application</param>
         /// <param name="withCert">Whether to get the user's certificate</param>
