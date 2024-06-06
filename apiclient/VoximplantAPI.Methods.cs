@@ -778,7 +778,7 @@ namespace Voximplant.API {
         /// <param name="escape">Escape character for parsing csv</param>
         /// <param name="referenceIp">Specifies the IP from the geolocation of the call list subscribers. It allows selecting the nearest server for serving subscribers</param>
         /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
-        public async Task<CreateCallListResponse> CreateCallList(long ruleId, long priority, long maxSimultaneous, long numAttempts, string name, string fileContent, long? intervalSeconds = null, string encoding = null, string delimiter = null, string escape = null, string referenceIp = null, string serverLocation = null)
+        public async Task<CreateCallListResponse> CreateCallList(long ruleId, long priority, long maxSimultaneous, long numAttempts, string name, FileStream fileContent, long? intervalSeconds = null, string encoding = null, string delimiter = null, string escape = null, string referenceIp = null, string serverLocation = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -787,7 +787,7 @@ namespace Voximplant.API {
             args["max_simultaneous"] = maxSimultaneous.ToString();
             args["num_attempts"] = numAttempts.ToString();
             args["name"] = name;
-            args["file_content"] = fileContent;
+            args["file_content"] = "file_content";;
             if (intervalSeconds.HasValue)
                 args["interval_seconds"] = intervalSeconds.Value.ToString();
             if (encoding != null)
@@ -801,7 +801,7 @@ namespace Voximplant.API {
             if (serverLocation != null)
                 args["server_location"] = serverLocation;
         
-            return await PerformRequest<CreateCallListResponse>("CreateCallList", args, null);
+            return await PerformRequest<CreateCallListResponse>("CreateCallList", args, fileContent);
         }
 
         /// <summary>
