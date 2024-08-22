@@ -843,7 +843,7 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Get details of the specified call list. Returns a CSV file by default.
+        /// Gets details of the specified call list. Returns a CSV file by default.
         /// </summary>
         /// <param name="listId">The list ID</param>
         /// <param name="count">Maximum number of entries in the result</param>
@@ -871,7 +871,38 @@ namespace Voximplant.API {
         }
 
         /// <summary>
-        /// Stop processing the specified call list.
+        /// Edits the specified call list's task.
+        /// </summary>
+        /// <param name="listId">Call list's ID</param>
+        /// <param name="taskId">Call list's task ID. Please specify either the task's ID or the task's UUID to edit the task</param>
+        /// <param name="taskUuid">Call list's task ID. Please specify either the task's ID or the task's UUID to edit the task</param>
+        /// <param name="startAt">Next calling attempts timestamp in the yyyy-MM-dd HH:mm:ss format</param>
+        /// <param name="attemptsLeft">Number of remaining calling attempts</param>
+        /// <param name="customData">Custom data string</param>
+        /// <param name="minExecutionTime">Start time for the daily calling attempts in the UTC+0 24-h format: HH:mm:ss format</param>
+        public async Task<EditCallListTaskResponse> EditCallListTask(long listId, long? taskId = null, string taskUuid = null, DateTime? startAt = null, long? attemptsLeft = null, string customData = null, DateTime? minExecutionTime = null)
+        {
+            var args = new Dictionary<string, string>();
+
+            args["list_id"] = listId.ToString();
+            if (taskId.HasValue)
+                args["task_id"] = taskId.Value.ToString();
+            if (taskUuid != null)
+                args["task_uuid"] = taskUuid;
+            if (startAt.HasValue)
+                args["start_at"] = startAt.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            if (attemptsLeft.HasValue)
+                args["attempts_left"] = attemptsLeft.Value.ToString();
+            if (customData != null)
+                args["custom_data"] = customData;
+            if (minExecutionTime.HasValue)
+                args["min_execution_time"] = minExecutionTime.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+        
+            return await PerformRequest<EditCallListTaskResponse>("EditCallListTask", args, null);
+        }
+
+        /// <summary>
+        /// Stops processing the specified call list.
         /// </summary>
         /// <param name="listId">The list Id</param>
         public async Task<StopCallListProcessingResponse> StopCallListProcessing(long listId)

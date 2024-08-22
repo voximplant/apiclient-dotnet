@@ -28,6 +28,12 @@ namespace Voximplant.API.Response {
         public string PushProviderName { get; private set; }
 
         /// <summary>
+        /// The expiration date of the push certificate
+        /// </summary>
+        [JsonProperty("expiration_date")]
+        public string ExpirationDate { get; private set; }
+
+        /// <summary>
         /// The bundle of Android/iOS application
         /// </summary>
         [JsonProperty("credential_bundle")]

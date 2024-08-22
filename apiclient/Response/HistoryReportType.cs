@@ -73,17 +73,11 @@ namespace Voximplant.API.Response {
         public DateTime? LastDownloaded { get; private set; }
 
         /// <summary>
-        /// Store the report until the UTC time in 24-h format: YYYY-MM-DD HH:mm:ss. The report is completed if the field exists
+        /// Store the report until the date in format: YYYY-MM-DD. The report is completed if the field exists
         /// </summary>
-        [JsonConverter(typeof(TimestampConverter))]
+        [JsonConverter(typeof(DateConverter))]
         [JsonProperty("store_until")]
         public DateTime? StoreUntil { get; private set; }
-
-        /// <summary>
-        /// The report error
-        /// </summary>
-        [JsonProperty("error")]
-        public API_Error Error { get; private set; }
 
         /// <summary>
         /// The report order filters (the saved [GetCallHistory], [GetTransactionHistory] parameters)
