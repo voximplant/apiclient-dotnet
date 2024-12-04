@@ -1581,7 +1581,7 @@ namespace Voximplant.API {
         /// Gets the list of history reports and their statuses. The method returns info about reports made via [GetCallHistory] with the specified __output=csv__ and **is_async=true** parameters. Note that the **file_size** field in response is valid only for video calls.
         /// </summary>
         /// <param name="historyReportId">The history report ID to filter</param>
-        /// <param name="historyType">The history report type list separated by semicolons (;). Use the 'all' value to select all history report types. The following values are possible: calls, calls_brief, transactions, audit, call_list</param>
+        /// <param name="historyType">The history report type list separated by semicolons (;). Use the 'all' value to select all history report types. The following values are possible: calls, calls_brief, transactions, audit, call_list, transactions_on_hold</param>
         /// <param name="createdFrom">The UTC creation from date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="createdTo">The UTC creation to date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="isCompleted">Whether the report is completed</param>

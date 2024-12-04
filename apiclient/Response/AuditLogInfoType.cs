@@ -10,10 +10,22 @@ namespace Voximplant.API.Response {
     public class AuditLogInfoType
     {
         /// <summary>
-        /// The  ID
+        /// The audit log ID
         /// </summary>
         [JsonProperty("audit_log_id")]
         public long AuditLogId { get; private set; }
+
+        /// <summary>
+        /// The subuser's ID
+        /// </summary>
+        [JsonProperty("subuser_id")]
+        public long? SubuserId { get; private set; }
+
+        /// <summary>
+        /// The subuser's name
+        /// </summary>
+        [JsonProperty("subuser_name")]
+        public string SubuserName { get; private set; }
 
         /// <summary>
         /// The account ID
