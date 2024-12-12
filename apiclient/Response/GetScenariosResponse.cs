@@ -22,5 +22,17 @@ namespace Voximplant.API.Response {
         [JsonProperty("count")]
         public long Count { get; private set; }
 
+        /// <summary>
+        /// ID of the scenario's application
+        /// </summary>
+        [JsonProperty("application_id")]
+        public long ApplicationId { get; private set; }
+
+        /// <summary>
+        /// Name of the scenario's application
+        /// </summary>
+        [JsonProperty("application_name")]
+        public string ApplicationName { get; private set; }
+
     }
 }

@@ -935,7 +935,9 @@ namespace Voximplant.API {
         /// <param name="ruleId">The rule ID. The new scenario binds to the specified rule. Please note, if you do not bind the scenario to any rule, you cannot execute the scenario</param>
         /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
         /// <param name="rewrite">Whether to rewrite the existing scenario</param>
-        public async Task<AddScenarioResponse> AddScenario(string scenarioName, string scenarioScript = null, long? ruleId = null, string ruleName = null, bool? rewrite = null)
+        /// <param name="applicationId">ID of the application to bind the scenario to</param>
+        /// <param name="applicationName">Name of the application to bind the scenario to</param>
+        public async Task<AddScenarioResponse> AddScenario(string scenarioName, string scenarioScript = null, long? ruleId = null, string ruleName = null, bool? rewrite = null, long? applicationId = null, string applicationName = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -948,6 +950,10 @@ namespace Voximplant.API {
                 args["rule_name"] = ruleName;
             if (rewrite.HasValue)
                 args["rewrite"] = rewrite.Value ? "1" : "0";
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
         
             return await PerformRequest<AddScenarioResponse>("AddScenario", args, null);
         }
@@ -1053,7 +1059,9 @@ namespace Voximplant.API {
         /// <param name="withScript">Whether to get the scenario text. You must specify the 'scenario_id' too!</param>
         /// <param name="count">The max returning record count</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
-        public async Task<GetScenariosResponse> GetScenarios(long? scenarioId = null, string scenarioName = null, bool? withScript = null, long? count = null, long? offset = null)
+        /// <param name="applicationId">ID of the scenario's application</param>
+        /// <param name="applicationName">Name of the scenario's application</param>
+        public async Task<GetScenariosResponse> GetScenarios(long? scenarioId = null, string scenarioName = null, bool? withScript = null, long? count = null, long? offset = null, long? applicationId = null, string applicationName = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -1067,6 +1075,10 @@ namespace Voximplant.API {
                 args["count"] = count.Value.ToString();
             if (offset.HasValue)
                 args["offset"] = offset.Value.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
         
             return await PerformRequest<GetScenariosResponse>("GetScenarios", args, null);
         }
@@ -2516,7 +2528,8 @@ namespace Voximplant.API {
         /// <param name="countryState">The country state. See the GetPhoneNumberCategories and GetPhoneNumberCountryStates functions</param>
         /// <param name="count">The max returning record count</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
-        public async Task<GetNewPhoneNumbersResponse> GetNewPhoneNumbers(string countryCode, string phoneCategoryName, long phoneRegionId, string countryState = null, long? count = null, long? offset = null)
+        /// <param name="phoneNumberMask">The phone number searching mask. Asterisk represents zero or more occurrences of any character</param>
+        public async Task<GetNewPhoneNumbersResponse> GetNewPhoneNumbers(string countryCode, string phoneCategoryName, long phoneRegionId, string countryState = null, long? count = null, long? offset = null, string phoneNumberMask = null)
         {
             var args = new Dictionary<string, string>();
 
@@ -2529,6 +2542,8 @@ namespace Voximplant.API {
                 args["count"] = count.Value.ToString();
             if (offset.HasValue)
                 args["offset"] = offset.Value.ToString();
+            if (phoneNumberMask != null)
+                args["phone_number_mask"] = phoneNumberMask;
         
             return await PerformRequest<GetNewPhoneNumbersResponse>("GetNewPhoneNumbers", args, null);
         }
@@ -3157,7 +3172,6 @@ namespace Voximplant.API {
         /// <param name="applicationName">The application name to search by. Can be used instead of the <b>application_id</b> parameter</param>
         /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
         /// <param name="userName">The user name list separated by semicolons (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
-        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
         /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time minus 30 minutes</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time</param>
@@ -3165,7 +3179,7 @@ namespace Voximplant.API {
         /// <param name="interval">Interval format: YYYY-MM-DD HH:mm:ss. Default is 30 minutes</param>
         /// <param name="groupBy">Group the result by **agent** or *queue*. The **agent** grouping is allowed for 1 queue and for the occupancy_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_banned_time, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types. The **queue** grouping allowed for the calls_blocked_percentage, count_blocked_calls, average_abandonment_rate, count_abandonment_calls, service_level, occupancy_rate, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types</param>
         /// <param name="maxWaitingSec">Maximum waiting time. Required for the **service_level** report type</param>
-        public async Task<GetSmartQueueRealtimeMetricsResponse> GetSmartQueueRealtimeMetrics(string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueId = null, string sqQueueName = null, DateTime? fromDate = null, DateTime? toDate = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null)
+        public async Task<GetSmartQueueRealtimeMetricsResponse> GetSmartQueueRealtimeMetrics(string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueName = null, DateTime? fromDate = null, DateTime? toDate = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null)
         {
             var passedArgs = new List<string>();
         
@@ -3189,8 +3203,6 @@ namespace Voximplant.API {
     
             passedArgs = new List<string>();
         
-            if (sqQueueId != null)
-                passedArgs.Add("sqQueueId");
             if (sqQueueName != null)
                 passedArgs.Add("sqQueueName");
             if (passedArgs.Count > 1)
@@ -3207,8 +3219,6 @@ namespace Voximplant.API {
                 args["user_id"] = userId;
             if (userName != null)
                 args["user_name"] = userName;
-            if (sqQueueId != null)
-                args["sq_queue_id"] = sqQueueId;
             if (sqQueueName != null)
                 args["sq_queue_name"] = sqQueueName;
             if (fromDate.HasValue)
