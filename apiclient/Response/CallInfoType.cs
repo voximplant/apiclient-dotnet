@@ -88,5 +88,11 @@ namespace Voximplant.API.Response {
         [JsonProperty("custom_data")]
         public string CustomData { get; private set; }
 
+        /// <summary>
+        /// End reason code and description
+        /// </summary>
+        [JsonProperty("end_reason")]
+        public object EndReason { get; private set; }
+
     }
 }

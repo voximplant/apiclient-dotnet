@@ -4318,13 +4318,11 @@ namespace Voximplant.API {
         /// <param name="certFileName">The parameter is required, when set 'cert_content' as POST body. Credentials for APPLE push</param>
         /// <param name="certPassword">The secret password for private key. Credentials for APPLE push</param>
         /// <param name="isDevMode">Whether to use this certificate in apple's sandbox environment. Credentials for APPLE push</param>
-        /// <param name="senderId">The sender id, provided by Google. Credentials for GOOGLE push</param>
-        /// <param name="serverKey">The server key, provided by Google. Credentials for GOOGLE push</param>
         /// <param name="serviceAccountFile">The service account key file, provided by Google. Can be used instead of <b>server_key</b>. Credentials for GOOGLE push</param>
         /// <param name="huaweiClientId">The client id, provided by Huawei. Credentials for HUAWEI push</param>
         /// <param name="huaweiClientSecret">The client secret, provided by Huawei. Credentials for HUAWEI push</param>
         /// <param name="huaweiApplicationId">The application id, provided by Huawei. Credentials for HUAWEI push</param>
-        public async Task<AddPushCredentialResponse> AddPushCredential(string pushProviderName = null, long? pushProviderId = null, long? applicationId = null, string applicationName = null, string credentialBundle = null, string certContent = null, string certFileName = null, string certPassword = null, bool? isDevMode = null, string senderId = null, string serverKey = null, string serviceAccountFile = null, string huaweiClientId = null, string huaweiClientSecret = null, string huaweiApplicationId = null)
+        public async Task<AddPushCredentialResponse> AddPushCredential(string pushProviderName = null, long? pushProviderId = null, long? applicationId = null, string applicationName = null, string credentialBundle = null, string certContent = null, string certFileName = null, string certPassword = null, bool? isDevMode = null, string serviceAccountFile = null, string huaweiClientId = null, string huaweiClientSecret = null, string huaweiApplicationId = null)
         {
             var passedArgs = new List<string>();
         
@@ -4354,16 +4352,12 @@ namespace Voximplant.API {
     
             passedArgs = new List<string>();
         
-            if (senderId != null)
-                passedArgs.Add("senderId");
-            if (serverKey != null)
-                passedArgs.Add("serverKey");
             if (serviceAccountFile != null)
                 passedArgs.Add("serviceAccountFile");
             if (passedArgs.Count > 1)
                 throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into AddPushCredential");
             if (passedArgs.Count == 0)
-                throw new VoximplantException("None of senderId, serverKey, serviceAccountFile passed into AddPushCredential");
+                throw new VoximplantException("None of serviceAccountFile passed into AddPushCredential");
     
             passedArgs = new List<string>();
         
@@ -4398,10 +4392,6 @@ namespace Voximplant.API {
                 args["cert_password"] = certPassword;
             if (isDevMode.HasValue)
                 args["is_dev_mode"] = isDevMode.ToString();
-            if (senderId != null)
-                args["sender_id"] = senderId;
-            if (serverKey != null)
-                args["server_key"] = serverKey;
             if (serviceAccountFile != null)
                 args["service_account_file"] = serviceAccountFile;
             if (huaweiClientId != null)
@@ -4421,13 +4411,11 @@ namespace Voximplant.API {
         /// <param name="certContent">Public and private keys in PKCS12 format. Credentials for APPLE push</param>
         /// <param name="certPassword">The secret password for private key. Credentials for APPLE push</param>
         /// <param name="isDevMode">Whether to use this certificate in apple's sandbox environment. Credentials for APPLE push</param>
-        /// <param name="senderId">The sender id, provided by Google. Credentials for GOOGLE push</param>
-        /// <param name="serverKey">The server key, provided by Google. Credentials for GOOGLE push</param>
         /// <param name="serviceAccountFile">The service account key file, provided by Google. Can be used instead of <b>server_key</b>. Credentials for GOOGLE push</param>
         /// <param name="huaweiClientId">The client id, provided by Huawei. Credentials for HUAWEI push</param>
         /// <param name="huaweiClientSecret">The client secret, provided by Huawei. Credentials for HUAWEI push</param>
         /// <param name="huaweiApplicationId">The application id, provided by Huawei. Credentials for HUAWEI push</param>
-        public async Task<SetPushCredentialResponse> SetPushCredential(long pushCredentialId, string certContent = null, string certPassword = null, bool? isDevMode = null, string senderId = null, string serverKey = null, string serviceAccountFile = null, string huaweiClientId = null, string huaweiClientSecret = null, string huaweiApplicationId = null)
+        public async Task<SetPushCredentialResponse> SetPushCredential(long pushCredentialId, string certContent = null, string certPassword = null, bool? isDevMode = null, string serviceAccountFile = null, string huaweiClientId = null, string huaweiClientSecret = null, string huaweiApplicationId = null)
         {
             var passedArgs = new List<string>();
         
@@ -4444,16 +4432,12 @@ namespace Voximplant.API {
     
             passedArgs = new List<string>();
         
-            if (senderId != null)
-                passedArgs.Add("senderId");
-            if (serverKey != null)
-                passedArgs.Add("serverKey");
             if (serviceAccountFile != null)
                 passedArgs.Add("serviceAccountFile");
             if (passedArgs.Count > 1)
                 throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into SetPushCredential");
             if (passedArgs.Count == 0)
-                throw new VoximplantException("None of senderId, serverKey, serviceAccountFile passed into SetPushCredential");
+                throw new VoximplantException("None of serviceAccountFile passed into SetPushCredential");
     
             passedArgs = new List<string>();
         
@@ -4477,10 +4461,6 @@ namespace Voximplant.API {
                 args["cert_password"] = certPassword;
             if (isDevMode.HasValue)
                 args["is_dev_mode"] = isDevMode.ToString();
-            if (senderId != null)
-                args["sender_id"] = senderId;
-            if (serverKey != null)
-                args["server_key"] = serverKey;
             if (serviceAccountFile != null)
                 args["service_account_file"] = serviceAccountFile;
             if (huaweiClientId != null)

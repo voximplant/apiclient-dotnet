@@ -34,5 +34,11 @@ namespace Voximplant.API.Response {
         [JsonProperty("application_name")]
         public string ApplicationName { get; private set; }
 
+        /// <summary>
+        /// Application name including the node name
+        /// </summary>
+        [JsonProperty("extended_application_name")]
+        public string ExtendedApplicationName { get; private set; }
+
     }
 }
