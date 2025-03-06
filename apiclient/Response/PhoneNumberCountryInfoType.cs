@@ -16,6 +16,12 @@ namespace Voximplant.API.Response {
         public string CountryCode { get; private set; }
 
         /// <summary>
+        /// The localized country name
+        /// </summary>
+        [JsonProperty("localized_country_name")]
+        public string LocalizedCountryName { get; private set; }
+
+        /// <summary>
         /// The country phone prefix
         /// </summary>
         [JsonProperty("phone_prefix")]

@@ -25,7 +25,7 @@ namespace Voximplant.API.Response {
         /// Whether verification is required for the account
         /// </summary>
         [JsonProperty("required_verification")]
-        public bool? RequiredVerification { get; private set; }
+        public string RequiredVerification { get; private set; }
 
         /// <summary>
         /// The account verification status. The following values are possible: REQUIRED, IN_PROGRESS, VERIFIED

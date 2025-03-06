@@ -43,7 +43,7 @@ namespace Voximplant.API.Response {
         /// Whether verification is required for the account
         /// </summary>
         [JsonProperty("required_verification")]
-        public bool? RequiredVerification { get; private set; }
+        public string RequiredVerification { get; private set; }
 
         /// <summary>
         /// The charge period in 24-h format: Y-M-D H:m:s. Example: 0-1-0 0:0:0 is 1 month
