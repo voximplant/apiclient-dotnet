@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -27,12 +28,6 @@ namespace Voximplant.API.Response {
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }
-
-        /// <summary>
-        /// The history report ID (async mode)
-        /// </summary>
-        [JsonProperty("history_report_id")]
-        public long HistoryReportId { get; private set; }
 
     }
 }

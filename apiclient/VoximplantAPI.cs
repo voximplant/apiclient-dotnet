@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Voximplant.API.Response;
+using System.Linq;
 
 namespace Voximplant.API
 {
@@ -95,45 +96,71 @@ namespace Voximplant.API
             return new Uri(uri);
         }
 
-        private async Task<TResponse> PerformRequest<TResponse>(string node, IDictionary<string, string> request, FileStream fileStream)
-            where TResponse : BaseResponse
+        private MultipartFormDataContent MakeRequestBody(string node, IDictionary<string, object> request)
+        {
+            var requestBody = new MultipartFormDataContent();
+
+            foreach (var item in request)
+            {
+                if (item.Value == null)
+                {
+                    continue;
+                }
+                if(item.Value is Stream){
+                    StreamContent requestBodyStreamContent = new StreamContent((Stream) item.Value);
+                    requestBody.Add(requestBodyStreamContent, item.Key);
+                } else { 
+                    string stringValue = (string)item.Value;                     
+                    StringContent requestBodyContent = new StringContent(stringValue);
+                    requestBody.Add(requestBodyContent, item.Key);
+                }
+            }
+            
+            return requestBody;
+        }
+
+        private async Task<HttpResponseMessage> SendRequestAsync(HttpClient client, string node, MultipartFormDataContent requestBody, IDictionary<string, object> request)
+        {
+            var uri = RequestUri(node);
+            var authHeader = GetAuthorizationHeader();
+            
+            Log(LogSeverity.Info, $"Requesting: {uri}, Authorization: {authHeader}");
+            Log(LogSeverity.Verbose, $"Body: {string.Join(",", request)}");
+
+            client.DefaultRequestHeaders.Add("Authorization", authHeader);
+            var response = await client.PostAsync(uri, requestBody);
+            
+            Log(LogSeverity.Info, $"Response code: {(int)response.StatusCode}");
+
+            return response;
+        }
+
+        private async Task<TResponse> PerformRequest<TResponse>(string node, IDictionary<string, object> request, FileStream writeStream = null)
+            where TResponse : BaseResponse, new()
         {
             using (var client = new HttpClient())
             {
                 request["cmd"] = node;
 
-                var requestBody = new MultipartFormDataContent();
+                MultipartFormDataContent requestBody = MakeRequestBody(node, request);
 
-                foreach (var item in request)
-                {
-                    requestBody.Add(new StringContent(item.Value), item.Key);
+                var response = await SendRequestAsync(client, node, requestBody, request);
+                Stream resultStream = null;
+                string resultString;
+                if (string.Equals(response.Content.Headers.ContentType?.MediaType, 
+                 "application/octet-stream", 
+                 StringComparison.OrdinalIgnoreCase)){
+                    Log(LogSeverity.Info, $"Response code: {(int)response.StatusCode}");
+                    resultStream = await response.Content.ReadAsStreamAsync();
+
+                    var fakeResp = new TResponse();
+                    resultString = JsonConvert.SerializeObject(fakeResp);
+                } else {
+                    resultString = await response.Content.ReadAsStringAsync();
+                    Log(LogSeverity.Verbose, $"Response: {resultString}");
                 }
 
-                if (fileStream != null)
-                {
-                    BinaryReader binReader = new BinaryReader(fileStream);
-                    byte[] byteArray = new byte[fileStream.Length];
-                    for (long i = 0; i < fileStream.Length; i++)
-                    {
-                        byteArray[i] = binReader.ReadByte();
-                    }
-                    binReader.Close();
-                    ByteArrayContent byteContent = new ByteArrayContent(byteArray);
-                    requestBody.Add(byteContent, "file_content");
-                }
-
-                var uri = RequestUri(node);
-                var authHeader = GetAuthorizationHeader();
-                Log(LogSeverity.Info, $"Requesting: {uri}, Authorization: {authHeader}");
-                Log(LogSeverity.Verbose, $"Body: {string.Join(",", request)}");
-
-                client.DefaultRequestHeaders.Add("Authorization", authHeader);
-                var response = await client.PostAsync(uri, requestBody);
-                Log(LogSeverity.Info, $"Response code: {(int)response.StatusCode}");
-                var responseString = await response.Content.ReadAsStringAsync();
-                Log(LogSeverity.Verbose, $"Response: {responseString}");
-
-                var result = JsonConvert.DeserializeObject<TResponse>(responseString, new JsonSerializerSettings
+                var result = JsonConvert.DeserializeObject<TResponse>(resultString, new JsonSerializerSettings
                 {
                     DateTimeZoneHandling = DateTimeZoneHandling.Utc,
                     TraceWriter = _configuration.TraceWriter,
@@ -145,7 +172,14 @@ namespace Voximplant.API
                     throw new VoximplantException("Empty response");
                 }
 
-                if (!result.HasError()) return result;
+                if (!result.HasError()) {
+                    if(resultStream != null){
+                        dynamic dynamicResult = result;
+                        dynamicResult.FileContent = resultStream;
+                        return dynamicResult;
+                    }
+                    return result;
+                } 
                 
                 Log(LogSeverity.Error, result.GetError().Msg);
                 throw new VoximplantException(result.GetError().Msg, result.GetError().Code);

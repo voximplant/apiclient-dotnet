@@ -32,6 +32,7 @@ namespace apiclient.samples
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");
+
             } catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }

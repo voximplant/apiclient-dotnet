@@ -27,6 +27,7 @@ namespace apiclient.samples
                 var result = voximplant.GetRecordStorages().Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");
+
             } catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }

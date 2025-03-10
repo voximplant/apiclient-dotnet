@@ -26,6 +26,7 @@ namespace apiclient.samples
                 var result = voximplant.GetPstnBlackList().Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");
+
             } catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }

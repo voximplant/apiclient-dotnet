@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -125,7 +126,7 @@ namespace Voximplant.API.Response {
         public string BillingAddressState { get; private set; }
 
         /// <summary>
-        /// Whether the account is ctive
+        /// Whether the account is active
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; private set; }
@@ -203,7 +204,7 @@ namespace Voximplant.API.Response {
         public string CallbackSalt { get; private set; }
 
         /// <summary>
-        /// Whether to send an email when a JS error occures
+        /// Whether to send an email when a JS error occurs
         /// </summary>
         [JsonProperty("send_js_error")]
         public bool? SendJsError { get; private set; }
