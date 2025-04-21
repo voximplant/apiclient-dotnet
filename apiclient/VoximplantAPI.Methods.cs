@@ -2581,6 +2581,17 @@ namespace Voximplant.API {
             return await PerformRequest<GetPhoneNumbersResponse>("GetPhoneNumbers", args);
 }
         /// <summary>
+        /// Checks if the phone number belongs to the authorized account.
+        /// </summary>
+        /// <param name="phoneNumber">Phone number to check in the international format without `+`</param>
+        public async Task<IsAccountPhoneNumberResponse> IsAccountPhoneNumber(string phoneNumber)
+        {
+            var args = new Dictionary<string, object>();
+
+            args["phone_number"] = phoneNumber;
+            return await PerformRequest<IsAccountPhoneNumberResponse>("IsAccountPhoneNumber", args);
+}
+        /// <summary>
         /// Gets the asyncronous report regarding purchaced phone numbers.
         /// </summary>
         /// <param name="withHeader">Whether to get a CSV file with the column names</param>
@@ -5158,12 +5169,14 @@ namespace Voximplant.API {
         /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". The default value is **call_agent_selection**</param>
         /// <param name="imTaskSelection">IM type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values. The default value is **call_task_selection**</param>
         /// <param name="description">Comment, up to 200 characters</param>
-        /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent</param>
-        /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent</param>
+        /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent. Specify either this parameter or `call_max_waiting_time_in_seconds`. Specifying both parameters simultaniously leads to an error</param>
+        /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent. Specify either this parameter or `im_max_waiting_time_in_seconds`. Specifying both parameters simultaniously leads to an error</param>
         /// <param name="callMaxQueueSize">Maximum size of the queue with CALL-type requests</param>
         /// <param name="imMaxQueueSize">Maximum size of the queue with IM-type requests</param>
         /// <param name="priority">The queue's priority from 1 to 100</param>
-        public async Task<SQ_AddQueueResponse> SQ_AddQueue(long applicationId, string sqQueueName, string callAgentSelection, string callTaskSelection, string applicationName = null, string imAgentSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null)
+        /// <param name="callMaxWaitingTimeInSeconds">Maximum call waiting time in seconds. Specify either this parameter or `call_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
+        /// <param name="imMaxWaitingTimeInSeconds">Maximum chat message waiting time in seconds. Specify either this parameter or `im_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
+        public async Task<SQ_AddQueueResponse> SQ_AddQueue(long applicationId, string sqQueueName, string callAgentSelection, string callTaskSelection, string applicationName = null, string imAgentSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
         {
             var args = new Dictionary<string, object>();
 
@@ -5189,6 +5202,10 @@ namespace Voximplant.API {
                 args["im_max_queue_size"] = imMaxQueueSize.Value.ToString();
             if (priority.HasValue)
                 args["priority"] = priority.Value.ToString();
+            if (callMaxWaitingTimeInSeconds.HasValue)
+                args["call_max_waiting_time_in_seconds"] = callMaxWaitingTimeInSeconds.Value.ToString();
+            if (imMaxWaitingTimeInSeconds.HasValue)
+                args["im_max_waiting_time_in_seconds"] = imMaxWaitingTimeInSeconds.Value.ToString();
             return await PerformRequest<SQ_AddQueueResponse>("SQ_AddQueue", args);
 }
         /// <summary>
@@ -5204,12 +5221,14 @@ namespace Voximplant.API {
         /// <param name="callTaskSelection">Strategy of prioritizing CALL-type requests for service. Accepts one of the following values: "MAX_PRIORITY", "MAX_WAITING_TIME"</param>
         /// <param name="imTaskSelection">Strategy of prioritizing IM-type requests for service. Accepts one of the following values: "MAX_PRIORITY", "MAX_WAITING_TIME". The default value is **call_task_selection**</param>
         /// <param name="description">Comment, up to 200 characters</param>
-        /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent</param>
-        /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent</param>
+        /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent. Specify either this parameter or `call_max_waiting_time_in_seconds`. Specifying both parameters simultaniously leads to an error</param>
+        /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent. Specify either this parameter or `im_max_waiting_time_in_seconds`. Specifying both parameters simultaniously leads to an error</param>
         /// <param name="callMaxQueueSize">Maximum size of the queue with CALL-type requests</param>
         /// <param name="imMaxQueueSize">Maximum size of the queue with IM-type requests</param>
         /// <param name="priority">The queue's priority from 1 to 100</param>
-        public async Task<SQ_SetQueueInfoResponse> SQ_SetQueueInfo(long applicationId, long sqQueueId, string applicationName = null, string sqQueueName = null, string newSqQueueName = null, string callAgentSelection = null, string imAgentSelection = null, string callTaskSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null)
+        /// <param name="callMaxWaitingTimeInSeconds">Maximum call waiting time in seconds. Specify either this parameter or `call_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
+        /// <param name="imMaxWaitingTimeInSeconds">Maximum chat message waiting time in seconds. Specify either this parameter or `im_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
+        public async Task<SQ_SetQueueInfoResponse> SQ_SetQueueInfo(long applicationId, long sqQueueId, string applicationName = null, string sqQueueName = null, string newSqQueueName = null, string callAgentSelection = null, string imAgentSelection = null, string callTaskSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
         {
             var args = new Dictionary<string, object>();
 
@@ -5241,6 +5260,10 @@ namespace Voximplant.API {
                 args["im_max_queue_size"] = imMaxQueueSize.Value.ToString();
             if (priority.HasValue)
                 args["priority"] = priority.Value.ToString();
+            if (callMaxWaitingTimeInSeconds.HasValue)
+                args["call_max_waiting_time_in_seconds"] = callMaxWaitingTimeInSeconds.Value.ToString();
+            if (imMaxWaitingTimeInSeconds.HasValue)
+                args["im_max_waiting_time_in_seconds"] = imMaxWaitingTimeInSeconds.Value.ToString();
             return await PerformRequest<SQ_SetQueueInfoResponse>("SQ_SetQueueInfo", args);
 }
         /// <summary>
