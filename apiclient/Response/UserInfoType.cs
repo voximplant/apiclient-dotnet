@@ -41,7 +41,7 @@ namespace Voximplant.API.Response {
         public bool ParentAccounting { get; private set; }
 
         /// <summary>
-        /// The current user's money in the currency specified for the account. The value is the number rounded to 4 decimal places and it changes during the calls, transcribing, purchases etc
+        /// The current user's money in the currency specified for the account. The value is the number rounded to 4 decimal places, and it changes during the calls, transcribing, purchases etc
         /// </summary>
         [JsonProperty("live_balance")]
         public decimal LiveBalance { get; private set; }

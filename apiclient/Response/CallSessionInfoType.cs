@@ -11,68 +11,74 @@ namespace Voximplant.API.Response {
     public class CallSessionInfoType
     {
         /// <summary>
-        /// The routing rule name
+        /// Call's audio quality. The possible values are: Standard | HD | Ultra HD.
+        /// </summary>
+        [JsonProperty("audio_quality")]
+        public string AudioQuality { get; private set; }
+
+        /// <summary>
+        /// Routing rule name
         /// </summary>
         [JsonProperty("rule_name")]
         public string RuleName { get; private set; }
 
         /// <summary>
-        /// The application name
+        /// Application name
         /// </summary>
         [JsonProperty("application_name")]
         public string ApplicationName { get; private set; }
 
         /// <summary>
-        /// The unique JS session identifier
+        /// Unique JS session identifier
         /// </summary>
         [JsonProperty("call_session_history_id")]
         public long CallSessionHistoryId { get; private set; }
 
         /// <summary>
-        /// The account ID that initiates the JS session
+        /// Account ID that initiates the JS session
         /// </summary>
         [JsonProperty("account_id")]
         public long AccountId { get; private set; }
 
         /// <summary>
-        /// The application ID that initiates the JS session
+        /// Application ID that initiates the JS session
         /// </summary>
         [JsonProperty("application_id")]
         public long ApplicationId { get; private set; }
 
         /// <summary>
-        /// The user ID that initiates the JS session
+        /// User ID that initiates the JS session
         /// </summary>
         [JsonProperty("user_id")]
         public long UserId { get; private set; }
 
         /// <summary>
-        /// The start date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
+        /// Start date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("start_date")]
         public DateTime StartDate { get; private set; }
 
         /// <summary>
-        /// The entire JS session duration in seconds. The session can contain multiple calls
+        /// Entire JS session duration in seconds. The session can contain multiple calls
         /// </summary>
         [JsonProperty("duration")]
         public long? Duration { get; private set; }
 
         /// <summary>
-        /// The initiator IP address
+        /// Initiator's IP address
         /// </summary>
         [JsonProperty("initiator_address")]
         public string InitiatorAddress { get; private set; }
 
         /// <summary>
-        /// The media server IP address
+        /// Media server IP address
         /// </summary>
         [JsonProperty("media_server_address")]
         public string MediaServerAddress { get; private set; }
 
         /// <summary>
-        /// The link to the session log. The log retention policy is 1 month, after that time this field clears. If you have issues accessing the log file, check if the application has "Secure storage of applications and logs" feature enabled. In this case, you need to <a href='/docs/guides/managementapi/secureobjects'>authorize</a>.
+        /// Link to the session log. The log retention policy is 1 month, after that time this field clears. If you have issues accessing the log file, check if the application has "Secure storage of applications and logs" feature enabled. In this case, you need to <a href='/docs/guides/managementapi/secureobjects'>authorize</a>.
         /// </summary>
         [JsonProperty("log_file_url")]
         public string LogFileUrl { get; private set; }

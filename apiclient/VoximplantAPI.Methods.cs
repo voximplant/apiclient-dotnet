@@ -675,9 +675,9 @@ namespace Voximplant.API {
         /// <param name="numAttempts">Number of attempts. Minimum is <b>1</b>, maximum is <b>5</b></param>
         /// <param name="name">File name, up to 255 characters and cannot contain the '/' and '\' symbols</param>
         /// <param name="fileContent">Send as "body" part of the HTTP request or as multiform. The sending "file_content" via URL is at its own risk because the network devices tend to drop HTTP requests with large headers</param>
-        /// <param name="intervalSeconds">Interval between call attempts in seconds. The default is 0</param>
-        /// <param name="encoding">Encoding file. The default is UTF-8</param>
-        /// <param name="delimiter">Separator values. The default is ';'</param>
+        /// <param name="intervalSeconds">Interval between call attempts in seconds. The default value is 0</param>
+        /// <param name="encoding">Encoding file. The default value is UTF-8</param>
+        /// <param name="delimiter">Separator values. The default value is ';'</param>
         /// <param name="escape">Escape character for parsing csv</param>
         /// <param name="referenceIp">Specifies the IP from the geolocation of the call list subscribers. It allows selecting the nearest server for serving subscribers</param>
         /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
@@ -710,9 +710,9 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="fileContent">Send as request body or multiform</param>
         /// <param name="listId">The call list ID</param>
-        /// <param name="encoding">Encoding file. The default is UTF-8</param>
+        /// <param name="encoding">Encoding file. The default value is UTF-8</param>
         /// <param name="escape">Escape character for parsing csv</param>
-        /// <param name="delimiter">Separator values. The default is ';'</param>
+        /// <param name="delimiter">Separator values. The default value is ';'</param>
         public async Task<AppendToCallListResponse> AppendToCallList(Stream fileContent, long? listId = null, string encoding = null, string escape = null, string delimiter = null)
         {
             var passedArgs = new List<string>();
@@ -736,6 +736,41 @@ namespace Voximplant.API {
             if (delimiter != null)
                 args["delimiter"] = delimiter;
             return await PerformRequest<AppendToCallListResponse>("AppendToCallList", args);
+}
+        /// <summary>
+        /// Edits the specified call list by its ID.
+        /// </summary>
+        /// <param name="listId">Call list ID. If the ID is non existing, the 251 error returns</param>
+        /// <param name="intervalSeconds">Minimum interval between call attempts. Cannot be a negative value</param>
+        /// <param name="numAttempts">Maximum call attempt number. Cannot be less than 1</param>
+        /// <param name="maxSimultaneous">Maximum simultaneous call attempts for this call list. Cannot be less than 1</param>
+        /// <param name="ipAddress">IP address in the `Inet4Address` format</param>
+        /// <param name="name">Call list name. Cannot be bigger than 255 characters, cannot contain slash symbol</param>
+        /// <param name="priority">Call list's priority among other call list. The lower the value, the higher is the call list's priority</param>
+        /// <param name="startAt">Time when the call list should start in the `yyyy-MM-dd HH:mm:ss` format</param>
+        /// <param name="serverLocation">Location of the server processing the call list. If the ID is non existing, the 496 error returns: The 'server_location' parameter is invalid.</param>
+        public async Task<EditCallListResponse> EditCallList(long listId, long? intervalSeconds = null, long? numAttempts = null, long? maxSimultaneous = null, string ipAddress = null, string name = null, long? priority = null, string startAt = null, string serverLocation = null)
+        {
+            var args = new Dictionary<string, object>();
+
+            args["list_id"] = listId.ToString();
+            if (intervalSeconds.HasValue)
+                args["interval_seconds"] = intervalSeconds.Value.ToString();
+            if (numAttempts.HasValue)
+                args["num_attempts"] = numAttempts.Value.ToString();
+            if (maxSimultaneous.HasValue)
+                args["max_simultaneous"] = maxSimultaneous.Value.ToString();
+            if (ipAddress != null)
+                args["ip_address"] = ipAddress;
+            if (name != null)
+                args["name"] = name;
+            if (priority.HasValue)
+                args["priority"] = priority.Value.ToString();
+            if (startAt != null)
+                args["start_at"] = startAt;
+            if (serverLocation != null)
+                args["server_location"] = serverLocation;
+            return await PerformRequest<EditCallListResponse>("EditCallList", args);
 }
         /// <summary>
         /// Deletes an existing call list by its ID.
@@ -802,7 +837,7 @@ namespace Voximplant.API {
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="output">The output format. The following values available: **json**, **csv**, **xls**. The default value is **csv**</param>
         /// <param name="encoding">Encoding of the output file. Default UTF-8</param>
-        /// <param name="delimiter">Separator values. The default is ';'</param>
+        /// <param name="delimiter">Separator values. The default value is ';'</param>
         public async Task<GetCallListDetailsResponse> GetCallListDetails(long listId, long? count = null, long? offset = null, string output = null, string encoding = null, string delimiter = null)
         {
             var args = new Dictionary<string, object>();
@@ -891,7 +926,7 @@ namespace Voximplant.API {
             return await PerformRequest<RecoverCallListResponse>("RecoverCallList", args);
 }
         /// <summary>
-        /// Adds a new scenario to the <a href="https://voximplant.com/docs/gettingstarted/basicconcepts/scenarios#shared-scenarios">Shared</a> folder, so the scenario is available in all the existing applications. Please use the POST method.
+        /// Adds a new scenario to the <a href="https://voximplant.com/docs/gettingstarted/basicconcepts/scenarios#shared-scenarios">Shared</a> folder, so the scenario is available in all the existing applications. Please use the POST method.<br><br>When adding a scenario to the Shared folder, the `application_id` and `application_name` parameters should not be provided.
         /// </summary>
         /// <param name="scenarioName">The scenario name. The length must be less than 30</param>
         /// <param name="scenarioScript">The scenario text. Use the application/x-www-form-urlencoded content type with UTF-8 encoding. The length must be less than 128 KB</param>
@@ -1041,10 +1076,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits the scenario. You can edit the scenario's name and body. Please use the POST method.
         /// </summary>
-        /// <param name="scenarioId">The scenario ID</param>
-        /// <param name="requiredScenarioName">The name of the scenario to edit, can be used instead of <b>scenario_id</b></param>
-        /// <param name="scenarioName">The new scenario name. The length must be less than 30</param>
-        /// <param name="scenarioScript">The new scenario text. Use the application/x-www-form-urlencoded content type with UTF-8 encoding. The length must be less than 128 KB</param>
+        /// <param name="scenarioId">Scenario ID</param>
+        /// <param name="requiredScenarioName">Name of the scenario to edit, can be used instead of <b>scenario_id</b></param>
+        /// <param name="scenarioName">New scenario name. The length must be less than 30</param>
+        /// <param name="scenarioScript">New scenario text. Use the application/x-www-form-urlencoded content type with UTF-8 encoding. The length must be less than 128 KB</param>
         public async Task<SetScenarioInfoResponse> SetScenarioInfo(long? scenarioId = null, string requiredScenarioName = null, string scenarioName = null, string scenarioScript = null)
         {
             var passedArgs = new List<string>();
@@ -2592,7 +2627,7 @@ namespace Voximplant.API {
             return await PerformRequest<IsAccountPhoneNumberResponse>("IsAccountPhoneNumber", args);
 }
         /// <summary>
-        /// Gets the asyncronous report regarding purchaced phone numbers.
+        /// Gets the asynchronous report regarding purchased phone numbers.
         /// </summary>
         /// <param name="withHeader">Whether to get a CSV file with the column names</param>
         public async Task<GetPhoneNumbersAsyncResponse> GetPhoneNumbersAsync(bool? withHeader = null)
@@ -2731,7 +2766,7 @@ namespace Voximplant.API {
         /// Activates the CallerID by the verification code.
         /// </summary>
         /// <param name="verificationCode">The verification code, see the VerifyCallerID function</param>
-        /// <param name="calleridId">The id of the callerID object</param>
+        /// <param name="calleridId">ID of the callerID object</param>
         /// <param name="calleridNumber">The callerID number that can be used instead of <b>callerid_id</b></param>
         public async Task<ActivateCallerIDResponse> ActivateCallerID(string verificationCode, long? calleridId = null, string calleridNumber = null)
         {
@@ -2758,7 +2793,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes the CallerID. Note: you cannot delete a CID permanently (the antispam defence).
         /// </summary>
-        /// <param name="calleridId">The id of the callerID object</param>
+        /// <param name="calleridId">ID of the callerID object</param>
         /// <param name="calleridNumber">The callerID number that can be used instead of <b>callerid_id</b></param>
         public async Task<DelCallerIDResponse> DelCallerID(long? calleridId = null, string calleridNumber = null)
         {
@@ -2784,7 +2819,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the account callerIDs.
         /// </summary>
-        /// <param name="calleridId">The id of the callerID object to filter</param>
+        /// <param name="calleridId">ID of the callerID object to filter</param>
         /// <param name="calleridNumber">The phone number to filter</param>
         /// <param name="active">Whether the account is active to filter</param>
         /// <param name="orderBy">The following values are available: 'caller_number' (ascent order), 'verified_until' (ascent order)</param>
@@ -2811,7 +2846,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets a verification code via phone call to the **callerid_number**.
         /// </summary>
-        /// <param name="calleridId">The id of the callerID object</param>
+        /// <param name="calleridId">ID of the callerID object</param>
         /// <param name="calleridNumber">The callerID number that can be used instead of <b>callerid_id</b></param>
         public async Task<VerifyCallerIDResponse> VerifyCallerID(long? calleridId = null, string calleridNumber = null)
         {
@@ -3487,7 +3522,7 @@ namespace Voximplant.API {
             return await PerformRequest<SQ_SetAgentCustomStatusMappingResponse>("SQ_SetAgentCustomStatusMapping", args);
 }
         /// <summary>
-        /// Returns the mapping list of SQ statuses and custom statuses. SQ statuses are returned whether or not they have mappings to custom statuses.
+        /// Returns the mapping list of SQ statuses and custom statuses. SQ statuses are returned whether they have mappings to custom statuses.
         /// </summary>
         /// <param name="applicationId">Application ID</param>
         public async Task<SQ_GetAgentCustomStatusMappingResponse> SQ_GetAgentCustomStatusMapping(long? applicationId = null)
@@ -4462,8 +4497,8 @@ namespace Voximplant.API {
         /// <param name="pushCredentialId">The push credentials id</param>
         /// <param name="pushProviderName">The push provider name. The possible values are APPLE, APPLE_VOIP, GOOGLE, HUAWEI</param>
         /// <param name="pushProviderId">The push provider id. Can be used instead of <b>push_provider_name</b>. The possible values are: 1 — APPLE, 2 — GOOGLE, 3 — APPLE_VOIP, 5 — HUAWEI.</param>
-        /// <param name="applicationName">The name of the bound application</param>
-        /// <param name="applicationId">The id of the bound application</param>
+        /// <param name="applicationName">Name of the bound application</param>
+        /// <param name="applicationId">ID of the bound application</param>
         /// <param name="withCert">Whether to get the user's certificate</param>
         public async Task<GetPushCredentialResponse> GetPushCredential(long? pushCredentialId = null, string pushProviderName = null, long? pushProviderId = null, string applicationName = null, long? applicationId = null, bool? withCert = null)
         {
@@ -4545,9 +4580,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets Dialogflow keys.
         /// </summary>
-        /// <param name="dialogflowKeyId">The Dialogflow key's ID</param>
-        /// <param name="applicationName">The name of the bound application</param>
-        /// <param name="applicationId">The id of the bound application</param>
+        /// <param name="dialogflowKeyId">Dialogflow key's ID</param>
+        /// <param name="applicationName">Name of the bound application</param>
+        /// <param name="applicationId">ID of the bound application</param>
         public async Task<GetDialogflowKeysResponse> GetDialogflowKeys(long? dialogflowKeyId = null, string applicationName = null, long? applicationId = null)
         {
             var args = new Dictionary<string, object>();
@@ -5067,7 +5102,7 @@ namespace Voximplant.API {
             return await PerformRequest<GetKeyValueKeysResponse>("GetKeyValueKeys", args);
 }
         /// <summary>
-        /// Gets all invoices of the specified USD or EUR account.
+        /// Gets all invoices for the specified USD or EUR account.
         /// </summary>
         /// <param name="count">Number of invoices to show per page. Default value is 20</param>
         /// <param name="offset">Number of invoices to skip (e.g. if you set count = 20 and offset = 0 the first time, the next time, offset has to be equal to 20 to skip the items shown earlier). Default value is 0</param>

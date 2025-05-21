@@ -67,25 +67,25 @@ namespace Voximplant.API.Response {
         public bool AutoCharge { get; private set; }
 
         /// <summary>
-        /// The id of the bound application
+        /// ID of the bound application
         /// </summary>
         [JsonProperty("application_id")]
         public long? ApplicationId { get; private set; }
 
         /// <summary>
-        /// The name of the bound application
+        /// Name of the bound application
         /// </summary>
         [JsonProperty("application_name")]
         public string ApplicationName { get; private set; }
 
         /// <summary>
-        /// The id of the bound rule
+        /// ID of the bound rule
         /// </summary>
         [JsonProperty("rule_id")]
         public long? RuleId { get; private set; }
 
         /// <summary>
-        /// The name of the bound rule
+        /// Name of the bound rule
         /// </summary>
         [JsonProperty("rule_name")]
         public string RuleName { get; private set; }
