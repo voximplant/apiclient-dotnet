@@ -283,32 +283,6 @@ namespace Voximplant.API {
             return await PerformRequest<GetMoneyAmountToChargeResponse>("GetMoneyAmountToCharge", args);
 }
         /// <summary>
-        /// Charges the account in the manual mode. You should call the ChargeAccount function to charge the subscriptions having the auto_charge=false.
-        /// </summary>
-        /// <param name="phoneId">The phone ID list separated by semicolons (;). Use the 'all' value to select all phone ids. You should specify the phones having the auto_charge=false</param>
-        /// <param name="phoneNumber">The phone number list separated by semicolons (;). Use the 'all' value to select all phone numbers. Can be used instead of <b>phone_id</b>. You should specify the phones having the auto_charge=false</param>
-        public async Task<ChargeAccountResponse> ChargeAccount(string phoneId = null, string phoneNumber = null)
-        {
-            var passedArgs = new List<string>();
-        
-            if (phoneId != null)
-                passedArgs.Add("phoneId");
-            if (phoneNumber != null)
-                passedArgs.Add("phoneNumber");
-            if (passedArgs.Count > 1)
-                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into ChargeAccount");
-            if (passedArgs.Count == 0)
-                throw new VoximplantException("None of phoneId, phoneNumber passed into ChargeAccount");
-    
-            var args = new Dictionary<string, object>();
-
-            if (phoneId != null)
-                args["phone_id"] = phoneId;
-            if (phoneNumber != null)
-                args["phone_number"] = phoneNumber;
-            return await PerformRequest<ChargeAccountResponse>("ChargeAccount", args);
-}
-        /// <summary>
         /// Configures the account's plan.<br><br>Please note that when you change the billing plan, we reserve the subscription fee and taxes for the upcoming month. Read more in the <a href='/docs/gettingstarted/billing'>Billing</a> page.
         /// </summary>
         /// <param name="planType">The plan type to config. The possible values are IM, MAU</param>
@@ -3712,7 +3686,7 @@ namespace Voximplant.API {
             return await PerformRequest<BindSkillResponse>("BindSkill", args);
 }
         /// <summary>
-        /// Gets the account documents and the verification states.
+        /// Gets the account documents and the verification states.<br><br>This method will be deprecated in the next versions. We recommend to use the [GetAccountVerifications](/docs/references/httpapi/accounts#getaccountverifications) method to get all the verifications and statuses for the account.
         /// </summary>
         /// <param name="withDetails">Whether to view the uploaded document statuses. (The flag is ignored with the child_account_id=all)</param>
         /// <param name="verificationName">The required account verification name to filter</param>
@@ -3740,6 +3714,17 @@ namespace Voximplant.API {
             if (childrenVerificationsOnly.HasValue)
                 args["children_verifications_only"] = childrenVerificationsOnly.Value ? "1" : "0";
             return await PerformRequest<GetAccountDocumentsResponse>("GetAccountDocuments", args);
+}
+        /// <summary>
+        /// Gets all RU verifications for the specified account.
+        /// </summary>
+        /// <param name="accountId">Account ID to check verifications for</param>
+        public async Task<GetAccountVerificationsResponse> GetAccountVerifications(long accountId)
+        {
+            var args = new Dictionary<string, object>();
+
+            args["account_id"] = accountId.ToString();
+            return await PerformRequest<GetAccountVerificationsResponse>("GetAccountVerifications", args);
 }
         /// <summary>
         /// Adds a new admin user into the specified parent or child account.
@@ -5003,10 +4988,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Creates or updates a key-value pair. If an existing key is passed, the method returns the existing item and changes the value if needed. The keys should be unique within a Voximplant application.
         /// </summary>
-        /// <param name="key">Key, up to 200 characters. A key can contain a namespace that is written before the ':' symbol, for example, test:1234. Thus, namespace 'test' can be used as a pattern in the [GetKeyValueItems](/docs/references/httpapi/keyvaluestorage#getkeyvalueitems) and [GetKeyValueKeys](/docs/references/httpapi/keyvaluestorage#getkeyvaluekeys) methods to find the keys with the same namespace</param>
+        /// <param name="key">Key, up to 200 characters. A key can contain a namespace that is written before the ':' symbol, for example, test:1234. Thus, namespace 'test' can be used as a pattern in the [GetKeyValueItems](/docs/references/httpapi/keyvaluestorage#getkeyvalueitems) and [GetKeyValueKeys](/docs/references/httpapi/keyvaluestorage#getkeyvaluekeys) methods to find the keys with the same namespace.<br><br>The key should match the following regular expression: `^[a-zA-Z0-9а-яА-ЯёЁ_\-:;.#+]*$`</param>
         /// <param name="value">Value for the specified key, up to 2000 characters</param>
-        /// <param name="applicationId">The application ID</param>
-        /// <param name="applicationName">The application name</param>
+        /// <param name="applicationId">Application ID</param>
+        /// <param name="applicationName">Application name</param>
         /// <param name="ttl">Key expiry time in seconds. The value is in range of 0..7,776,000 (90 days), the default value is 30 days (2,592,000 seconds). The TTL is converted to an **expires_at** Unix timestamp field as part of the storage object. Note that one of the two parameters (ttl or expires_at) must be set</param>
         /// <param name="expiresAt">Expiration date based on **ttl** (timestamp without milliseconds). Note that one of the two parameters (ttl or expires_at) must be set</param>
         public async Task<SetKeyValueItemResponse> SetKeyValueItem(string key, string value, long applicationId, string applicationName = null, long? ttl = null, long? expiresAt = null)
@@ -5203,6 +5188,7 @@ namespace Voximplant.API {
         /// <param name="applicationName">Name of the application to bind to. Can be used instead of <b>application_id</b></param>
         /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". The default value is **call_agent_selection**</param>
         /// <param name="imTaskSelection">IM type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values. The default value is **call_task_selection**</param>
+        /// <param name="holdCallsIfInactiveAgents">Whether to keep the call task in the queue if all agents are in the DND/BANNED/OFFLINE statuses.</param>
         /// <param name="description">Comment, up to 200 characters</param>
         /// <param name="callMaxWaitingTime">Maximum time in minutes that a CALL-type request can remain in the queue without being assigned to an agent. Specify either this parameter or `call_max_waiting_time_in_seconds`. Specifying both parameters simultaniously leads to an error</param>
         /// <param name="imMaxWaitingTime">Maximum time in minutes that an IM-type request can remain in the queue without being assigned to an agent. Specify either this parameter or `im_max_waiting_time_in_seconds`. Specifying both parameters simultaniously leads to an error</param>
@@ -5211,7 +5197,7 @@ namespace Voximplant.API {
         /// <param name="priority">The queue's priority from 1 to 100</param>
         /// <param name="callMaxWaitingTimeInSeconds">Maximum call waiting time in seconds. Specify either this parameter or `call_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
         /// <param name="imMaxWaitingTimeInSeconds">Maximum chat message waiting time in seconds. Specify either this parameter or `im_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
-        public async Task<SQ_AddQueueResponse> SQ_AddQueue(long applicationId, string sqQueueName, string callAgentSelection, string callTaskSelection, string applicationName = null, string imAgentSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
+        public async Task<SQ_AddQueueResponse> SQ_AddQueue(long applicationId, string sqQueueName, string callAgentSelection, string callTaskSelection, string applicationName = null, string imAgentSelection = null, string imTaskSelection = null, bool? holdCallsIfInactiveAgents = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
         {
             var args = new Dictionary<string, object>();
 
@@ -5225,6 +5211,8 @@ namespace Voximplant.API {
                 args["im_agent_selection"] = imAgentSelection;
             if (imTaskSelection != null)
                 args["im_task_selection"] = imTaskSelection;
+            if (holdCallsIfInactiveAgents.HasValue)
+                args["hold_calls_if_inactive_agents"] = holdCallsIfInactiveAgents.Value ? "1" : "0";
             if (description != null)
                 args["description"] = description;
             if (callMaxWaitingTime.HasValue)
@@ -5250,6 +5238,7 @@ namespace Voximplant.API {
         /// <param name="sqQueueId">ID of the SmartQueue to search for</param>
         /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueName">Name of the SmartQueue to search for. Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="holdCallsIfInactiveAgents">Whether to keep the call task in the queue if all agents are in the DND/BANNED/OFFLINE statuses.</param>
         /// <param name="newSqQueueName">New SmartQueue name within the application, up to 100 characters</param>
         /// <param name="callAgentSelection">Agent selection strategy for calls. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME"</param>
         /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". The default value is **call_agent_selection**</param>
@@ -5263,7 +5252,7 @@ namespace Voximplant.API {
         /// <param name="priority">The queue's priority from 1 to 100</param>
         /// <param name="callMaxWaitingTimeInSeconds">Maximum call waiting time in seconds. Specify either this parameter or `call_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
         /// <param name="imMaxWaitingTimeInSeconds">Maximum chat message waiting time in seconds. Specify either this parameter or `im_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
-        public async Task<SQ_SetQueueInfoResponse> SQ_SetQueueInfo(long applicationId, long sqQueueId, string applicationName = null, string sqQueueName = null, string newSqQueueName = null, string callAgentSelection = null, string imAgentSelection = null, string callTaskSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
+        public async Task<SQ_SetQueueInfoResponse> SQ_SetQueueInfo(long applicationId, long sqQueueId, string applicationName = null, string sqQueueName = null, bool? holdCallsIfInactiveAgents = null, string newSqQueueName = null, string callAgentSelection = null, string imAgentSelection = null, string callTaskSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
         {
             var args = new Dictionary<string, object>();
 
@@ -5273,6 +5262,8 @@ namespace Voximplant.API {
                 args["application_name"] = applicationName;
             if (sqQueueName != null)
                 args["sq_queue_name"] = sqQueueName;
+            if (holdCallsIfInactiveAgents.HasValue)
+                args["hold_calls_if_inactive_agents"] = holdCallsIfInactiveAgents.Value ? "1" : "0";
             if (newSqQueueName != null)
                 args["new_sq_queue_name"] = newSqQueueName;
             if (callAgentSelection != null)

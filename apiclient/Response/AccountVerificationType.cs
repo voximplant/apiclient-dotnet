@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Voximplant.API.Response {
 
     /// <summary>
-    /// The account verification info. The [AccountVerifications] field.
+    /// The account verification info. The [AccountVerificationsType] field.
     /// </summary>
     public class AccountVerificationType
     {

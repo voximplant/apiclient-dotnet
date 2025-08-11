@@ -9,6 +9,7 @@ namespace Voximplant.API
         public ITraceWriter TraceWriter { get; set; }
         private string _apiHost;
         private string _keyFile;
+        private long _accountId;
 
         public ClientConfiguration()
         {
@@ -27,6 +28,12 @@ namespace Voximplant.API
                 ? Environment.GetEnvironmentVariable("VOXIMPLANT_CREDENTIALS")
                 : _keyFile;
             set => _keyFile = value;
+        }
+        
+        public long AccountId
+        {
+            get => _accountId;
+            set => _accountId = value;
         }
     }
 }

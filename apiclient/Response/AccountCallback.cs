@@ -233,10 +233,16 @@ namespace Voximplant.API.Response {
         public TranscriptionCompleteCallback TranscriptionComplete { get; private set; }
 
         /// <summary>
-        /// Received when an incoming SMS is gotten
+        /// Received when an incoming SMS is received
         /// </summary>
         [JsonProperty("sms_inbound")]
         public InboundSmsCallback SmsInbound { get; private set; }
+
+        /// <summary>
+        /// Received when a rented phone number changed its activation status
+        /// </summary>
+        [JsonProperty("phone_number_activation_status_changed")]
+        public PhoneNumberActivationStatusChangedCallback PhoneNumberActivationStatusChanged { get; private set; }
 
         /// <summary>
         /// Received for the accounts for which the confirmation documents waiting period expires in 20/15/10/5/1 day(s)

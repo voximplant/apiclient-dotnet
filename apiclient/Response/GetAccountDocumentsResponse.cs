@@ -8,10 +8,10 @@ namespace Voximplant.API.Response {
     public class GetAccountDocumentsResponse : BaseResponse
     {
         /// <summary>
-        /// The account verifications
+        /// The account documents with verification states
         /// </summary>
         [JsonProperty("result")]
-        public AccountVerifications[] Result { get; private set; }
+        public AccountDocumentsType[] Result { get; private set; }
 
     }
 }

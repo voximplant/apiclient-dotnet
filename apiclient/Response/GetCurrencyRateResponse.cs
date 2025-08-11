@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
         /// The exchange rates
         /// </summary>
         [JsonProperty("result")]
-        public ExchangeRates Result { get; private set; }
+        public ExchangeRatesType Result { get; private set; }
 
     }
 }

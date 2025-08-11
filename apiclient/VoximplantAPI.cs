@@ -79,8 +79,14 @@ namespace Voximplant.API
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var credentials = new SigningCredentials(_credentials.PrivateKey, SecurityAlgorithms.RsaSha256);
+            
+            var accountId = _credentials.AccountId.ToString();
+            if (_configuration.AccountId != 0)
+            {
+                accountId = _configuration.AccountId.ToString();
+            }
 
-            var token = tokenHandler.CreateJwtSecurityToken(issuer: _credentials.AccountId.ToString(),
+            var token = tokenHandler.CreateJwtSecurityToken(issuer: accountId,
                 // issuedAt:DateTime.Now,
                 // expires:DateTime.Now,
                 signingCredentials: credentials);
