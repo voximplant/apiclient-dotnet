@@ -2726,6 +2726,146 @@ namespace Voximplant.API {
             return await PerformRequest<GetActualPhoneNumberRegionResponse>("GetActualPhoneNumberRegion", args);
 }
         /// <summary>
+        /// Adds a new WhatsApp Business phone number.
+        /// </summary>
+        /// <param name="wabPhoneNumber">WhatsApp Business phone number</param>
+        /// <param name="voicePassword">WhatsApp Business SIP password</param>
+        /// <param name="description">WhatsApp Business phone number description</param>
+        /// <param name="applicationId">Bound application ID</param>
+        /// <param name="applicationName">Bound application name that can be used instead of <b>application_id</b></param>
+        /// <param name="ruleId">Bound rule ID</param>
+        /// <param name="ruleName">Bound rule name that can be used instead of <b>rule_id</b></param>
+        public async Task<AddWABPhoneNumberResponse> AddWABPhoneNumber(string wabPhoneNumber, string voicePassword, string description = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into AddWABPhoneNumber");
+    
+            passedArgs = new List<string>();
+        
+            if (ruleId != null)
+                passedArgs.Add("ruleId");
+            if (ruleName != null)
+                passedArgs.Add("ruleName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into AddWABPhoneNumber");
+    
+            var args = new Dictionary<string, object>();
+
+            args["wab_phone_number"] = wabPhoneNumber;
+            args["voice_password"] = voicePassword;
+            if (description != null)
+                args["description"] = description;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (ruleId.HasValue)
+                args["rule_id"] = ruleId.Value.ToString();
+            if (ruleName != null)
+                args["rule_name"] = ruleName;
+            return await PerformRequest<AddWABPhoneNumberResponse>("AddWABPhoneNumber", args);
+}
+        /// <summary>
+        /// Deletes a WhatsApp Business phone number.
+        /// </summary>
+        /// <param name="wabPhoneNumber">WhatsApp Business phone number to delete</param>
+        public async Task<DeleteWABPhoneNumberResponse> DeleteWABPhoneNumber(string wabPhoneNumber)
+        {
+            var args = new Dictionary<string, object>();
+
+            args["wab_phone_number"] = wabPhoneNumber;
+            return await PerformRequest<DeleteWABPhoneNumberResponse>("DeleteWABPhoneNumber", args);
+}
+        /// <summary>
+        /// Sets details for the specified WhatsApp Business phone number.
+        /// </summary>
+        /// <param name="wabPhoneNumber">WhatsApp Business phone number to change details for</param>
+        /// <param name="voicePassword">New WhatsApp Business SIP password</param>
+        /// <param name="description">New WhatsApp Business phone number description</param>
+        /// <param name="applicationId">Bound application ID</param>
+        /// <param name="applicationName">Bound application name that can be used instead of <b>application_id</b></param>
+        /// <param name="ruleId">Bound rule ID</param>
+        /// <param name="ruleName">Bound rule name that can be used instead of <b>rule_id</b></param>
+        public async Task<SetWABPhoneNumberInfoResponse> SetWABPhoneNumberInfo(string wabPhoneNumber, string voicePassword = null, string description = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into SetWABPhoneNumberInfo");
+    
+            passedArgs = new List<string>();
+        
+            if (ruleId != null)
+                passedArgs.Add("ruleId");
+            if (ruleName != null)
+                passedArgs.Add("ruleName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into SetWABPhoneNumberInfo");
+    
+            var args = new Dictionary<string, object>();
+
+            args["wab_phone_number"] = wabPhoneNumber;
+            if (voicePassword != null)
+                args["voice_password"] = voicePassword;
+            if (description != null)
+                args["description"] = description;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (ruleId.HasValue)
+                args["rule_id"] = ruleId.Value.ToString();
+            if (ruleName != null)
+                args["rule_name"] = ruleName;
+            return await PerformRequest<SetWABPhoneNumberInfoResponse>("SetWABPhoneNumberInfo", args);
+}
+        /// <summary>
+        /// Gets the account's WhatsApp Business phone numbers.
+        /// </summary>
+        /// <param name="wabPhoneNumber">WhatsApp Business phone number</param>
+        /// <param name="applicationId">Application ID that is bound to the WhatsApp Business phone number</param>
+        /// <param name="applicationName">Bound application name that can be used instead of <b>application_id</b></param>
+        /// <param name="countryCode">Country code filter (2 symbols) for the WhatsApp Business phone number</param>
+        /// <param name="count">Maximum returning records count</param>
+        /// <param name="offset">Number of records to be skipped in the result</param>
+        public async Task<GetWABPhoneNumbersResponse> GetWABPhoneNumbers(string wabPhoneNumber = null, long? applicationId = null, string applicationName = null, string countryCode = null, long? count = null, long? offset = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetWABPhoneNumbers");
+    
+            var args = new Dictionary<string, object>();
+
+            if (wabPhoneNumber != null)
+                args["wab_phone_number"] = wabPhoneNumber;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (countryCode != null)
+                args["country_code"] = countryCode;
+            if (count.HasValue)
+                args["count"] = count.Value.ToString();
+            if (offset.HasValue)
+                args["offset"] = offset.Value.ToString();
+            return await PerformRequest<GetWABPhoneNumbersResponse>("GetWABPhoneNumbers", args);
+}
+        /// <summary>
         /// Adds a new caller ID. Caller ID is the phone that is displayed to the called user. This number can be used for call back.
         /// </summary>
         /// <param name="calleridNumber">The callerID number in E.164 format</param>
