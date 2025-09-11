@@ -17,7 +17,7 @@ namespace Voximplant.API.Response {
         public long AccountDocumentId { get; private set; }
 
         /// <summary>
-        /// The document verification status. The following values are possible: WAITING_CONFIRMATION_DOCS, VERIFIED, REJECTED
+        /// The document verification status. The following values are possible: AWAITING_AGREEMENT_UPLOADING, AWAITING_VERIFICATION, WAITING_FOR_CONFIRMATION_DOCUMENTS, VERIFIED, REJECTED, WAITING_PERIOD_EXPIRED, AWAITING_DOCUMENTS_UPLOADING
         /// </summary>
         [JsonProperty("account_document_status")]
         public string AccountDocumentStatus { get; private set; }

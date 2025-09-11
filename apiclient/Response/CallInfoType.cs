@@ -11,38 +11,44 @@ namespace Voximplant.API.Response {
     public class CallInfoType
     {
         /// <summary>
-        /// The call history ID
+        /// Call's history ID
         /// </summary>
         [JsonProperty("call_id")]
         public long CallId { get; private set; }
 
         /// <summary>
-        /// The start time in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
+        /// Call start time in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("start_time")]
         public DateTime StartTime { get; private set; }
 
         /// <summary>
-        /// The call duration in seconds
+        /// Call forwarding number
+        /// </summary>
+        [JsonProperty("diversion_number")]
+        public string DiversionNumber { get; private set; }
+
+        /// <summary>
+        /// Call duration in seconds
         /// </summary>
         [JsonProperty("duration")]
         public long? Duration { get; private set; }
 
         /// <summary>
-        /// The local number on the platform side
+        /// Local number on the platform side
         /// </summary>
         [JsonProperty("local_number")]
         public string LocalNumber { get; private set; }
 
         /// <summary>
-        /// The remote number on the client side
+        /// Remote number on the client side
         /// </summary>
         [JsonProperty("remote_number")]
         public string RemoteNumber { get; private set; }
 
         /// <summary>
-        /// The type of the remote number, such as PSTN, mobile, user or sip address
+        /// Type of the remote number, e.g., a PSTN, mobile, user or sip address
         /// </summary>
         [JsonProperty("remote_number_type")]
         public string RemoteNumberType { get; private set; }
@@ -60,31 +66,31 @@ namespace Voximplant.API.Response {
         public bool Successful { get; private set; }
 
         /// <summary>
-        /// The transaction ID
+        /// Transaction ID
         /// </summary>
         [JsonProperty("transaction_id")]
         public long TransactionId { get; private set; }
 
         /// <summary>
-        /// The record URL
+        /// Record URL
         /// </summary>
         [JsonProperty("record_url")]
         public string RecordUrl { get; private set; }
 
         /// <summary>
-        /// The media server IP address
+        /// Media server's IP address
         /// </summary>
         [JsonProperty("media_server_address")]
         public string MediaServerAddress { get; private set; }
 
         /// <summary>
-        /// The call cost
+        /// Call's cost
         /// </summary>
         [JsonProperty("cost")]
         public decimal? Cost { get; private set; }
 
         /// <summary>
-        /// The custom data passed to the JS session
+        /// Custom data passed to the JS session
         /// </summary>
         [JsonProperty("custom_data")]
         public string CustomData { get; private set; }
