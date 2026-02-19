@@ -83,6 +83,12 @@ namespace Voximplant.API.Response {
         public AccountDocumentUploadedCallback AccountDocumentUploaded { get; private set; }
 
         /// <summary>
+        /// Received when batch task cancelling has been completed
+        /// </summary>
+        [JsonProperty("batch_task_cancelling_completed")]
+        public BatchTaskCancellingCallback BatchTaskCancellingCompleted { get; private set; }
+
+        /// <summary>
         /// Received when proof of address is uploaded
         /// </summary>
         [JsonProperty("regulation_address_uploaded")]

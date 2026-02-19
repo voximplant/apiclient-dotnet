@@ -17,7 +17,7 @@ namespace Voximplant.API.Response {
         public string AgreementNumber { get; private set; }
 
         /// <summary>
-        /// The agreement date in format: YYYY-MM-DD
+        /// The agreement date in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("agreement_date")]

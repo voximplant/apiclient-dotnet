@@ -17,7 +17,7 @@ namespace Voximplant.API.Response {
         public long AccountDocumentId { get; private set; }
 
         /// <summary>
-        /// The UTC date of the document upload in format: YYYY-MM-DD HH::mm:ss
+        /// The UTC date of the document upload in the following format: YYYY-MM-DD HH::mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("uploaded")]

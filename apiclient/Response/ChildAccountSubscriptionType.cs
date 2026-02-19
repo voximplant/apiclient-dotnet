@@ -35,7 +35,7 @@ namespace Voximplant.API.Response {
         public bool? AutoCharge { get; private set; }
 
         /// <summary>
-        /// The next charge UTC date in format: YYYY-MM-DD
+        /// The next charge UTC date in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("next_renewal")]

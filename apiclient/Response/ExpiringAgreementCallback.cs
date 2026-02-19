@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
     public class ExpiringAgreementCallback
     {
         /// <summary>
-        /// The date of agreement expiration in format: YYYY-MM-DD
+        /// The date of agreement expiration in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("expiration_date")]

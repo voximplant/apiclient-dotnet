@@ -35,7 +35,13 @@ namespace Voximplant.API.Response {
         public string PhoneCountryCode { get; private set; }
 
         /// <summary>
-        /// The next renewal date in format: YYYY-MM-DD
+        /// Phone number activation status
+        /// </summary>
+        [JsonProperty("activation_status")]
+        public string ActivationStatus { get; private set; }
+
+        /// <summary>
+        /// The next renewal date in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("phone_next_renewal")]
@@ -109,7 +115,7 @@ namespace Voximplant.API.Response {
         public string VerificationStatus { get; private set; }
 
         /// <summary>
-        /// Unverified phone hold until the date in format: YYYY-MM-DD (if the account verification is required). The number is detached on that day automatically!
+        /// Unverified phone hold until the date in the following format: YYYY-MM-DD (if the account verification is required). The number is detached on that day automatically!
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("unverified_hold_until")]

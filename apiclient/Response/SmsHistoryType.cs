@@ -47,7 +47,7 @@ namespace Voximplant.API.Response {
         public decimal Cost { get; private set; }
 
         /// <summary>
-        /// Status of the message. 1 - Success, 2 - Error
+        /// Status of the message. The possible values are: 1 — Success, 2 — Error, 3 — Waiting
         /// </summary>
         [JsonProperty("status_id")]
         public string StatusId { get; private set; }

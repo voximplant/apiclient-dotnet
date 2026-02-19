@@ -14,13 +14,13 @@ namespace Voximplant.API.Response {
         public CallListType[] Result { get; private set; }
 
         /// <summary>
-        /// The returned call list count
+        /// Returned call list count
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }
 
         /// <summary>
-        /// The total found call list count
+        /// Total found call list count
         /// </summary>
         [JsonProperty("total_count")]
         public long TotalCount { get; private set; }

@@ -17,7 +17,7 @@ namespace Voximplant.API.Response {
         public string InvoiceNumber { get; private set; }
 
         /// <summary>
-        /// The invoice date in format: YYYY-MM-DD
+        /// The invoice date in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("invoice_date")]
@@ -30,14 +30,14 @@ namespace Voximplant.API.Response {
         public bool IsPostPayment { get; private set; }
 
         /// <summary>
-        /// The from date in format: YYYY-MM-DD
+        /// The from date in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("from_date")]
         public DateTime? FromDate { get; private set; }
 
         /// <summary>
-        /// The to date in format: YYYY-MM-DD
+        /// The to date in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("to_date")]

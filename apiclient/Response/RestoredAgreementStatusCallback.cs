@@ -17,7 +17,7 @@ namespace Voximplant.API.Response {
         public long DocumentId { get; private set; }
 
         /// <summary>
-        /// The new date of agreement expiration in format: YYYY-MM-DD
+        /// The new date of agreement expiration in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("expiration_date")]

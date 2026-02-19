@@ -71,7 +71,7 @@ namespace Voximplant.API.Response {
         public bool Deactivated { get; private set; }
 
         /// <summary>
-        /// The next subscription renewal date in format: YYYY-MM-DD
+        /// The next subscription renewal date in the following format: YYYY-MM-DD
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("next_subscription_renewal")]

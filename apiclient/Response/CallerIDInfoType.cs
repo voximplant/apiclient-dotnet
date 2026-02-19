@@ -41,7 +41,7 @@ namespace Voximplant.API.Response {
         public long? VerificationCallAttemptsLeft { get; private set; }
 
         /// <summary>
-        /// The verification ending date in format: YYYY-MM-DD (for the verified callerID)
+        /// The verification ending date in the following format: YYYY-MM-DD (for the verified callerID)
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("verified_until")]

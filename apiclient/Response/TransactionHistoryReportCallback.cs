@@ -23,7 +23,7 @@ namespace Voximplant.API.Response {
         public bool Success { get; private set; }
 
         /// <summary>
-        /// The UTC order date in format: YYYY-MM-DD HH::mm:ss
+        /// The UTC order date in the following format: YYYY-MM-DD HH::mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
         [JsonProperty("order_date")]

@@ -8,7 +8,7 @@ namespace Voximplant.API.Response {
     public class RecoverCallListResponse : BaseResponse
     {
         /// <summary>
-        /// true
+        /// Whether the request completed successfully
         /// </summary>
         [JsonProperty("result")]
         public bool Result { get; private set; }

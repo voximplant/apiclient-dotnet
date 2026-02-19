@@ -72,5 +72,11 @@ namespace Voximplant.API.Response {
         [JsonProperty("status")]
         public string Status { get; private set; }
 
+        /// <summary>
+        /// Whether the first or repeated calls have priority.
+        /// </summary>
+        [JsonProperty("task_priority_strategy")]
+        public string TaskPriorityStrategy { get; private set; }
+
     }
 }

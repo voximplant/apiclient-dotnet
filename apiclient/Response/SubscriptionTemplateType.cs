@@ -19,8 +19,8 @@ namespace Voximplant.API.Response {
         /// <summary>
         /// ID of the original currency
         /// </summary>
-        [JsonProperty("currency_id")]
-        public long CurrencyId { get; private set; }
+        [JsonProperty("currency")]
+        public long Currency { get; private set; }
 
         /// <summary>
         /// The subscription installation price (without the first monthly fee)

@@ -19,12 +19,14 @@ namespace apiclient.samples
         [Fact]
         public void GetChildrenAccounts()
         {
-            // Get the all children.
+            // Get the specified children.
 
             try {
                 var voximplant = new VoximplantAPI();
 
-                var result = voximplant.GetChildrenAccounts().Result;
+                var result = voximplant.GetChildrenAccounts(
+                    childAccountId: "414877;464478"
+                ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");
 

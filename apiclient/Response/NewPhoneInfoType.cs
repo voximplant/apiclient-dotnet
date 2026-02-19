@@ -23,13 +23,13 @@ namespace Voximplant.API.Response {
         public string PhoneNumber { get; private set; }
 
         /// <summary>
-        /// The phone monthly charge
+        /// The phone monthly fee. It consists of `phone_price` and `phone_tax_reserve`
         /// </summary>
         [JsonProperty("phone_price")]
         public decimal PhonePrice { get; private set; }
 
         /// <summary>
-        /// The phone installation price (without the first monthly fee)
+        /// The phone installation price (without the first monthly fee). It consists of `phone_installation_price` and `phone_installation_tax_reserve`
         /// </summary>
         [JsonProperty("phone_installation_price")]
         public decimal PhoneInstallationPrice { get; private set; }
@@ -59,13 +59,13 @@ namespace Voximplant.API.Response {
         public string PhoneRegionName { get; private set; }
 
         /// <summary>
-        /// The phone number installation tax reserve
+        /// The phone number installation tax reserve. The phone installation price consists of `phone_installation_price` and `phone_installation_tax_reserve`
         /// </summary>
         [JsonProperty("phone_installation_tax_reserve")]
         public long PhoneInstallationTaxReserve { get; private set; }
 
         /// <summary>
-        /// The phone number tax reserve
+        /// The phone number tax reserve. The phone monthly fee consists of `phone_price` and `phone_tax_reserve`
         /// </summary>
         [JsonProperty("phone_tax_reserve")]
         public long PhoneTaxReserve { get; private set; }

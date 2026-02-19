@@ -74,7 +74,7 @@ namespace Voximplant.API.Response {
         public DateTime? LastDownloaded { get; private set; }
 
         /// <summary>
-        /// Store the report until the date in format: YYYY-MM-DD. The report is completed if the field exists
+        /// Store the report until the date in the following format: YYYY-MM-DD. The report is completed if the field exists
         /// </summary>
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty("store_until")]
