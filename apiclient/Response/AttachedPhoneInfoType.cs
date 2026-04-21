@@ -23,7 +23,7 @@ namespace Voximplant.API.Response {
         public string PhoneNumber { get; private set; }
 
         /// <summary>
-        /// The phone monthly charge
+        /// The phone monthly charge in the account's currency
         /// </summary>
         [JsonProperty("phone_price")]
         public decimal PhonePrice { get; private set; }

@@ -180,7 +180,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the resource price.
         /// </summary>
-        /// <param name="resourceType">The resource type list separated by semicolons (;). The possible values are AUDIOHDCONFERENCE, AUDIOHDRECORD, AUDIORECORD, CALLLIST, CALLSESSION, DIALOGFLOW, IM, PSTN_IN_ALASKA, PSTN_IN_GB, PSTN_IN_GEOGRAPHIC, PSTN_IN_GEO_PH, PSTN_IN_RU, PSTN_IN_RU_TOLLFREE, PSTN_INTERNATIONAL, PSTNINTEST, PSTN_IN_TF_AR, PSTN_IN_TF_AT, PSTN_IN_TF_AU, PSTN_IN_TF_BE, PSTN_IN_TF_BR, PSTN_IN_TF_CA, PSTN_IN_TF_CO, PSTN_IN_TF_CY, PSTN_IN_TF_DE, PSTN_IN_TF_DK, PSTN_IN_TF_DO, PSTN_IN_TF_FI, PSTN_IN_TF_FR, PSTN_IN_TF_GB, PSTN_IN_TF_HR, PSTN_IN_TF_HU, PSTN_IN_TF_IL, PSTN_IN_TF_LT, PSTN_IN_TF_PE, PSTN_IN_TF_US, PSTN_IN_US, PSTNOUT, PSTNOUT_EEA, PSTNOUTEMERG, PSTNOUT_KZ, PSTNOUT_LOCAL, PSTN_OUT_LOCAL_RU, RELAYED_TRAFFIC, SIPOUT, SIPOUTVIDEO, SMSINPUT, SMSOUT, SMSOUT_INTERNATIONAL, TRANSCRIPTION, TTS_TEXT_GOOGLE, TTS_YANDEX, USER_LOGON, VIDEOCALL, VIDEORECORD, VOICEMAILDETECTION, VOIPIN, VOIPOUT, VOIPOUTVIDEO, YANDEXASR, ASR, ASR_GOOGLE_ENHANCED</param>
+        /// <param name="resourceType">The resource type list separated by semicolons (;). The possible values are: <ul><li><strong>A2P_SMS_E212</strong> — Service SMS</li><li><strong>ASR</strong> — Speech recognition</li><li><strong>ASR_AWS</strong> — Speech recognition by Amazon</li><li><strong>ASR_DEEPGRAM</strong> — Speech recognition by Deepgram</li><li><strong>ASR_GOOGLE_ENHANCED</strong> — Speech recognition by Google</li><li><strong>ASR_SMARTSPEECH</strong> — Speech recognition by SmartSpeech</li><li><strong>ASR_YANDEX</strong> — Speech recognition by Yandex</li><li><strong>AUDIOHDCONFERENCE</strong> — HD audio conferencing</li><li><strong>AUDIOHDRECORD</strong> — HD audio call recording</li><li><strong>AUDIORECORD</strong> — Audio call recording</li><li><strong>CALLSESSION</strong> — Simultaneous sessions per account</li><li><strong>DIALOGFLOW</strong> — Dialogflow ES</li><li><strong>DIALOGFLOW_CX</strong> — Dialogflow CX</li><li><strong>IM_OVERRUN</strong> — Exceeding instant messages</li><li><strong>KV_STORAGE</strong> — Key-value storage</li><li><strong>MAU_OVERRUN</strong> — Exceeding monthly active users</li><li><strong>NLU</strong> — Avatar requests</li><li><strong>PSTN_IN_ALASKA</strong> — Incoming phone calls to Alaska phone numbers</li><li><strong>PSTN_IN_GB</strong> — Incoming phone calls to United Kingdom phone numbers</li><li><strong>PSTN_IN_GEO_AE</strong> — Incoming geographical phone calls to UAE phone numbers</li><li><strong>PSTN_IN_GEO_AO</strong> — Incoming geographical phone calls to Angola phone numbers</li><li><strong>PSTN_IN_GEO_BH</strong> — Incoming geographical phone calls to Bahrain phone numbers</li><li><strong>PSTN_IN_GEO_BR</strong> — Incoming geographical phone calls to Brazil phone numbers</li><li><strong>PSTN_IN_GEO_CN</strong> — Incoming geographical phone calls to China phone numbers</li><li><strong>PSTN_IN_GEO_EC</strong> — Incoming geographical phone calls to Ecuador phone numbers</li><li><strong>PSTN_IN_GEO_IN</strong> — Incoming geographical phone calls to India phone numbers</li><li><strong>PSTN_IN_GEO_JO</strong> — Incoming geographical phone calls to Jordan phone numbers</li><li><strong>PSTN_IN_GEO_JP</strong> — Incoming geographical phone calls to Japan phone numbers</li><li><strong>PSTN_IN_GEO_KG</strong> — Incoming geographical phone calls to Kyrgyzstan phone numbers</li><li><strong>PSTN_IN_GEO_KH</strong> — Incoming geographical phone calls to Cambodia phone numbers</li><li><strong>PSTN_IN_GEO_MA</strong> — Incoming geographical phone calls to Morocco phone numbers</li><li><strong>PSTN_IN_GEO_NG</strong> — Incoming geographical phone calls to Nigeria phone numbers</li><li><strong>PSTN_IN_GEO_PE</strong> — Incoming geographical phone calls to Peru phone numbers</li><li><strong>PSTN_IN_GEO_PH</strong> — Incoming geographical phone calls to Philippines phone numbers</li><li><strong>PSTN_IN_GEO_PK</strong> — Incoming geographical phone calls to Pakistan phone numbers</li><li><strong>PSTN_IN_GEO_PY</strong> — Incoming geographical phone calls to Paraguay phone numbers</li><li><strong>PSTN_IN_GEO_RS</strong> — Incoming geographical phone calls to Serbia phone numbers</li><li><strong>PSTN_IN_GEO_SA</strong> — Incoming geographical phone calls to Saudi Arabia phone numbers</li><li><strong>PSTN_IN_GEO_UG</strong> — Incoming geographical phone calls to Uganda phone numbers</li><li><strong>PSTN_IN_GEO_UY</strong> — Incoming geographical phone calls to Uruguay phone numbers</li><li><strong>PSTN_IN_GEO_UZ</strong> — Incoming geographical phone calls to Uzbekistan phone numbers</li><li><strong>PSTN_IN_GEO_VN</strong> — Incoming geographical phone calls to Vietnam phone numbers</li><li><strong>PSTN_IN_GEOGRAPHIC</strong> — Incoming geographical phone calls</li><li><strong>PSTN_IN_MOB_AU</strong> — Incoming mobile phone calls to Australia phone numbers</li><li><strong>PSTN_IN_MOB_BD</strong> — Incoming mobile phone calls to Bangladesh phone numbers</li><li><strong>PSTN_IN_MOB_BE</strong> — Incoming mobile phone calls to Belgium phone numbers</li><li><strong>PSTN_IN_MOB_BR</strong> — Incoming mobile phone calls to Brazil phone numbers</li><li><strong>PSTN_IN_MOB_CA</strong> — Incoming mobile phone calls to Canada phone numbers</li><li><strong>PSTN_IN_MOB_CO</strong> — Incoming mobile phone calls to Colombia phone numbers</li><li><strong>PSTN_IN_MOB_DK</strong> — Incoming mobile phone calls to Denmark phone numbers</li><li><strong>PSTN_IN_MOB_EG</strong> — Incoming mobile phone calls to Egypt phone numbers</li><li><strong>PSTN_IN_MOB_FI</strong> — Incoming mobile phone calls to Finland phone numbers</li><li><strong>PSTN_IN_MOB_GB</strong> — Incoming mobile phone calls to United Kingdom phone numbers</li><li><strong>PSTN_IN_MOB_HK</strong> — Incoming mobile phone calls to Hong Kong phone numbers</li><li><strong>PSTN_IN_MOB_ID</strong> — Incoming mobile phone calls to Indonesia phone numbers</li><li><strong>PSTN_IN_MOB_IL</strong> — Incoming mobile phone calls to Israel phone numbers</li><li><strong>PSTN_IN_MOB_IN</strong> — Incoming mobile phone calls to India phone numbers</li><li><strong>PSTN_IN_MOB_KZ</strong> — Incoming mobile phone calls to Kazakhstan phone numbers</li><li><strong>PSTN_IN_MOB_LA</strong> — Incoming mobile phone calls to Laos phone numbers</li><li><strong>PSTN_IN_MOB_LV</strong> — Incoming mobile phone calls to Latvia phone numbers</li><li><strong>PSTN_IN_MOB_MU</strong> — Incoming mobile phone calls to Mauritius phone numbers</li><li><strong>PSTN_IN_MOB_MX</strong> — Incoming mobile phone calls to Mexico phone numbers</li><li><strong>PSTN_IN_MOB_MY</strong> — Incoming mobile phone calls to Malaysia phone numbers</li><li><strong>PSTN_IN_MOB_NI</strong> — Incoming mobile phone calls to Nicaragua phone numbers</li><li><strong>PSTN_IN_MOB_NL</strong> — Incoming mobile phone calls to the Netherlands phone numbers</li><li><strong>PSTN_IN_MOB_NP</strong> — Incoming mobile phone calls to Nepal phone numbers</li><li><strong>PSTN_IN_MOB_PE</strong> — Incoming mobile phone calls to Peru phone numbers</li><li><strong>PSTN_IN_MOB_PL</strong> — Incoming mobile phone calls to Poland phone numbers</li><li><strong>PSTN_IN_MOB_PR</strong> — Incoming mobile phone calls to Puerto Rico phone numbers</li><li><strong>PSTN_IN_MOB_PT</strong> — Incoming mobile phone calls to Portugal phone numbers</li><li><strong>PSTN_IN_MOB_RU</strong> — Incoming mobile phone calls to Russia phone numbers</li><li><strong>PSTN_IN_MOB_SE</strong> — Incoming mobile phone calls to Sweden phone numbers</li><li><strong>PSTN_IN_MOB_US</strong> — Incoming mobile phone calls to the United States phone numbers</li><li><strong>PSTN_IN_NATIONAL_AM</strong> — Incoming national phone calls to Armenia phone numbers</li><li><strong>PSTN_IN_NATIONAL_BO</strong> — Incoming national phone calls to Bolivia phone numbers</li><li><strong>PSTN_IN_NATIONAL_HN</strong> — Incoming national phone calls to Honduras phone numbers</li><li><strong>PSTN_IN_NATIONAL_JM</strong> — Incoming national phone calls to Jamaica phone numbers</li><li><strong>PSTN_IN_RU</strong> — Incoming phone calls to Russia phone numbers</li><li><strong>PSTN_IN_RU_TOLLFREE</strong> — Incoming toll-free phone calls to Russia phone numbers</li><li><strong>PSTN_IN_SC_AU</strong> — Incoming phone calls to Australia phone numbers</li><li><strong>PSTN_IN_STAR_RU</strong> — Incoming phone calls to Russia phone numbers</li><li><strong>PSTN_IN_TF_AR</strong> — Incoming toll-free phone calls to Argentina phone numbers</li><li><strong>PSTN_IN_TF_AT</strong> — Incoming toll-free phone calls to Austria phone numbers</li><li><strong>PSTN_IN_TF_AU</strong> — Incoming toll-free phone calls to Australia phone numbers</li><li><strong>PSTN_IN_TF_BE</strong> — Incoming toll-free phone calls to Belgium phone numbers</li><li><strong>PSTN_IN_TF_BG</strong> — Incoming toll-free phone calls to Bulgaria phone numbers</li><li><strong>PSTN_IN_TF_BH</strong> — Incoming toll-free phone calls to Bahrain phone numbers</li><li><strong>PSTN_IN_TF_BR</strong> — Incoming toll-free phone calls to Brazil phone numbers</li><li><strong>PSTN_IN_TF_BY</strong> — Incoming toll-free phone calls to Belarus phone numbers</li><li><strong>PSTN_IN_TF_CA</strong> — Incoming toll-free phone calls to Canada phone numbers</li><li><strong>PSTN_IN_TF_CH</strong> — Incoming toll-free phone calls to Switzerland phone numbers</li><li><strong>PSTN_IN_TF_CL</strong> — Incoming toll-free phone calls to Chile phone numbers</li><li><strong>PSTN_IN_TF_CO</strong> — Incoming toll-free phone calls to Colombia phone numbers</li><li><strong>PSTN_IN_TF_CR</strong> — Incoming toll-free phone calls to Costa Rica phone numbers</li><li><strong>PSTN_IN_TF_CY</strong> — Incoming toll-free phone calls to Cyprus phone numbers</li><li><strong>PSTN_IN_TF_CZ</strong> — Incoming toll-free phone calls to Czechia phone numbers</li><li><strong>PSTN_IN_TF_DE</strong> — Incoming toll-free phone calls to Germany phone numbers</li><li><strong>PSTN_IN_TF_DK</strong> — Incoming toll-free phone calls to Denmark phone numbers</li><li><strong>PSTN_IN_TF_DO</strong> — Incoming toll-free phone calls to Dominican Republic phone numbers</li><li><strong>PSTN_IN_TF_EC</strong> — Incoming toll-free phone calls to Ecuador phone numbers</li><li><strong>PSTN_IN_TF_EE</strong> — Incoming toll-free phone calls to Estonia phone numbers</li><li><strong>PSTN_IN_TF_EG</strong> — Incoming toll-free phone calls to Egypt phone numbers</li><li><strong>PSTN_IN_TF_ES</strong> — Incoming toll-free phone calls to Spain phone numbers</li><li><strong>PSTN_IN_TF_FI</strong> — Incoming toll-free phone calls to Finland phone numbers</li><li><strong>PSTN_IN_TF_FR</strong> — Incoming toll-free phone calls to France phone numbers</li><li><strong>PSTN_IN_TF_GB</strong> — Incoming toll-free phone calls to the United Kingdom phone numbers</li><li><strong>PSTN_IN_TF_GF</strong> — Incoming toll-free phone calls to French Guiana phone numbers</li><li><strong>PSTN_IN_TF_GP</strong> — Incoming toll-free phone calls to Guadeloupe phone numbers</li><li><strong>PSTN_IN_TF_HK</strong> — Incoming toll-free phone calls to Hong Kong phone numbers</li><li><strong>PSTN_IN_TF_HR</strong> — Incoming toll-free phone calls to Croatia phone numbers</li><li><strong>PSTN_IN_TF_HU</strong> — Incoming toll-free phone calls to Hungary phone numbers</li><li><strong>PSTN_IN_TF_ID</strong> — Incoming toll-free phone calls to Indonesia phone numbers</li><li><strong>PSTN_IN_TF_IE</strong> — Incoming toll-free phone calls to Ireland phone numbers</li><li><strong>PSTN_IN_TF_IL</strong> — Incoming toll-free phone calls to Israel phone numbers</li><li><strong>PSTN_IN_TF_IN</strong> — Incoming toll-free phone calls to India phone numbers</li><li><strong>PSTN_IN_TF_IS</strong> — Incoming toll-free phone calls to Iceland phone numbers</li><li><strong>PSTN_IN_TF_IT</strong> — Incoming toll-free phone calls to Italy phone numbers</li><li><strong>PSTN_IN_TF_KE</strong> — Incoming toll-free phone calls to Kenya phone numbers</li><li><strong>PSTN_IN_TF_KR</strong> — Incoming toll-free phone calls to South Korea phone numbers</li><li><strong>PSTN_IN_TF_KW</strong> — Incoming toll-free phone calls to Kuwait phone numbers</li><li><strong>PSTN_IN_TF_KZ</strong> — Incoming toll-free phone calls to Kazakhstan phone numbers</li><li><strong>PSTN_IN_TF_LT</strong> — Incoming toll-free phone calls to Lithuania phone numbers</li><li><strong>PSTN_IN_TF_LV</strong> — Incoming toll-free phone calls to Latvia phone numbers</li><li><strong>PSTN_IN_TF_MC</strong> — Incoming toll-free phone calls to Monaco phone numbers</li><li><strong>PSTN_IN_TF_MK</strong> — Incoming toll-free phone calls to North Macedonia phone numbers</li><li><strong>PSTN_IN_TF_MQ</strong> — Incoming toll-free phone calls to Martinique phone numbers</li><li><strong>PSTN_IN_TF_MT</strong> — Incoming toll-free phone calls to Malta phone numbers</li><li><strong>PSTN_IN_TF_MX</strong> — Incoming toll-free phone calls to Mexico phone numbers</li><li><strong>PSTN_IN_TF_NL</strong> — Incoming toll-free phone calls to the Netherlands phone numbers</li><li><strong>PSTN_IN_TF_NZ</strong> — Incoming toll-free phone calls to New Zealand phone numbers</li><li><strong>PSTN_IN_TF_OM</strong> — Incoming toll-free phone calls to Oman phone numbers</li><li><strong>PSTN_IN_TF_PA</strong> — Incoming toll-free phone calls to Panama phone numbers</li><li><strong>PSTN_IN_TF_PE</strong> — Incoming toll-free phone calls to Peru phone numbers</li><li><strong>PSTN_IN_TF_PK</strong> — Incoming toll-free phone calls to Pakistan phone numbers</li><li><strong>PSTN_IN_TF_PR</strong> — Incoming toll-free phone calls to Puerto Rico phone numbers</li><li><strong>PSTN_IN_TF_QA</strong> — Incoming toll-free phone calls to Qatar phone numbers</li><li><strong>PSTN_IN_TF_RE</strong> — Incoming toll-free phone calls to Reunion phone numbers</li><li><strong>PSTN_IN_TF_RO</strong> — Incoming toll-free phone calls to Romania phone numbers</li><li><strong>PSTN_IN_TF_RS</strong> — Incoming toll-free phone calls to Serbia phone numbers</li><li><strong>PSTN_IN_TF_SA</strong> — Incoming toll-free phone calls to Saudi Arabia phone numbers</li><li><strong>PSTN_IN_TF_SE</strong> — Incoming toll-free phone calls to Sweden phone numbers</li><li><strong>PSTN_IN_TF_SI</strong> — Incoming toll-free phone calls to Slovenia phone numbers</li><li><strong>PSTN_IN_TF_SK</strong> — Incoming toll-free phone calls to Slovakia phone numbers</li><li><strong>PSTN_IN_TF_TH</strong> — Incoming toll-free phone calls to Thailand phone numbers</li><li><strong>PSTN_IN_TF_UA</strong> — Incoming toll-free phone calls to Ukraine phone numbers</li><li><strong>PSTN_IN_TF_UG</strong> — Incoming toll-free phone calls to Uganda phone numbers</li><li><strong>PSTN_IN_TF_US</strong> — Incoming toll-free phone calls to the United States phone numbers</li><li><strong>PSTN_IN_TF_VE</strong> — Incoming toll-free phone calls to Venezuela phone numbers</li><li><strong>PSTN_IN_TF_YT</strong> — Incoming toll-free phone calls to Mayotte phone numbers</li><li><strong>PSTN_IN_TF_ZA</strong> — Incoming toll-free phone calls to South Africa phone numbers</li><li><strong>PSTN_IN_US</strong> — Incoming phone calls to the United States phone numbers</li><li><strong>PSTN_INTERNATIONAL</strong> — Outgoing international calls</li><li><strong>PSTN_OUT_INCOUNTRY</strong> — Outgoing domestic phone calls</li><li><strong>PSTN_OUT_LOCAL_RU</strong> — Outgoing domestic phone calls in Russia</li><li><strong>PSTNOUT</strong> — Outgoing phone calls</li><li><strong>PSTNOUT_EEA</strong> — Outgoing phone calls to EEA</li><li><strong>PSTNOUT_LOCAL</strong> — Outgoing local phone calls</li><li><strong>RELAYED_TRAFFIC</strong> — TURN server relayed traffic</li><li><strong>SIPIN</strong> — Incoming SIP calls</li><li><strong>SIPOUT</strong> — Outgoing SIP calls</li><li><strong>SIPREFER</strong> — Call transfer via SIP REFER</li><li><strong>SMS_IN_MOB_AU</strong> — Incoming SMS to Australia phone numbers</li><li><strong>SMS_IN_MOB_BE</strong> — Incoming SMS to Belgium phone numbers</li><li><strong>SMS_IN_MOB_BR</strong> — Incoming SMS to Brazil phone numbers</li><li><strong>SMS_IN_MOB_CA</strong> — Incoming SMS to Canada phone numbers</li><li><strong>SMS_IN_MOB_CL</strong> — Incoming SMS to Chile phone numbers</li><li><strong>SMS_IN_MOB_CO</strong> — Incoming SMS to Colombia phone numbers</li><li><strong>SMS_IN_MOB_DK</strong> — Incoming SMS to Denmark phone numbers</li><li><strong>SMS_IN_MOB_FI</strong> — Incoming SMS to Finland phone numbers</li><li><strong>SMS_IN_MOB_FR</strong> — Incoming SMS to France phone numbers</li><li><strong>SMS_IN_MOB_GB</strong> — Incoming SMS to the United Kingdom phone numbers</li><li><strong>SMS_IN_MOB_HK</strong> — Incoming SMS to Hong Kong phone numbers</li><li><strong>SMS_IN_MOB_IL</strong> — Incoming SMS to Israel phone numbers</li><li><strong>SMS_IN_MOB_LV</strong> — Incoming SMS to Latvia phone numbers</li><li><strong>SMS_IN_MOB_MU</strong> — Incoming SMS to Mauritius phone numbers</li><li><strong>SMS_IN_MOB_MX</strong> — Incoming SMS to Mexico phone numbers</li><li><strong>SMS_IN_MOB_MY</strong> — Incoming SMS to Malaysia phone numbers</li><li><strong>SMS_IN_MOB_NL</strong> — Incoming SMS to the Netherlands phone numbers</li><li><strong>SMS_IN_MOB_PE</strong> — Incoming SMS to Peru phone numbers</li><li><strong>SMS_IN_MOB_PL</strong> — Incoming SMS to Poland phone numbers</li><li><strong>SMS_IN_MOB_PR</strong> — Incoming SMS to Puerto Rico phone numbers</li><li><strong>SMS_IN_MOB_PT</strong> — Incoming SMS to Portugal phone numbers</li><li><strong>SMS_IN_MOB_RU</strong> — Incoming SMS to Russia phone numbers</li><li><strong>SMS_IN_MOB_SE</strong> — Incoming SMS to Sweden phone numbers</li><li><strong>SMS_IN_MOB_TH</strong> — Incoming SMS to Thailand phone numbers</li><li><strong>SMS_IN_MOB_TR</strong> — Incoming SMS to Turkey phone numbers</li><li><strong>SMS_IN_MOB_US</strong> — Incoming SMS to the United States phone numbers</li><li><strong>SMSINPUT</strong> — Incoming SMS</li><li><strong>SMSOUT</strong> — Outgoing SMS</li><li><strong>SMSOUT_INTERNATIONAL</strong> — International outgoing SMS</li><li><strong>SMSOUT_RU_INTERNATIONAL</strong> — International outgoing SMS from Russia</li><li><strong>TRANSCRIPTION</strong> — Speech transcription</li><li><strong>TTS_CARTESIA</strong> — Text-to-speech by Cartesia</li><li><strong>TTS_ELEVENLABS</strong> — Text-to-speech by ElevenLabs</li><li><strong>TTS_GOOGLE_REALTIME</strong> — Realtime text-to-speech by Google</li><li><strong>TTS_INWORLD</strong> — Text-to-speech by Inworld</li><li><strong>TTS_SMARTSPEECH</strong> — Text-to-speech by SmartSpeech</li><li><strong>TTS_TEXT_CUSTOM_CREDENTIALS</strong> — Text-to-speech with custom credentials</li><li><strong>TTS_TEXT_GOOGLE</strong> — Text-to-speech by Google</li><li><strong>TTS_TINKOFF</strong> — Text-to-speech by T-bank</li><li><strong>TTS_YANDEX_NEURAL</strong> — Text-to-speech by Yandex</li><li><strong>VIDEOCALL</strong> — Video calls</li><li><strong>VIDEOCONFCALL_IN</strong> — Incoming video conference</li><li><strong>VIDEOCONFCALL_OUT</strong> — Outgoing video conference</li><li><strong>VIDEOCONFRECORD</strong> — Video conference recording per minute</li><li><strong>VIDEOPARTRECORD</strong> — Video conference member recording per minute</li><li><strong>VIDEORECORD</strong> — Video call recording</li><li><strong>VOICEMAILDETECTION</strong> — Voicemail detection</li><li><strong>VOIPIN</strong> — Incoming VoIP calls</li><li><strong>VOIPOUT</strong> — Outgoing VoIP calls</li><li><strong>WAB_VOICE_IN</strong> — Incoming WhatsApp Business calls</li><li><strong>WAB_VOICE_OUT_CONNECTOR</strong> — Outgoing WhatsApp Business calls</li><li><strong>WEBSOCKET_AUDIO</strong> — Audio via WebSockets</li><li><strong>YANDEXASR</strong> — Speech recognition by Yandex</li></ul></param>
         /// <param name="priceGroupId">The price group ID list separated by semicolons (;)</param>
         /// <param name="priceGroupName">The price group name template to filter</param>
         /// <param name="resourceParam">The resource parameter list separated by semicolons (;). Example: a phone number list</param>
@@ -329,7 +329,7 @@ namespace Voximplant.API {
         /// <summary>
         /// Adds a new account's application.
         /// </summary>
-        /// <param name="applicationName">The short application name in format \[a-z\]\[a-z0-9-\]{1,64}</param>
+        /// <param name="applicationName">Short application name in the \[a-z\]\[a-z0-9-\]{1,64} format</param>
         /// <param name="secureRecordStorage">Whether to enable secure storage for all logs and records of the application</param>
         public async Task<AddApplicationResponse> AddApplication(string applicationName, bool? secureRecordStorage = null)
         {
@@ -879,12 +879,13 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="listId">Call list's ID</param>
         /// <param name="taskId">Call list's task ID. Please specify either the task's ID or the task's UUID to edit the task</param>
-        /// <param name="taskUuid">Call list's task ID. Please specify either the task's ID or the task's UUID to edit the task</param>
+        /// <param name="taskUuid">Call list's task ID. Please specify either the task's ID or the task's UUID to edit the task. The UUID is unique within the call list</param>
         /// <param name="startAt">Next calling attempts timestamp in the yyyy-MM-dd HH:mm:ss format</param>
         /// <param name="attemptsLeft">Number of remaining calling attempts</param>
         /// <param name="customData">Custom data string</param>
-        /// <param name="minExecutionTime">Start time for the daily calling attempts in the UTC+0 24-h format: HH:mm:ss format</param>
-        public async Task<EditCallListTaskResponse> EditCallListTask(long listId, long? taskId = null, string taskUuid = null, DateTime? startAt = null, long? attemptsLeft = null, string customData = null, DateTime? minExecutionTime = null)
+        /// <param name="minExecutionTime">Optional. Start time for the daily calling attempts in the UTC+0 24-h format: HH:mm:ss format. If spefied, please specify `max_execution_time` as well</param>
+        /// <param name="maxExecutionTime">Optional. End time for the daily calling attempts in the UTC+0 24-h format: HH:mm:ss format. If spefied, please specify `min_execution_time` as well</param>
+        public async Task<EditCallListTaskResponse> EditCallListTask(long listId, long? taskId = null, string taskUuid = null, DateTime? startAt = null, long? attemptsLeft = null, string customData = null, DateTime? minExecutionTime = null, DateTime? maxExecutionTime = null)
         {
             var args = new Dictionary<string, object>();
 
@@ -901,6 +902,8 @@ namespace Voximplant.API {
                 args["custom_data"] = customData;
             if (minExecutionTime.HasValue)
                 args["min_execution_time"] = minExecutionTime.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            if (maxExecutionTime.HasValue)
+                args["max_execution_time"] = maxExecutionTime.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
             return await PerformRequest<EditCallListTaskResponse>("EditCallListTask", args);
 }
         /// <summary>
@@ -952,8 +955,8 @@ namespace Voximplant.API {
         /// <param name="ruleId">The rule ID. The new scenario binds to the specified rule. Please note, if you do not bind the scenario to any rule, you cannot execute the scenario</param>
         /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
         /// <param name="rewrite">Whether to rewrite the existing scenario</param>
-        /// <param name="applicationId">ID of the application to bind the scenario to</param>
-        /// <param name="applicationName">Name of the application to bind the scenario to</param>
+        /// <param name="applicationId">Application ID to bind the scenario to</param>
+        /// <param name="applicationName">Application name to bind the scenario to</param>
         public async Task<AddScenarioResponse> AddScenario(string scenarioName, string scenarioScript = null, long? ruleId = null, string ruleName = null, bool? rewrite = null, long? applicationId = null, string applicationName = null)
         {
             var args = new Dictionary<string, object>();
@@ -2909,45 +2912,6 @@ namespace Voximplant.API {
             return await PerformRequest<GetWABPhoneNumbersResponse>("GetWABPhoneNumbers", args);
 }
         /// <summary>
-        /// Adds a new caller ID. Caller ID is the phone that is displayed to the called user. This number can be used for call back.
-        /// </summary>
-        /// <param name="calleridNumber">The callerID number in E.164 format</param>
-        public async Task<AddCallerIDResponse> AddCallerID(string calleridNumber)
-        {
-            var args = new Dictionary<string, object>();
-
-            args["callerid_number"] = calleridNumber;
-            return await PerformRequest<AddCallerIDResponse>("AddCallerID", args);
-}
-        /// <summary>
-        /// Activates the CallerID by the verification code.
-        /// </summary>
-        /// <param name="verificationCode">The verification code, see the VerifyCallerID function</param>
-        /// <param name="calleridId">ID of the callerID object</param>
-        /// <param name="calleridNumber">The callerID number that can be used instead of <b>callerid_id</b></param>
-        public async Task<ActivateCallerIDResponse> ActivateCallerID(string verificationCode, long? calleridId = null, string calleridNumber = null)
-        {
-            var passedArgs = new List<string>();
-        
-            if (calleridId != null)
-                passedArgs.Add("calleridId");
-            if (calleridNumber != null)
-                passedArgs.Add("calleridNumber");
-            if (passedArgs.Count > 1)
-                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into ActivateCallerID");
-            if (passedArgs.Count == 0)
-                throw new VoximplantException("None of calleridId, calleridNumber passed into ActivateCallerID");
-    
-            var args = new Dictionary<string, object>();
-
-            args["verification_code"] = verificationCode;
-            if (calleridId.HasValue)
-                args["callerid_id"] = calleridId.ToString();
-            if (calleridNumber != null)
-                args["callerid_number"] = calleridNumber;
-            return await PerformRequest<ActivateCallerIDResponse>("ActivateCallerID", args);
-}
-        /// <summary>
         /// Deletes the CallerID. Note: you cannot delete a CID permanently (the antispam defence).
         /// </summary>
         /// <param name="calleridId">ID of the callerID object</param>
@@ -2999,32 +2963,6 @@ namespace Voximplant.API {
             if (offset.HasValue)
                 args["offset"] = offset.Value.ToString();
             return await PerformRequest<GetCallerIDsResponse>("GetCallerIDs", args);
-}
-        /// <summary>
-        /// Gets a verification code via phone call to the **callerid_number**.
-        /// </summary>
-        /// <param name="calleridId">ID of the callerID object</param>
-        /// <param name="calleridNumber">The callerID number that can be used instead of <b>callerid_id</b></param>
-        public async Task<VerifyCallerIDResponse> VerifyCallerID(long? calleridId = null, string calleridNumber = null)
-        {
-            var passedArgs = new List<string>();
-        
-            if (calleridId != null)
-                passedArgs.Add("calleridId");
-            if (calleridNumber != null)
-                passedArgs.Add("calleridNumber");
-            if (passedArgs.Count > 1)
-                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into VerifyCallerID");
-            if (passedArgs.Count == 0)
-                throw new VoximplantException("None of calleridId, calleridNumber passed into VerifyCallerID");
-    
-            var args = new Dictionary<string, object>();
-
-            if (calleridId.HasValue)
-                args["callerid_id"] = calleridId.ToString();
-            if (calleridNumber != null)
-                args["callerid_number"] = calleridNumber;
-            return await PerformRequest<VerifyCallerIDResponse>("VerifyCallerID", args);
 }
         /// <summary>
         /// Adds a personal phone number to test outgoing calls. Only one personal phone number can be used. To replace it with another, delete the existing one first.
@@ -5364,11 +5302,11 @@ namespace Voximplant.API {
         /// <summary>
         /// Adds a new queue.
         /// </summary>
-        /// <param name="applicationId">ID of the application to bind to</param>
+        /// <param name="applicationId">Application ID to bind to</param>
         /// <param name="sqQueueName">Unique SmartQueue name within the application, up to 100 characters</param>
         /// <param name="callAgentSelection">Agent selection strategy for calls. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME"</param>
         /// <param name="callTaskSelection">Call type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values</param>
-        /// <param name="applicationName">Name of the application to bind to. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to bind to. Can be used instead of <b>application_id</b></param>
         /// <param name="holdImIfInactiveAgents">Whether to add the task to the queue if there are no available agents</param>
         /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". The default value is **call_agent_selection**</param>
         /// <param name="imTaskSelection">IM type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values. The default value is **call_task_selection**</param>
@@ -5420,9 +5358,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits an existing queue.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="sqQueueId">ID of the SmartQueue to search for</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="holdImIfInactiveAgents">Whether to add the task to the queue if there are no available agents</param>
         /// <param name="sqQueueName">Name of the SmartQueue to search for. Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="holdCallsIfInactiveAgents">Whether to keep the call task in the queue if all agents are in the DND/BANNED/OFFLINE statuses.</param>
@@ -5484,9 +5422,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes a queue.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to delete all the queues</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         public async Task<SQ_DelQueueResponse> SQ_DelQueue(long applicationId, string sqQueueId, string applicationName = null, string sqQueueName = null)
         {
@@ -5503,8 +5441,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the queue(s).
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">Application ID to search by</param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;)</param>
         /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="sqQueueNameTemplate">Substring of the SmartQueue name to filter</param>
@@ -5547,9 +5485,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Adds a new skill to the app.
         /// </summary>
-        /// <param name="applicationId">ID of the application to bind to</param>
+        /// <param name="applicationId">Application ID to bind to</param>
         /// <param name="sqSkillName">Unique skill name within the application</param>
-        /// <param name="applicationName">Name of the application to bind to. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to bind to. Can be used instead of <b>application_id</b></param>
         /// <param name="description">Comment, up to 200 characters</param>
         public async Task<SQ_AddSkillResponse> SQ_AddSkill(long applicationId, string sqSkillName, string applicationName = null, string description = null)
         {
@@ -5566,9 +5504,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes a skill and detaches it from agents.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to delete all the skills</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
         public async Task<SQ_DelSkillResponse> SQ_DelSkill(long applicationId, string sqSkillId, string applicationName = null, string sqSkillName = null)
         {
@@ -5585,9 +5523,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits an existing skill.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="sqSkillId">ID of the skill</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqSkillName">Name of the skill. Can be used instead of <b>sq_skill_id</b></param>
         /// <param name="newSqSkillName">New unique skill name within the application</param>
         /// <param name="description">Comment, up to 200 characters</param>
@@ -5610,10 +5548,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Binds skills to agents.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="sqSkills">Skills to be bound to agents in the json array format. The array should contain objects with the <b>sq_skill_id</b>/<b>sq_skill_name</b> and <b>sq_skill_level</b> keys where skill levels range from 1 to 5</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="bindMode">Binding mode. Accepts one of the [SQSkillBindingModes] enum values</param>
         public async Task<SQ_BindSkillResponse> SQ_BindSkill(long applicationId, string userId, Object sqSkills, string applicationName = null, string userName = null, string bindMode = null)
@@ -5634,10 +5572,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Unbinds skills from agents.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to unbind all the skills</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
         public async Task<SQ_UnbindSkillResponse> SQ_UnbindSkill(long applicationId, string userId, string sqSkillId, string applicationName = null, string userName = null, string sqSkillName = null)
@@ -5658,8 +5596,8 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the skill(s).
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">Application ID to search by</param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="userId">List of user IDs separated by semicolons (;)</param>
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="sqSkillId">List of skill IDs separated by semicolons (;)</param>
@@ -5699,10 +5637,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Binds agents to a queue.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="sqQueueId">ID of the SmartQueue. Pass a list of values divided by ; or the "all" keyword</param>
         /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueName">Name of the SmartQueue. Pass a list of names divided by ; or the "all" keyword</param>
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="bindMode">Binding mode. Accepts one of the [SQAgentBindingModes] enum values</param>
@@ -5726,10 +5664,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Unbinds agents from queues.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues</param>
         /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         public async Task<SQ_UnbindAgentResponse> SQ_UnbindAgent(long applicationId, string sqQueueId, string userId, string applicationName = null, string sqQueueName = null, string userName = null)
@@ -5750,9 +5688,9 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets agents.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="handleCalls">Whether the agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues</param>
         /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
         /// <param name="excludedSqQueueId">ID of the SmartQueue to exclude</param>
@@ -5808,10 +5746,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits the agent settings.
         /// </summary>
-        /// <param name="applicationId">ID of the application to search by</param>
+        /// <param name="applicationId">Application ID to search by</param>
         /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="handleCalls">Whether the agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
-        /// <param name="applicationName">Name of the application to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
         /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
         /// <param name="maxSimultaneousConversations">Maximum number of chats that the user processes simultaneously</param>
         public async Task<SQ_SetAgentInfoResponse> SQ_SetAgentInfo(long applicationId, string userId, bool handleCalls, string applicationName = null, string userName = null, long? maxSimultaneousConversations = null)
@@ -5828,6 +5766,212 @@ namespace Voximplant.API {
             if (maxSimultaneousConversations.HasValue)
                 args["max_simultaneous_conversations"] = maxSimultaneousConversations.Value.ToString();
             return await PerformRequest<SQ_SetAgentInfoResponse>("SQ_SetAgentInfo", args);
+}
+        /// <summary>
+        /// Adds a new secret.
+        /// </summary>
+        /// <param name="secretName">Secret name. The name must start with a Latin letter and can contain up to 64 characters, including Latin letters, digits and underscores</param>
+        /// <param name="secretValue">Secret value. Maximum length is 8192 characters</param>
+        /// <param name="applicationId">Application ID to add the secret to</param>
+        /// <param name="applicationName">Application name. Can be used instead of <b>application_id</b></param>
+        /// <param name="description">Optional. Secret description. When processing, the length is truncated to the first 200 characters</param>
+        public async Task<AddSecretResponse> AddSecret(string secretName, string secretValue, long? applicationId = null, string applicationName = null, string description = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into AddSecret");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of applicationId, applicationName passed into AddSecret");
+    
+            var args = new Dictionary<string, object>();
+
+            args["secret_name"] = secretName;
+            args["secret_value"] = secretValue;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (description != null)
+                args["description"] = description;
+            return await PerformRequest<AddSecretResponse>("AddSecret", args);
+}
+        /// <summary>
+        /// Deletes an existing secret.
+        /// </summary>
+        /// <param name="applicationId">Application ID</param>
+        /// <param name="applicationName">Application name. Can be used instead of <b>application_id</b></param>
+        /// <param name="secretId">IDs to delete. A list separated by semicolons (;). Use the 'all' value to delete all secrets</param>
+        /// <param name="secretName">Secret names to delete. List separated by semicolons (;)</param>
+        public async Task<DelSecretResponse> DelSecret(long? applicationId = null, string applicationName = null, string secretId = null, string secretName = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into DelSecret");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of applicationId, applicationName passed into DelSecret");
+    
+            passedArgs = new List<string>();
+        
+            if (secretId != null)
+                passedArgs.Add("secretId");
+            if (secretName != null)
+                passedArgs.Add("secretName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into DelSecret");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of secretId, secretName passed into DelSecret");
+    
+            var args = new Dictionary<string, object>();
+
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (secretId != null)
+                args["secret_id"] = secretId;
+            if (secretName != null)
+                args["secret_name"] = secretName;
+            return await PerformRequest<DelSecretResponse>("DelSecret", args);
+}
+        /// <summary>
+        /// Gets the value of a specific secret.
+        /// </summary>
+        /// <param name="applicationId">Application ID</param>
+        /// <param name="applicationName">Application name. Can be used instead of <b>application_id</b></param>
+        /// <param name="secretId">Secret ID</param>
+        /// <param name="secretName">Secret name. Can be used instead of <b>secret_id</b></param>
+        public async Task<GetSecretValueResponse> GetSecretValue(long? applicationId = null, string applicationName = null, long? secretId = null, string secretName = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSecretValue");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of applicationId, applicationName passed into GetSecretValue");
+    
+            passedArgs = new List<string>();
+        
+            if (secretId != null)
+                passedArgs.Add("secretId");
+            if (secretName != null)
+                passedArgs.Add("secretName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSecretValue");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of secretId, secretName passed into GetSecretValue");
+    
+            var args = new Dictionary<string, object>();
+
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (secretId.HasValue)
+                args["secret_id"] = secretId.ToString();
+            if (secretName != null)
+                args["secret_name"] = secretName;
+            return await PerformRequest<GetSecretValueResponse>("GetSecretValue", args);
+}
+        /// <summary>
+        /// Gets the list of an application's secrets.
+        /// </summary>
+        /// <param name="applicationId">Application ID</param>
+        /// <param name="applicationName">Application name. Can be used instead of <b>application_id</b></param>
+        /// <param name="secretNamePart">Filter by the secret name part</param>
+        /// <param name="count">Maximum returning record number</param>
+        /// <param name="offset">First <b>N</b> records to be skipped in the output</param>
+        public async Task<GetSecretsResponse> GetSecrets(long? applicationId = null, string applicationName = null, string secretNamePart = null, long? count = null, long? offset = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSecrets");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of applicationId, applicationName passed into GetSecrets");
+    
+            var args = new Dictionary<string, object>();
+
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (secretNamePart != null)
+                args["secret_name_part"] = secretNamePart;
+            if (count.HasValue)
+                args["count"] = count.Value.ToString();
+            if (offset.HasValue)
+                args["offset"] = offset.Value.ToString();
+            return await PerformRequest<GetSecretsResponse>("GetSecrets", args);
+}
+        /// <summary>
+        /// Edits a secret's parameters.
+        /// </summary>
+        /// <param name="applicationId">Application ID</param>
+        /// <param name="applicationName">Application name. Can be used instead of <b>application_id</b></param>
+        /// <param name="secretId">Secret ID to edit</param>
+        /// <param name="secretName">Secret name. Can be used instead of <b>secret_id</b></param>
+        /// <param name="newSecretName">New secret name. The name must start with a Latin letter and can contain up to 64 characters, including Latin letters, digits and underscores</param>
+        /// <param name="secretValue">Secret value. Maximum length is 8192 characters</param>
+        /// <param name="description">Secret description. When processing, the length is truncated to the first 200 characters</param>
+        public async Task<SetSecretInfoResponse> SetSecretInfo(long? applicationId = null, string applicationName = null, long? secretId = null, string secretName = null, string newSecretName = null, string secretValue = null, string description = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into SetSecretInfo");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of applicationId, applicationName passed into SetSecretInfo");
+    
+            passedArgs = new List<string>();
+        
+            if (secretId != null)
+                passedArgs.Add("secretId");
+            if (secretName != null)
+                passedArgs.Add("secretName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into SetSecretInfo");
+            if (passedArgs.Count == 0)
+                throw new VoximplantException("None of secretId, secretName passed into SetSecretInfo");
+    
+            var args = new Dictionary<string, object>();
+
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (secretId.HasValue)
+                args["secret_id"] = secretId.ToString();
+            if (secretName != null)
+                args["secret_name"] = secretName;
+            if (newSecretName != null)
+                args["new_secret_name"] = newSecretName;
+            if (secretValue != null)
+                args["secret_value"] = secretValue;
+            if (description != null)
+                args["description"] = description;
+            return await PerformRequest<SetSecretInfoResponse>("SetSecretInfo", args);
 }
     }
 }
