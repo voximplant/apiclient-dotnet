@@ -99,7 +99,7 @@ namespace Voximplant.API.Response {
         /// End reason code and description
         /// </summary>
         [JsonProperty("end_reason")]
-        public object EndReason { get; private set; }
+        public string EndReason { get; private set; }
 
     }
 }

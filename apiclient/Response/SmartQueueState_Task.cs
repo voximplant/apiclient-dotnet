@@ -50,7 +50,7 @@ namespace Voximplant.API.Response {
         /// Custom data text string for the current task. You can set the custom data in the [enqueueTask](/docs/references/voxengine/voxengine/enqueuetask#enqueuetask) method
         /// </summary>
         [JsonProperty("custom_data")]
-        public Object CustomData { get; private set; }
+        public string CustomData { get; private set; }
 
     }
 }

@@ -30,6 +30,12 @@ namespace Voximplant.API.Response {
         public DateTime StartExecutionTime { get; private set; }
 
         /// <summary>
+        /// Call list schedule in the JSON format. Refer to the <a href="/docs/guides/solutions/call-lists">Call lists guide</a> for more information.
+        /// </summary>
+        [JsonProperty("call_schedule")]
+        public string CallSchedule { get; private set; }
+
+        /// <summary>
         /// Time after which the task cannot be performed in 24-h format: HH:mm:ss
         /// </summary>
         [JsonConverter(typeof(TimestampConverter))]
