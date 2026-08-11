@@ -23,7 +23,7 @@ namespace Voximplant.API.Response {
         public bool AutoCharge { get; private set; }
 
         /// <summary>
-        /// The min account balance to trigger the auto charging
+        /// The minimum account balance to trigger the auto charging
         /// </summary>
         [JsonProperty("min_balance ")]
         public decimal MinBalance  { get; private set; }

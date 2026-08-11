@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
     public class CalculatedTransactionHistoryDataType
     {
         /// <summary>
-        /// The transaction count in the report
+        /// The transaction number in the report
         /// </summary>
         [JsonProperty("transaction_count")]
         public long TransactionCount { get; private set; }

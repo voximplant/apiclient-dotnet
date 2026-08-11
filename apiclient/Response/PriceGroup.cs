@@ -29,7 +29,7 @@ namespace Voximplant.API.Response {
         public decimal Price { get; private set; }
 
         /// <summary>
-        /// The resource count per price
+        /// The resource number per price
         /// </summary>
         [JsonProperty("num_resources_per_price")]
         public long NumResourcesPerPrice { get; private set; }

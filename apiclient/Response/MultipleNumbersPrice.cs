@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
     public class MultipleNumbersPrice
     {
         /// <summary>
-        /// The number of subscriptions which must be purchased simultaneously to enable a multiple numbers subscription
+        /// The number of subscriptions which should be purchased simultaneously to enable a multiple numbers subscription
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

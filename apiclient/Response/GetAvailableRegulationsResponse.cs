@@ -20,7 +20,7 @@ namespace Voximplant.API.Response {
         public RegulationAddress[] AvailableAddress { get; private set; }
 
         /// <summary>
-        /// The count of RegulationAddress in progress status
+        /// The number of RegulationAddress in progress status
         /// </summary>
         [JsonProperty("count_in_progress")]
         public long CountInProgress { get; private set; }

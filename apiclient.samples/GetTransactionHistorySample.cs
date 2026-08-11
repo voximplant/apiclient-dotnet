@@ -27,8 +27,8 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.GetTransactionHistory(
-                    new DateTime(2012, 1, 1, 0, 0, 0),
-                    new DateTime(2014, 1, 1, 0, 0, 0),
+                    fromDate: new DateTime(2012, 1, 1, 0, 0, 0),
+                    toDate: new DateTime(2014, 1, 1, 0, 0, 0),
                     count: 3L,
                     transactionType: "gift;money_distribution"
                 ).Result;

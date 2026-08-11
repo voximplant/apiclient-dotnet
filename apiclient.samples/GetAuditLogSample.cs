@@ -26,8 +26,8 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.GetAuditLog(
-                    new DateTime(2018, 2, 1, 0, 0, 0),
-                    new DateTime(2018, 3, 1, 0, 0, 0),
+                    fromDate: new DateTime(2018, 2, 1, 0, 0, 0),
+                    toDate: new DateTime(2018, 3, 1, 0, 0, 0),
                     filteredCmd: "BindSkill;AddSkill;DelSkill",
                     advancedFilters: "152",
                     count: 3L

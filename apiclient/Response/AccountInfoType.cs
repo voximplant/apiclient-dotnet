@@ -66,7 +66,7 @@ namespace Voximplant.API.Response {
         public string Location { get; private set; }
 
         /// <summary>
-        /// The min balance value to notify by email or SMS
+        /// The minimum balance value to notify by email or SMS
         /// </summary>
         [JsonProperty("min_balance_to_notify")]
         public decimal? MinBalanceToNotify { get; private set; }

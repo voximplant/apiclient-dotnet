@@ -26,8 +26,8 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.GetCallHistory(
-                    new DateTime(2020, 2, 25, 0, 0, 0),
-                    new DateTime(2020, 2, 26, 0, 0, 0),
+                    fromDate: new DateTime(2020, 2, 25, 0, 0, 0),
+                    toDate: new DateTime(2020, 2, 26, 0, 0, 0),
                     count: 1L,
                     withCalls: true,
                     withRecords: true
