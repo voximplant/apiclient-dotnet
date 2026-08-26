@@ -26,8 +26,8 @@ namespace apiclient.samples
 
                 var result = voximplant.GetACDQueueStatistics(
                     new DateTime(2021, 4, 8, 0, 0, 0),
+                    "54",
                     toDate: new DateTime(2021, 4, 10, 0, 0, 0),
-                    acdQueueId: "54",
                     report: "WT;TT",
                     aggregation: "day"
                 ).Result;

@@ -29,7 +29,7 @@ namespace Voximplant.API.Response {
         public long Max { get; private set; }
 
         /// <summary>
-        /// Samples number over the aggregated interval
+        /// Number of samples over the aggregated interval
         /// </summary>
         [JsonProperty("count")]
         public long Count { get; private set; }

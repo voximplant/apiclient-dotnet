@@ -1643,7 +1643,7 @@ namespace Voximplant.API {
         /// <param name="minDuration">The minimum call duration in seconds to filter. You can restrict the allowed date range via duration filters</param>
         /// <param name="maxDuration">The maximum call duration in seconds to filter. You can restrict the allowed date range via duration filters</param>
         /// <param name="remoteNumberList">A JSON-formatted list of strings containing phone numbers for history filtering. Has a higher priority than the <b>remote_number</b> parameter. If the array is empty, the <b>remote_number</b> parameter is used instead</param>
-        /// <param name="count">The maximum record number to include in the report. If omitted, the report service applies its own limit. Unlike GetCallHistory, there is no default of 20 and no cap of 1000 on the Management API side</param>
+        /// <param name="count">The maximum number of records to include in the report. If omitted, the report service applies its own limit. Unlike GetCallHistory, there is no default of 20 and no cap of 1000 on the Management API side</param>
         /// <param name="offset">The number of records to skip in the output</param>
         /// <param name="callSessionHistoryId">To get the call history for the specific sessions, pass the session IDs to this parameter separated by a semicolon (;). You can find the session ID in the <a href='/docs/references/voxengine/appevents#started'>AppEvents.Started</a> event's <b>sessionID</b> property in a scenario, or retrieve it from the <b>call_session_history_id</b> value returned from the <a href='https://voximplant.com/docs/references/httpapi/scenarios#reorderscenarios'>StartScenarios</a> or <a href='https://voximplant.com/docs/references/httpapi/scenarios#startconference'>StartConference</a> methods</param>
         /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
@@ -1951,7 +1951,7 @@ namespace Voximplant.API {
         /// <param name="resourceType">The resource type list separated by semicolons (;) to filter</param>
         /// <param name="priceGroupName">The price group name list separated by semicolons (;) to filter</param>
         /// <param name="useAccountingDates">Whether to filter by the accounting dates instead of the transaction's `performed_at` timestamps</param>
-        /// <param name="count">The maximum record number to include in the report. If omitted, the report service applies its own limit. Unlike GetTransactionHistory, there is no default of 20 and no cap of 1000 on the Management API side</param>
+        /// <param name="count">The maximum number of records to include in the report. If omitted, the report service applies its own limit. Unlike GetTransactionHistory, there is no default of 20 and no cap of 1000 on the Management API side</param>
         /// <param name="offset">The number of records to skip in the output</param>
         /// <param name="transactionId">The transaction ID list separated by semicolons (;)</param>
         /// <param name="transactionType">The transaction type list separated by semicolons (;). The following values are possible: gift_revoke, resource_charge, money_distribution, subscription_charge, subscription_installation_charge, card_periodic_payment, card_overrun_payment, card_payment, rub_card_periodic_payment, rub_card_overrun_payment, rub_card_payment, robokassa_payment, gift, promo, adjustment, wire_transfer, us_wire_transfer, refund, discount, mgp_charge, mgp_startup, mgp_business, mgp_big_business, mgp_enterprise, mgp_large_enterprise, techsupport_charge, tax_charge, monthly_fee_charge, grace_credit_payment, grace_credit_provision, mau_charge, mau_overrun, im_charge, im_overrun, fmc_charge, sip_registration_charge, development_fee, money_transfer_to_child, money_transfer_to_parent, money_acceptance_from_child, money_acceptance_from_parent, phone_number_installation, phone_number_charge, toll_free_phone_number_installation, toll_free_phone_number_charge, services, user_money_transfer, paypal_payment, paypal_overrun_payment, paypal_periodic_payment</param>
@@ -2107,7 +2107,7 @@ namespace Voximplant.API {
         /// <param name="advancedFilters">A relation ID to filter (for example: a phone_number value, a user_id value, an application_id value)</param>
         /// <param name="descOrder">Whether to get records in the descent order</param>
         /// <param name="withTotalCount">Whether to include the 'total_count' and increase performance</param>
-        /// <param name="count">The maximum returning record number. If omitted, the report service applies its own limit</param>
+        /// <param name="count">The maximum returning number of records. If omitted, the report service applies its own limit</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         public async Task<GetAuditLogResponse> GetAuditLog(DateTime? fromDate = null, DateTime? toDate = null, string auditLogId = null, string filteredAdminUserId = null, bool? isAsync = null, bool? withHeader = null, string decimalSeparator = null, string filteredIp = null, string filteredCmd = null, string advancedFilters = null, bool? descOrder = null, bool? withTotalCount = null, long? count = null, long? offset = null)
         {
@@ -2150,7 +2150,7 @@ namespace Voximplant.API {
         /// <param name="toDate">The UTC 'to' date filter in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="auditLogId">The audit history ID list separated by semicolons (;)</param>
         /// <param name="filteredAdminUserId">The admin user ID list separated by semicolons (;) to filter</param>
-        /// <param name="count">The maximum record number to include in the report. If omitted, the report service applies its own limit</param>
+        /// <param name="count">The maximum number of records to include in the report. If omitted, the report service applies its own limit</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="filteredIp">The IP list separated by semicolons (;) to filter</param>
         /// <param name="filteredCmd">The function list separated by semicolons (;) to filter</param>
@@ -3282,7 +3282,7 @@ namespace Voximplant.API {
         /// <param name="userName">The user name list separated by semicolons (;). <b>Required</b> unless <b>user_id</b> is provided.</param>
         /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to specify all queues bound to the application. <b>Required</b> unless <b>acd_queue_name</b> is provided.</param>
         /// <param name="acdQueueName">The queue name. The queue name list separated by semicolons (;). <b>Required</b> unless <b>acd_queue_id</b> is provided.</param>
-        public async Task<BindUserToQueueResponse> BindUserToQueue(bool bind, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string acdQueueId = null, string acdQueueName = null)
+        public async Task<BindUserToQueueResponse> BindUserToQueue(bool? bind = null, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string acdQueueId = null, string acdQueueName = null)
         {
             var passedArgs = new List<string>();
         
@@ -3313,7 +3313,8 @@ namespace Voximplant.API {
     
             var args = new Dictionary<string, object>();
 
-            args["bind"] = bind.ToString();
+            if (bind.HasValue)
+                args["bind"] = bind.Value ? "1" : "0";
             if (applicationId.HasValue)
                 args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
@@ -3364,8 +3365,9 @@ namespace Voximplant.API {
         /// <param name="maxQueueSize">The maximum queue size</param>
         /// <param name="maxWaitingTime">The maximum predicted waiting time in minutes. The client is rejected if the predicted waiting time is greater than the maximum predicted waiting time</param>
         /// <param name="averageServiceTime">The average service time in seconds. Specify the parameter to correct or initialize the waiting time prediction</param>
-        /// <param name="applicationId">The new application ID</param>
-        public async Task<SetQueueInfoResponse> SetQueueInfo(long? acdQueueId = null, string acdQueueName = null, string newAcdQueueName = null, long? acdQueuePriority = null, bool? autoBinding = null, long? serviceProbability = null, long? maxQueueSize = null, long? maxWaitingTime = null, long? averageServiceTime = null, long? applicationId = null)
+        /// <param name="applicationId">The new application ID. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The new application name. Can be used instead of the <b>application_id</b> parameter</param>
+        public async Task<SetQueueInfoResponse> SetQueueInfo(long? acdQueueId = null, string acdQueueName = null, string newAcdQueueName = null, long? acdQueuePriority = null, bool? autoBinding = null, long? serviceProbability = null, long? maxQueueSize = null, long? maxWaitingTime = null, long? averageServiceTime = null, long? applicationId = null, string applicationName = null)
         {
             var passedArgs = new List<string>();
         
@@ -3398,6 +3400,8 @@ namespace Voximplant.API {
                 args["average_service_time"] = averageServiceTime.Value.ToString();
             if (applicationId.HasValue)
                 args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
             return await PerformRequest<SetQueueInfoResponse>("SetQueueInfo", args);
 }
         /// <summary>
@@ -3405,15 +3409,19 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="acdQueueId">The ACD queue ID to filter</param>
         /// <param name="acdQueueName">The ACD queue name part to filter</param>
-        /// <param name="applicationId">The application ID to filter</param>
-        /// <param name="skillId">The skill ID to filter</param>
-        /// <param name="excludedSkillId">The excluded skill ID to filter</param>
+        /// <param name="applicationId">The application ID to filter. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="skillId">The skill ID to filter. Can be used instead of the <b>skill_name</b> parameter</param>
+        /// <param name="skillName">The skill name. Can be used instead of the <b>skill_id</b> parameter</param>
+        /// <param name="excludedSkillId">The excluded skill ID to filter. Can be used instead of the <b>excluded_skill_name</b> parameter</param>
+        /// <param name="excludedSkillName">The excluded skill name. Can be used instead of the <b>excluded_skill_id</b> parameter</param>
         /// <param name="withSkills">Whether to get the bound skills</param>
         /// <param name="showingSkillId">The skill to show in the 'skills' field output</param>
         /// <param name="count">The maximum returning record count</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="withOperatorcount">Whether to include the number of agents bound to the queue</param>
-        public async Task<GetQueuesResponse> GetQueues(long? acdQueueId = null, string acdQueueName = null, long? applicationId = null, long? skillId = null, long? excludedSkillId = null, bool? withSkills = null, long? showingSkillId = null, long? count = null, long? offset = null, bool? withOperatorcount = null)
+        /// <param name="showDeleted">Whether to include the deleted queues</param>
+        public async Task<GetQueuesResponse> GetQueues(long? acdQueueId = null, string acdQueueName = null, long? applicationId = null, string applicationName = null, long? skillId = null, string skillName = null, long? excludedSkillId = null, string excludedSkillName = null, bool? withSkills = null, long? showingSkillId = null, long? count = null, long? offset = null, bool? withOperatorcount = null, bool? showDeleted = null)
         {
             var args = new Dictionary<string, object>();
 
@@ -3423,10 +3431,16 @@ namespace Voximplant.API {
                 args["acd_queue_name"] = acdQueueName;
             if (applicationId.HasValue)
                 args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
             if (skillId.HasValue)
                 args["skill_id"] = skillId.Value.ToString();
+            if (skillName != null)
+                args["skill_name"] = skillName;
             if (excludedSkillId.HasValue)
                 args["excluded_skill_id"] = excludedSkillId.Value.ToString();
+            if (excludedSkillName != null)
+                args["excluded_skill_name"] = excludedSkillName;
             if (withSkills.HasValue)
                 args["with_skills"] = withSkills.Value ? "1" : "0";
             if (showingSkillId.HasValue)
@@ -3437,6 +3451,8 @@ namespace Voximplant.API {
                 args["offset"] = offset.Value.ToString();
             if (withOperatorcount.HasValue)
                 args["with_operatorcount"] = withOperatorcount.Value ? "1" : "0";
+            if (showDeleted.HasValue)
+                args["show_deleted"] = showDeleted.Value ? "1" : "0";
             return await PerformRequest<GetQueuesResponse>("GetQueues", args);
 }
         /// <summary>
@@ -3486,22 +3502,21 @@ namespace Voximplant.API {
         /// Get statistics for calls distributed to users (referred as 'operators') via the 'queue' distribution system. This method can filter statistic based on operator ids, queue ids and date-time interval. It can also group results by day or hour.
         /// </summary>
         /// <param name="fromDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
+        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
         /// <param name="abbreviation">Whether key names in returned JSON are abbreviated to reduce response byte size. The abbreviations are: 'WT' for 'WaitingTime', 'SA' for 'SpeedOfAnswer', 'AT' is for 'AbandonmentTime', 'HT' is for 'HandlingTime', 'TT' is for 'TalkTime', 'ACW' is for 'AfterCallWork', 'QL' is for 'QueueLength', 'TC' is for 'TotalCalls', 'AC' is for 'AnsweredCalls', 'UAC' is for 'UnansweredCalls', 'RC' is for 'RejectedCalls', 'SL' is for 'ServiceLevel', 'TWT' is for 'TotalWaitingTime', 'TST' is for 'TotalSubmissionTime', 'TAT' is for 'TotalAbandonmentTime', 'THT' is for 'TotalHandlingTime', 'TTT' is for 'TotalTalkTime', 'TACW' is for 'TotalAfterCallWork'</param>
-        /// <param name="acdQueueId">The ACD queue ID list separated by semicolons (;). Use the 'all' value to select all ACD queues</param>
         /// <param name="report">List of item names abbreviations separated by semicolons (;). Returned JSON includes keys only for the selected items. Special 'all' value defines all possible items, see [ACDQueueStatisticsType] for a complete list. See 'abbreviation' description for complete abbreviation list</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
-        public async Task<GetACDQueueStatisticsResponse> GetACDQueueStatistics(DateTime fromDate, DateTime? toDate = null, bool? abbreviation = null, string acdQueueId = null, string report = null, string aggregation = null)
+        public async Task<GetACDQueueStatisticsResponse> GetACDQueueStatistics(DateTime fromDate, string acdQueueId, DateTime? toDate = null, bool? abbreviation = null, string report = null, string aggregation = null)
         {
             var args = new Dictionary<string, object>();
 
             args["from_date"] = fromDate.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            args["acd_queue_id"] = acdQueueId;
             if (toDate.HasValue)
                 args["to_date"] = toDate.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
             if (abbreviation.HasValue)
                 args["abbreviation"] = abbreviation.Value ? "1" : "0";
-            if (acdQueueId != null)
-                args["acd_queue_id"] = acdQueueId;
             if (report != null)
                 args["report"] = report;
             if (aggregation != null)
@@ -3514,7 +3529,7 @@ namespace Voximplant.API {
         /// <param name="fromDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
         /// <param name="userId">The user ID list separated by semicolons (;). Use the 'all' value to select all users</param>
         /// <param name="toDate">Date and time of statistics interval begin. Time zone is UTC, format is 24-h 'YYYY-MM-DD HH:mm:ss'</param>
-        /// <param name="acdStatus">The ACD status list separated by semicolons (;). The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND</param>
+        /// <param name="acdStatus">The ACD status list separated by semicolons (;). The following values are possible: OFFLINE, ONLINE, READY, BANNED, IN_SERVICE, AFTER_SERVICE, TIMEOUT, DND. If omitted, the statistics include all the statuses</param>
         /// <param name="aggregation">Specifies how records are grouped by date and time. If set to 'day', the criteria is a day number. If set to 'hour_of_day', the criteria is a 60-minute interval within a day. If set to 'hour', the criteria is both day number and 60-minute interval within that day. If set to 'none', records are not grouped by date and time</param>
         /// <param name="group">If set to 'user', first-level array in the resulting JSON groups records by the user ID, and second-level array groups them by date according to the 'aggregation' parameter. If set to 'aggregation', first-level array in the resulting JSON groups records according to the 'aggregation' parameter, and second-level array groups them by the user ID</param>
         public async Task<GetACDOperatorStatusStatisticsResponse> GetACDOperatorStatusStatistics(DateTime fromDate, string userId, DateTime? toDate = null, string acdStatus = null, string aggregation = null, string group = null)
@@ -5726,7 +5741,7 @@ namespace Voximplant.API {
         /// <param name="applicationId">Application ID. <b>Required</b> unless <b>application_name</b> is provided.</param>
         /// <param name="applicationName">Application name. <b>Required</b> unless <b>application_id</b> is provided.</param>
         /// <param name="secretNamePart">Filter by the secret name part</param>
-        /// <param name="count">Maximum returning record number</param>
+        /// <param name="count">Maximum returning number of records</param>
         /// <param name="offset">First <b>N</b> records to be skipped in the output</param>
         public async Task<GetSecretsResponse> GetSecrets(long? applicationId = null, string applicationName = null, string secretNamePart = null, long? count = null, long? offset = null)
         {

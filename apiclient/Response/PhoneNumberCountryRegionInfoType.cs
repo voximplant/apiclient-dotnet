@@ -29,7 +29,7 @@ namespace Voximplant.API.Response {
         public string PhoneRegionCode { get; private set; }
 
         /// <summary>
-        /// The phone number number in stock for the region
+        /// The phone number quantity in stock for the region
         /// </summary>
         [JsonProperty("phone_count")]
         public long PhoneCount { get; private set; }

@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
     public class ContractorInvoiceType
     {
         /// <summary>
-        /// The invoice number
+        /// The number of invoices
         /// </summary>
         [JsonProperty("invoice_number")]
         public string InvoiceNumber { get; private set; }

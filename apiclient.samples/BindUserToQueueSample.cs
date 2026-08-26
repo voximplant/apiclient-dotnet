@@ -25,10 +25,10 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.BindUserToQueue(
-                    true,
                     applicationId: 1L,
                     userId: "12;987;456",
-                    acdQueueName: "myqueue"
+                    acdQueueName: "myqueue",
+                    bind: true
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");

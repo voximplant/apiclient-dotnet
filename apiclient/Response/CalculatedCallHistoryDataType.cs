@@ -11,7 +11,7 @@ namespace Voximplant.API.Response {
     public class CalculatedCallHistoryDataType
     {
         /// <summary>
-        /// The session number in the report
+        /// The number of sessions in the report
         /// </summary>
         [JsonProperty("session_count")]
         public long SessionCount { get; private set; }
