@@ -25,7 +25,7 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.StartScenarios(
-                    1L,
+                    ruleId: 1L,
                     scriptCustomData: "mystr"
                 ).Result;
 

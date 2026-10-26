@@ -26,7 +26,7 @@ namespace apiclient.samples
 
                 var result = voximplant.StartConference(
                     "boss",
-                    1L,
+                    ruleId: 1L,
                     scriptCustomData: "mystr"
                 ).Result;
 

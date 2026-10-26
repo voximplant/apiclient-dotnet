@@ -25,9 +25,9 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.GetNewPhoneNumbers(
-                    "RU",
-                    "GEOGRAPHIC",
-                    1L,
+                    countryCode: "RU",
+                    phoneCategoryName: "GEOGRAPHIC",
+                    phoneRegionId: 1L,
                     count: 2L
                 ).Result;
 

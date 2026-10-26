@@ -26,7 +26,7 @@ namespace apiclient.samples
 
                 var result = voximplant.GetPhoneNumberCountryStates(
                     "US",
-                    "GEOGRAPHIC"
+                    phoneCategoryName: "GEOGRAPHIC"
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");

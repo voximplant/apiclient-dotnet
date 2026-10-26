@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http;
 using Newtonsoft.Json.Serialization;
 
 namespace Voximplant.API
@@ -15,6 +16,13 @@ namespace Voximplant.API
         {
             UseHTTPS = true;
         }
+
+        /// <summary>
+        /// Optional delegate that supplies the <see cref="HttpClient"/> for each request.
+        /// When unset, requests reuse one process-wide client.
+        /// The library does not dispose clients returned by this delegate.
+        /// </summary>
+        public Func<HttpClient> CreateHttpClient { get; set; }
 
         public string APIHost
         {

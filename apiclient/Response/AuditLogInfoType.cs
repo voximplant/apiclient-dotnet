@@ -57,13 +57,13 @@ namespace Voximplant.API.Response {
         /// The arguments of the called function (they may be masked or resolved)
         /// </summary>
         [JsonProperty("cmd_args")]
-        public string CmdArgs { get; private set; }
+        public object CmdArgs { get; private set; }
 
         /// <summary>
         /// The modified values
         /// </summary>
         [JsonProperty("cmd_result")]
-        public string CmdResult { get; private set; }
+        public object CmdResult { get; private set; }
 
     }
 }

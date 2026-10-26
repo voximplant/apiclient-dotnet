@@ -25,10 +25,10 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.AttachPhoneNumber(
-                    "US",
-                    "GEOGRAPHIC",
-                    1100L,
+                    countryCode: "US",
+                    phoneCategoryName: "GEOGRAPHIC",
                     countryState: "CA",
+                    phoneRegionId: 1100L,
                     phoneCount: 1L
                 ).Result;
 

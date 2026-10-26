@@ -84,13 +84,13 @@ namespace Voximplant.API.Response {
         /// The report order filters (the saved [GetCallHistory], [GetTransactionHistory] parameters)
         /// </summary>
         [JsonProperty("filters")]
-        public string Filters { get; private set; }
+        public object Filters { get; private set; }
 
         /// <summary>
         /// The calculated report data (the specific report data, see [CalculatedCallHistoryDataType], [CalculatedTransactionHistoryDataType])
         /// </summary>
         [JsonProperty("calculated_data")]
-        public string CalculatedData { get; private set; }
+        public object CalculatedData { get; private set; }
 
     }
 }

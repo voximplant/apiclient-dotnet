@@ -25,8 +25,8 @@ namespace apiclient.samples
                 var voximplant = new VoximplantAPI();
 
                 var result = voximplant.ReorderScenarios(
-                    ruleId: 2L,
-                    scenarioId: "17;15;20"
+                    "17;15;20",
+                    ruleId: 2L
                 ).Result;
 
                 Console.WriteLine($"Response: {result.ToString()}");

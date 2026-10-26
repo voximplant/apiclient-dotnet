@@ -100,6 +100,8 @@ namespace Voximplant.API {
         /// <param name="childAccountName">The child account name list separated by semicolons (;). <b>Required</b> unless <b>child_account_id</b> or <b>child_account_email</b> is provided.</param>
         /// <param name="childAccountEmail">The child account email list separated by semicolons (;). <b>Required</b> unless <b>child_account_id</b> or <b>child_account_name</b> is provided.</param>
         /// <param name="newChildAccountEmail">The new child account email</param>
+        /// <param name="callbackUrl">Custom URL to send callbacks from this child account</param>
+        /// <param name="callbackSalt">If salt string is specified, each HTTP request made by the Voximplant cloud toward the <b>callback_url</b> has a <b>salt</b> field set to MD5 hash of account information and salt. That hash can be used be a developer to ensure that HTTP request is made by the Voximplant cloud</param>
         /// <param name="newChildAccountPassword">The new child account password. Should be at least 8 characters long and contain at least one uppercase and lowercase letter, one number, and one special character</param>
         /// <param name="accountNotifications">Whether Voximplant notifications are required</param>
         /// <param name="tariffChangingNotifications">Whether to receive the emails about the Voximplant plan changing</param>
@@ -112,7 +114,7 @@ namespace Voximplant.API {
         /// <param name="supportBankCard">Whether to allow the bank card payments</param>
         /// <param name="supportInvoice">Whether to allow the bank invoices</param>
         /// <param name="canUseRestricted">Whether to allow use restricted directions</param>
-        public async Task<SetChildAccountInfoResponse> SetChildAccountInfo(string childAccountId = null, string childAccountName = null, string childAccountEmail = null, string newChildAccountEmail = null, string newChildAccountPassword = null, bool? accountNotifications = null, bool? tariffChangingNotifications = null, bool? newsNotifications = null, bool? active = null, string languageCode = null, string location = null, decimal? minBalanceToNotify = null, bool? supportRobokassa = null, bool? supportBankCard = null, bool? supportInvoice = null, bool? canUseRestricted = null)
+        public async Task<SetChildAccountInfoResponse> SetChildAccountInfo(string childAccountId = null, string childAccountName = null, string childAccountEmail = null, string newChildAccountEmail = null, string callbackUrl = null, string callbackSalt = null, string newChildAccountPassword = null, bool? accountNotifications = null, bool? tariffChangingNotifications = null, bool? newsNotifications = null, bool? active = null, string languageCode = null, string location = null, decimal? minBalanceToNotify = null, bool? supportRobokassa = null, bool? supportBankCard = null, bool? supportInvoice = null, bool? canUseRestricted = null)
         {
             var passedArgs = new List<string>();
         
@@ -135,6 +137,10 @@ namespace Voximplant.API {
                 args["child_account_email"] = childAccountEmail;
             if (newChildAccountEmail != null)
                 args["new_child_account_email"] = newChildAccountEmail;
+            if (callbackUrl != null)
+                args["callback_url"] = callbackUrl;
+            if (callbackSalt != null)
+                args["callback_salt"] = callbackSalt;
             if (newChildAccountPassword != null)
                 args["new_child_account_password"] = newChildAccountPassword;
             if (accountNotifications.HasValue)
@@ -231,7 +237,7 @@ namespace Voximplant.API {
         /// <param name="ignoreInvalidAccounts">Whether to ignore the invalid 'child_account_id' items</param>
         /// <param name="briefOutput">Whether to output the account_id only</param>
         /// <param name="mediumOutput">Whether to output the account_id, account_name, account_email only</param>
-        /// <param name="count">The maximum returning record count</param>
+        /// <param name="count">The maximum returning record count. The default value applies to the full output only and is capped at 1000; with <b>brief_output</b> or <b>medium_output</b> all the records are returned unless this parameter is set</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="orderBy">The following values are available: 'child_account_id', 'child_account_name' and 'child_account_email'</param>
         /// <param name="returnLiveBalance">Whether to get the user live balance</param>
@@ -283,15 +289,15 @@ namespace Voximplant.API {
         /// <summary>
         /// Configures the account's plan.<br><br>Please note that when you change the billing plan, we reserve the subscription fee and taxes for the upcoming month. Read more in the <a href='/docs/gettingstarted/billing'>Billing</a> page.
         /// </summary>
-        /// <param name="planType">The plan type to config. The possible values are IM, MAU</param>
         /// <param name="planSubscriptionTemplateId">The new plan ID with a price larger than the current plan's (see [GetAvailablePlans])</param>
-        public async Task<ChangeAccountPlanResponse> ChangeAccountPlan(string planType, long? planSubscriptionTemplateId = null)
+        /// <param name="planType">The plan type to config. The possible values are IM, MAU</param>
+        public async Task<ChangeAccountPlanResponse> ChangeAccountPlan(long planSubscriptionTemplateId, string planType = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["plan_type"] = planType;
-            if (planSubscriptionTemplateId.HasValue)
-                args["plan_subscription_template_id"] = planSubscriptionTemplateId.Value.ToString();
+            args["plan_subscription_template_id"] = planSubscriptionTemplateId.ToString();
+            if (planType != null)
+                args["plan_type"] = planType;
             return await PerformRequest<ChangeAccountPlanResponse>("ChangeAccountPlan", args);
 }
         /// <summary>
@@ -913,10 +919,10 @@ namespace Voximplant.API {
         /// <param name="typeList">The type of the call list. The possible values are AUTOMATIC and MANUAL</param>
         /// <param name="count">The maximum returning record count. The maximum value is 1000</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
-        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications</param>
-        /// <param name="applicationName">The application name list separated by semicolons (;). Can be used instead of <b>application_id</b></param>
-        /// <param name="ruleId">The rule ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all rules</param>
-        /// <param name="ruleName">The rule name list separated by semicolons (;). Can be used instead of <b>rule_id</b></param>
+        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name list separated by semicolons (;). Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="ruleId">The rule ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all rules. Can be used instead of the <b>rule_name</b> parameter</param>
+        /// <param name="ruleName">The rule name list separated by semicolons (;). Can be used instead of the <b>rule_id</b> parameter</param>
         /// <param name="status">The call list status to filter. The possible values are: In progress, Canceled, Completed, Suspended</param>
         public async Task<GetCallListsResponse> GetCallLists(string listId = null, string name = null, bool? isActive = null, DateTime? fromDate = null, DateTime? toDate = null, string typeList = null, long? count = null, long? offset = null, string applicationId = null, string applicationName = null, string ruleId = null, string ruleName = null, string status = null)
         {
@@ -1075,8 +1081,8 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="scenarioName">The scenario name. The length should be less than 30</param>
         /// <param name="scenarioScript">The scenario text. Use the application/x-www-form-urlencoded content type with UTF-8 encoding. The length should be less than 128 KB</param>
-        /// <param name="ruleId">The rule ID. The new scenario binds to the specified rule. Please note, if you do not bind the scenario to any rule, you cannot execute the scenario</param>
-        /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
+        /// <param name="ruleId">The rule ID. The new scenario binds to the specified rule. Please note, if you do not bind the scenario to any rule, you cannot execute the scenario. Can be used instead of the <b>rule_name</b> parameter</param>
+        /// <param name="ruleName">The rule name. Can be used instead of the <b>rule_id</b> parameter</param>
         /// <param name="rewrite">Whether to rewrite the existing scenario</param>
         /// <param name="applicationId">Application ID to bind the scenario to</param>
         /// <param name="applicationName">Application name to bind the scenario to</param>
@@ -1130,8 +1136,8 @@ namespace Voximplant.API {
         /// <param name="scenarioName">The scenario name list separated by semicolons (;). <b>Required</b> unless <b>scenario_id</b> is provided.</param>
         /// <param name="ruleId">The rule ID to bind the scenario. The rule and the scenario need to be in the same application. <b>Required</b> unless <b>rule_name</b> is provided.</param>
         /// <param name="ruleName">The rule name. <b>Required</b> unless <b>rule_id</b> is provided.</param>
-        /// <param name="applicationId">The application ID. <b>Required</b> unless <b>application_name</b> is provided.</param>
-        /// <param name="applicationName">The application name. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="applicationId">The application ID. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name. Can be used instead of the <b>application_id</b> parameter</param>
         /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindScenarioResponse> BindScenario(string scenarioId = null, string scenarioName = null, long? ruleId = null, string ruleName = null, long? applicationId = null, string applicationName = null, bool? bind = null)
         {
@@ -1184,7 +1190,7 @@ namespace Voximplant.API {
         /// Gets the account's scenarios.
         /// </summary>
         /// <param name="scenarioId">The scenario ID to filter</param>
-        /// <param name="scenarioName">The scenario name to filter. Can be used instead of <b>scenario_id</b>. All scenarios containing this param in their names are returned. The parameter is case insensitive</param>
+        /// <param name="scenarioName">The scenario name to filter. Exact match. Combines with <b>scenario_id</b> when both are passed. Use with <b>application_id</b> or <b>application_name</b> to limit the result to one application</param>
         /// <param name="withScript">Whether to get the scenario text. You should specify the 'scenario_id' too!</param>
         /// <param name="count">The maximum returning record count</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
@@ -1243,10 +1249,10 @@ namespace Voximplant.API {
         /// <summary>
         /// Configures the order of scenarios that are assigned to the specified rule.
         /// </summary>
+        /// <param name="scenarioId">The scenario ID list separated by semicolons (;)</param>
         /// <param name="ruleId">The rule ID. <b>Required</b> unless <b>rule_name</b> is provided.</param>
         /// <param name="ruleName">The rule name. <b>Required</b> unless <b>rule_id</b> is provided.</param>
-        /// <param name="scenarioId">The scenario ID list separated by semicolons (;)</param>
-        public async Task<ReorderScenariosResponse> ReorderScenarios(long? ruleId = null, string ruleName = null, string scenarioId = null)
+        public async Task<ReorderScenariosResponse> ReorderScenarios(string scenarioId, long? ruleId = null, string ruleName = null)
         {
             var passedArgs = new List<string>();
         
@@ -1259,26 +1265,26 @@ namespace Voximplant.API {
     
             var args = new Dictionary<string, object>();
 
+            args["scenario_id"] = scenarioId;
             if (ruleId.HasValue)
                 args["rule_id"] = ruleId.Value.ToString();
             if (ruleName != null)
                 args["rule_name"] = ruleName;
-            if (scenarioId != null)
-                args["scenario_id"] = scenarioId;
             return await PerformRequest<ReorderScenariosResponse>("ReorderScenarios", args);
 }
         /// <summary>
         /// Runs JavaScript scenarios on a Voximplant server. The scenarios run in a new media session. To start a scenario, pass the routing rule ID associated with the necessary scenario. You can use both GET and POST requests at your choice. If you need to send custom data, we recommend to use the POST method and to include the data in the `custom_data` field of the request body. The maximum number of concurrent HTTP-requests is limited to 200. If this number is exceeded, this method returns the 429 code error (Too Many Requests) until the number of active requests is reduced. If you exceed this number, you get the 429 error code.
         /// </summary>
-        /// <param name="ruleId">The rule ID that needs to be launched. Please note, the necessary scenario needs to be attached to the rule</param>
-        /// <param name="userId">The user ID. Run the scripts from the user if set</param>
-        /// <param name="userName">The user name that can be used instead of <b>user_id</b>. Run the scripts from the user if set</param>
-        /// <param name="applicationId">The application ID</param>
-        /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
+        /// <param name="userId">The user ID. Run the scripts from the user if set. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name. Run the scripts from the user if set. Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="applicationId">The application ID. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="ruleId">The rule ID that needs to be launched. Please note, the necessary scenario needs to be attached to the rule. <b>Required</b> unless <b>rule_name</b> is provided.</param>
+        /// <param name="ruleName">The rule name. <b>Required</b> unless <b>rule_id</b> is provided.</param>
         /// <param name="scriptCustomData">The script custom data, that can be accessed in the scenario via the <a href='/docs/references/voxengine/voxengine/customdata'>VoxEngine.customData()</a> method. Use the application/x-www-form-urlencoded content type with UTF-8 encoding</param>
-        /// <param name="referenceIp">Specifies the IP from the geolocation of predicted subscribers. It allows selecting the nearest server for serving subscribers</param>
+        /// <param name="referenceIp">Specifies the IP from the geolocation of predicted subscribers. It allows selecting the nearest server for serving subscribers. If not specified, the IP address of the HTTP request is used</param>
         /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
-        public async Task<StartScenariosResponse> StartScenarios(long ruleId, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null, string serverLocation = null)
+        public async Task<StartScenariosResponse> StartScenarios(long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, string scriptCustomData = null, string referenceIp = null, string serverLocation = null)
         {
             var passedArgs = new List<string>();
         
@@ -1300,7 +1306,6 @@ namespace Voximplant.API {
     
             var args = new Dictionary<string, object>();
 
-            args["rule_id"] = ruleId.ToString();
             if (userId.HasValue)
                 args["user_id"] = userId.Value.ToString();
             if (userName != null)
@@ -1309,6 +1314,10 @@ namespace Voximplant.API {
                 args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (ruleId.HasValue)
+                args["rule_id"] = ruleId.Value.ToString();
+            if (ruleName != null)
+                args["rule_name"] = ruleName;
             if (scriptCustomData != null)
                 args["script_custom_data"] = scriptCustomData;
             if (referenceIp != null)
@@ -1321,15 +1330,16 @@ namespace Voximplant.API {
         /// Runs a session for video conferencing or joins the existing video conference session.<br/><br/>When you create a session by calling this method, a scenario runs on one of the servers dedicated to video conferencing. All further method calls with the same **conference_name** do not create a new video conference session but join the existing one.<br/><br/>Use the [StartScenarios] method for creating audio conferences.
         /// </summary>
         /// <param name="conferenceName">The conference name. The name length should be less than 50 symbols</param>
-        /// <param name="ruleId">The rule ID that needs to be launched. Please note, the necessary scenario needs to be attached to the rule</param>
-        /// <param name="userId">The user ID. Run the scripts from the user if set</param>
-        /// <param name="userName">The user name that can be used instead of <b>user_id</b>. Run the scripts from the user if set</param>
-        /// <param name="applicationId">The application ID</param>
-        /// <param name="applicationName">The application name that can be used instead of <b>application_id</b></param>
+        /// <param name="ruleId">The rule ID that needs to be launched. Please note, the necessary scenario needs to be attached to the rule. <b>Required</b> unless <b>rule_name</b> is provided.</param>
+        /// <param name="ruleName">The rule name. <b>Required</b> unless <b>rule_id</b> is provided.</param>
+        /// <param name="userId">The user ID. Run the scripts from the user if set. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name. Run the scripts from the user if set. Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="applicationId">The application ID. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name. Can be used instead of the <b>application_id</b> parameter</param>
         /// <param name="scriptCustomData">The script custom data, that can be accessed in the scenario via the <a href='/docs/references/voxengine/voxengine/customdata'>VoxEngine.customData()</a> method. Use the application/x-www-form-urlencoded content type with UTF-8 encoding.</param>
-        /// <param name="referenceIp">Specifies the IP from the geolocation of predicted subscribers. It allows selecting the nearest server for serving subscribers</param>
+        /// <param name="referenceIp">Specifies the IP from the geolocation of predicted subscribers. It allows selecting the nearest server for serving subscribers. If not specified, the IP address of the HTTP request is used</param>
         /// <param name="serverLocation">Specifies the location of the server where the scenario needs to be executed. Has higher priority than `reference_ip`. Request [getServerLocations](https://api.voximplant.com/getServerLocations) for possible values</param>
-        public async Task<StartConferenceResponse> StartConference(string conferenceName, long ruleId, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null, string serverLocation = null)
+        public async Task<StartConferenceResponse> StartConference(string conferenceName, long? ruleId = null, string ruleName = null, long? userId = null, string userName = null, long? applicationId = null, string applicationName = null, string scriptCustomData = null, string referenceIp = null, string serverLocation = null)
         {
             var passedArgs = new List<string>();
         
@@ -1352,7 +1362,10 @@ namespace Voximplant.API {
             var args = new Dictionary<string, object>();
 
             args["conference_name"] = conferenceName;
-            args["rule_id"] = ruleId.ToString();
+            if (ruleId.HasValue)
+                args["rule_id"] = ruleId.Value.ToString();
+            if (ruleName != null)
+                args["rule_name"] = ruleName;
             if (userId.HasValue)
                 args["user_id"] = userId.Value.ToString();
             if (userName != null)
@@ -1555,8 +1568,8 @@ namespace Voximplant.API {
         /// <param name="isAsync">Whether to create an asynchronous history report instead of returning the data immediately. Has the same effect as calling GetCallHistoryAsync and requires the output=csv</param>
         /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
         /// <param name="callSessionHistoryId">To get the call history for the specific sessions, pass the session IDs to this parameter separated by a semicolon (;). The maximum number of records is 1000. You can find the session ID in the <a href='/docs/references/voxengine/appevents#started'>AppEvents.Started</a> event's <b>sessionID</b> property in a scenario, or retrieve it from the <b>call_session_history_id</b> value returned from the <a href='https://voximplant.com/docs/references/httpapi/scenarios#reorderscenarios'>StartScenarios</a> or <a href='https://voximplant.com/docs/references/httpapi/scenarios#startconference'>StartConference</a> methods</param>
-        /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
-        /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name. Can be used instead of the <b>application_id</b> parameter</param>
         /// <param name="userId">To receive the call history for a specific users, pass the user ID list separated by semicolons (;). If it is specified, the output contains the calls from the listed users only</param>
         /// <param name="ruleName">To receive the call history for a specific routing rule, pass the rule name to this parameter. Applies only if you set application_id or application_name</param>
         /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolons (;). A remote number is a number on the client side. Ignored if the `remote_number_list` parameter is not empty</param>
@@ -1646,8 +1659,8 @@ namespace Voximplant.API {
         /// <param name="count">The maximum number of records to include in the report. If omitted, the report service applies its own limit. Unlike GetCallHistory, there is no default of 20 and no cap of 1000 on the Management API side</param>
         /// <param name="offset">The number of records to skip in the output</param>
         /// <param name="callSessionHistoryId">To get the call history for the specific sessions, pass the session IDs to this parameter separated by a semicolon (;). You can find the session ID in the <a href='/docs/references/voxengine/appevents#started'>AppEvents.Started</a> event's <b>sessionID</b> property in a scenario, or retrieve it from the <b>call_session_history_id</b> value returned from the <a href='https://voximplant.com/docs/references/httpapi/scenarios#reorderscenarios'>StartScenarios</a> or <a href='https://voximplant.com/docs/references/httpapi/scenarios#startconference'>StartConference</a> methods</param>
-        /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
-        /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name. Can be used instead of the <b>application_id</b> parameter</param>
         /// <param name="userId">To receive the call history for a specific users, pass the user ID list separated by semicolons (;). If it is specified, the output contains the calls from the listed users only</param>
         /// <param name="ruleName">To receive the call history for a specific routing rule, pass the rule name to this parameter. Applies only if you set application_id or application_name</param>
         /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolons (;). A remote number is a number on the client side</param>
@@ -1729,8 +1742,8 @@ namespace Voximplant.API {
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss</param>
         /// <param name="callSessionHistoryId">To get the call history for the specific sessions, pass the session IDs to this parameter separated by a semicolon (;). You can find the session ID in the <a href='/docs/references/voxengine/appevents#started'>AppEvents.Started</a> event's <b>sessionID</b> property in a scenario, or retrieve it from the <b>call_session_history_id</b> value returned from the <a href='https://voximplant.com/docs/references/httpapi/scenarios#reorderscenarios'>StartScenarios</a> or <a href='https://voximplant.com/docs/references/httpapi/scenarios#startconference'>StartConference</a> methods</param>
-        /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter</param>
-        /// <param name="applicationName">The application name, can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">To receive the call history for a specific application, pass the application ID to this parameter. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">The application name. Can be used instead of the <b>application_id</b> parameter</param>
         /// <param name="ruleName">To receive the call history for a specific routing rule, pass the rule name to this parameter. Applies only if you set application_id or application_name</param>
         /// <param name="remoteNumber">To receive a call history for a specific remote numbers, pass the number list separated by semicolons (;). A remote number is a number on the client side</param>
         /// <param name="localNumber">To receive a call history for a specific local numbers, pass the number list separated by semicolons (;). A local number is a number on the platform side</param>
@@ -1786,7 +1799,7 @@ namespace Voximplant.API {
         /// <param name="descOrder">Whether to get records in the descent order</param>
         /// <param name="count">The maximum returning record count</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
-        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications</param>
+        /// <param name="applicationId">The application ID to filter. Can be a list separated by semicolons (;). Use the 'all' value to select all applications. Can be used instead of the <b>application_name</b> parameter</param>
         /// <param name="applicationName">The application name list separated by semicolons (;). Can be used instead of the <b>application_id</b> parameter</param>
         public async Task<GetHistoryReportsResponse> GetHistoryReports(long? historyReportId = null, string historyType = null, DateTime? createdFrom = null, DateTime? createdTo = null, bool? isCompleted = null, bool? descOrder = null, long? count = null, long? offset = null, string applicationId = null, string applicationName = null)
         {
@@ -1864,7 +1877,7 @@ namespace Voximplant.API {
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. If both dates are omitted and is_uncommitted is false, a server-configured default interval is used (default is one month)</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. If both dates are omitted and is_uncommitted is false, a server-configured default interval is used (default is one month)</param>
         /// <param name="applicationId">The application ID to filter. Can be used together with or instead of the <b>application_name</b> parameter</param>
-        /// <param name="applicationName">The application name to filter. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="applicationName">The application name to filter. Can be used together with or instead of the <b>application_id</b> parameter</param>
         /// <param name="subscriptionId">The subscription ID list separated by semicolons (;) to filter</param>
         /// <param name="subscriptionName">The subscription name list separated by semicolons (;) to filter</param>
         /// <param name="resourceType">The resource type list separated by semicolons (;) to filter</param>
@@ -1945,7 +1958,7 @@ namespace Voximplant.API {
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. If both dates are omitted and is_uncommitted is false, a server-configured default interval is used (default is one month)</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. If both dates are omitted and is_uncommitted is false, a server-configured default interval is used (default is one month)</param>
         /// <param name="applicationId">The application ID to filter. Can be used together with or instead of the <b>application_name</b> parameter</param>
-        /// <param name="applicationName">The application name to filter. Can be used instead of the <b>application_id</b> parameter</param>
+        /// <param name="applicationName">The application name to filter. Can be used together with or instead of the <b>application_id</b> parameter</param>
         /// <param name="subscriptionId">The subscription ID list separated by semicolons (;) to filter</param>
         /// <param name="subscriptionName">The subscription name list separated by semicolons (;) to filter</param>
         /// <param name="resourceType">The resource type list separated by semicolons (;) to filter</param>
@@ -2598,16 +2611,16 @@ namespace Voximplant.API {
             return await PerformRequest<GetSipRegistrationsResponse>("GetSipRegistrations", args);
 }
         /// <summary>
-        /// Attach the phone number to the account. Note that phone numbers of some countries may require additional verification steps.<br><br>Please note that when you purchase a phone number, we reserve the subscription fee and taxes for the upcoming month. Read more in the <a href='/docs/gettingstarted/billing'>Billing</a> page.
+        /// Attach the phone number to the account. There are two modes:<br><ol><li>Purchase from the catalog — specify <b>country_code</b>, <b>phone_category_name</b> and <b>phone_region_id</b> together; the platform picks the number. The [GetNewPhoneNumbers] method with the same three locators lists the numbers available for purchase.</li><li>Attach a specific phone number — pass <b>phone_number</b>; the three locators are not required. The [GetNewPhoneNumbers] method without the locators returns the numbers already available to the account, which are the ones this mode accepts.</li></ol>Note that phone numbers of some countries may require additional verification steps.<br><br>Please note that when you purchase a phone number, we reserve the subscription fee and taxes for the upcoming month. Read more in the <a href='/docs/gettingstarted/billing'>Billing</a> page.
         /// </summary>
-        /// <param name="countryCode">The country code</param>
-        /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method</param>
-        /// <param name="phoneRegionId">The phone region ID. See the [GetPhoneNumberRegions] method</param>
-        /// <param name="phoneCount">Quantity of phone numbers you want to attach. <b>Required</b> unless <b>phone_number</b> is provided.</param>
-        /// <param name="phoneNumber">The phone number. See the [GetNewPhoneNumbers] method. <b>Required</b> unless <b>phone_count</b> is provided.</param>
+        /// <param name="phoneCount">Quantity of phone numbers you want to attach. If neither this parameter nor <b>phone_number</b> is specified, one phone number is attached from the catalog</param>
+        /// <param name="phoneNumber">The phone numbers to attach, separated by semicolons (;). See the [GetNewPhoneNumbers] method. If neither this parameter nor <b>phone_count</b> is specified, one phone number is attached from the catalog</param>
+        /// <param name="countryCode">The country code. <b>Required</b> together with <b>phone_category_name</b> and <b>phone_region_id</b> to purchase from the catalog; not needed when attaching a specific phone number via <b>phone_number</b></param>
+        /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] method. <b>Required</b> together with <b>country_code</b> and <b>phone_region_id</b> to purchase from the catalog; not needed when attaching a specific phone number via <b>phone_number</b></param>
         /// <param name="countryState">The country state. See the [GetPhoneNumberCategories] and [GetPhoneNumberCountryStates] methods</param>
+        /// <param name="phoneRegionId">The phone region ID. See the [GetPhoneNumberRegions] method. <b>Required</b> together with <b>country_code</b> and <b>phone_category_name</b> to purchase from the catalog; not needed when attaching a specific phone number via <b>phone_number</b></param>
         /// <param name="regulationAddressId">The phone regulation address ID</param>
-        public async Task<AttachPhoneNumberResponse> AttachPhoneNumber(string countryCode, string phoneCategoryName, long phoneRegionId, long? phoneCount = null, string phoneNumber = null, string countryState = null, long? regulationAddressId = null)
+        public async Task<AttachPhoneNumberResponse> AttachPhoneNumber(long? phoneCount = null, string phoneNumber = null, string countryCode = null, string phoneCategoryName = null, string countryState = null, long? phoneRegionId = null, long? regulationAddressId = null)
         {
             var passedArgs = new List<string>();
         
@@ -2620,15 +2633,18 @@ namespace Voximplant.API {
     
             var args = new Dictionary<string, object>();
 
-            args["country_code"] = countryCode;
-            args["phone_category_name"] = phoneCategoryName;
-            args["phone_region_id"] = phoneRegionId.ToString();
             if (phoneCount.HasValue)
                 args["phone_count"] = phoneCount.Value.ToString();
             if (phoneNumber != null)
                 args["phone_number"] = phoneNumber;
+            if (countryCode != null)
+                args["country_code"] = countryCode;
+            if (phoneCategoryName != null)
+                args["phone_category_name"] = phoneCategoryName;
             if (countryState != null)
                 args["country_state"] = countryState;
+            if (phoneRegionId.HasValue)
+                args["phone_region_id"] = phoneRegionId.Value.ToString();
             if (regulationAddressId.HasValue)
                 args["regulation_address_id"] = regulationAddressId.Value.ToString();
             return await PerformRequest<AttachPhoneNumberResponse>("AttachPhoneNumber", args);
@@ -2640,8 +2656,8 @@ namespace Voximplant.API {
         /// <param name="phoneNumber">The phone number list separated by semicolons (;). <b>Required</b> unless <b>phone_id</b> is provided.</param>
         /// <param name="applicationId">The application ID. <b>Required</b> unless <b>application_name</b> is provided.</param>
         /// <param name="applicationName">The application name. <b>Required</b> unless <b>application_id</b> is provided.</param>
-        /// <param name="ruleId">The rule ID</param>
-        /// <param name="ruleName">The rule name that can be used instead of <b>rule_id</b></param>
+        /// <param name="ruleId">The rule ID. Can be used instead of the <b>rule_name</b> parameter</param>
+        /// <param name="ruleName">The rule name. Can be used instead of the <b>rule_id</b> parameter</param>
         /// <param name="bind">Whether to bind or unbind (set true or false respectively)</param>
         public async Task<BindPhoneNumberToApplicationResponse> BindPhoneNumberToApplication(string phoneId = null, string phoneNumber = null, long? applicationId = null, string applicationName = null, long? ruleId = null, string ruleName = null, bool? bind = null)
         {
@@ -2747,8 +2763,8 @@ namespace Voximplant.API {
         /// <param name="phoneId">Particular phone ID to filter</param>
         /// <param name="phoneNumber">Phone number list separated by semicolons (;) that can be used instead of <b>phone_id</b></param>
         /// <param name="activationStatus">Phone number activation statuses to filter, separated by semicolons (;).<br><br>The possible values are: ACTIVE, ACTIVATING, DEACTIVATED, PROVISIONING, AWAITING_BUSINESS_PHONE_NUMBER_CONFIGURATION, LEGAL_OWNERSHIP_LIMIT_REACHED, GOSUSLUGI_DECLINED, SELF_BAN_ENABLED</param>
-        /// <param name="applicationId">Application ID</param>
-        /// <param name="applicationName">Application name that can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">Application ID. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">Application name. Can be used instead of the <b>application_id</b> parameter</param>
         /// <param name="isBoundToApplication">Whether the phone number bound to an application</param>
         /// <param name="phoneTemplate">Phone number start to filter</param>
         /// <param name="countryCode">Country code list separated by semicolons (;)</param>
@@ -2775,7 +2791,7 @@ namespace Voximplant.API {
         /// <param name="ruleId">Rule ID list separated by semicolons (;)</param>
         /// <param name="ruleName">Rule names list separated by semicolons (;). Can be used only if __application_id__ or __application_name__ is specified</param>
         /// <param name="isBoundToRule">Whether the phone number is bound to some rule</param>
-        public async Task<GetPhoneNumbersResponse> GetPhoneNumbers(string phoneId = null, string phoneNumber = null, string activationStatus = null, long? applicationId = null, string applicationName = null, bool? isBoundToApplication = null, string phoneTemplate = null, string countryCode = null, string phoneCategoryName = null, bool? canceled = null, bool? deactivated = null, bool? autoCharge = null, DateTime? fromPhoneNextRenewal = null, DateTime? toPhoneNextRenewal = null, DateTime? fromPhonePurchaseDate = null, DateTime? toPhonePurchaseDate = null, string childAccountId = null, bool? childrenPhonesOnly = null, string verificationName = null, string verificationStatus = null, DateTime? fromUnverifiedHoldUntil = null, DateTime? toUnverifiedHoldUntil = null, bool? canBeUsed = null, string orderBy = null, string sandbox = null, long? count = null, long? offset = null, string phoneRegionName = null, string ruleId = null, string ruleName = null, bool? isBoundToRule = null)
+        public async Task<GetPhoneNumbersResponse> GetPhoneNumbers(string phoneId = null, string phoneNumber = null, string activationStatus = null, string applicationId = null, string applicationName = null, bool? isBoundToApplication = null, string phoneTemplate = null, string countryCode = null, string phoneCategoryName = null, bool? canceled = null, bool? deactivated = null, bool? autoCharge = null, DateTime? fromPhoneNextRenewal = null, DateTime? toPhoneNextRenewal = null, DateTime? fromPhonePurchaseDate = null, DateTime? toPhonePurchaseDate = null, string childAccountId = null, bool? childrenPhonesOnly = null, string verificationName = null, string verificationStatus = null, DateTime? fromUnverifiedHoldUntil = null, DateTime? toUnverifiedHoldUntil = null, bool? canBeUsed = null, string orderBy = null, string sandbox = null, long? count = null, long? offset = null, string phoneRegionName = null, string ruleId = null, string ruleName = null, bool? isBoundToRule = null)
         {
             var passedArgs = new List<string>();
         
@@ -2794,8 +2810,8 @@ namespace Voximplant.API {
                 args["phone_number"] = phoneNumber;
             if (activationStatus != null)
                 args["activation_status"] = activationStatus;
-            if (applicationId.HasValue)
-                args["application_id"] = applicationId.Value.ToString();
+            if (applicationId != null)
+                args["application_id"] = applicationId;
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (isBoundToApplication.HasValue)
@@ -2878,22 +2894,25 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the new phone numbers.
         /// </summary>
-        /// <param name="countryCode">The country code</param>
-        /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] function</param>
-        /// <param name="phoneRegionId">The phone region ID. See the [GetPhoneNumberRegions] method</param>
+        /// <param name="countryCode">The country code. <b>Required</b> together with <b>phone_category_name</b> and <b>phone_region_id</b> to search the catalog; omit all three to get the phone numbers available locally</param>
+        /// <param name="phoneCategoryName">The phone category name. See the [GetPhoneNumberCategories] function. <b>Required</b> together with <b>country_code</b> and <b>phone_region_id</b> to search the catalog; omit all three to get the phone numbers available locally</param>
         /// <param name="countryState">The country state. See the GetPhoneNumberCategories and GetPhoneNumberCountryStates functions</param>
+        /// <param name="phoneRegionId">The phone region ID. See the [GetPhoneNumberRegions] method. <b>Required</b> together with <b>country_code</b> and <b>phone_category_name</b> to search the catalog; omit all three to get the phone numbers available locally</param>
         /// <param name="count">The maximum returning record count</param>
         /// <param name="offset">The first <b>N</b> records are skipped in the output</param>
         /// <param name="phoneNumberMask">The phone number searching mask. Asterisk represents zero or more occurrences of any character</param>
-        public async Task<GetNewPhoneNumbersResponse> GetNewPhoneNumbers(string countryCode, string phoneCategoryName, long phoneRegionId, string countryState = null, long? count = null, long? offset = null, string phoneNumberMask = null)
+        public async Task<GetNewPhoneNumbersResponse> GetNewPhoneNumbers(string countryCode = null, string phoneCategoryName = null, string countryState = null, long? phoneRegionId = null, long? count = null, long? offset = null, string phoneNumberMask = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["country_code"] = countryCode;
-            args["phone_category_name"] = phoneCategoryName;
-            args["phone_region_id"] = phoneRegionId.ToString();
+            if (countryCode != null)
+                args["country_code"] = countryCode;
+            if (phoneCategoryName != null)
+                args["phone_category_name"] = phoneCategoryName;
             if (countryState != null)
                 args["country_state"] = countryState;
+            if (phoneRegionId.HasValue)
+                args["phone_region_id"] = phoneRegionId.Value.ToString();
             if (count.HasValue)
                 args["count"] = count.Value.ToString();
             if (offset.HasValue)
@@ -2926,12 +2945,13 @@ namespace Voximplant.API {
         /// <param name="countryCode">The country code</param>
         /// <param name="phoneCategoryName">The phone category name. See the GetPhoneNumberCategories function</param>
         /// <param name="countryState">The country state code (example: AL, CA, ... )</param>
-        public async Task<GetPhoneNumberCountryStatesResponse> GetPhoneNumberCountryStates(string countryCode, string phoneCategoryName, string countryState = null)
+        public async Task<GetPhoneNumberCountryStatesResponse> GetPhoneNumberCountryStates(string countryCode, string phoneCategoryName = null, string countryState = null)
         {
             var args = new Dictionary<string, object>();
 
             args["country_code"] = countryCode;
-            args["phone_category_name"] = phoneCategoryName;
+            if (phoneCategoryName != null)
+                args["phone_category_name"] = phoneCategoryName;
             if (countryState != null)
                 args["country_state"] = countryState;
             return await PerformRequest<GetPhoneNumberCountryStatesResponse>("GetPhoneNumberCountryStates", args);
@@ -3554,16 +3574,21 @@ namespace Voximplant.API {
         /// <param name="reportType">The report type. Possible values are: calls_blocked_percentage, count_blocked_calls, im_blocked_chats_percentage, im_count_blocked_chats, im_answered_chats_rate, average_abandonment_rate, count_abandonment_calls, service_level, im_service_level, occupancy_rate, im_agent_occupancy_rate, agent_utilization_rate, im_agent_utilization_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_in_service_incoming_time, sum_agents_in_service_outcoming_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_custom_1_time, sum_agents_custom_2_time, sum_agents_custom_3_time, sum_agents_custom_4_time, sum_agents_custom_5_time, sum_agents_custom_6_time, sum_agents_custom_7_time, sum_agents_custom_8_time, sum_agents_custom_9_time, sum_agents_custom_10_time, sum_agents_banned_time, im_sum_agents_online_time, im_sum_agents_ready_time, im_sum_agents_in_service_time, im_sum_agents_dnd_time, im_sum_agents_custom_1_time, im_sum_agents_custom_2_time, im_sum_agents_custom_3_time, im_sum_agents_custom_4_time, im_sum_agents_custom_5_time, im_sum_agents_custom_6_time, im_sum_agents_custom_7_time, im_sum_agents_custom_8_time, im_sum_agents_custom_9_time, im_sum_agents_custom_10_time, im_sum_agents_banned_time, average_agents_idle_time, max_agents_idle_time, min_agents_idle_time, percentile_0_25_agents_idle_time, percentile_0_50_agents_idle_time, percentile_0_75_agents_idle_time, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, im_min_answer_speed, im_max_answer_speed, im_average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime, count_agent_unanswered_calls, im_count_agent_unanswered_chats, min_reaction_time, max_reaction_time, average_reaction_time, im_min_reaction_time, im_max_reaction_time, im_average_reaction_time, im_count_abandonment_chats, im_count_lost_chats, im_lost_chats_rate, call_count_assigned_to_queue, im_count_assigned_to_queue</param>
         /// <param name="applicationId">The application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
         /// <param name="applicationName">The application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
-        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="userName">The user name list separated by semicolons (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name list separated by semicolons (;). Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types. <b>Required</b> unless <b>sq_queue_name</b> is provided or all the requested report types are agent reports.</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). <b>Required</b> unless <b>sq_queue_id</b> is provided or all the requested report types are agent reports.</param>
         /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time minus 30 minutes</param>
         /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time</param>
         /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
         /// <param name="interval">Interval format: YYYY-MM-DD HH:mm:ss. Default is 30 minutes</param>
         /// <param name="groupBy">Group the result by **agent** or *queue*. The **agent** grouping is allowed for 1 queue and for the occupancy_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_banned_time, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types. The **queue** grouping allowed for the calls_blocked_percentage, count_blocked_calls, average_abandonment_rate, count_abandonment_calls, service_level, occupancy_rate, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types</param>
         /// <param name="maxWaitingSec">Maximum waiting time. Required for the **service_level** report type</param>
-        public async Task<GetSmartQueueRealtimeMetricsResponse> GetSmartQueueRealtimeMetrics(string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueName = null, DateTime? fromDate = null, DateTime? toDate = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null)
+        /// <param name="descOrder">Whether to get records in the descent order</param>
+        /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
+        /// <param name="decimalSeparator">The decimal mark for CSV numbers: a dot or a comma. If omitted, the account setting is used</param>
+        /// <param name="omitEmpty">Whether to omit the empty metric values from the result</param>
+        public async Task<GetSmartQueueRealtimeMetricsResponse> GetSmartQueueRealtimeMetrics(string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueId = null, string sqQueueName = null, DateTime? fromDate = null, DateTime? toDate = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null, bool? descOrder = null, bool? withHeader = null, string decimalSeparator = null, bool? omitEmpty = null)
         {
             var passedArgs = new List<string>();
         
@@ -3582,76 +3607,6 @@ namespace Voximplant.API {
                 passedArgs.Add("userName");
             if (passedArgs.Count > 1)
                 throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueRealtimeMetrics");
-    
-            passedArgs = new List<string>();
-        
-            if (sqQueueName != null)
-                passedArgs.Add("sqQueueName");
-            if (passedArgs.Count > 1)
-                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueRealtimeMetrics");
-    
-            var args = new Dictionary<string, object>();
-
-            args["report_type"] = reportType;
-            if (applicationId.HasValue)
-                args["application_id"] = applicationId.Value.ToString();
-            if (applicationName != null)
-                args["application_name"] = applicationName;
-            if (userId != null)
-                args["user_id"] = userId;
-            if (userName != null)
-                args["user_name"] = userName;
-            if (sqQueueName != null)
-                args["sq_queue_name"] = sqQueueName;
-            if (fromDate.HasValue)
-                args["from_date"] = fromDate.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
-            if (toDate.HasValue)
-                args["to_date"] = toDate.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
-            if (timezone != null)
-                args["timezone"] = timezone;
-            if (interval != null)
-                args["interval"] = interval;
-            if (groupBy != null)
-                args["group_by"] = groupBy;
-            if (maxWaitingSec.HasValue)
-                args["max_waiting_sec"] = maxWaitingSec.Value.ToString();
-            return await PerformRequest<GetSmartQueueRealtimeMetricsResponse>("GetSmartQueueRealtimeMetrics", args);
-}
-        /// <summary>
-        /// Gets the metrics for the specified SmartQueue for the last 2 days. Refer to the <a href="/docs/guides/contact-center/reporting">SmartQueue reporting guide</a> to learn more.
-        /// </summary>
-        /// <param name="reportType">The report type. Possible values are: calls_blocked_percentage, count_blocked_calls, im_blocked_chats_percentage, im_count_blocked_chats, im_answered_chats_rate, average_abandonment_rate, count_abandonment_calls, service_level, im_service_level, occupancy_rate, im_agent_occupancy_rate, agent_utilization_rate, im_agent_utilization_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_in_service_incoming_time, sum_agents_in_service_outcoming_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_custom_1_time, sum_agents_custom_2_time, sum_agents_custom_3_time, sum_agents_custom_4_time, sum_agents_custom_5_time, sum_agents_custom_6_time, sum_agents_custom_7_time, sum_agents_custom_8_time, sum_agents_custom_9_time, sum_agents_custom_10_time, sum_agents_banned_time, im_sum_agents_online_time, im_sum_agents_ready_time, im_sum_agents_in_service_time, im_sum_agents_dnd_time, im_sum_agents_custom_1_time, im_sum_agents_custom_2_time, im_sum_agents_custom_3_time, im_sum_agents_custom_4_time, im_sum_agents_custom_5_time, im_sum_agents_custom_6_time, im_sum_agents_custom_7_time, im_sum_agents_custom_8_time, im_sum_agents_custom_9_time, im_sum_agents_custom_10_time, im_sum_agents_banned_time, average_agents_idle_time, max_agents_idle_time, min_agents_idle_time, percentile_0_25_agents_idle_time, percentile_0_50_agents_idle_time, percentile_0_75_agents_idle_time, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, im_min_answer_speed, im_max_answer_speed, im_average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime, count_agent_unanswered_calls, im_count_agent_unanswered_chats, min_reaction_time, max_reaction_time, average_reaction_time, im_min_reaction_time, im_max_reaction_time, im_average_reaction_time, im_count_abandonment_chats, im_count_lost_chats, im_lost_chats_rate, call_count_assigned_to_queue, im_count_assigned_to_queue</param>
-        /// <param name="applicationId">The application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
-        /// <param name="applicationName">The application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
-        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="userName">The user name list separated by semicolons (;). <b>user_name</b> can be used instead of <b>user_id</b></param>
-        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
-        /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time minus 1 day</param>
-        /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time</param>
-        /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
-        /// <param name="interval">Interval format: YYYY-MM-DD HH:mm:ss. Default is 1 day</param>
-        /// <param name="groupBy">Group the result by **agent** or *queue*. The **agent** grouping is allowed only for 1 queue and for the occupancy_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_banned_time, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types. The **queue** grouping allowed for the calls_blocked_percentage, count_blocked_calls, average_abandonment_rate, count_abandonment_calls, service_level, occupancy_rate, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types</param>
-        /// <param name="maxWaitingSec">Maximum waiting time. Required for the **service_level** report type</param>
-        public async Task<GetSmartQueueDayHistoryResponse> GetSmartQueueDayHistory(string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueId = null, string sqQueueName = null, DateTime? fromDate = null, DateTime? toDate = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null)
-        {
-            var passedArgs = new List<string>();
-        
-            if (applicationId != null)
-                passedArgs.Add("applicationId");
-            if (applicationName != null)
-                passedArgs.Add("applicationName");
-            if (passedArgs.Count > 1)
-                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueDayHistory");
-    
-            passedArgs = new List<string>();
-        
-            if (userId != null)
-                passedArgs.Add("userId");
-            if (userName != null)
-                passedArgs.Add("userName");
-            if (passedArgs.Count > 1)
-                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueDayHistory");
     
             passedArgs = new List<string>();
         
@@ -3660,9 +3615,7 @@ namespace Voximplant.API {
             if (sqQueueName != null)
                 passedArgs.Add("sqQueueName");
             if (passedArgs.Count > 1)
-                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueDayHistory");
-            if (passedArgs.Count == 0)
-                throw new VoximplantException("None of sqQueueId, sqQueueName passed into GetSmartQueueDayHistory");
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueRealtimeMetrics");
     
             var args = new Dictionary<string, object>();
 
@@ -3691,6 +3644,100 @@ namespace Voximplant.API {
                 args["group_by"] = groupBy;
             if (maxWaitingSec.HasValue)
                 args["max_waiting_sec"] = maxWaitingSec.Value.ToString();
+            if (descOrder.HasValue)
+                args["desc_order"] = descOrder.Value ? "1" : "0";
+            if (withHeader.HasValue)
+                args["with_header"] = withHeader.Value ? "1" : "0";
+            if (decimalSeparator != null)
+                args["decimal_separator"] = decimalSeparator;
+            if (omitEmpty.HasValue)
+                args["omit_empty"] = omitEmpty.Value ? "1" : "0";
+            return await PerformRequest<GetSmartQueueRealtimeMetricsResponse>("GetSmartQueueRealtimeMetrics", args);
+}
+        /// <summary>
+        /// Gets the metrics for the specified SmartQueue for the last 2 days. Refer to the <a href="/docs/guides/contact-center/reporting">SmartQueue reporting guide</a> to learn more.
+        /// </summary>
+        /// <param name="reportType">The report type. Possible values are: calls_blocked_percentage, count_blocked_calls, im_blocked_chats_percentage, im_count_blocked_chats, im_answered_chats_rate, average_abandonment_rate, count_abandonment_calls, service_level, im_service_level, occupancy_rate, im_agent_occupancy_rate, agent_utilization_rate, im_agent_utilization_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_in_service_incoming_time, sum_agents_in_service_outcoming_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_custom_1_time, sum_agents_custom_2_time, sum_agents_custom_3_time, sum_agents_custom_4_time, sum_agents_custom_5_time, sum_agents_custom_6_time, sum_agents_custom_7_time, sum_agents_custom_8_time, sum_agents_custom_9_time, sum_agents_custom_10_time, sum_agents_banned_time, im_sum_agents_online_time, im_sum_agents_ready_time, im_sum_agents_in_service_time, im_sum_agents_dnd_time, im_sum_agents_custom_1_time, im_sum_agents_custom_2_time, im_sum_agents_custom_3_time, im_sum_agents_custom_4_time, im_sum_agents_custom_5_time, im_sum_agents_custom_6_time, im_sum_agents_custom_7_time, im_sum_agents_custom_8_time, im_sum_agents_custom_9_time, im_sum_agents_custom_10_time, im_sum_agents_banned_time, average_agents_idle_time, max_agents_idle_time, min_agents_idle_time, percentile_0_25_agents_idle_time, percentile_0_50_agents_idle_time, percentile_0_75_agents_idle_time, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, im_min_answer_speed, im_max_answer_speed, im_average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime, count_agent_unanswered_calls, im_count_agent_unanswered_chats, min_reaction_time, max_reaction_time, average_reaction_time, im_min_reaction_time, im_max_reaction_time, im_average_reaction_time, im_count_abandonment_chats, im_count_lost_chats, im_lost_chats_rate, call_count_assigned_to_queue, im_count_assigned_to_queue</param>
+        /// <param name="applicationId">The application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">The application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name list separated by semicolons (;). Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types. <b>Required</b> unless <b>sq_queue_name</b> is provided or all the requested report types are agent reports.</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). <b>Required</b> unless <b>sq_queue_id</b> is provided or all the requested report types are agent reports.</param>
+        /// <param name="fromDate">The from date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time minus 1 day</param>
+        /// <param name="toDate">The to date in the selected timezone in 24-h format: YYYY-MM-DD HH:mm:ss. Default is the current time</param>
+        /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
+        /// <param name="interval">Interval format: YYYY-MM-DD HH:mm:ss. Default is 1 day</param>
+        /// <param name="groupBy">Group the result by **agent** or *queue*. The **agent** grouping is allowed only for 1 queue and for the occupancy_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_banned_time, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types. The **queue** grouping allowed for the calls_blocked_percentage, count_blocked_calls, average_abandonment_rate, count_abandonment_calls, service_level, occupancy_rate, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types</param>
+        /// <param name="maxWaitingSec">Maximum waiting time. Required for the **service_level** report type</param>
+        /// <param name="descOrder">Whether to get records in the descent order</param>
+        /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
+        /// <param name="decimalSeparator">The decimal mark for CSV numbers: a dot or a comma. If omitted, the account setting is used</param>
+        /// <param name="omitEmpty">Whether to omit the empty metric values from the result</param>
+        public async Task<GetSmartQueueDayHistoryResponse> GetSmartQueueDayHistory(string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueId = null, string sqQueueName = null, DateTime? fromDate = null, DateTime? toDate = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null, bool? descOrder = null, bool? withHeader = null, string decimalSeparator = null, bool? omitEmpty = null)
+        {
+            var passedArgs = new List<string>();
+        
+            if (applicationId != null)
+                passedArgs.Add("applicationId");
+            if (applicationName != null)
+                passedArgs.Add("applicationName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueDayHistory");
+    
+            passedArgs = new List<string>();
+        
+            if (userId != null)
+                passedArgs.Add("userId");
+            if (userName != null)
+                passedArgs.Add("userName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueDayHistory");
+    
+            passedArgs = new List<string>();
+        
+            if (sqQueueId != null)
+                passedArgs.Add("sqQueueId");
+            if (sqQueueName != null)
+                passedArgs.Add("sqQueueName");
+            if (passedArgs.Count > 1)
+                throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSmartQueueDayHistory");
+    
+            var args = new Dictionary<string, object>();
+
+            args["report_type"] = reportType;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
+            if (userId != null)
+                args["user_id"] = userId;
+            if (userName != null)
+                args["user_name"] = userName;
+            if (sqQueueId != null)
+                args["sq_queue_id"] = sqQueueId;
+            if (sqQueueName != null)
+                args["sq_queue_name"] = sqQueueName;
+            if (fromDate.HasValue)
+                args["from_date"] = fromDate.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            if (toDate.HasValue)
+                args["to_date"] = toDate.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            if (timezone != null)
+                args["timezone"] = timezone;
+            if (interval != null)
+                args["interval"] = interval;
+            if (groupBy != null)
+                args["group_by"] = groupBy;
+            if (maxWaitingSec.HasValue)
+                args["max_waiting_sec"] = maxWaitingSec.Value.ToString();
+            if (descOrder.HasValue)
+                args["desc_order"] = descOrder.Value ? "1" : "0";
+            if (withHeader.HasValue)
+                args["with_header"] = withHeader.Value ? "1" : "0";
+            if (decimalSeparator != null)
+                args["decimal_separator"] = decimalSeparator;
+            if (omitEmpty.HasValue)
+                args["omit_empty"] = omitEmpty.Value ? "1" : "0";
             return await PerformRequest<GetSmartQueueDayHistoryResponse>("GetSmartQueueDayHistory", args);
 }
         /// <summary>
@@ -3701,15 +3748,19 @@ namespace Voximplant.API {
         /// <param name="reportType">The report type. Possible values are: calls_blocked_percentage, count_blocked_calls, im_blocked_chats_percentage, im_count_blocked_chats, im_answered_chats_rate, average_abandonment_rate, count_abandonment_calls, service_level, im_service_level, occupancy_rate, im_agent_occupancy_rate, agent_utilization_rate, im_agent_utilization_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_in_service_incoming_time, sum_agents_in_service_outcoming_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_custom_1_time, sum_agents_custom_2_time, sum_agents_custom_3_time, sum_agents_custom_4_time, sum_agents_custom_5_time, sum_agents_custom_6_time, sum_agents_custom_7_time, sum_agents_custom_8_time, sum_agents_custom_9_time, sum_agents_custom_10_time, sum_agents_banned_time, im_sum_agents_online_time, im_sum_agents_ready_time, im_sum_agents_in_service_time, im_sum_agents_dnd_time, im_sum_agents_custom_1_time, im_sum_agents_custom_2_time, im_sum_agents_custom_3_time, im_sum_agents_custom_4_time, im_sum_agents_custom_5_time, im_sum_agents_custom_6_time, im_sum_agents_custom_7_time, im_sum_agents_custom_8_time, im_sum_agents_custom_9_time, im_sum_agents_custom_10_time, im_sum_agents_banned_time, average_agents_idle_time, max_agents_idle_time, min_agents_idle_time, percentile_0_25_agents_idle_time, percentile_0_50_agents_idle_time, percentile_0_75_agents_idle_time, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, im_min_answer_speed, im_max_answer_speed, im_average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime, count_agent_unanswered_calls, im_count_agent_unanswered_chats, min_reaction_time, max_reaction_time, average_reaction_time, im_min_reaction_time, im_max_reaction_time, im_average_reaction_time, im_count_abandonment_chats, im_count_lost_chats, im_lost_chats_rate, call_count_assigned_to_queue, im_count_assigned_to_queue</param>
         /// <param name="applicationId">The application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
         /// <param name="applicationName">The application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
-        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="userName">The user name list separated by semicolons (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types</param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="userId">The user ID list with a maximum of 5 values separated by semicolons (;). Use the 'all' value to select all users. Can operate as a filter for the **occupancy_rate**, **sum_agents_online_time**, **sum_agents_ready_time**, **sum_agents_dialing_time**, **sum_agents_in_service_time**, **sum_agents_afterservice_time**, **sum_agents_dnd_time**, **sum_agents_banned_time**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">The user name list separated by semicolons (;). Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="sqQueueId">The SmartQueue ID list with a maximum of 5 values separated by semicolons (;). Can operate as filter for the **calls_blocked_percentage**, **count_blocked_calls**, **average_abandonment_rate**, **count_abandonment_calls**, **service_level**, **occupancy_rate**, **min_time_in_queue**, **max_time_in_queue**, **average_time_in_queue**, **min_answer_speed**, **max_answer_speed**, **average_answer_speed**, **min_handle_time**, **max_handle_time**, **average_handle_time**, **count_handled_calls**, **min_after_call_worktime**, **max_after_call_worktime**, **average_after_call_worktime** report types. <b>Required</b> unless <b>sq_queue_name</b> is provided or all the requested report types are agent reports.</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). <b>Required</b> unless <b>sq_queue_id</b> is provided or all the requested report types are agent reports.</param>
         /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
         /// <param name="interval">Interval format: YYYY-MM-DD HH:mm:ss. Default is 1 day</param>
         /// <param name="groupBy">Group the result by **agent** or *queue*. The **agent** grouping is allowed only for 1 queue and for the occupancy_rate, sum_agents_online_time, sum_agents_ready_time, sum_agents_dialing_time, sum_agents_in_service_time, sum_agents_afterservice_time, sum_agents_dnd_time, sum_agents_banned_time, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types. The **queue** grouping allowed for the calls_blocked_percentage, count_blocked_calls, average_abandonment_rate, count_abandonment_calls, service_level, occupancy_rate, min_time_in_queue, max_time_in_queue, average_time_in_queue, min_answer_speed, max_answer_speed, average_answer_speed, min_handle_time, max_handle_time, average_handle_time, count_handled_calls, min_after_call_worktime, max_after_call_worktime, average_after_call_worktime report types</param>
         /// <param name="maxWaitingSec">Maximum waiting time. Required for the **service_level** report type</param>
-        public async Task<RequestSmartQueueHistoryResponse> RequestSmartQueueHistory(DateTime fromDate, DateTime toDate, string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueId = null, string sqQueueName = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null)
+        /// <param name="descOrder">Whether to get records in the descent order</param>
+        /// <param name="withHeader">Whether to get a CSV file with the column names if the output=csv</param>
+        /// <param name="decimalSeparator">The decimal mark for CSV numbers: a dot or a comma. If omitted, the account setting is used</param>
+        /// <param name="omitEmpty">Whether to omit the empty metric values from the result</param>
+        public async Task<RequestSmartQueueHistoryResponse> RequestSmartQueueHistory(DateTime fromDate, DateTime toDate, string reportType, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqQueueId = null, string sqQueueName = null, string timezone = null, string interval = null, string groupBy = null, long? maxWaitingSec = null, bool? descOrder = null, bool? withHeader = null, string decimalSeparator = null, bool? omitEmpty = null)
         {
             var passedArgs = new List<string>();
         
@@ -3737,8 +3788,6 @@ namespace Voximplant.API {
                 passedArgs.Add("sqQueueName");
             if (passedArgs.Count > 1)
                 throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into RequestSmartQueueHistory");
-            if (passedArgs.Count == 0)
-                throw new VoximplantException("None of sqQueueId, sqQueueName passed into RequestSmartQueueHistory");
     
             var args = new Dictionary<string, object>();
 
@@ -3765,15 +3814,23 @@ namespace Voximplant.API {
                 args["group_by"] = groupBy;
             if (maxWaitingSec.HasValue)
                 args["max_waiting_sec"] = maxWaitingSec.Value.ToString();
+            if (descOrder.HasValue)
+                args["desc_order"] = descOrder.Value ? "1" : "0";
+            if (withHeader.HasValue)
+                args["with_header"] = withHeader.Value ? "1" : "0";
+            if (decimalSeparator != null)
+                args["decimal_separator"] = decimalSeparator;
+            if (omitEmpty.HasValue)
+                args["omit_empty"] = omitEmpty.Value ? "1" : "0";
             return await PerformRequest<RequestSmartQueueHistoryResponse>("RequestSmartQueueHistory", args);
 }
         /// <summary>
         /// Gets the current state of the specified SmartQueue.
         /// </summary>
-        /// <param name="applicationId">The application ID to search by</param>
-        /// <param name="applicationName">The application name to search by. Can be used instead of the <b>application_id</b> parameter</param>
-        /// <param name="sqQueueId">The SmartQueue ID list separated by semicolons (;). Use the 'all' value to select all SmartQueues</param>
-        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="applicationId">The application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">The application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqQueueId">The SmartQueue ID list separated by semicolons (;). Use the 'all' value to select all SmartQueues. <b>Required</b> unless <b>sq_queue_name</b> is provided.</param>
+        /// <param name="sqQueueName">The SmartQueue name list separated by semicolons (;). <b>Required</b> unless <b>sq_queue_id</b> is provided.</param>
         /// <param name="timezone">The selected timezone or the 'auto' value (the account location)</param>
         public async Task<GetSQStateResponse> GetSQState(long? applicationId = null, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string timezone = null)
         {
@@ -3785,8 +3842,6 @@ namespace Voximplant.API {
                 passedArgs.Add("applicationName");
             if (passedArgs.Count > 1)
                 throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSQState");
-            if (passedArgs.Count == 0)
-                throw new VoximplantException("None of applicationId, applicationName passed into GetSQState");
     
             passedArgs = new List<string>();
         
@@ -3796,13 +3851,11 @@ namespace Voximplant.API {
                 passedArgs.Add("sqQueueName");
             if (passedArgs.Count > 1)
                 throw new VoximplantException(string.Join(", ", passedArgs) + " passed simultaneously into GetSQState");
-            if (passedArgs.Count == 0)
-                throw new VoximplantException("None of sqQueueId, sqQueueName passed into GetSQState");
     
             var args = new Dictionary<string, object>();
 
             if (applicationId.HasValue)
-                args["application_id"] = applicationId.ToString();
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (sqQueueId != null)
@@ -3818,40 +3871,50 @@ namespace Voximplant.API {
         /// </summary>
         /// <param name="sqStatusName">Status name</param>
         /// <param name="customStatusName">Custom status name</param>
-        /// <param name="applicationId">Application ID</param>
-        public async Task<SQ_SetAgentCustomStatusMappingResponse> SQ_SetAgentCustomStatusMapping(string sqStatusName, string customStatusName, long applicationId)
+        /// <param name="applicationId">Application ID. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        public async Task<SQ_SetAgentCustomStatusMappingResponse> SQ_SetAgentCustomStatusMapping(string sqStatusName, string customStatusName, long? applicationId = null, string applicationName = null)
         {
             var args = new Dictionary<string, object>();
 
             args["sq_status_name"] = sqStatusName;
             args["custom_status_name"] = customStatusName;
-            args["application_id"] = applicationId.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
             return await PerformRequest<SQ_SetAgentCustomStatusMappingResponse>("SQ_SetAgentCustomStatusMapping", args);
 }
         /// <summary>
         /// Returns the mapping list of SQ statuses and custom statuses. SQ statuses are returned whether they have mappings to custom statuses.
         /// </summary>
-        /// <param name="applicationId">Application ID</param>
-        public async Task<SQ_GetAgentCustomStatusMappingResponse> SQ_GetAgentCustomStatusMapping(long? applicationId = null)
+        /// <param name="applicationId">Application ID. Can be used instead of the <b>application_name</b> parameter</param>
+        /// <param name="applicationName">Application name. Can be used instead of the <b>application_id</b> parameter</param>
+        public async Task<SQ_GetAgentCustomStatusMappingResponse> SQ_GetAgentCustomStatusMapping(long? applicationId = null, string applicationName = null)
         {
             var args = new Dictionary<string, object>();
 
             if (applicationId.HasValue)
                 args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
             return await PerformRequest<SQ_GetAgentCustomStatusMappingResponse>("SQ_GetAgentCustomStatusMapping", args);
 }
         /// <summary>
         /// Removes a mapping from the mapping table. If there is no such mapping, does nothing.
         /// </summary>
-        /// <param name="applicationId">Application ID</param>
         /// <param name="sqStatusName">Status name</param>
-        public async Task<SQ_DeleteAgentCustomStatusMappingResponse> SQ_DeleteAgentCustomStatusMapping(long applicationId, string sqStatusName = null)
+        /// <param name="applicationId">Application ID. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        public async Task<SQ_DeleteAgentCustomStatusMappingResponse> SQ_DeleteAgentCustomStatusMapping(string sqStatusName, long? applicationId = null, string applicationName = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            if (sqStatusName != null)
-                args["sq_status_name"] = sqStatusName;
+            args["sq_status_name"] = sqStatusName;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
+            if (applicationName != null)
+                args["application_name"] = applicationName;
             return await PerformRequest<SQ_DeleteAgentCustomStatusMappingResponse>("SQ_DeleteAgentCustomStatusMapping", args);
 }
         /// <summary>
@@ -4042,11 +4105,14 @@ namespace Voximplant.API {
         /// Gets all RU verifications for the specified account.
         /// </summary>
         /// <param name="accountId">Account ID to check verifications for</param>
-        public async Task<GetAccountVerificationsResponse> GetAccountVerifications(long accountId)
+        /// <param name="activeVerificationOnly">Whether to return the active verification only</param>
+        public async Task<GetAccountVerificationsResponse> GetAccountVerifications(long accountId, bool? activeVerificationOnly = null)
         {
             var args = new Dictionary<string, object>();
 
             args["account_id"] = accountId.ToString();
+            if (activeVerificationOnly.HasValue)
+                args["active_verification_only"] = activeVerificationOnly.Value ? "1" : "0";
             return await PerformRequest<GetAccountVerificationsResponse>("GetAccountVerifications", args);
 }
         /// <summary>
@@ -5159,11 +5225,11 @@ namespace Voximplant.API {
         /// <summary>
         /// Adds a new queue.
         /// </summary>
-        /// <param name="applicationId">Application ID to bind to</param>
         /// <param name="sqQueueName">Unique SmartQueue name within the application, up to 100 characters</param>
         /// <param name="callAgentSelection">Agent selection strategy for calls. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME"</param>
         /// <param name="callTaskSelection">Call type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values</param>
-        /// <param name="applicationName">Application name to bind to. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">Application ID to bind to. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to bind to. <b>Required</b> unless <b>application_id</b> is provided.</param>
         /// <param name="holdImIfInactiveAgents">Whether to add the task to the queue if there are no available agents</param>
         /// <param name="imAgentSelection">Agent selection strategy for messages. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME". The default value is **call_agent_selection**</param>
         /// <param name="imTaskSelection">IM type requests prioritizing strategy. Accepts one of the [SQTaskSelectionStrategies] enum values. The default value is **call_task_selection**</param>
@@ -5176,14 +5242,15 @@ namespace Voximplant.API {
         /// <param name="priority">The queue's priority from 1 to 100</param>
         /// <param name="callMaxWaitingTimeInSeconds">Maximum call waiting time in seconds. Specify either this parameter or `call_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
         /// <param name="imMaxWaitingTimeInSeconds">Maximum chat message waiting time in seconds. Specify either this parameter or `im_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
-        public async Task<SQ_AddQueueResponse> SQ_AddQueue(long applicationId, string sqQueueName, string callAgentSelection, string callTaskSelection, string applicationName = null, bool? holdImIfInactiveAgents = null, string imAgentSelection = null, string imTaskSelection = null, bool? holdCallsIfInactiveAgents = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
+        public async Task<SQ_AddQueueResponse> SQ_AddQueue(string sqQueueName, string callAgentSelection, string callTaskSelection, long? applicationId = null, string applicationName = null, bool? holdImIfInactiveAgents = null, string imAgentSelection = null, string imTaskSelection = null, bool? holdCallsIfInactiveAgents = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
             args["sq_queue_name"] = sqQueueName;
             args["call_agent_selection"] = callAgentSelection;
             args["call_task_selection"] = callTaskSelection;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (holdImIfInactiveAgents.HasValue)
@@ -5215,11 +5282,11 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits an existing queue.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="sqQueueId">ID of the SmartQueue to search for</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
         /// <param name="holdImIfInactiveAgents">Whether to add the task to the queue if there are no available agents</param>
-        /// <param name="sqQueueName">Name of the SmartQueue to search for. Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="sqQueueId">ID of the SmartQueue to search for. <b>Required</b> unless <b>sq_queue_name</b> is provided.</param>
+        /// <param name="sqQueueName">Name of the SmartQueue to search for. <b>Required</b> unless <b>sq_queue_id</b> is provided.</param>
         /// <param name="holdCallsIfInactiveAgents">Whether to keep the call task in the queue if all agents are in the DND/BANNED statuses.</param>
         /// <param name="newSqQueueName">New SmartQueue name within the application, up to 100 characters</param>
         /// <param name="callAgentSelection">Agent selection strategy for calls. Accepts one of the following values: "MOST_QUALIFIED", "LEAST_QUALIFIED", "MAX_WAITING_TIME"</param>
@@ -5234,16 +5301,18 @@ namespace Voximplant.API {
         /// <param name="priority">The queue's priority from 1 to 100</param>
         /// <param name="callMaxWaitingTimeInSeconds">Maximum call waiting time in seconds. Specify either this parameter or `call_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
         /// <param name="imMaxWaitingTimeInSeconds">Maximum chat message waiting time in seconds. Specify either this parameter or `im_max_waiting_time`. Specifying both parameters simultaniously leads to an error</param>
-        public async Task<SQ_SetQueueInfoResponse> SQ_SetQueueInfo(long applicationId, long sqQueueId, string applicationName = null, bool? holdImIfInactiveAgents = null, string sqQueueName = null, bool? holdCallsIfInactiveAgents = null, string newSqQueueName = null, string callAgentSelection = null, string imAgentSelection = null, string callTaskSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
+        public async Task<SQ_SetQueueInfoResponse> SQ_SetQueueInfo(long? applicationId = null, string applicationName = null, bool? holdImIfInactiveAgents = null, long? sqQueueId = null, string sqQueueName = null, bool? holdCallsIfInactiveAgents = null, string newSqQueueName = null, string callAgentSelection = null, string imAgentSelection = null, string callTaskSelection = null, string imTaskSelection = null, string description = null, long? callMaxWaitingTime = null, long? imMaxWaitingTime = null, long? callMaxQueueSize = null, long? imMaxQueueSize = null, long? priority = null, long? callMaxWaitingTimeInSeconds = null, long? imMaxWaitingTimeInSeconds = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["sq_queue_id"] = sqQueueId.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (holdImIfInactiveAgents.HasValue)
                 args["hold_im_if_inactive_agents"] = holdImIfInactiveAgents.Value ? "1" : "0";
+            if (sqQueueId.HasValue)
+                args["sq_queue_id"] = sqQueueId.Value.ToString();
             if (sqQueueName != null)
                 args["sq_queue_name"] = sqQueueName;
             if (holdCallsIfInactiveAgents.HasValue)
@@ -5279,18 +5348,20 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes a queue.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to delete all the queues</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
-        public async Task<SQ_DelQueueResponse> SQ_DelQueue(long applicationId, string sqQueueId, string applicationName = null, string sqQueueName = null)
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to delete all the queues. <b>Required</b> unless <b>sq_queue_name</b> is provided.</param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). <b>Required</b> unless <b>sq_queue_id</b> is provided.</param>
+        public async Task<SQ_DelQueueResponse> SQ_DelQueue(long? applicationId = null, string applicationName = null, string sqQueueId = null, string sqQueueName = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["sq_queue_id"] = sqQueueId;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (sqQueueId != null)
+                args["sq_queue_id"] = sqQueueId;
             if (sqQueueName != null)
                 args["sq_queue_name"] = sqQueueName;
             return await PerformRequest<SQ_DelQueueResponse>("SQ_DelQueue", args);
@@ -5298,23 +5369,24 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the queue(s).
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;)</param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Can be used instead of the <b>sq_queue_name</b> parameter</param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of the <b>sq_queue_id</b> parameter</param>
         /// <param name="sqQueueNameTemplate">Substring of the SmartQueue name to filter</param>
-        /// <param name="userId">ID of the user that is bound to the queue</param>
-        /// <param name="userName">Name of the user that is bound to the queue. Can be used instead of <b>user_id</b></param>
-        /// <param name="excludedUserId">ID of the user that is not bound to the queue</param>
-        /// <param name="excludedUserName">Name of the user that is not bound to the queue. Can be used instead of <b>excluded_user_id</b></param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Queues bound to these users are returned. Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="excludedUserId">List of user IDs separated by semicolons (;). Queues bound to these users are excluded. Can be used instead of the <b>excluded_user_name</b> parameter</param>
+        /// <param name="excludedUserName">List of user names separated by semicolons (;). Can be used instead of the <b>excluded_user_id</b> parameter</param>
         /// <param name="count">Number of items to show in the output</param>
         /// <param name="offset">Number of items to skip in the output</param>
         /// <param name="withAgentcount">Whether to include the number of agents bound to the queue</param>
-        public async Task<SQ_GetQueuesResponse> SQ_GetQueues(long applicationId, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string sqQueueNameTemplate = null, long? userId = null, string userName = null, long? excludedUserId = null, string excludedUserName = null, long? count = null, long? offset = null, bool? withAgentcount = null)
+        public async Task<SQ_GetQueuesResponse> SQ_GetQueues(long? applicationId = null, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string sqQueueNameTemplate = null, string userId = null, string userName = null, string excludedUserId = null, string excludedUserName = null, long? count = null, long? offset = null, bool? withAgentcount = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (sqQueueId != null)
@@ -5323,12 +5395,12 @@ namespace Voximplant.API {
                 args["sq_queue_name"] = sqQueueName;
             if (sqQueueNameTemplate != null)
                 args["sq_queue_name_template"] = sqQueueNameTemplate;
-            if (userId.HasValue)
-                args["user_id"] = userId.Value.ToString();
+            if (userId != null)
+                args["user_id"] = userId;
             if (userName != null)
                 args["user_name"] = userName;
-            if (excludedUserId.HasValue)
-                args["excluded_user_id"] = excludedUserId.Value.ToString();
+            if (excludedUserId != null)
+                args["excluded_user_id"] = excludedUserId;
             if (excludedUserName != null)
                 args["excluded_user_name"] = excludedUserName;
             if (count.HasValue)
@@ -5342,16 +5414,17 @@ namespace Voximplant.API {
         /// <summary>
         /// Adds a new skill to the app.
         /// </summary>
-        /// <param name="applicationId">Application ID to bind to</param>
         /// <param name="sqSkillName">Unique skill name within the application</param>
-        /// <param name="applicationName">Application name to bind to. Can be used instead of <b>application_id</b></param>
+        /// <param name="applicationId">Application ID to bind to. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to bind to. <b>Required</b> unless <b>application_id</b> is provided.</param>
         /// <param name="description">Comment, up to 200 characters</param>
-        public async Task<SQ_AddSkillResponse> SQ_AddSkill(long applicationId, string sqSkillName, string applicationName = null, string description = null)
+        public async Task<SQ_AddSkillResponse> SQ_AddSkill(string sqSkillName, long? applicationId = null, string applicationName = null, string description = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
             args["sq_skill_name"] = sqSkillName;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (description != null)
@@ -5361,18 +5434,20 @@ namespace Voximplant.API {
         /// <summary>
         /// Deletes a skill and detaches it from agents.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to delete all the skills</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
-        public async Task<SQ_DelSkillResponse> SQ_DelSkill(long applicationId, string sqSkillId, string applicationName = null, string sqSkillName = null)
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to delete all the skills. <b>Required</b> unless <b>sq_skill_name</b> is provided.</param>
+        /// <param name="sqSkillName">List of skill names separated by semicolons (;). <b>Required</b> unless <b>sq_skill_id</b> is provided.</param>
+        public async Task<SQ_DelSkillResponse> SQ_DelSkill(long? applicationId = null, string applicationName = null, string sqSkillId = null, string sqSkillName = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["sq_skill_id"] = sqSkillId;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (sqSkillId != null)
+                args["sq_skill_id"] = sqSkillId;
             if (sqSkillName != null)
                 args["sq_skill_name"] = sqSkillName;
             return await PerformRequest<SQ_DelSkillResponse>("SQ_DelSkill", args);
@@ -5380,20 +5455,22 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits an existing skill.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="sqSkillId">ID of the skill</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqSkillName">Name of the skill. Can be used instead of <b>sq_skill_id</b></param>
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqSkillId">ID of the skill. <b>Required</b> unless <b>sq_skill_name</b> is provided.</param>
+        /// <param name="sqSkillName">Name of the skill. <b>Required</b> unless <b>sq_skill_id</b> is provided.</param>
         /// <param name="newSqSkillName">New unique skill name within the application</param>
         /// <param name="description">Comment, up to 200 characters</param>
-        public async Task<SQ_SetSkillInfoResponse> SQ_SetSkillInfo(long applicationId, long sqSkillId, string applicationName = null, string sqSkillName = null, string newSqSkillName = null, string description = null)
+        public async Task<SQ_SetSkillInfoResponse> SQ_SetSkillInfo(long? applicationId = null, string applicationName = null, long? sqSkillId = null, string sqSkillName = null, string newSqSkillName = null, string description = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["sq_skill_id"] = sqSkillId.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (sqSkillId.HasValue)
+                args["sq_skill_id"] = sqSkillId.Value.ToString();
             if (sqSkillName != null)
                 args["sq_skill_name"] = sqSkillName;
             if (newSqSkillName != null)
@@ -5405,21 +5482,23 @@ namespace Voximplant.API {
         /// <summary>
         /// Binds skills to agents.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
         /// <param name="sqSkills">Skills to be bound to agents in the JSON array format. The array should contain objects with the <b>sq_skill_id</b>/<b>sq_skill_name</b> and <b>sq_skill_level</b> keys where skill levels range from 1 to 5</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users. <b>Required</b> unless <b>user_name</b> is provided.</param>
+        /// <param name="userName">List of user names separated by semicolons (;). <b>Required</b> unless <b>user_id</b> is provided.</param>
         /// <param name="bindMode">Binding mode. Accepts one of the [SQSkillBindingModes] enum values</param>
-        public async Task<SQ_BindSkillResponse> SQ_BindSkill(long applicationId, string userId, string sqSkills, string applicationName = null, string userName = null, string bindMode = null)
+        public async Task<SQ_BindSkillResponse> SQ_BindSkill(string sqSkills, long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string bindMode = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["user_id"] = userId;
             args["sq_skills"] = sqSkills;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (userId != null)
+                args["user_id"] = userId;
             if (userName != null)
                 args["user_name"] = userName;
             if (bindMode != null)
@@ -5429,23 +5508,26 @@ namespace Voximplant.API {
         /// <summary>
         /// Unbinds skills from agents.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
-        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to unbind all the skills</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
-        public async Task<SQ_UnbindSkillResponse> SQ_UnbindSkill(long applicationId, string userId, string sqSkillId, string applicationName = null, string userName = null, string sqSkillName = null)
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users. <b>Required</b> unless <b>user_name</b> is provided.</param>
+        /// <param name="userName">List of user names separated by semicolons (;). <b>Required</b> unless <b>user_id</b> is provided.</param>
+        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Use 'all' to unbind all the skills. <b>Required</b> unless <b>sq_skill_name</b> is provided.</param>
+        /// <param name="sqSkillName">List of skill names separated by semicolons (;). <b>Required</b> unless <b>sq_skill_id</b> is provided.</param>
+        public async Task<SQ_UnbindSkillResponse> SQ_UnbindSkill(long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqSkillId = null, string sqSkillName = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["user_id"] = userId;
-            args["sq_skill_id"] = sqSkillId;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (userId != null)
+                args["user_id"] = userId;
             if (userName != null)
                 args["user_name"] = userName;
+            if (sqSkillId != null)
+                args["sq_skill_id"] = sqSkillId;
             if (sqSkillName != null)
                 args["sq_skill_name"] = sqSkillName;
             return await PerformRequest<SQ_UnbindSkillResponse>("SQ_UnbindSkill", args);
@@ -5453,22 +5535,23 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets the skill(s).
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userId">List of user IDs separated by semicolons (;)</param>
-        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;)</param>
-        /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of <b>sq_skill_id</b></param>
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of the <b>user_id</b> parameter</param>
+        /// <param name="sqSkillId">List of skill IDs separated by semicolons (;). Can be used instead of the <b>sq_skill_name</b> parameter</param>
+        /// <param name="sqSkillName">List of skill names separated by semicolons (;). Can be used instead of the <b>sq_skill_id</b> parameter</param>
         /// <param name="sqSkillNameTemplate">Substring of the skill name to filter, case-insensitive</param>
-        /// <param name="excludedUserId">ID of the user that is not bound to the skill</param>
-        /// <param name="excludedUserName">Name of the user that is not bound to the skill. Can be used instead of <b>excluded_user_id</b></param>
+        /// <param name="excludedUserId">List of user IDs separated by semicolons (;). Skills bound to these users are excluded. Can be used instead of the <b>excluded_user_name</b> parameter</param>
+        /// <param name="excludedUserName">List of user names separated by semicolons (;). Can be used instead of the <b>excluded_user_id</b> parameter</param>
         /// <param name="count">Number of items to show in the output</param>
         /// <param name="offset">Number of items to skip in the output</param>
-        public async Task<SQ_GetSkillsResponse> SQ_GetSkills(long applicationId, string applicationName = null, string userId = null, string userName = null, string sqSkillId = null, string sqSkillName = null, string sqSkillNameTemplate = null, long? excludedUserId = null, string excludedUserName = null, long? count = null, long? offset = null)
+        public async Task<SQ_GetSkillsResponse> SQ_GetSkills(long? applicationId = null, string applicationName = null, string userId = null, string userName = null, string sqSkillId = null, string sqSkillName = null, string sqSkillNameTemplate = null, string excludedUserId = null, string excludedUserName = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (userId != null)
@@ -5481,8 +5564,8 @@ namespace Voximplant.API {
                 args["sq_skill_name"] = sqSkillName;
             if (sqSkillNameTemplate != null)
                 args["sq_skill_name_template"] = sqSkillNameTemplate;
-            if (excludedUserId.HasValue)
-                args["excluded_user_id"] = excludedUserId.Value.ToString();
+            if (excludedUserId != null)
+                args["excluded_user_id"] = excludedUserId;
             if (excludedUserName != null)
                 args["excluded_user_name"] = excludedUserName;
             if (count.HasValue)
@@ -5494,24 +5577,27 @@ namespace Voximplant.API {
         /// <summary>
         /// Binds agents to a queue.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="sqQueueId">ID of the SmartQueue. Pass a list of values divided by ; or the "all" keyword</param>
-        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueName">Name of the SmartQueue. Pass a list of names divided by ; or the "all" keyword</param>
-        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues. <b>Required</b> unless <b>sq_queue_name</b> is provided.</param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). <b>Required</b> unless <b>sq_queue_id</b> is provided.</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users. <b>Required</b> unless <b>user_name</b> is provided.</param>
+        /// <param name="userName">List of user names separated by semicolons (;). <b>Required</b> unless <b>user_id</b> is provided.</param>
         /// <param name="bindMode">Binding mode. Accepts one of the [SQAgentBindingModes] enum values</param>
-        public async Task<SQ_BindAgentResponse> SQ_BindAgent(long applicationId, string sqQueueId, string userId, string applicationName = null, string sqQueueName = null, string userName = null, string bindMode = null)
+        public async Task<SQ_BindAgentResponse> SQ_BindAgent(long? applicationId = null, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string userId = null, string userName = null, string bindMode = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["sq_queue_id"] = sqQueueId;
-            args["user_id"] = userId;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (sqQueueId != null)
+                args["sq_queue_id"] = sqQueueId;
             if (sqQueueName != null)
                 args["sq_queue_name"] = sqQueueName;
+            if (userId != null)
+                args["user_id"] = userId;
             if (userName != null)
                 args["user_name"] = userName;
             if (bindMode != null)
@@ -5521,23 +5607,26 @@ namespace Voximplant.API {
         /// <summary>
         /// Unbinds agents from queues.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues</param>
-        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
-        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
-        public async Task<SQ_UnbindAgentResponse> SQ_UnbindAgent(long applicationId, string sqQueueId, string userId, string applicationName = null, string sqQueueName = null, string userName = null)
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues. <b>Required</b> unless <b>sq_queue_name</b> is provided.</param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). <b>Required</b> unless <b>sq_queue_id</b> is provided.</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users. <b>Required</b> unless <b>user_name</b> is provided.</param>
+        /// <param name="userName">List of user names separated by semicolons (;). <b>Required</b> unless <b>user_id</b> is provided.</param>
+        public async Task<SQ_UnbindAgentResponse> SQ_UnbindAgent(long? applicationId = null, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string userId = null, string userName = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["sq_queue_id"] = sqQueueId;
-            args["user_id"] = userId;
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (sqQueueId != null)
+                args["sq_queue_id"] = sqQueueId;
             if (sqQueueName != null)
                 args["sq_queue_name"] = sqQueueName;
+            if (userId != null)
+                args["user_id"] = userId;
             if (userName != null)
                 args["user_name"] = userName;
             return await PerformRequest<SQ_UnbindAgentResponse>("SQ_UnbindAgent", args);
@@ -5545,16 +5634,15 @@ namespace Voximplant.API {
         /// <summary>
         /// Gets agents.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="handleCalls">Whether the agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues</param>
-        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of <b>sq_queue_id</b></param>
-        /// <param name="excludedSqQueueId">ID of the SmartQueue to exclude</param>
-        /// <param name="excludedSqQueueName">Name of the SmartQueue to exclude. Can be used instead of <b>excluded_sq_queue_id</b></param>
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="sqQueueId">List of SmartQueue IDs separated by semicolons (;). Use 'all' to select all the queues. Can be used instead of the <b>sq_queue_name</b> parameter</param>
+        /// <param name="sqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of the <b>sq_queue_id</b> parameter</param>
+        /// <param name="excludedSqQueueId">List of SmartQueue IDs separated by semicolons (;). Agents bound to these queues are excluded. Use 'all' to select all the queues. Can be used instead of the <b>excluded_sq_queue_name</b> parameter</param>
+        /// <param name="excludedSqQueueName">List of SmartQueue names separated by semicolons (;). Can be used instead of the <b>excluded_sq_queue_id</b> parameter</param>
         /// <param name="sqSkills">Skills to filter in the JSON array format. The array should contain objects with the <b>sq_skill_id</b>/<b>sq_skill_name</b>, <b>min_sq_skill_level</b>, and <b>max_sq_skill_level</b> keys where skill levels range from 1 to 5</param>
-        /// <param name="userId">List of user IDs separated by semicolons (;)</param>
-        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Can be used instead of the <b>user_name</b> parameter</param>
+        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of the <b>user_id</b> parameter</param>
         /// <param name="userNameTemplate">Substring of the user name to filter</param>
         /// <param name="sqStatuses">Filter statuses in the JSON array format. The array should contain objects with the <b>sq_status_type</b> and <b>sq_status_name</b> keys. Possible values for <b>sq_status_type</b> are 'CALL' and 'IM'. Possible values for <b>sq_status_name</b> are 'OFFLINE', 'ONLINE', 'READY', 'IN_SERVICE', 'AFTER_SERVICE', 'DND'</param>
         /// <param name="withSqSkills">Whether to display agent skills</param>
@@ -5562,20 +5650,20 @@ namespace Voximplant.API {
         /// <param name="withSqStatuses">Whether to display agent current statuses</param>
         /// <param name="count">Number of items to show in the output</param>
         /// <param name="offset">Number of items to skip in the output</param>
-        public async Task<SQ_GetAgentsResponse> SQ_GetAgents(long applicationId, bool handleCalls, string applicationName = null, string sqQueueId = null, string sqQueueName = null, long? excludedSqQueueId = null, string excludedSqQueueName = null, string sqSkills = null, string userId = null, string userName = null, string userNameTemplate = null, string sqStatuses = null, bool? withSqSkills = null, bool? withSqQueues = null, bool? withSqStatuses = null, long? count = null, long? offset = null)
+        public async Task<SQ_GetAgentsResponse> SQ_GetAgents(long? applicationId = null, string applicationName = null, string sqQueueId = null, string sqQueueName = null, string excludedSqQueueId = null, string excludedSqQueueName = null, string sqSkills = null, string userId = null, string userName = null, string userNameTemplate = null, string sqStatuses = null, bool? withSqSkills = null, bool? withSqQueues = null, bool? withSqStatuses = null, long? count = null, long? offset = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["handle_calls"] = handleCalls.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
             if (sqQueueId != null)
                 args["sq_queue_id"] = sqQueueId;
             if (sqQueueName != null)
                 args["sq_queue_name"] = sqQueueName;
-            if (excludedSqQueueId.HasValue)
-                args["excluded_sq_queue_id"] = excludedSqQueueId.Value.ToString();
+            if (excludedSqQueueId != null)
+                args["excluded_sq_queue_id"] = excludedSqQueueId;
             if (excludedSqQueueName != null)
                 args["excluded_sq_queue_name"] = excludedSqQueueName;
             if (sqSkills != null)
@@ -5603,25 +5691,28 @@ namespace Voximplant.API {
         /// <summary>
         /// Edits the agent settings.
         /// </summary>
-        /// <param name="applicationId">Application ID to search by</param>
-        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users</param>
-        /// <param name="handleCalls">Whether the agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution</param>
-        /// <param name="applicationName">Application name to search by. Can be used instead of <b>application_id</b></param>
-        /// <param name="userName">List of user names separated by semicolons (;). Can be used instead of <b>user_id</b></param>
-        /// <param name="maxSimultaneousConversations">Maximum number of chats that the user processes simultaneously</param>
-        public async Task<SQ_SetAgentInfoResponse> SQ_SetAgentInfo(long applicationId, string userId, bool handleCalls, string applicationName = null, string userName = null, long? maxSimultaneousConversations = null)
+        /// <param name="applicationId">Application ID to search by. <b>Required</b> unless <b>application_name</b> is provided.</param>
+        /// <param name="applicationName">Application name to search by. <b>Required</b> unless <b>application_id</b> is provided.</param>
+        /// <param name="userId">List of user IDs separated by semicolons (;). Use 'all' to select all the users. <b>Required</b> unless <b>user_name</b> is provided.</param>
+        /// <param name="userName">List of user names separated by semicolons (;). <b>Required</b> unless <b>user_id</b> is provided.</param>
+        /// <param name="maxSimultaneousConversations">Maximum number of chats that the user processes simultaneously. <b>Required</b> unless <b>handle_calls</b> is provided.</param>
+        /// <param name="handleCalls">Whether the agent can handle calls. When set to false, the agent is excluded from the CALL-request distribution. <b>Required</b> unless <b>max_simultaneous_conversations</b> is provided.</param>
+        public async Task<SQ_SetAgentInfoResponse> SQ_SetAgentInfo(long? applicationId = null, string applicationName = null, string userId = null, string userName = null, long? maxSimultaneousConversations = null, bool? handleCalls = null)
         {
             var args = new Dictionary<string, object>();
 
-            args["application_id"] = applicationId.ToString();
-            args["user_id"] = userId;
-            args["handle_calls"] = handleCalls.ToString();
+            if (applicationId.HasValue)
+                args["application_id"] = applicationId.Value.ToString();
             if (applicationName != null)
                 args["application_name"] = applicationName;
+            if (userId != null)
+                args["user_id"] = userId;
             if (userName != null)
                 args["user_name"] = userName;
             if (maxSimultaneousConversations.HasValue)
                 args["max_simultaneous_conversations"] = maxSimultaneousConversations.Value.ToString();
+            if (handleCalls.HasValue)
+                args["handle_calls"] = handleCalls.Value ? "1" : "0";
             return await PerformRequest<SQ_SetAgentInfoResponse>("SQ_SetAgentInfo", args);
 }
         /// <summary>
