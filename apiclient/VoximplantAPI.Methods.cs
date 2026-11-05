@@ -4699,6 +4699,105 @@ namespace Voximplant.API {
             return await PerformRequest<GetRecordStoragesResponse>("GetRecordStorages", args);
 }
         /// <summary>
+        /// Gets the custom record storages.
+        /// </summary>
+        /// <param name="customRecordStorageId">Unique identifier of the custom record storage configuration.</param>
+        /// <param name="withApplicationsAttached">Whether to include attached applications in the response or execution.</param>
+        public async Task<GetCustomRecordStoragesResponse> GetCustomRecordStorages(long? customRecordStorageId = null, bool? withApplicationsAttached = null)
+        {
+            var args = new Dictionary<string, object>();
+
+            if (customRecordStorageId.HasValue)
+                args["custom_record_storage_id"] = customRecordStorageId.Value.ToString();
+            if (withApplicationsAttached.HasValue)
+                args["with_applications_attached"] = withApplicationsAttached.Value ? "1" : "0";
+            return await PerformRequest<GetCustomRecordStoragesResponse>("GetCustomRecordStorages", args);
+}
+        /// <summary>
+        /// Adds a custom record storage.
+        /// </summary>
+        /// <param name="host">Host endpoint for the custom storage.</param>
+        /// <param name="accessKeyId">Access key ID used to authenticate requests.</param>
+        /// <param name="secretAccessKey">Secret access key used to authenticate requests.</param>
+        /// <param name="bucket">Name of the storage bucket.</param>
+        /// <param name="region">Geographic region where the bucket is located.</param>
+        /// <param name="signatureVersion">Signature version to use for signing requests.</param>
+        /// <param name="bucketIsDomain">Whether the bucket name should be treated as a domain.</param>
+        /// <param name="storageClass">Storage class to assign to newly uploaded objects.</param>
+        /// <param name="acl">Access Control List rule applied to objects.</param>
+        /// <param name="cors">Cross-Origin Resource Sharing configuration.</param>
+        /// <param name="multipartUpload">Whether to enable large file multipart uploading.</param>
+        /// <param name="attachedApplicationId">Set of application IDs attached to this storage configuration.</param>
+        public async Task<AddCustomRecordStorageResponse> AddCustomRecordStorage(string host, string accessKeyId, string secretAccessKey, string bucket, string region = null, string signatureVersion = null, bool? bucketIsDomain = null, string storageClass = null, string acl = null, string cors = null, bool? multipartUpload = null, string attachedApplicationId = null)
+        {
+            var args = new Dictionary<string, object>();
+
+            args["host"] = host;
+            args["access_key_id"] = accessKeyId;
+            args["secret_access_key"] = secretAccessKey;
+            args["bucket"] = bucket;
+            if (region != null)
+                args["region"] = region;
+            if (signatureVersion != null)
+                args["signature_version"] = signatureVersion;
+            if (bucketIsDomain.HasValue)
+                args["bucket_is_domain"] = bucketIsDomain.Value ? "1" : "0";
+            if (storageClass != null)
+                args["storage_class"] = storageClass;
+            if (acl != null)
+                args["acl"] = acl;
+            if (cors != null)
+                args["cors"] = cors;
+            if (multipartUpload.HasValue)
+                args["multipart_upload"] = multipartUpload.Value ? "1" : "0";
+            if (attachedApplicationId != null)
+                args["attached_application_id"] = attachedApplicationId;
+            return await PerformRequest<AddCustomRecordStorageResponse>("AddCustomRecordStorage", args);
+}
+        /// <summary>
+        /// Modifies the custom record storage.
+        /// </summary>
+        /// <param name="host">Host endpoint for the custom storage.</param>
+        /// <param name="accessKeyId">Access key ID used to authenticate requests.</param>
+        /// <param name="secretAccessKey">Secret access key used to authenticate requests.</param>
+        /// <param name="bucket">Name of the storage bucket.</param>
+        /// <param name="customRecordStorageId">The unique identifier of the custom record storage configuration.</param>
+        /// <param name="region">Geographic region where the bucket is located.</param>
+        /// <param name="signatureVersion">Signature version to use for signing requests.</param>
+        /// <param name="bucketIsDomain">Whether the bucket name should be treated as a domain.</param>
+        /// <param name="storageClass">Storage class to assign to newly uploaded objects.</param>
+        /// <param name="acl">Access Control List rule applied to objects.</param>
+        /// <param name="cors">Cross-Origin Resource Sharing configuration.</param>
+        /// <param name="multipartUpload">Whether to enable large file multipart uploading.</param>
+        /// <param name="attachedApplicationId">Set of application IDs attached to this storage configuration.</param>
+        public async Task<SetCustomRecordStorageInfoResponse> SetCustomRecordStorageInfo(string host, string accessKeyId, string secretAccessKey, string bucket, long customRecordStorageId, string region = null, string signatureVersion = null, bool? bucketIsDomain = null, string storageClass = null, string acl = null, string cors = null, bool? multipartUpload = null, string attachedApplicationId = null)
+        {
+            var args = new Dictionary<string, object>();
+
+            args["host"] = host;
+            args["access_key_id"] = accessKeyId;
+            args["secret_access_key"] = secretAccessKey;
+            args["bucket"] = bucket;
+            args["custom_record_storage_id"] = customRecordStorageId.ToString();
+            if (region != null)
+                args["region"] = region;
+            if (signatureVersion != null)
+                args["signature_version"] = signatureVersion;
+            if (bucketIsDomain.HasValue)
+                args["bucket_is_domain"] = bucketIsDomain.Value ? "1" : "0";
+            if (storageClass != null)
+                args["storage_class"] = storageClass;
+            if (acl != null)
+                args["acl"] = acl;
+            if (cors != null)
+                args["cors"] = cors;
+            if (multipartUpload.HasValue)
+                args["multipart_upload"] = multipartUpload.Value ? "1" : "0";
+            if (attachedApplicationId != null)
+                args["attached_application_id"] = attachedApplicationId;
+            return await PerformRequest<SetCustomRecordStorageInfoResponse>("SetCustomRecordStorageInfo", args);
+}
+        /// <summary>
         /// Creates a public/private key pair. You can optionally specify one or more roles for the key. You can find all available service account roles [here](/docs/getting-started/basic-concepts/management-api#service-account-roles).
         /// </summary>
         /// <param name="description">The key's description</param>

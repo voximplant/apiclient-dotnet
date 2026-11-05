@@ -9,6 +9,8 @@
 # IDEA files
 .idea
 
+input.json
+
 # CMake
 cmake-build-*/
 
